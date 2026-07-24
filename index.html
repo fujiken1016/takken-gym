@@ -236,6 +236,8 @@
   .ox-fb .v{font-weight:900;font-size:14px}
   .ox-fb.ok .v{color:var(--good-ink)}.ox-fb.ng .v{color:var(--bad-ink)}
   .ox-fb .t{font-size:13px;line-height:1.7;color:var(--ink)}
+  .ox-fb{cursor:pointer}
+  .ox-fb .tap{font-size:11px;font-weight:800;color:var(--faint);align-self:flex-end;letter-spacing:.04em}
   .ox-btns{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:6px}
   .ox-btn{padding:22px 0 18px;border-radius:18px;font-size:34px;font-weight:900;border:2px solid var(--line);
     background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .1s,background .15s,border-color .15s}
@@ -521,7 +523,7 @@
       <div class="q-num" id="qNum"></div>
       <div class="q-text" id="qText"></div>
       <div class="choices" id="qChoices"></div>
-      <div class="explain" id="qExplain">
+      <div class="explain" id="qExplain" role="status" aria-live="polite">
         <div class="head"><span class="verdict" id="exVerdict"></span><span class="topic" id="exTopic"></span></div>
         <p id="exText"></p>
       </div>
@@ -546,9 +548,10 @@
         <div class="sec"><h2>まちがえた問題の復習</h2></div>
         <div class="rev-list" id="rReview"></div>
       </div>
+      <button class="btn btn-primary" id="rFixWrong" style="display:none;width:100%;margin-top:4px">まちがえた問題だけ復習する</button>
       <div style="display:flex;gap:10px;margin-top:4px">
         <button class="btn btn-ghost" id="rHome">ホームへ</button>
-        <button class="btn btn-primary" id="rAgain">もう一度</button>
+        <button class="btn btn-ghost" id="rAgain">もう一度</button>
       </div>
     </section>
 
@@ -562,7 +565,7 @@
       <span class="q-chip" id="oxChip"><span class="dot"></span><span></span></span>
       <div class="ox-lead">この記述は<b>正しい</b>？<b>誤り</b>？</div>
       <div class="ox-stmt" id="oxStmt"></div>
-      <div class="ox-fb" id="oxFb"><span class="v" id="oxFbV"></span><span class="t" id="oxFbT"></span></div>
+      <div class="ox-fb" id="oxFb" role="status" aria-live="polite"><span class="v" id="oxFbV"></span><span class="t" id="oxFbT"></span><span class="tap">タップで次へ ▸</span></div>
       <div class="ox-btns">
         <button class="ox-btn maru" id="oxMaru" aria-label="正しい">◯<small>正しい</small></button>
         <button class="ox-btn batsu" id="oxBatsu" aria-label="誤り">✕<small>誤り</small></button>
@@ -879,7 +882,10 @@ function fresh(){return{q:{},streak:0,maxStreak:0,lastDay:null,days:[],answered:
   goal:10,theme:"auto",font:1,badges:[],everPerfect:false,everExamPass:false,reviewRuns:0,pending:null,
   ox:{answered:0,correct:0,best:0,wrong:{}}};}
 function migrate(s){const f=fresh();return Object.assign(f,s);}
-function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(S));}catch(e){}}
+let saveWarned=false;
+function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(S));}
+  catch(e){if(!saveWarned){saveWarned=true;
+    try{toast("⚠️ 進捗を保存できません。プライベートモードを解除してください");}catch(_){}}}}
 function qst(id){return S.q[id]||(S.q[id]={box:0,due:null,seen:0,ok:0,wrong:0});}
 
 // ============ Theme & font ============
@@ -1099,7 +1105,8 @@ function renderQ(){
   chip.querySelector(".dot").style.background=A.color;
   chip.querySelector("span:last-child").textContent=A.name+" ・ "+q.topic;
   chip.style.background=A.color+"1f";chip.style.color=A.color;
-  document.getElementById("qNum").textContent="Q"+(SES.i+1)+(SES.exam?" ・ 本気モード":"");
+  const un=SES.exam?SES.items.filter(x=>x.picked==null).length:0;
+  document.getElementById("qNum").textContent="Q"+(SES.i+1)+(SES.exam?" ・ 本気モード"+(un>0?" ・ 未回答"+un+"問":" ・ 全問回答済み"):"");
   document.getElementById("qText").textContent=q.q;
   const revealed=(!SES.exam&&it.picked!=null); // 練習は回答済みなら結果表示のまま戻れる
   const ch=document.getElementById("qChoices");ch.innerHTML="";
@@ -1147,7 +1154,16 @@ function renderQbar(){
   if(SES.exam){
     bar.classList.add("show");
     const next=document.createElement("button");next.className="btn btn-primary";next.textContent=last?"採点する":"次へ →";
-    next.onclick=()=>{if(last)finishExam();else{SES.i++;renderQ();scrollTop();}};
+    next.onclick=()=>{
+      if(!last){SES.i++;renderQ();scrollTop();return;}
+      const un=SES.items.map((x,i)=>x.picked==null?i:-1).filter(i=>i>=0);
+      if(un.length){
+        if(!confirm("未回答が"+un.length+"問あります。\nOK＝そのまま採点／キャンセル＝未回答の問題へ移動")){
+          SES.i=un[0];renderQ();scrollTop();return;
+        }
+      }
+      finishExam();
+    };
     inner.appendChild(next);return;
   }
   if(it.picked==null){bar.classList.remove("show");return;}
@@ -1234,6 +1250,9 @@ function showResult(){
   document.getElementById("rMsg").textContent=msg;g.textContent=grade;g.className="rgrade "+gc;
   document.getElementById("rSub").textContent=sub;
   const wrongs=SES.answers.filter(a=>!a.correct),wrap=document.getElementById("rReviewWrap");
+  const fix=document.getElementById("rFixWrong");
+  fix.style.display=wrongs.length?"":"none";
+  fix.textContent="まちがえた"+wrongs.length+"問だけ復習する";
   if(wrongs.length){wrap.style.display="";
     document.getElementById("rReview").innerHTML=wrongs.map(a=>{const yours=a.picked>=0?a.q.choices[a.picked]:"（無回答）";
       return `<div class="rev-item"><div class="rq">${a.q.q}</div>
@@ -1244,7 +1263,16 @@ function showResult(){
   show("result");
 }
 document.getElementById("rHome").onclick=()=>show("home");
-document.getElementById("rAgain").onclick=()=>{const list=SES.items.map(it=>it.q);startSession(shuffle(list),{label:SES.label,exam:SES.exam});};
+document.getElementById("rAgain").onclick=()=>{
+  // 模試は毎回新しい50問を引く（同じ問題の再演習では模試の意味が薄いため）
+  if(SES.exam&&SES.label==="模試"){startSession(buildMock(),{label:"模試",exam:true});return;}
+  startSession(shuffle(SES.items.map(it=>it.q)),{label:SES.label,exam:SES.exam});
+};
+document.getElementById("rFixWrong").onclick=()=>{
+  const wrongs=SES.answers.filter(a=>!a.correct).map(a=>a.q);
+  if(!wrongs.length){toast("まちがえた問題はありません 👍");return;}
+  startSession(shuffle(wrongs),{label:"まちがい復習"});
+};
 
 // ============ Stats ============
 function renderStats(){
@@ -1367,6 +1395,8 @@ function finishOx(){
 }
 document.getElementById("oxMaru").onclick=()=>answerOx(true);
 document.getElementById("oxBatsu").onclick=()=>answerOx(false);
+// 解説をタップすれば自動送りを待たずに次へ
+document.getElementById("oxFb").onclick=()=>{if(OXS&&OXS.locked){if(oxTimeout){clearTimeout(oxTimeout);oxTimeout=null;}nextOx();}};
 document.getElementById("quitOx").onclick=()=>{if(oxTimeout){clearTimeout(oxTimeout);oxTimeout=null;}if(OXS&&OXS.i>0)finalizeStudyDay(OXS.i);save();show("train");};
 document.getElementById("oxAgain").onclick=startOx;
 document.getElementById("oxHome").onclick=()=>show("home");
