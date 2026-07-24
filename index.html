@@ -82,8 +82,12 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.7;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  button{font-family:inherit;cursor:pointer;color:inherit;border:none;background:none}
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overscroll-behavior-y:none;                 /* 演習中の引っ張り更新で誤リロードしない */
+    -webkit-tap-highlight-color:transparent}    /* タップ時の灰色フラッシュを消す */
+  button{font-family:inherit;cursor:pointer;color:inherit;border:none;background:none;
+    touch-action:manipulation;                  /* ダブルタップズームを抑止＝反応が速くなる */
+    -webkit-user-select:none;user-select:none}  /* 長押しでテキスト選択されない */
   button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px;border-radius:8px}
   .num{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-style:italic;letter-spacing:-.02em}
   .up{text-transform:uppercase;letter-spacing:.16em}
@@ -91,7 +95,7 @@
 
   .app{max-width:480px;margin:0 auto;min-height:100dvh;position:relative}
   .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px 12px;background:color-mix(in srgb,var(--bg) 86%,transparent);
+    padding:calc(14px + env(safe-area-inset-top)) 16px 12px;background:color-mix(in srgb,var(--bg) 86%,transparent);
     backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
   .logo{display:flex;align-items:center;gap:9px}
   .logo .badge24{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
@@ -203,8 +207,8 @@
 
   /* QUIZ */
   .quiz-top{display:flex;align-items:center;gap:11px;margin-bottom:2px}
-  .quiz-top .x{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;color:var(--muted);
-    border:1px solid var(--line);flex-shrink:0;background:var(--surface);font-size:17px}
+  .quiz-top .x{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:var(--muted);
+    border:1px solid var(--line);flex-shrink:0;background:var(--surface);font-size:18px}
   .quiz-top .x:active{transform:scale(.95)}
   .qprog{flex:1;height:9px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
   .qprog>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:6px;transition:width .4s ease}
@@ -259,7 +263,12 @@
   .ox-fb .t{font-size:13px;line-height:1.7;color:var(--ink)}
   .ox-fb{cursor:pointer}
   .ox-fb .tap{font-size:11px;font-weight:800;color:var(--faint);align-self:flex-end;letter-spacing:.04em}
-  .ox-btns{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:6px}
+  /* 親指が届く画面下部に固定（片手操作しやすくする） */
+  .ox-btns{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:480px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:13px;
+    padding:12px 15px calc(12px + env(safe-area-inset-bottom));
+    background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  #v-ox{padding-bottom:170px}
   .ox-btn{padding:22px 0 18px;border-radius:18px;font-size:34px;font-weight:900;border:2px solid var(--line);
     background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .1s,background .15s,border-color .15s}
   .ox-btn small{font-size:12px;font-weight:800;letter-spacing:.05em}
@@ -367,7 +376,7 @@
   .seg button.on{background:var(--brand);color:#fff}
   .set-full{padding:14px 0;border-top:1px solid var(--line)}
   .set-full .sl{font-size:14px;font-weight:700;margin-bottom:8px}
-  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:11px;padding:11px;font-size:12px;
+  textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:11px;padding:11px;font-size:16px;
     font-family:var(--font-num);background:var(--surface-2);color:var(--ink);resize:vertical}
   .sbtn{padding:11px 14px;border-radius:11px;font-weight:800;font-size:13px;border:1px solid var(--line-strong);background:var(--surface-2)}
   .sbtn.pri{background:var(--brand);color:#fff;border:none}
