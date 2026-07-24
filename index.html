@@ -1028,14 +1028,16 @@ function buildSmart(){const t=today();const goal=S.goal||10;
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 // ============ Notes ============
+// 復習ノート＝「実際に間違えた問題」＋「★で手動追加した問題」だけ。
+// 単に未定着なだけの問題はSRS（復習モード）が拾うので、ここには並べない。
 function noteList(){return QUESTIONS.filter(q=>{const st=S.q[q.id];if(!st)return false;
-    if(st.marked)return true; // ★で手動追加したもの
-    return st.seen>0&&st.box<5&&(st.wrong>0||st.box<3);})
+    if(st.marked)return true;
+    return st.wrong>0&&st.box<5;})
   .sort((a,b)=>((S.q[b.id].marked?1:0)-(S.q[a.id].marked?1:0))||((S.q[b.id].wrong||0)-(S.q[a.id].wrong||0)));}
 function updateNoteDot(){const btn=document.querySelector('.nav [data-nav="notes"]');if(btn)btn.classList.toggle("hasnew",noteList().length>0);}
 function renderNotes(){
   const list=noteList();const body=document.getElementById("notesBody");
-  if(!list.length){body.innerHTML=`<div class="empty"><span class="ic">🎉</span>復習ノートは空っぽ！<br>まちがえた問題や、まだ定着していない問題がここに集まります。</div>`;
+  if(!list.length){body.innerHTML=`<div class="empty"><span class="ic">🎉</span>復習ノートは空っぽ！<br>まちがえた問題と、★で追加した問題がここに集まります。</div>`;
     document.getElementById("reviewAll").style.display="none";updateNoteDot();return;}
   document.getElementById("reviewAll").style.display="";
   body.innerHTML=`<div class="area-list">`+list.map(q=>{const A=AREAS[q.area];const st=S.q[q.id];
