@@ -316,6 +316,12 @@
   .note-item .nt .q{font-size:13px;font-weight:600;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .note-item .nt .m{font-size:11px;color:var(--faint);font-weight:700;margin-top:3px}
   .note-item .st{flex-shrink:0;font-size:16px}
+  .note-row{display:flex;gap:8px;align-items:stretch}
+  .note-row .note-item{flex:1;min-width:0}
+  .note-star{flex:0 0 48px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);
+    font-size:19px;color:var(--faint);box-shadow:var(--shadow);transition:transform .1s}
+  .note-star:active{transform:scale(.95)}
+  .note-star.on{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
 
   .empty{text-align:center;color:var(--muted);padding:40px 20px;font-size:14px;line-height:1.8}
   .empty .ic{font-size:40px;display:block;margin-bottom:10px}
@@ -507,6 +513,7 @@
     <section class="view" id="v-quiz">
       <div class="quiz-top">
         <button class="x" id="quitQuiz" aria-label="終了">✕</button>
+        <button class="x" id="quizPrev" aria-label="前の問題へ" style="display:none">←</button>
         <div class="qprog"><i id="qprogFg" style="width:0%"></i></div>
         <div class="qmeta"><span class="c" id="qprogLbl">1/10</span><span class="timer" id="qTimer" style="display:none">0:00</span></div>
       </div>
@@ -1005,7 +1012,8 @@ function buildMock(){const dist={gyoho:20,kenri:14,horei:8,zei:8};let out=[];
 function dueCount(){const t=today();let n=0;QUESTIONS.forEach(q=>{const st=S.q[q.id];if(st&&st.due&&st.due<=t&&st.box<5)n++;});return n;}
 function wrongPool(){return QUESTIONS.filter(q=>{const st=S.q[q.id];return st&&((st.box>0&&st.box<3)||st.wrong>st.ok);});}
 function reviewPool(){const t=today();const ids=new Set();
-  QUESTIONS.forEach(q=>{const st=S.q[q.id];if(st&&st.due&&st.due<=t&&st.box<5)ids.add(q.id);});
+  QUESTIONS.forEach(q=>{const st=S.q[q.id];if(st&&st.marked)ids.add(q.id);
+    if(st&&st.due&&st.due<=t&&st.box<5)ids.add(q.id);});
   wrongPool().forEach(q=>ids.add(q.id));return shuffle(QUESTIONS.filter(q=>ids.has(q.id)));}
 function weakSession(area){const inArea=QUESTIONS.filter(q=>q.area===area);
   const wrong=inArea.filter(q=>{const st=S.q[q.id];return st&&st.wrong>0;});
@@ -1020,8 +1028,10 @@ function buildSmart(){const t=today();const goal=S.goal||10;
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 // ============ Notes ============
-function noteList(){return QUESTIONS.filter(q=>{const st=S.q[q.id];return st&&st.seen>0&&st.box<5&&(st.wrong>0||st.box<3);})
-  .sort((a,b)=>(S.q[b.id].wrong||0)-(S.q[a.id].wrong||0));}
+function noteList(){return QUESTIONS.filter(q=>{const st=S.q[q.id];if(!st)return false;
+    if(st.marked)return true; // ★で手動追加したもの
+    return st.seen>0&&st.box<5&&(st.wrong>0||st.box<3);})
+  .sort((a,b)=>((S.q[b.id].marked?1:0)-(S.q[a.id].marked?1:0))||((S.q[b.id].wrong||0)-(S.q[a.id].wrong||0)));}
 function updateNoteDot(){const btn=document.querySelector('.nav [data-nav="notes"]');if(btn)btn.classList.toggle("hasnew",noteList().length>0);}
 function renderNotes(){
   const list=noteList();const body=document.getElementById("notesBody");
@@ -1029,27 +1039,34 @@ function renderNotes(){
     document.getElementById("reviewAll").style.display="none";updateNoteDot();return;}
   document.getElementById("reviewAll").style.display="";
   body.innerHTML=`<div class="area-list">`+list.map(q=>{const A=AREAS[q.area];const st=S.q[q.id];
-    return `<button class="note-item" data-id="${q.id}"><span class="dot" style="background:${A.color}"></span>
-      <span class="nt"><span class="q">${q.q}</span><span class="m">${A.short}・${q.topic} ／ ✕${st.wrong||0}回</span></span>
-      <span class="st">▶</span></button>`;}).join("")+`</div>`;
+    const meta=(st.marked?"★手動追加 ／ ":"")+A.short+"・"+q.topic+" ／ ✕"+(st.wrong||0)+"回";
+    return `<div class="note-row">
+      <button class="note-item" data-id="${q.id}"><span class="dot" style="background:${A.color}"></span>
+      <span class="nt"><span class="q">${q.q}</span><span class="m">${meta}</span></span>
+      <span class="st">▶</span></button>
+      <button class="note-star${st.marked?" on":""}" data-star="${q.id}" aria-label="${st.marked?"復習ノートから外す":"復習ノートに追加"}">${st.marked?"★":"☆"}</button>
+    </div>`;}).join("")+`</div>`;
   body.querySelectorAll(".note-item").forEach(b=>b.onclick=()=>{const q=QUESTIONS.find(x=>x.id===b.dataset.id);startSession([q],{label:"復習ノート"});});
+  body.querySelectorAll(".note-star").forEach(b=>b.onclick=()=>{const st=qst(b.dataset.star);st.marked=!st.marked;save();
+    toast(st.marked?"復習ノートに追加しました":"復習ノートから外しました");renderNotes();});
   updateNoteDot();
 }
 document.getElementById("reviewAll").onclick=()=>{const p=reviewPool();if(!p.length){toast("いま復習する問題はありません 👍");return;}S.reviewRuns=(S.reviewRuns||0)+1;save();startSession(p,{label:"復習"});};
 
 // ============ Quiz engine ============
-let SES=null,answered=false,timerInt=null;
+let SES=null,timerInt=null;
 function startSession(list,opts){
   if(!list||!list.length){toast("問題がありません");return;}
   S.pending=null;save();
-  SES={items:list.map(q=>({q,order:shuffle([0,1,2,3])})),i:0,correct:0,exam:!!opts.exam,label:opts.label,answers:[],start:Date.now()};
+  const origin=originTab();
+  SES={items:list.map(q=>({q,order:shuffle([0,1,2,3])})),i:0,correct:0,exam:!!opts.exam,label:opts.label,answers:[],start:Date.now(),origin};
   stopTimer();show("quiz");renderQ();
   if(SES.exam)startTimer();
 }
 function resumeSession(){
   try{const p=S.pending;if(!p)return;
     const items=p.qids.map(id=>QUESTIONS.find(q=>q.id===id)).filter(Boolean);
-    SES={items:items.map(q=>({q,order:shuffle([0,1,2,3])})),i:Math.min(p.i,items.length-1),correct:p.correct||0,exam:false,label:p.label||"復習",answers:[],start:Date.now()-(p.elapsed||0)};
+    SES={items:items.map(q=>({q,order:shuffle([0,1,2,3])})),i:Math.min(p.i,items.length-1),correct:p.correct||0,exam:false,label:p.label||"復習",answers:[],start:Date.now()-(p.elapsed||0),origin:originTab()};
     stopTimer();show("quiz");renderQ();
   }catch(e){S.pending=null;save();toast("続きを復元できませんでした");}
 }
@@ -1061,8 +1078,12 @@ function startTimer(){const el=document.getElementById("qTimer");el.style.displa
 function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null;}document.getElementById("qTimer").style.display="none";}
 
 const KEYS=["A","B","C","D"];
+const TABS=["home","train","notes","stats"];
+function currentView(){for(const k in views){if(document.getElementById(views[k]).classList.contains("active"))return k;}return "home";}
+function originTab(){const v=currentView();return TABS.includes(v)?v:"home";}
+function scrollTop(){try{window.scrollTo({top:0,behavior:"instant"});}catch(e){window.scrollTo(0,0);}}
+
 function renderQ(){
-  answered=false;
   const it=SES.items[SES.i],q=it.q,n=SES.items.length;
   document.getElementById("qprogFg").style.width=(SES.i/n*100)+"%";
   document.getElementById("qprogLbl").textContent=(SES.i+1)+"/"+n;
@@ -1072,57 +1093,70 @@ function renderQ(){
   chip.style.background=A.color+"1f";chip.style.color=A.color;
   document.getElementById("qNum").textContent="Q"+(SES.i+1)+(SES.exam?" ・ 本気モード":"");
   document.getElementById("qText").textContent=q.q;
+  const revealed=(!SES.exam&&it.picked!=null); // 練習は回答済みなら結果表示のまま戻れる
   const ch=document.getElementById("qChoices");ch.innerHTML="";
-  it.order.forEach((oi,idx)=>{const btn=document.createElement("button");btn.className="choice";btn.type="button";
+  it.order.forEach((oi,idx)=>{
+    const btn=document.createElement("button");btn.className="choice";btn.type="button";
     btn.innerHTML=`<span class="key">${KEYS[idx]}</span><span class="body">${q.choices[oi]}</span>`;
-    btn.onclick=()=>choose(idx,oi,btn);ch.appendChild(btn);});
-  document.getElementById("qExplain").classList.remove("show");
-  if(SES.exam){const it2=SES.items[SES.i];if(it2.picked!=null){const di=it2.order.indexOf(it2.picked);const bs=ch.children;if(bs[di])bs[di].classList.add("sel");}}
-  else savePending();
+    if(revealed){
+      btn.disabled=true;
+      if(oi===q.a){btn.classList.add("correct");btn.insertAdjacentHTML("beforeend",'<span class="res">正解</span>');}
+      else if(oi===it.picked){btn.classList.add("wrong");btn.insertAdjacentHTML("beforeend",'<span class="res">あなた</span>');}
+      else btn.classList.add("dim");
+    }else if(SES.exam&&oi===it.picked){btn.classList.add("sel");}
+    btn.onclick=()=>choose(idx,oi,btn);
+    ch.appendChild(btn);
+  });
+  const ex=document.getElementById("qExplain");
+  if(revealed){
+    const correct=(it.picked===q.a),v=document.getElementById("exVerdict");
+    v.textContent=correct?"正解":"不正解";v.className="verdict "+(correct?"ok":"ng");
+    document.getElementById("exTopic").textContent=q.topic;
+    document.getElementById("exText").textContent=q.exp;
+    ex.classList.add("show");
+  }else ex.classList.remove("show");
+  document.getElementById("quizPrev").style.display=SES.i>0?"grid":"none";
+  if(!SES.exam)savePending();
   renderQbar();
 }
 function choose(displayIdx,origIdx,btn){
-  const it=SES.items[SES.i],q=it.q,correct=(origIdx===q.a);
+  const it=SES.items[SES.i],q=it.q;
   if(SES.exam){it.picked=origIdx;[...document.querySelectorAll("#qChoices .choice")].forEach(c=>c.classList.remove("sel"));btn.classList.add("sel");vibe(8);renderQbar();return;}
-  if(answered)return;
-  answered=true;it.picked=origIdx;
-  applyResult(q,correct);SES.answers.push({q,picked:origIdx,correct});if(correct)SES.correct++;
-  const btns=[...document.querySelectorAll("#qChoices .choice")];
-  btns.forEach((b,idx)=>{b.disabled=true;const oi=it.order[idx];
-    if(oi===q.a){b.classList.add("correct");b.insertAdjacentHTML("beforeend",'<span class="res">正解</span>');}
-    else if(idx===displayIdx){b.classList.add("wrong");b.insertAdjacentHTML("beforeend",'<span class="res">あなた</span>');}
-    else b.classList.add("dim");});
-  const ex=document.getElementById("qExplain"),v=document.getElementById("exVerdict");
-  v.textContent=correct?"正解":"不正解";v.className="verdict "+(correct?"ok":"ng");
-  document.getElementById("exTopic").textContent=q.topic;document.getElementById("exText").textContent=q.exp;
-  ex.classList.add("show");
+  if(it.picked!=null)return; // 採点済みは再回答不可（戻っても二重カウントしない）
+  const correct=(origIdx===q.a);
+  it.picked=origIdx;
+  applyResult(q,correct);
   vibe(correct?[12]:[30,40,30]);
-  renderQbar();
+  renderQ();
+  if(correct)toast("正解！");
 }
 function applyResult(q,correct){const st=qst(q.id);st.seen++;
   if(correct){st.ok++;st.box=Math.min(5,(st.box||0)+1);}else{st.wrong++;st.box=1;}
   st.due=addDays(today(),SRS_INTERVAL[st.box]||0);S.answered++;if(correct)S.correct++;save();}
 function renderQbar(){
   const bar=document.getElementById("qbar"),inner=document.getElementById("qbarInner");inner.innerHTML="";
-  const last=SES.i===SES.items.length-1;
-  if(SES.exam){bar.classList.add("show");
-    const prev=document.createElement("button");prev.className="btn btn-ghost";prev.style.flex="0 0 96px";prev.textContent="← 前へ";
-    prev.disabled=SES.i===0;prev.style.opacity=SES.i===0?".4":"1";prev.onclick=()=>{if(SES.i>0){SES.i--;renderQ();}};
+  const it=SES.items[SES.i],last=SES.i===SES.items.length-1;
+  if(SES.exam){
+    bar.classList.add("show");
     const next=document.createElement("button");next.className="btn btn-primary";next.textContent=last?"採点する":"次へ →";
-    next.onclick=()=>{if(last)finishExam();else{SES.i++;renderQ();}};
-    inner.appendChild(prev);inner.appendChild(next);return;}
-  if(!answered){bar.classList.remove("show");return;}
+    next.onclick=()=>{if(last)finishExam();else{SES.i++;renderQ();scrollTop();}};
+    inner.appendChild(next);return;
+  }
+  if(it.picked==null){bar.classList.remove("show");return;}
   bar.classList.add("show");
-  const mark=document.createElement("button");mark.className="btn btn-ghost btn-icon";mark.textContent="☆";mark.setAttribute("aria-label","復習に追加");
-  mark.onclick=()=>{const q=SES.items[SES.i].q,st=qst(q.id);st.box=1;st.due=today();save();mark.classList.add("marked");mark.textContent="★";toast("復習ノートに追加しました");};
+  const st=qst(it.q.id);
+  const mark=document.createElement("button");
+  mark.className="btn btn-ghost btn-icon"+(st.marked?" marked":"");
+  mark.textContent=st.marked?"★":"☆";
+  mark.setAttribute("aria-label",st.marked?"復習ノートから外す":"復習ノートに追加");
+  mark.onclick=()=>{const s=qst(it.q.id);s.marked=!s.marked;save();renderQbar();updateNoteDot();
+    toast(s.marked?"復習ノートに追加しました":"復習ノートから外しました");};
   const next=document.createElement("button");next.className="btn btn-primary";next.textContent=last?"結果を見る":"次の問題へ";next.onclick=nextQ;
   inner.appendChild(mark);inner.appendChild(next);
 }
-function nextQ(){answered=false;if(SES.i===SES.items.length-1){finishSession();return;}SES.i++;renderQ();}
-function finishExam(){SES.answers=[];SES.correct=0;
-  SES.items.forEach(it=>{const correct=(it.picked===it.q.a);applyResult(it.q,correct);
-    SES.answers.push({q:it.q,picked:it.picked==null?-1:it.picked,correct});if(correct)SES.correct++;});
-  finishSession();}
+function nextQ(){if(SES.i===SES.items.length-1){finishSession();return;}SES.i++;renderQ();scrollTop();}
+function prevQ(){if(SES.i>0){SES.i--;renderQ();scrollTop();}}
+function finishExam(){SES.items.forEach(it=>{applyResult(it.q,it.picked===it.q.a);});finishSession();}
 function finalizeStudyDay(n){
   const t=today();
   if(S.lastDay!==t){if(S.lastDay===addDays(t,-1))S.streak++;else S.streak=1;S.lastDay=t;
@@ -1133,17 +1167,40 @@ function finalizeStudyDay(n){
 function finishSession(){
   stopTimer();clearPending();
   const n=SES.items.length;
+  SES.answers=SES.items.map(it=>({q:it.q,picked:(it.picked==null?-1:it.picked),correct:it.picked===it.q.a}));
+  SES.correct=SES.answers.filter(a=>a.correct).length;
   finalizeStudyDay(n);
   const pct=Math.round(SES.correct/n*100);
   if(pct===100&&n>=5)S.everPerfect=true;
   if(SES.exam&&SES.correct>=Math.round(n*0.7))S.everExamPass=true;
   save();checkBadges();showResult();
 }
-document.getElementById("quitQuiz").onclick=()=>{
-  if(SES&&SES.exam){if(!confirm("本気モードを終了しますか？（採点されません）"))return;stopTimer();show("train");return;}
-  // practice: progress auto-saved as pending
-  savePending();stopTimer();toast("ここまでの進捗を保存しました");show("home");
-};
+document.getElementById("quitQuiz").onclick=()=>backAction();
+document.getElementById("quizPrev").onclick=()=>prevQ();
+
+// ============ 戻る（画面遷移・端末の戻るボタン） ============
+function backAction(){
+  if(document.getElementById("scrim").classList.contains("show")){closeSheet();return;}
+  const v=currentView();
+  if(v==="quiz"){
+    if(SES&&SES.exam){if(!confirm("本気モードを終了しますか？（採点されません）"))return;stopTimer();show((SES&&SES.origin)||"train");return;}
+    savePending();stopTimer();toast("ここまでの進捗を保存しました");show((SES&&SES.origin)||"home");return;
+  }
+  if(v==="ox"){
+    if(oxTimeout){clearTimeout(oxTimeout);oxTimeout=null;}
+    if(OXS&&OXS.i>0)finalizeStudyDay(OXS.i);
+    save();show((OXS&&OXS.origin)||"train");return;
+  }
+  if(v==="result"||v==="oxresult"){show("home");return;}
+  if(v!=="home"){show("home");return;}
+}
+try{history.pushState({app:1},"");}catch(e){}
+window.addEventListener("popstate",()=>{
+  const sheetOpen=document.getElementById("scrim").classList.contains("show");
+  if(currentView()==="home"&&!sheetOpen)return; // ホームでの戻るはブラウザに任せる
+  try{history.pushState({app:1},"");}catch(e){}
+  backAction();
+});
 
 // ============ Result ============
 function showResult(){
@@ -1247,7 +1304,7 @@ function startOx(custom){
   const src=Array.isArray(custom)&&custom.length?custom:OXQ;
   const pool=shuffle([...src]);
   OXS={items:pool.slice(0,Math.min(OX_SET,pool.length)),i:0,correct:0,combo:0,best:0,start:Date.now(),locked:false,
-    weak:Array.isArray(custom)&&custom.length>0};
+    weak:Array.isArray(custom)&&custom.length>0,origin:originTab()};
   show("ox");renderOx();
 }
 function renderOx(){
@@ -1308,6 +1365,7 @@ document.getElementById("oxHome").onclick=()=>show("home");
 
 // ============ Keyboard ============
 document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){backAction();return;}
   if(document.getElementById("v-ox").classList.contains("active")){
     if(e.key==="1"||e.key==="ArrowLeft"||e.key.toLowerCase()==="o"){const b=document.getElementById("oxMaru");if(!b.disabled)b.click();}
     else if(e.key==="2"||e.key==="ArrowRight"||e.key.toLowerCase()==="x"){const b=document.getElementById("oxBatsu");if(!b.disabled)b.click();}
