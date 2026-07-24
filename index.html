@@ -1066,11 +1066,17 @@ function startSession(list,opts){
 function resumeSession(){
   try{const p=S.pending;if(!p)return;
     const items=p.qids.map(id=>QUESTIONS.find(q=>q.id===id)).filter(Boolean);
-    SES={items:items.map(q=>({q,order:shuffle([0,1,2,3])})),i:Math.min(p.i,items.length-1),correct:p.correct||0,exam:false,label:p.label||"復習",answers:[],start:Date.now()-(p.elapsed||0),origin:originTab()};
+    if(!items.length){S.pending=null;save();toast("続きを復元できませんでした");return;}
+    SES={items:items.map((q,idx)=>{const it={q,order:shuffle([0,1,2,3])};
+        const pk=p.picks&&p.picks[idx];if(pk!=null)it.picked=pk; // 採点済みを復元＝再回答での二重カウントを防ぐ
+        return it;}),
+      i:Math.min(p.i,items.length-1),correct:p.correct||0,exam:false,label:p.label||"復習",answers:[],start:Date.now()-(p.elapsed||0),origin:originTab()};
     stopTimer();show("quiz");renderQ();
   }catch(e){S.pending=null;save();toast("続きを復元できませんでした");}
 }
-function savePending(){if(SES.exam)return;S.pending={qids:SES.items.map(it=>it.q.id),i:SES.i,correct:SES.correct,label:SES.label,elapsed:Date.now()-SES.start};save();}
+function savePending(){if(SES.exam)return;
+  S.pending={qids:SES.items.map(it=>it.q.id),picks:SES.items.map(it=>(it.picked==null?null:it.picked)),
+    i:SES.i,correct:SES.correct,label:SES.label,elapsed:Date.now()-SES.start};save();}
 function clearPending(){S.pending=null;save();}
 
 function startTimer(){const el=document.getElementById("qTimer");el.style.display="";
