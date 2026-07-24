@@ -1,0 +1,17 @@
+{
+  "name": "宅建GYM",
+  "short_name": "宅建GYM",
+  "description": "宅建試験の4択100問＋○×80問トレーナー。間隔反復で毎日つづく。",
+  "lang": "ja",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0912",
+  "theme_color": "#6a1fc7",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
