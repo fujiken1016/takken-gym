@@ -265,9 +265,10 @@
   .ox-fb .tap{font-size:11px;font-weight:800;color:var(--faint);align-self:flex-end;letter-spacing:.04em}
   /* 親指が届く画面下部に固定（片手操作しやすくする） */
   .ox-btns{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:480px;margin:0 auto;
-    display:grid;grid-template-columns:1fr 1fr;gap:13px;
+    display:none;grid-template-columns:1fr 1fr;gap:13px;
     padding:12px 15px calc(12px + env(safe-area-inset-bottom));
     background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  .ox-btns.show{display:grid}
   #v-ox{padding-bottom:170px}
   .ox-btn{padding:22px 0 18px;border-radius:18px;font-size:34px;font-weight:900;border:2px solid var(--line);
     background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .1s,background .15s,border-color .15s}
@@ -596,10 +597,6 @@
       <div class="ox-lead">この記述は<b>正しい</b>？<b>誤り</b>？</div>
       <div class="ox-stmt" id="oxStmt"></div>
       <div class="ox-fb" id="oxFb" role="status" aria-live="polite"><span class="v" id="oxFbV"></span><span class="t" id="oxFbT"></span><span class="tap">タップで次へ ▸</span></div>
-      <div class="ox-btns">
-        <button class="ox-btn maru" id="oxMaru" aria-label="正しい">◯<small>正しい</small></button>
-        <button class="ox-btn batsu" id="oxBatsu" aria-label="誤り">✕<small>誤り</small></button>
-      </div>
     </section>
 
     <!-- OX RESULT -->
@@ -623,6 +620,12 @@
   </main>
 
   <div class="qbar" id="qbar"><div class="qbar-inner" id="qbarInner"></div></div>
+
+  <!-- ○×の回答ボタン：ビュー外に置き、画面下に確実に固定する -->
+  <div class="ox-btns" id="oxBar">
+    <button class="ox-btn maru" id="oxMaru" aria-label="正しい">◯<small>正しい</small></button>
+    <button class="ox-btn batsu" id="oxBatsu" aria-label="誤り">✕<small>誤り</small></button>
+  </div>
 
   <nav class="nav" id="nav">
     <div class="nav-inner">
@@ -940,6 +943,7 @@ function show(v){
   document.getElementById("nav").classList.toggle("hidden",inQuiz);
   document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.nav===v));
   if(v!=="quiz")document.getElementById("qbar").classList.remove("show");
+  document.getElementById("oxBar").classList.toggle("show",v==="ox");
   if(v==="home")renderHome();
   if(v==="train")renderTrain();
   if(v==="notes")renderNotes();
