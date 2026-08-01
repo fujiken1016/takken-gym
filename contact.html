@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>お問い合わせ | 宅建GYM</title>
+<meta name="description" content="宅建GYMへのお問い合わせページ。ご意見・ご要望・不具合の報告はこちらから。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://takken.mainichi-lab.com/contact.html">
+<link rel="stylesheet" href="/legal.css">
+<style>
+ label{display:block;font-weight:800;font-size:13.5px;margin:16px 0 6px;color:var(--muted)}
+ input,textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;font-size:16px;
+  background:var(--surface);color:var(--ink);font-family:inherit}
+ textarea{min-height:140px;resize:vertical}
+ button{margin-top:18px;width:100%;border:none;cursor:pointer;font-family:inherit}
+ .note{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="home" href="/">← 宅建GYM トップへ</a>
+  <h1>お問い合わせ</h1>
+  <div class="sub">宅建GYM（takken.mainichi-lab.com）</div>
+</div></div>
+<main>
+  <p>宅建GYMをご利用いただきありがとうございます。ご意見・ご要望・不具合のご報告・問題内容に関するご指摘などがございましたら、以下のいずれかの方法でお気軽にご連絡ください。</p>
+
+  <h2>メールでのお問い合わせ</h2>
+  <div class="card">
+    <p style="margin:0">下記アドレス宛に直接メールをお送りください。</p>
+    <p style="margin:8px 0 0"><a href="mailto:k.fujita1016@gmail.com?subject=%E3%80%90%E5%AE%85%E5%BB%BAGYM%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" style="font-weight:800">k.fujita1016@gmail.com</a></p>
+  </div>
+
+  <h2>フォームから送信</h2>
+  <p class="note">下のフォームに入力して送信すると、お使いのメールソフトが起動し、上記アドレス宛のメールが作成されます（サーバーへは送信されません）。</p>
+  <form id="f" onsubmit="return sendMail(event)">
+    <label for="name">お名前・ニックネーム（任意）</label>
+    <input id="name" type="text" autocomplete="name">
+    <label for="from">返信先メールアドレス（任意）</label>
+    <input id="from" type="email" autocomplete="email" inputmode="email">
+    <label for="body">お問い合わせ内容 <span style="color:#d02a48">*</span></label>
+    <textarea id="body" required></textarea>
+    <button class="btn" type="submit" style="text-align:center">メールを作成する</button>
+  </form>
+  <p class="note">※ 送信いただいた内容は、お問い合わせへの対応のみに使用します。個人情報の取り扱いについては<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。<br>※ 返信が必要な場合は、返信先メールアドレスのご記入をお願いします。内容によっては返信までお時間をいただく場合があります。</p>
+
+  <div class="foot">
+    <a href="/">トップ</a><a href="/privacy.html">プライバシーポリシー</a><a href="/about.html">運営者情報</a><a href="/disclaimer.html">免責事項</a>
+    <div style="margin-top:10px">© 2026 宅建GYM</div>
+  </div>
+</main>
+<script>
+function sendMail(e){
+  e.preventDefault();
+  var name=document.getElementById('name').value.trim();
+  var from=document.getElementById('from').value.trim();
+  var body=document.getElementById('body').value.trim();
+  if(!body){return false;}
+  var lines=[body,'','---'];
+  if(name)lines.push('お名前: '+name);
+  if(from)lines.push('返信先: '+from);
+  lines.push('送信元: 宅建GYM お問い合わせフォーム');
+  var url='mailto:k.fujita1016@gmail.com'
+    +'?subject='+encodeURIComponent('【宅建GYM】お問い合わせ')
+    +'&body='+encodeURIComponent(lines.join('\n'));
+  window.location.href=url;
+  return false;
+}
+</script>
+</body>
+</html>
