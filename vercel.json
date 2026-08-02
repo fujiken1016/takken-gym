@@ -1,5 +1,6 @@
 {
-  "redirects": [
-    { "source": "/(.*)", "destination": "https://takken.mainichi-lab.com/$1", "permanent": true }
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" } ] }
   ]
 }
