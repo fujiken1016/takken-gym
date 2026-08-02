@@ -29,7 +29,7 @@
   <h2>メールでのお問い合わせ</h2>
   <div class="card">
     <p style="margin:0">下記アドレス宛に直接メールをお送りください。</p>
-    <p style="margin:8px 0 0"><a href="mailto:k.fujita1016@gmail.com?subject=%E3%80%90%E5%AE%85%E5%BB%BAGYM%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" style="font-weight:800">k.fujita1016@gmail.com</a></p>
+    <p style="margin:8px 0 0"><a href="mailto:contact@mainichi-lab.com?subject=%E3%80%90%E5%AE%85%E5%BB%BAGYM%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" style="font-weight:800">contact@mainichi-lab.com</a></p>
   </div>
 
   <h2>フォームから送信</h2>
@@ -61,7 +61,7 @@ function sendMail(e){
   if(name)lines.push('お名前: '+name);
   if(from)lines.push('返信先: '+from);
   lines.push('送信元: 宅建GYM お問い合わせフォーム');
-  var url='mailto:k.fujita1016@gmail.com'
+  var url='mailto:contact@mainichi-lab.com'
     +'?subject='+encodeURIComponent('【宅建GYM】お問い合わせ')
     +'&body='+encodeURIComponent(lines.join('\n'));
   window.location.href=url;
