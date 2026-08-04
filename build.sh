@@ -28,7 +28,8 @@ cat > "$DIR/index.html" <<'HEAD'
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<!--GA4-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7K99MCR7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 </head>
 <body>
 HEAD
