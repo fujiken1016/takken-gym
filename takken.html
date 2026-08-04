@@ -370,22 +370,22 @@
   .nav.hidden{display:none}
 
   /* 広告（アフィリエイト）枠：学習の邪魔をしない控えめな設計・1画面1枠 */
-  .ad-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);
+  .promo-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);
     box-shadow:var(--shadow);padding:14px 15px 13px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
-  .ad-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand-2)}
-  .ad-top{display:flex;align-items:center;gap:8px}
-  .ad-pr{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--faint);border:1px solid var(--line-strong);
+  .promo-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand-2)}
+  .promo-top{display:flex;align-items:center;gap:8px}
+  .promo-pr{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--faint);border:1px solid var(--line-strong);
     border-radius:5px;padding:1px 6px;flex-shrink:0}
-  .ad-top .ad-lead{font-size:11.5px;color:var(--muted);font-weight:700}
-  .ad-h{font-size:14.5px;font-weight:800;line-height:1.5}
-  .ad-s{font-size:12px;color:var(--muted);line-height:1.6}
-  .ad-actions{display:flex;align-items:center;gap:12px;margin-top:2px;flex-wrap:wrap}
-  .ad-btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:var(--on-brand);
+  .promo-top .promo-lead{font-size:11.5px;color:var(--muted);font-weight:700}
+  .promo-h{font-size:14.5px;font-weight:800;line-height:1.5}
+  .promo-s{font-size:12px;color:var(--muted);line-height:1.6}
+  .promo-actions{display:flex;align-items:center;gap:12px;margin-top:2px;flex-wrap:wrap}
+  .promo-btn{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:var(--on-brand);
     font-weight:800;font-size:13.5px;padding:10px 16px;border-radius:10px;text-decoration:none}
-  :root[data-theme="dark"] .ad-btn{color:#0e121b}
-  .ad-btn:active{transform:scale(.98)}
-  .ad-compare{font-size:12px;font-weight:700;color:var(--brand);text-decoration:none}
-  .ad-px{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+  :root[data-theme="dark"] .promo-btn{color:#0e121b}
+  .promo-btn:active{transform:scale(.98)}
+  .promo-compare{font-size:12px;font-weight:700;color:var(--brand);text-decoration:none}
+  .promo-px{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 
   .disclaimer{font-size:11px;color:var(--faint);line-height:1.7;text-align:center;padding:2px 10px}
   .sitefoot{text-align:center;padding:6px 10px 2px;font-size:12px;line-height:2.1}
@@ -451,7 +451,7 @@
         <div class="card mastery" id="mastery"></div>
       </div>
 
-      <div id="adHome"></div>
+      <div id="promoHome"></div>
 
       <p class="disclaimer">学習用アプリです（2026年4月1日時点の法令に対応・拘禁刑／相続登記義務化／書面の電子交付を反映）。<br>2026年4月施行の改正区分所有法により集会の決議要件が見直されています。細かな要件は必ず最新の公式テキストでご確認ください。</p>
       <nav class="sitefoot">
@@ -583,7 +583,7 @@
         <div class="rstat"><b id="rTime">–</b><span>タイム</span></div>
         <div class="rstat"><b id="rStreak">–</b><span>連続日数</span></div>
       </div>
-      <div id="adResult"></div>
+      <div id="promoResult"></div>
       <div id="rReviewWrap">
         <div class="sec"><h2>まちがえた問題の復習</h2></div>
         <div class="rev-list" id="rReview"></div>
@@ -1020,14 +1020,14 @@ const A8={
   smart:{name:"SMART合格講座",code:"4B9XTF+CTF05E+4LOQ+60OXE",px:"www16"},
 };
 function a8href(k){return "https://px.a8.net/svt/ejp?a8mat="+A8[k].code;}
-function a8pixel(k){return '<img class="ad-px" src="https://'+A8[k].px+'.a8.net/0.gif?a8mat='+A8[k].code+'" width="1" height="1" alt="">';}
+function a8pixel(k){return '<img class="promo-px" src="https://'+A8[k].px+'.a8.net/0.gif?a8mat='+A8[k].code+'" width="1" height="1" alt="">';}
 // 広告カードHTML（PRをファーストビューに表示・rel明示・別タブ）
 function adCard(k,lead,h,s,cta){
-  return '<div class="ad-card">'
-    +'<div class="ad-top"><span class="ad-pr">PR</span><span class="ad-lead">'+lead+'</span></div>'
-    +'<div class="ad-h">'+h+'</div><div class="ad-s">'+s+'</div>'
-    +'<div class="ad-actions"><a class="ad-btn" href="'+a8href(k)+'" target="_blank" rel="nofollow sponsored noopener">'+cta+'</a>'
-    +'<a class="ad-compare" href="/course.html">4社を比較する →</a></div>'
+  return '<div class="promo-card">'
+    +'<div class="promo-top"><span class="promo-pr">PR</span><span class="promo-lead">'+lead+'</span></div>'
+    +'<div class="promo-h">'+h+'</div><div class="promo-s">'+s+'</div>'
+    +'<div class="promo-actions"><a class="promo-btn" href="'+a8href(k)+'" target="_blank" rel="nofollow sponsored noopener">'+cta+'</a>'
+    +'<a class="promo-compare" href="/course.html">4社を比較する →</a></div>'
     +a8pixel(k)+'</div>';
 }
 
@@ -1055,7 +1055,7 @@ function renderHome(){
     return `<div class="bchip ${on?"on":""}"><div class="bi">${b.ic}</div><div class="bn">${b.n}</div></div>`;}).join("");
   document.getElementById("mastery").innerHTML=masteryHTML();
   // 広告②：学習メニュー下。低ハードルなオンスクを1枠だけ
-  document.getElementById("adHome").innerHTML=adCard("onsuku",
+  document.getElementById("promoHome").innerHTML=adCard("onsuku",
     "スキマ学習をもっと",
     "アプリで基礎、講座で得点力。",
     "月額1,628円〜で宅建を含む多資格が学び放題。動画とアプリで通勤中も学べます。",
@@ -1343,7 +1343,7 @@ function showResult(){
         <div class="re">${a.q.exp}</div></div>`;}).join("");
   }else wrap.style.display="none";
   // 広告①：結果画面（正答率の直下）。弱点が見えた瞬間＝最優先枠。資格スクエアを1枠だけ
-  document.getElementById("adResult").innerHTML=adCard("square",
+  document.getElementById("promoResult").innerHTML=adCard("square",
     "弱点が見えたら",
     "苦手分野は、講座で一気に得点源へ。",
     "宅建士講座もあるオンライン資格スクール「資格スクエア」。無料の資料請求・体験から始められます。",
