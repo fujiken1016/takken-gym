@@ -1,4 +1,4 @@
-const CACHE = 'takken-gym-v7';
+const CACHE = 'takken-gym-v8';
 const ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/about.html', '/privacy.html', '/disclaimer.html', '/contact.html', '/course.html', '/og.png'];
 
 self.addEventListener('install', e => {
