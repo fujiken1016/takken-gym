@@ -459,7 +459,7 @@
         <a href="/privacy.html">プライバシーポリシー</a><span>・</span>
         <a href="/disclaimer.html">免責事項</a><span>・</span>
         <a href="/contact.html">お問い合わせ</a><span>・</span>
-        <a href="/course.html">宅建講座の選び方</a>
+        <a href="/courses/">宅建講座の選び方</a>
         <div class="cpy">© 2026 宅建GYM ・ 運営：フジケン</div>
       </nav>
     </section>
@@ -694,7 +694,7 @@
       <a href="/privacy.html">プライバシーポリシー</a><span>・</span>
       <a href="/disclaimer.html">免責事項</a><span>・</span>
       <a href="/contact.html">お問い合わせ</a><span>・</span>
-        <a href="/course.html">宅建講座の選び方</a>
+        <a href="/courses/">宅建講座の選び方</a>
       <div class="cpy">宅建GYM ・ 学習用アプリ（宅地建物取引士試験）・ © 2026</div>
     </nav>
   </div>
@@ -1015,6 +1015,7 @@ function weakestArea(){
 // ============ 広告（A8アフィリエイト） ============
 // 提携済み4社。宅建向け＝資格スクエア/オンスク/SMART、FP・金融系＝資格対策ドットコム
 const A8={
+  yotsuya:{name:"四谷学院",code:"4B9XTF+CPUEIQ+5IEI+5ZMCH",px:"www10"},
   square:{name:"資格スクエア",code:"4B9XTF+CSTKJM+373C+7CX1E",px:"www18"},
   onsuku:{name:"オンスク.JP",code:"4B9XTF+CR19QA+408S+5YRHE",px:"www12"},
   smart:{name:"SMART合格講座",code:"4B9XTF+CTF05E+4LOQ+60OXE",px:"www16"},
@@ -1027,7 +1028,7 @@ function adCard(k,lead,h,s,cta){
     +'<div class="promo-top"><span class="promo-pr">PR</span><span class="promo-lead">'+lead+'</span></div>'
     +'<div class="promo-h">'+h+'</div><div class="promo-s">'+s+'</div>'
     +'<div class="promo-actions"><a class="promo-btn" href="'+a8href(k)+'" target="_blank" rel="nofollow sponsored noopener">'+cta+'</a>'
-    +'<a class="promo-compare" href="/course.html">4社を比較する →</a></div>'
+    +'<a class="promo-compare" href="/courses/">講座を比較する →</a></div>'
     +a8pixel(k)+'</div>';
 }
 
@@ -1342,12 +1343,12 @@ function showResult(){
         <div class="ra no"><b>誤</b><span>${yours}</span></div>
         <div class="re">${a.q.exp}</div></div>`;}).join("");
   }else wrap.style.display="none";
-  // 広告①：結果画面（正答率の直下）。弱点が見えた瞬間＝最優先枠。資格スクエアを1枠だけ
-  document.getElementById("promoResult").innerHTML=adCard("square",
+  // 広告①：結果画面（正答率の直下）。弱点が見えた瞬間＝最優先枠。四谷学院を1枠（EPC最高・無料資料請求で低ハードル）
+  document.getElementById("promoResult").innerHTML=adCard("yotsuya",
     "弱点が見えたら",
     "苦手分野は、講座で一気に得点源へ。",
-    "宅建士講座もあるオンライン資格スクール「資格スクエア」。無料の資料請求・体験から始められます。",
-    "資格スクエアを見る");
+    "初心者でも「55段階」で合格を目指せる四谷学院の通信講座（宅建対応）。まずは無料の資料請求から。",
+    "四谷学院の資料を見る");
   show("result");
 }
 document.getElementById("rHome").onclick=()=>show("home");
