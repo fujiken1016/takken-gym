@@ -1,5 +1,5 @@
-const CACHE = 'takken-gym-v8';
-const ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/about.html', '/privacy.html', '/disclaimer.html', '/contact.html', '/course.html', '/og.png'];
+const CACHE = 'takken-gym-v9';
+const ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/about.html', '/privacy.html', '/disclaimer.html', '/contact.html', '/og.png', '/courses/', '/blog/takken-dokugaku-benkyohou.html', '/blog/takken-benkyo-jikan.html'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
