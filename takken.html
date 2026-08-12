@@ -1027,7 +1027,7 @@ function adCard(k,lead,h,s,cta){
   return '<div class="promo-card">'
     +'<div class="promo-top"><span class="promo-pr">PR</span><span class="promo-lead">'+lead+'</span></div>'
     +'<div class="promo-h">'+h+'</div><div class="promo-s">'+s+'</div>'
-    +'<div class="promo-actions"><a class="promo-btn" href="'+a8href(k)+'" target="_blank" rel="nofollow sponsored noopener">'+cta+'</a>'
+    +'<div class="promo-actions"><a class="promo-btn" data-aff="A8_'+k.toUpperCase()+'" href="'+a8href(k)+'" target="_blank" rel="nofollow sponsored noopener">'+cta+'</a>'
     +'<a class="promo-compare" href="/courses/">講座を比較する →</a></div>'
     +a8pixel(k)+'</div>';
 }
