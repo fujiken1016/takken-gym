@@ -1,5 +1,6 @@
-const CACHE = 'takken-gym-v9';
-const ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/about.html', '/privacy.html', '/disclaimer.html', '/contact.html', '/og.png', '/courses/', '/blog/takken-dokugaku-benkyohou.html', '/blog/takken-benkyo-jikan.html'];
+const CACHE = 'takken-gym-v10';
+// URLは必ず200を返す正規形（.html なし）で並べる。.html を書くと308リダイレクトを踏む。
+const ASSETS = ['/', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/about', '/privacy', '/disclaimer', '/contact', '/og.png', '/courses/', '/blog/takken-dokugaku-benkyohou', '/blog/takken-benkyo-jikan'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
@@ -17,8 +18,8 @@ self.addEventListener('fetch', e => {
   // ページ本体はネット優先（更新を確実に反映）→ オフライン時はキャッシュ
   if (req.mode === 'navigate') {
     e.respondWith(
-      fetch(req).then(r => { const cp = r.clone(); caches.open(CACHE).then(c => c.put('/index.html', cp)); return r; })
-        .catch(() => caches.match('/index.html'))
+      fetch(req).then(r => { const cp = r.clone(); caches.open(CACHE).then(c => c.put('/', cp)); return r; })
+        .catch(() => caches.match('/'))
     );
     return;
   }
