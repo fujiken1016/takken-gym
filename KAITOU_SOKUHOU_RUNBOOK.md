@@ -22,8 +22,7 @@
 ### 変更ファイル
 | ファイル | 変更点 |
 |---|---|
-| `takken.html`（正本） | フッター2箇所に `/kaitou-sokuhou/` リンク追加 |
-| `index.html` | `sh build.sh` で takken.html から再生成 |
+| `index.html` | フッター2箇所に `/kaitou-sokuhou/` リンク追加 |
 | `courses/index.html` | 「あわせて読みたい」に追加 |
 | `blog/takken-dokugaku-benkyohou.html` | 「あわせて読みたい」に追加 |
 | `blog/takken-benkyo-jikan.html` | 「あわせて読みたい」に追加 |
@@ -132,11 +131,10 @@
 ### デプロイ手順（毎回共通）
 ```
 cd /Users/fujiken/Desktop/claude/宅建GYM_公開用
-# takken.html を触った場合のみ:  sh build.sh
 git add -A && git commit -m "解答速報: 試験当日の速報リンク集に差し替え" && git push
 curl -sI https://takken.mainichi-lab.com/kaitou-sokuhou/   # 200 を確認
 ```
-※ `index.html` は `takken.html` から `build.sh` で生成される。**index.html を直接編集しないこと。**
+※ 2026-08-13に `takken.html`＋`build.sh` は廃止。**`index.html` を直接編集する**（詳細は README）。
 
 ---
 
