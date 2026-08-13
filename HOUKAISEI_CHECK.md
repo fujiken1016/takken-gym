@@ -56,7 +56,7 @@
 
 ## 3. 次回作業者へのメモ
 
-- **`index.html` は正本ではない。`takken.html` を編集して `./build.sh` を実行する。** `build.sh` は head/body を付けて `takken.html` を丸ごと `index.html` に流し込むだけ。
+- ~~**`index.html` は正本ではない。`takken.html` を編集して `./build.sh` を実行する。**~~ → **2026-08-13に廃止**。`takken.html`（＝`/takken` として公開されてしまっていた）と `build.sh` を削除し、`index.html` を直接編集する構成にした。上表の `takken.html` は現在の `index.html` の該当箇所を指す。
 - 区分所有法の**現行条文は e-Gov API で直接取れる**（SPAなので WebFetch は不可）：
   `curl -s https://laws.e-gov.go.jp/api/1/lawdata/337AC0000000069`（区分所有法）／`327AC1000000176`（宅建業法）。XMLの `<Article Num="...">` で条を抜くのが早い。
 - 法務省の PDF は縦書きのため `pypdf` の `extract_text()` で1文字ずつ改行されることがある。全空白を除去してから検索する。
