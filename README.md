@@ -20,6 +20,26 @@
 
 `main` に push すると自動再デプロイ。**ビルドコマンドは無し／公開ディレクトリ＝リポジトリ直下**。
 
+### ⚠️ `vercel.json` は消さない（Vercelも今なお自動デプロイしている）
+
+移行前の Vercel プロジェクトが **GitHub連携のまま生きており**、`main` への push ごとに
+`takken-gym.vercel.app` へも同時デプロイされている（GitHub の Deployments に `vercel[bot]` の
+記録が毎コミット残る）。`vercel.json` はその旧URLを全パス **308** で
+`takken.mainichi-lab.com` へ転送するためだけに存在する。
+
+**これを消すと、次の push で `takken-gym.vercel.app` がサイト全文をそのまま配信し始め、
+ドメイン丸ごとの重複コンテンツになる。** 現ホスティングが Cloudflare Pages だからといって
+「未使用ファイル」として削除しないこと。
+
+根本的に外したいなら、先に Vercel 側でプロジェクトを削除（またはGitHub連携を解除）し、
+`takken-gym.vercel.app` が消えたことを確認してから `vercel.json` を消す。
+
+確認コマンド:
+```bash
+curl -sI https://takken-gym.vercel.app/ | grep -iE '^HTTP|location'
+# → 308 / location: https://takken.mainichi-lab.com/ ならリダイレクトは生きている
+```
+
 ## ⚠️ ソースファイル・非公開ファイルの置き場所
 
 **リポジトリ直下＝そのまま公開ディレクトリ**。つまり
@@ -55,6 +75,10 @@ Cloudflare Pages が `/about.html` → `/about` へ **308** で自動リダイ�
 内部リンク / `sw.js` の `ASSETS` を**すべて `.html` 無し**で書く。
 `_redirects` の `.html` エントリは外部の古いリンク救済用なので消さない（ただし
 **転送先は必ず `.html` 無しの正規URL**にする。リダイレクトの連鎖を作らないため）。
+
+廃止した `takken.html` の跡地 `/takken` `/takken.html` は、`_redirects` で `/` へ **301**
+（中身がトップページと同一だったため、404ではなく正規URLへ寄せて重複を解消する）。
+同種のファイルを消すときも、URLは消さず正規URLへ301すること。
 
 確認コマンド:
 ```bash
