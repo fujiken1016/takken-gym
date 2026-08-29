@@ -95,3 +95,7 @@ Cloudflare Pages が `/about.html` → `/about` へ **308** で自動リダイ�
 grep -rn 'href="/[^"]*\.html\|mainichi-lab\.com/[^"]*\.html' --include='*.html' --include='*.xml' --include='*.js' .
 # → 何も出なければOK（go.jp等の外部リンクは href="https://... なので引っかからない）
 ```
+
+## /chikaradameshi/（宅建 力試し）のデータについて
+- `chikaradameshi/index.html` 内の問題データ（POOL）は **`ichimon/{gyoho,kenri,horei,zei}.html` の qlist が正本**で、そこから抽出して埋め込んだ生成物（2026-08-30時点の84問）。
+- ichimon側の問題・解説を修正したら、chikaradameshi側のPOOLも同じ内容に更新すること（qlistの `data-a`／`.q`／`.exp` を正規表現抽出→JSON化して `var POOL=` を差し替え）。
