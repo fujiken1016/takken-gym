@@ -99,3 +99,8 @@ grep -rn 'href="/[^"]*\.html\|mainichi-lab\.com/[^"]*\.html' --include='*.html' 
 ## /chikaradameshi/（宅建 力試し）のデータについて
 - `chikaradameshi/index.html` 内の問題データ（POOL）は **`ichimon/{gyoho,kenri,horei,zei}.html` の qlist が正本**で、そこから抽出して埋め込んだ生成物（2026-08-30時点の84問）。
 - ichimon側の問題・解説を修正したら、chikaradameshi側のPOOLも同じ内容に更新すること（qlistの `data-a`／`.q`／`.exp` を正規表現抽出→JSON化して `var POOL=` を差し替え）。
+
+## /chinkan/chikaradameshi/（賃管士 力試し）のデータについて
+- `chinkan/chikaradameshi/index.html` 内の問題データ（POOL）は **`chinkan/ichimon/index.html` の qlist が正本**で、そこから抽出して埋め込んだ生成物（2026-08-30時点の30問。gyoho=管理業法13・sub=サブリース6・chintai=民法+借地借家法11にグループ化）。
+- ichimon側の問題・解説を修正したら、こちらのPOOLも同じ内容に更新すること（qlistの `data-a`／`data-cat`／`data-law`／`.q`／`.exp` を正規表現抽出→JSON化して `var POOL=` を差し替え）。
+- 換算得点は12問の正答率×50の単純換算（賃管士は分野別の公式配点が非公表のため）。判定境界：S≥42／A≥35／B≥27／C。
