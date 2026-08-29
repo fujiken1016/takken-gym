@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>宅建 力試し｜無料12問ミニテスト・50点換算の判定つき | 宅建GYM</title>
-<meta name="description" content="宅建試験の力試しが2分でできる無料ツール。本試験の配点比（業法5・権利3・法令2・税他2）で12問を出題し、50点満点に換算してS〜Cで判定。分野別の弱点表示と、結果を貼れるシェア機能つき。登録不要・無料。">
+<title>宅建 力試し｜無料12問ミニテスト＋50問Web模試（120分タイマー） | 宅建GYM</title>
+<meta name="description" content="宅建の力試しが無料でできるWebツール。約2分の12問クイック診断と、本試験と同じ50問・120分の本番モード（無料Web模試）の2モード。本試験の出題順・時間配分ペース表示・S〜C判定・分野別弱点・間違いの解き直しつき。登録不要・無料。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://takken.mainichi-lab.com/chikaradameshi/">
 <link rel="stylesheet" href="/legal.css">
 <meta name="theme-color" content="#6a1fc7">
 <meta property="og:type" content="website">
-<meta property="og:title" content="宅建 力試し｜無料12問ミニテスト・50点換算の判定つき">
-<meta property="og:description" content="本試験の配点比で12問→50点満点に換算してS〜C判定。分野別の弱点も表示。約2分・無料・登録不要。">
+<meta property="og:title" content="宅建 力試し｜無料12問ミニテスト＋50問Web模試（120分）">
+<meta property="og:description" content="約2分の12問診断と、本試験どおり50問・120分の本番モード。時間配分ペース表示・S〜C判定・弱点表示つき。無料・登録不要。">
 <meta property="og:url" content="https://takken.mainichi-lab.com/chikaradameshi/">
 <meta property="og:image" content="https://takken.mainichi-lab.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -72,6 +72,37 @@
  .share{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:14px;margin:16px 0 0}
  .share pre{margin:0 0 10px;font-family:inherit;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-all}
  .share .note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+ /* mode tabs */
+ .mtabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0}
+ .mtabs button{min-height:56px;border:2px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:14px;font-size:14.5px;font-weight:900;cursor:pointer;font-family:inherit;padding:8px 6px;line-height:1.4;
+  touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+ .mtabs button small{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-top:3px}
+ .mtabs button.on{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand2)}
+ /* honban */
+ .hclock{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:800}
+ .hclock b{font-size:19px;color:var(--brand2);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+ .hclock b.warn{color:#d33b53}
+ .hpausebtn{min-height:44px;min-width:88px;border:2px solid var(--line);border-radius:12px;background:var(--bg);
+  color:var(--ink);font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;padding:6px 10px;
+  touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+ .hpace{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.7;font-weight:700}
+ .hpace .ahead{color:#2f9e6a;font-weight:900}
+ .hpace .behind{color:#d33b53;font-weight:900}
+ .hnotice{background:rgba(211,59,83,.10);border:1px solid #d33b53;border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:14px;font-weight:800;color:#d33b53;line-height:1.8}
+ .hintro li{margin:6px 0}
+ .rev{border-top:1px solid var(--line);margin-top:16px;padding-top:6px}
+ .rev h3{font-size:15px;margin:10px 0 4px}
+ .rev-item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14px;line-height:1.9}
+ .rev-item .rq{font-weight:700;margin:0 0 6px}
+ .rev-item .ra{margin:0;color:var(--ink)}
+ .rev-item .rn{display:inline-block;font-size:11.5px;font-weight:900;color:var(--brand2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin:0 6px 6px 0}
+ .rev-item .rna{color:#d33b53;border-color:#d33b53;background:rgba(211,59,83,.08)}
+ .rtime{font-size:13px;color:var(--muted);text-align:center;margin:6px 0 0;font-weight:700}
+ .paceT{width:100%;border-collapse:collapse;margin:12px 0}
+ .paceT th,.paceT td{font-size:13.5px;padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;line-height:1.6}
+ .paceT th{color:var(--muted);font-size:12px;font-weight:800}
+ .paceT td.num{text-align:right;white-space:nowrap;font-weight:800}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -83,13 +114,19 @@
 <div class="top"><div class="in">
   <a class="home" href="/">← 宅建GYM トップ</a>
   <h1>宅建 力試し（無料12問）</h1>
-  <div class="sub">本試験の配点比で出題 → 50点換算でS〜C判定・約2分・無料</div>
+  <div class="sub">12問クイック診断＋50問・120分の本番モード（無料Web模試）</div>
 </div></div>
 <main>
 <article>
   <p class="bc"><a href="/">宅建GYM</a> ＞ 宅建 力試し</p>
-  <p>いまの実力を<b>約2分</b>で力試しできる無料ミニテストです。本試験の配点比に合わせて<b>宅建業法5問・権利関係3問・法令上の制限2問・税その他2問</b>の計12問を毎回ランダムに出題し、結果を<b>50点満点に換算してS〜Cで判定</b>。分野別の弱点も表示します。登録不要・無料。</p>
+  <p>いまの実力を無料で力試しできるWebツールです。<b>約2分の12問クイック診断</b>と、本試験と同じ<b>50問・120分タイマーつきの本番モード（無料Web模試）</b>の2モード。どちらも50点満点でS〜C判定・分野別の弱点表示つき。登録不要・無料。</p>
 
+  <div class="mtabs" role="tablist">
+    <button type="button" id="mQuick" class="on">クイック12問<small>約2分・1問ごとに解説</small></button>
+    <button type="button" id="mHonban">本番モード 50問<small>120分タイマー・本試験の出題順</small></button>
+  </div>
+
+  <div id="qsec">
   <div class="tr" id="tr">
     <div class="tbar"><span>第 <b id="tno">1</b> / 12 問</span><span>正解 <b id="tok">0</b></span></div>
     <div class="tmeter"><i id="tmeter"></i></div>
@@ -123,6 +160,70 @@
     </div>
     <button type="button" class="tnext" id="bAgain">別の12問でもう一度</button>
   </div>
+  </div><!-- /qsec -->
+
+  <div id="hsec" hidden>
+    <!-- 本番モード：開始前 -->
+    <div class="tr hintro" id="hIntro">
+      <b style="font-size:16px">本番モード（無料Web模試）</b>
+      <ul style="margin:12px 0;padding-left:20px;font-size:14.5px;line-height:2">
+        <li><b>50問・制限時間120分</b>（本試験と同じ分量・時間）</li>
+        <li>出題順も本試験どおり：<b>権利14問 → 法令8問 → 税・その他3問 → 業法20問 → 免除科目枠5問</b></li>
+        <li>本試験のつもりで解けるよう、<b>途中の正誤表示はありません</b>（終了後に全問の解き直しつき）</li>
+        <li>画面上部に<b>時間配分のペース目安</b>を常時表示（貯金/ビハインドが分かる）</li>
+        <li>○×形式のため実際の4択より正答しやすい点はご了承ください</li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--muted);margin:0 0 4px;line-height:1.8">途中で「一時停止」できます。ページを閉じると記録は消えます。</p>
+      <button type="button" class="tnext" id="hStart">模試を開始する（120分）</button>
+    </div>
+
+    <!-- 本番モード：出題 -->
+    <div class="tr" id="htr" hidden>
+      <div class="hclock">
+        <span>問 <b id="hno" style="font-size:15px">1</b><span style="font-weight:800"> / 50</span></span>
+        <span>残り <b id="hclock">2:00:00</b></span>
+        <button type="button" class="hpausebtn" id="hbPause">一時停止</button>
+      </div>
+      <div class="tmeter"><i id="hmeter"></i></div>
+      <p class="hpace" id="hpace">ペース目安：—</p>
+      <span class="tcat" id="hcat">権利関係</span>
+      <p class="tq" id="hq">読み込み中…</p>
+      <div class="tbtns"><button type="button" id="hbO">○ 正しい</button><button type="button" id="hbX">× 誤り</button></div>
+    </div>
+
+    <!-- 本番モード：一時停止中 -->
+    <div class="tr" id="hPauseBox" hidden>
+      <b style="font-size:16px">一時停止中</b>
+      <p style="font-size:14px;color:var(--muted);margin:10px 0;line-height:1.9">タイマーは止まっています。残り時間：<b id="hPauseRemain" style="color:var(--brand2)">—</b></p>
+      <button type="button" class="tnext" id="hbResume">再開する</button>
+      <button type="button" class="tsub" id="hbQuit">模試を中止する（記録は残りません）</button>
+    </div>
+
+    <!-- 本番モード：結果 -->
+    <div class="tr" id="hres" hidden>
+      <div class="hnotice" id="hTimeup" hidden>⏰ 時間切れで終了しました。未回答の問題は不正解として集計しています。</div>
+      <div class="rhead">
+        <div style="font-size:13px;font-weight:800;color:var(--muted)">本番モードの結果（50問・1問1点）</div>
+        <div class="rscore"><span id="hPts">—</span><small> / 50点</small></div>
+        <div class="rrank" id="hRank">—</div>
+        <p class="rtime" id="hTime">—</p>
+        <p class="rline">直近の本試験の合格ラインは33〜37点で推移。安全圏の目安は38点です。<br>（○×形式のため、あくまで知識の網羅度の目安です）</p>
+      </div>
+      <table class="rtable">
+        <thead><tr><th>分野（本試験の配点）</th><th style="text-align:right">正解</th><th style="text-align:right">正答率</th></tr></thead>
+        <tbody id="hRows"></tbody>
+      </table>
+      <div class="weak" id="hWeak" hidden></div>
+      <div class="share">
+        <b style="font-size:13px">結果をコピーして貼る（ネタバレなし）</b>
+        <pre id="hShareText"></pre>
+        <button type="button" class="tsub" id="hbCopy" style="margin-top:0">結果をコピーする</button>
+        <p class="note">X・LINE・勉強仲間のグループにそのまま貼れます。</p>
+      </div>
+      <div class="rev" id="hRev"></div>
+      <button type="button" class="tnext" id="hbAgain">別の50問でもう一度</button>
+    </div>
+  </div><!-- /hsec -->
 
   <div class="cta-box">
     <b>力試しの後は、穴を塞ぐ。</b>
@@ -132,7 +233,22 @@
   </div>
 
   <h2>このテストの仕組み</h2>
-  <p>問題は宅建GYMの<a href="/ichimon/">分野別 一問一答（○×84問・解説つき）</a>から、本試験50問の配点比（宅建業法20問・権利関係14問・法令上の制限8問・税その他8問）に合わせて毎回12問を抽選しています。換算得点は分野ごとの正答率に本試験の配点を掛けた目安で、○×形式のため実際の4択より正答しやすい点に注意してください。法令基準日は令和8年（2026年）4月1日です。</p>
+  <p>問題は宅建GYMの<a href="/ichimon/">分野別 一問一答（○×84問・解説つき）</a>から出題しています。<b>クイック12問</b>は本試験50問の配点比（宅建業法20問・権利関係14問・法令上の制限8問・税その他8問）に合わせて毎回12問を抽選し、分野ごとの正答率に本試験の配点を掛けて50点満点に換算します。<b>本番モード</b>は本試験と同じ50問を出題順どおり（問1〜14権利関係／問15〜22法令上の制限／問23〜25税・その他／問26〜45宅建業法／問46〜50は免除科目の枠として税・その他から出題）に並べ、1問1点の50点満点で採点します。○×形式のため実際の4択より正答しやすい点に注意してください。法令基準日は令和8年（2026年）4月1日です。</p>
+
+  <h2>宅建の時間配分の目安（120分の配り方）</h2>
+  <p>本番モードのペース表示は、次の時間配分を目安にしています。合計110分で解き切り、<b>最後に10分の見直し時間</b>を残す配分です。</p>
+  <table class="paceT">
+    <thead><tr><th>出題順</th><th>分野</th><th class="num" style="text-align:right">目安時間</th></tr></thead>
+    <tbody>
+      <tr><td>問1〜14</td><td>権利関係（14問）</td><td class="num">40分</td></tr>
+      <tr><td>問15〜22</td><td>法令上の制限（8問）</td><td class="num">15分</td></tr>
+      <tr><td>問23〜25</td><td>税・その他（3問）</td><td class="num">6分</td></tr>
+      <tr><td>問26〜45</td><td>宅建業法（20問）</td><td class="num">40分</td></tr>
+      <tr><td>問46〜50</td><td>免除科目（5問）</td><td class="num">9分</td></tr>
+      <tr><td>—</td><td>見直し</td><td class="num">10分</td></tr>
+    </tbody>
+  </table>
+  <p>権利関係は1問に時間を使いやすいので<b>1問3分弱で見切りをつける</b>のがコツ。実際の本試験では、確実に得点したい宅建業法（問26〜45）から解き始めて権利関係を後に回す受験生も多くいます。このモードは問1から順に出題しますが、本番でどの順に解くかは模試のうちに決めておきましょう。</p>
 
   <div class="rel">
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（○×24問）</a>
@@ -257,7 +373,213 @@
  bNext.addEventListener('click',function(){if(i+1>=order.length){finish();return;}i++;render();});
  bAgain.addEventListener('click',function(){bCopy.textContent='結果をコピーする';start();});
  bCopy.addEventListener('click',copyResult);
+ window.__CD={pool:POOL,quickRestart:start};
  start();
+})();
+
+/* ===== 本番モード（50問・120分）＋モード切替 ===== */
+(function(){
+ var POOL=window.__CD.pool;
+ var SECTS=[
+  {k:"kenri",name:"権利関係",take:14,budget:40,range:"問1〜14"},
+  {k:"horei",name:"法令上の制限",take:8,budget:15,range:"問15〜22"},
+  {k:"zei",name:"税・その他",take:3,budget:6,range:"問23〜25",slice:[0,3]},
+  {k:"gyoho",name:"宅建業法",take:20,budget:40,range:"問26〜45"},
+  {k:"zei",name:"税・その他（免除科目枠）",take:5,budget:9,range:"問46〜50",slice:[3,8]}
+ ];
+ var AGG=[
+  {k:"gyoho",name:"宅建業法",total:20,honban:"20問",url:"/ichimon/gyoho"},
+  {k:"kenri",name:"権利関係",total:14,honban:"14問",url:"/ichimon/kenri"},
+  {k:"horei",name:"法令上の制限",total:8,honban:"8問",url:"/ichimon/horei"},
+  {k:"zei",name:"税・その他",total:8,honban:"8問",url:"/ichimon/zei"}
+ ];
+ var LIMIT=120*60*1000,N=50;
+ var $=function(id){return document.getElementById(id);};
+ var hIntro=$('hIntro'),htr=$('htr'),hPauseBox=$('hPauseBox'),hres=$('hres'),
+     hStart=$('hStart'),hno=$('hno'),hclock=$('hclock'),hmeter=$('hmeter'),hpace=$('hpace'),
+     hcat=$('hcat'),hq=$('hq'),hbO=$('hbO'),hbX=$('hbX'),hbPause=$('hbPause'),
+     hbResume=$('hbResume'),hbQuit=$('hbQuit'),hPauseRemain=$('hPauseRemain'),
+     hTimeup=$('hTimeup'),hPts=$('hPts'),hRank=$('hRank'),hTime=$('hTime'),hRows=$('hRows'),
+     hWeak=$('hWeak'),hShareText=$('hShareText'),hbCopy=$('hbCopy'),hbAgain=$('hbAgain'),hRev=$('hRev');
+ /* 状態：phase = intro | run | pause | done */
+ var H={phase:'intro',order:[],i:0,ans:[],startAt:0,pausedMs:0,pauseAt:0,timerId:null,advId:null,locked:false};
+ /* 各問終了時点の目安経過分（累積） */
+ var TARGET=[];(function(){var c=0;SECTS.forEach(function(s){for(var j=0;j<s.take;j++){c+=s.budget/s.take;TARGET.push(c);}});})();
+ function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t;}return a;}
+ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function pad(n){return (n<10?'0':'')+n;}
+ function fmt(ms){ms=Math.max(0,ms);var s=Math.floor(ms/1000);return Math.floor(s/3600)+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60);}
+ function clearTimers(){if(H.timerId){clearInterval(H.timerId);H.timerId=null;}if(H.advId){clearTimeout(H.advId);H.advId=null;}}
+ function showOnly(el){[hIntro,htr,hPauseBox,hres].forEach(function(x){x.hidden=(x!==el);});}
+ function elapsed(){return (H.phase==='pause'?H.pauseAt:Date.now())-H.startAt-H.pausedMs;}
+ function reset(){clearTimers();H.phase='intro';H.order=[];H.i=0;H.ans=[];H.pausedMs=0;H.locked=false;showOnly(hIntro);}
+ function draw(){
+   var zeiPick=shuffle(POOL.zei).slice(0,8);
+   var picked={kenri:shuffle(POOL.kenri).slice(0,14),horei:shuffle(POOL.horei).slice(0,8),gyoho:shuffle(POOL.gyoho).slice(0,20)};
+   var order=[];
+   SECTS.forEach(function(sec,si){
+     var src=sec.slice?zeiPick.slice(sec.slice[0],sec.slice[1]):picked[sec.k];
+     src.forEach(function(q){order.push({s:si,k:sec.k,q:q.q,a:q.a,e:q.e});});
+   });
+   return order;
+ }
+ function begin(){
+   clearTimers();
+   H.order=draw();H.i=0;H.ans=new Array(N).fill(null);H.pausedMs=0;H.startAt=Date.now();H.phase='run';
+   hbCopy.textContent='結果をコピーする';
+   showOnly(htr);render();
+   H.timerId=setInterval(tick,500);
+ }
+ function tick(){
+   if(H.phase!=='run')return; /* 文脈ガード：run中以外は何もしない */
+   var rem=LIMIT-elapsed();
+   if(rem<=0){finish(true);return;}
+   updateClock(rem);updatePace();
+ }
+ function updateClock(rem){hclock.textContent=fmt(rem);hclock.className=(rem<10*60*1000)?'warn':'';}
+ function updatePace(){
+   var done=H.i,tgt=done===0?0:TARGET[done-1],el=elapsed()/60000,diff=tgt-el,s;
+   if(diff>=1)s='<span class="ahead">'+Math.floor(diff)+'分の貯金</span>';
+   else if(diff<=-1)s='<span class="behind">'+Math.floor(-diff)+'分ビハインド</span>';
+   else s='ほぼ目安どおり';
+   hpace.innerHTML='ペース目安：'+done+'問解答済み（目安 '+Math.round(tgt)+'分／経過 '+Math.floor(el)+'分）｜ '+s;
+ }
+ function render(){
+   /* この画面が所有する要素を全部描き直す */
+   var it=H.order[H.i],sec=SECTS[it.s];
+   hno.textContent=H.i+1;
+   hcat.textContent=sec.name+'（'+sec.range+'・目安'+sec.budget+'分）';
+   hq.textContent=it.q;
+   hmeter.style.width=Math.round(H.i/N*100)+'%';
+   updateClock(LIMIT-elapsed());updatePace();
+   hbO.disabled=hbX.disabled=true;H.locked=true;
+   if(H.advId)clearTimeout(H.advId);
+   H.advId=setTimeout(function(){H.advId=null;if(H.phase!=='run')return;H.locked=false;hbO.disabled=hbX.disabled=false;},250);
+ }
+ function answer(v){
+   if(H.phase!=='run'||H.locked)return; /* 連打・停止中ガード */
+   H.ans[H.i]=v;H.i++;
+   if(H.i>=H.order.length){finish(false);}else{render();}
+ }
+ function pause(){
+   if(H.phase!=='run')return;
+   H.phase='pause';H.pauseAt=Date.now();
+   if(H.advId){clearTimeout(H.advId);H.advId=null;}
+   hPauseRemain.textContent=fmt(LIMIT-elapsed());
+   showOnly(hPauseBox);
+ }
+ function resume(){
+   if(H.phase!=='pause')return;
+   H.pausedMs+=Date.now()-H.pauseAt;H.phase='run';
+   showOnly(htr);render();
+ }
+ function quit(){
+   if(H.phase!=='pause')return;
+   if(confirm('模試を中止しますか？ここまでの解答は消えます。'))reset();
+ }
+ function grade(p){
+   if(p>=38)return{cls:'rS',label:'S・合格安全圏レベル'};
+   if(p>=33)return{cls:'rA',label:'A・合格ライン圏'};
+   if(p>=25)return{cls:'rB',label:'B・あと一歩'};
+   return{cls:'rC',label:'C・基礎固めから'};
+ }
+ function finish(timeup){
+   if(H.phase!=='run')return;
+   H.phase='done';clearTimers();
+   var used=Math.min(elapsed(),LIMIT),total=0,agg={},gridBySec={},review=[];
+   AGG.forEach(function(a){agg[a.k]={ok:0,cnt:0};});
+   SECTS.forEach(function(s,si){gridBySec[si]='';});
+   H.order.forEach(function(it,idx){
+     var a=H.ans[idx],hit=(a===it.a);
+     if(hit)total++;
+     agg[it.k].ok+=hit?1:0;agg[it.k].cnt++;
+     gridBySec[it.s]+=hit?'🟩':(a===null?'⬜':'🟥');
+     if(!hit)review.push({no:idx+1,sec:SECTS[it.s].name,q:it.q,a:it.a,e:it.e,skipped:a===null});
+   });
+   var g=grade(total);
+   hTimeup.hidden=!timeup;
+   hPts.textContent=total;
+   hRank.textContent=g.label;hRank.className='rrank '+g.cls;
+   hTime.textContent='解答時間 '+fmt(used)+(timeup?'（時間切れ）':'')+'／制限 2:00:00';
+   var rows='',weakest=null;
+   AGG.forEach(function(a){
+     var r=agg[a.k],rate=r.ok/a.total;
+     rows+='<tr><td><a href="'+a.url+'">'+a.name+'</a><span style="color:var(--muted);font-size:12px">（'+a.honban+'）</span></td>'+
+           '<td class="num">'+r.ok+' / '+a.total+'</td><td class="num">'+Math.round(rate*100)+'%</td></tr>';
+     if(weakest===null||rate<weakest.rate)weakest={rate:rate,cat:a};
+   });
+   hRows.innerHTML=rows;
+   hWeak.hidden=false;hWeak.style.borderLeftColor='';
+   if(weakest&&weakest.rate<1){
+     hWeak.innerHTML='いちばん失点したのは<b>'+weakest.cat.name+'</b>。<a href="'+weakest.cat.url+'">'+weakest.cat.name+'の一問一答（無料・解説つき）</a>で今日中に塞いでおきましょう。';
+   }else{
+     hWeak.style.borderLeftColor='#2f9e6a';
+     hWeak.innerHTML='全問正解！<a href="/ichimon/">一問一答（計84問）</a>で網羅を確認しましょう。';
+   }
+   var lines=SECTS.map(function(s,si){return (si===0?'権利 ':si===1?'法令 ':si===2?'税他 ':si===3?'業法 ':'免除 ')+gridBySec[si];});
+   hShareText.textContent='宅建 力試し 本番モード（50問・120分） '+total+'/50点【'+g.label+'】\n'+lines.join('\n')+'\nhttps://takken.mainichi-lab.com/chikaradameshi/';
+   var rev='';
+   if(review.length){
+     rev='<h3>解き直し（不正解・未回答 '+review.length+'問）</h3>';
+     review.forEach(function(r){
+       rev+='<div class="rev-item"><span class="rn">問'+r.no+'・'+esc(r.sec)+'</span>'+(r.skipped?'<span class="rn rna">未回答</span>':'')+
+            '<p class="rq">'+esc(r.q)+'</p>'+
+            '<p class="ra">正解は「'+(r.a?'○ 正しい':'× 誤り')+'」。'+esc(r.e)+'</p></div>';
+     });
+   }else{
+     rev='<h3>解き直し</h3><p style="font-size:14px">不正解・未回答はありません。全問正解です！</p>';
+   }
+   hRev.innerHTML=rev;
+   showOnly(hres);
+ }
+ function copyResult(){
+   var text=hShareText.textContent;
+   function done(){hbCopy.textContent='コピーしました ✓';}
+   function fallback(){
+     var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+     document.body.appendChild(ta);ta.select();
+     try{document.execCommand('copy');done();}catch(e){hbCopy.textContent='長押しで選択してコピーしてください';}
+     document.body.removeChild(ta);
+   }
+   if(navigator.clipboard&&navigator.clipboard.writeText){
+     navigator.clipboard.writeText(text).then(function(){if(!hres.hidden)done();},function(){fallback();});
+   }else{fallback();}
+ }
+ hStart.addEventListener('click',begin);
+ hbO.addEventListener('click',function(){answer(true);});
+ hbX.addEventListener('click',function(){answer(false);});
+ hbPause.addEventListener('click',pause);
+ hbResume.addEventListener('click',resume);
+ hbQuit.addEventListener('click',quit);
+ hbAgain.addEventListener('click',begin);
+ hbCopy.addEventListener('click',copyResult);
+ window.addEventListener('beforeunload',function(e){
+   if(H.phase==='run'||H.phase==='pause'){e.preventDefault();e.returnValue='';}
+ });
+ /* ---- モード切替（切替時は所有要素を全部描き直す） ---- */
+ var mQuick=$('mQuick'),mHonban=$('mHonban'),qsec=$('qsec'),hsec=$('hsec');
+ var MODE='quick';
+ function setMode(m){
+   if(m===MODE)return;
+   if(m==='quick'&&(H.phase==='run'||H.phase==='pause')){
+     if(!confirm('実施中の模試を中止してクイック12問に切り替えますか？解答は消えます。'))return;
+   }
+   MODE=m;
+   if(m==='quick'){
+     reset(); /* 本番側のタイマー・状態を必ず破棄 */
+     hsec.hidden=true;qsec.hidden=false;
+     mQuick.classList.add('on');mHonban.classList.remove('on');
+     document.getElementById('bCopy').textContent='結果をコピーする';
+     window.__CD.quickRestart(); /* クイック側を全再描画 */
+   }else{
+     qsec.hidden=true;hsec.hidden=false;
+     mHonban.classList.add('on');mQuick.classList.remove('on');
+     reset(); /* 本番側＝開始前画面から */
+   }
+ }
+ mQuick.addEventListener('click',function(){setMode('quick');});
+ mHonban.addEventListener('click',function(){setMode('honban');});
+ window.__CD.getState=function(){return {mode:MODE,phase:H.phase,i:H.i,answered:H.ans.filter(function(x){return x!==null;}).length,timerOn:H.timerId!==null};};
 })();
 </script>
 </body>
