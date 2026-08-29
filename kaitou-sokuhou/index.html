@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>宅建 解答速報 2026｜自己採点と合格ライン｜令和8年度（10月18日）| 宅建GYM</title>
-<meta name="description" content="2026年（令和8年度）宅建試験の解答速報・自己採点ページ。試験日は10月18日（日）13時〜15時、合格発表は11月25日（水）。過去6年の合格点（合格ライン）の推移、自己採点後にやること、ボーダー±2点だった場合の動き方をまとめています。解答速報は試験当日に公開予定。">
+<meta name="description" content="2026年（令和8年度）宅建試験の解答速報・自己採点ページ。登録不要・無料の50問自動採点ツールと、各社の予想合格ライン比較表つき。試験日は10月18日（日）13時〜15時、合格発表は11月25日（水）。過去6年の合格点（合格ライン）の推移と自己採点後にやることもまとめています。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://takken.mainichi-lab.com/kaitou-sokuhou/">
 <link rel="stylesheet" href="/legal.css">
@@ -48,6 +48,26 @@
  .backapp{display:inline-block;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;padding:12px 20px;border-radius:12px;font-size:14px}
  .faq dt{font-weight:800;margin-top:14px;font-size:14.5px}
  .faq dd{margin:6px 0 0;font-size:14px;color:var(--ink)}
+ /* ===== 自己採点ツール ===== */
+ .st-status{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:13px;margin:12px 0}
+ .st-status b{color:var(--brand2)}
+ .sgroup{margin:18px 0 6px;font-size:14px;font-weight:900;color:var(--brand2)}
+ .qrow{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line)}
+ .qno{flex:0 0 44px;font-size:13.5px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+ .opts{display:flex;flex:1;gap:8px}
+ .qbtn{flex:1;min-height:44px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font-size:16px;font-weight:800;cursor:pointer;padding:0;touch-action:manipulation}
+ .qbtn[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+ .sbar{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 0 max(10px,env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;z-index:5}
+ .sbar .cnt{font-size:13.5px;color:var(--muted);flex:1}
+ .sbar .cnt b{color:var(--brand2);font-size:17px}
+ .btn-score{background:var(--brand);color:#fff;border:none;border-radius:12px;font-weight:900;font-size:15px;padding:13px 22px;min-height:48px;cursor:pointer}
+ .btn-reset{background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:12px;font-weight:800;font-size:13px;padding:12px 14px;min-height:48px;cursor:pointer}
+ .sresult{border:2px solid var(--brand);border-radius:14px;background:var(--surface);padding:16px 18px;margin:16px 0}
+ .sresult .big{font-size:34px;font-weight:900;color:var(--brand2);font-variant-numeric:tabular-nums}
+ .sresult .big small{font-size:16px;color:var(--muted);font-weight:800}
+ .stale{background:rgba(192,57,43,.09);border:1px solid #c0392b;border-radius:10px;padding:9px 12px;font-size:13px;margin-top:10px}
+ .catmini{width:100%;font-size:12.5px;min-width:0}
+ .catmini td,.catmini th{padding:7px 8px;white-space:normal}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -81,6 +101,8 @@
   <p class="lead">宅建は<b>相対評価</b>の試験です。何点取れば受かるかは、その年の受験者全体の出来で決まります。だからこそ、自己採点の直後にやるべきことは「点数に一喜一憂すること」ではなく、<b>自分の点数がどのゾーンにいるかで動き方を変えること</b>です。このページでは試験日程・過去の合格ライン・採点後の動き方を、出典つきで整理しています。</p>
 
   <div class="toc">
+    <a href="#saiten">▸ 自己採点ツール（登録不要・無料）</a>
+    <a href="#border">▸ 各社の予想合格ライン 比較</a>
     <a href="#nittei">▸ 令和8年度（2026年）の試験日程</a>
     <a href="#line">▸ 合格点（合格ライン）の推移</a>
     <a href="#after">▸ 自己採点したあと、何をするか</a>
@@ -88,6 +110,35 @@
     <a href="#faq">▸ よくある質問</a>
     <a href="#src">▸ 出典</a>
   </div>
+
+  <h2 id="saiten">自己採点ツール（登録不要・無料）</h2>
+  <p>問1〜問50の自分のマークをタップするだけで採点できます。<b>会員登録・メールアドレスの入力は一切不要</b>です。入力内容はこの端末のブラウザ内（localStorage）にだけ保存され、サーバーには送信されません。試験当日、問題冊子に控えた自分の解答を先に入力しておけば、正答データの反映後にワンタップで採点できます。</p>
+  <div class="st-status" id="stStatus">採点ツールを読み込んでいます…（JavaScriptが無効の場合は動作しません）</div>
+  <div id="stGrid"></div>
+  <div class="sbar">
+    <span class="cnt">入力済み <b id="stCount">0</b>/50問</span>
+    <button type="button" class="btn-reset" id="btnReset">リセット</button>
+    <button type="button" class="btn-score" id="btnScore">採点する</button>
+  </div>
+  <div id="stResult"></div>
+  <p class="src">※ 登録講習修了者（5問免除）の方は問46〜50が免除され45問での受験となり、合否判定基準も別に設定されます。本ツールの判定目安は50問受験者向けです。<br>※ 判定の3ゾーンは過去6年の合格点実績（33〜38点）に基づく目安であり、令和8年度の合格点は令和8年11月25日の合格発表まで確定しません。</p>
+
+  <h2 id="border">各社の予想合格ライン（ボーダー）比較</h2>
+  <p>試験当日の夕方以降、各資格スクールが予想合格ライン（ボーダー）を順次発表します。このページでは<b>各社が公式に発表した数字のみ</b>を、発表元へのリンクとともに掲載します。発表前の欄は「未発表」のままにしています（当サイトの憶測による数字は掲載しません）。</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>予備校・スクール</th><th>予想合格ライン</th><th>発表状況・出典</th></tr></thead>
+      <tbody id="borderBody">
+        <tr><td>LEC東京リーガルマインド</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+        <tr><td>TAC</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+        <tr><td>日建学院</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+        <tr><td>アガルート</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+        <tr><td>ユーキャン</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+        <tr><td>スタディング</td><td class="num">—</td><td>未発表（試験当日以降に更新）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="scroll-hint">※ 表は横にスクロールできます。各社の予想は後日修正されることがあります。合否の基準は実施機関（一般財団法人不動産適正取引推進機構）の公式発表のみです。</p>
 
   <h2 id="nittei">令和8年度（2026年）の試験日程</h2>
   <div class="tw">
@@ -187,6 +238,8 @@
 
   <h2 id="faq">よくある質問</h2>
   <dl class="faq">
+    <dt>Q. 自己採点ツールの利用に登録は必要ですか？</dt>
+    <dd>A. 不要です。会員登録・メールアドレス入力なしで使えます。入力したマークはお使いの端末のブラウザ内にのみ保存され、サーバーには送信されません。</dd>
     <dt>Q. 合格点は何点ですか？</dt>
     <dd>A. 事前に決まっていません。相対評価のため、その年の難易度と受験者全体の出来で決まります。直近6年の実績は33〜38点です（上の表を参照）。</dd>
     <dt>Q. 自己採点で合格点ちょうどでした。受かっていますか？</dt>
@@ -203,7 +256,7 @@
     <li>同機構「宅建試験の概要」<a href="https://www.retio.or.jp/exam/exam_detail/" target="_blank" rel="noopener">https://www.retio.or.jp/exam/exam_detail/</a></li>
     <li>年度別の受験者数・合格者数・合格率・合格点は、複数の資格スクールが公表する集計（アガルート／STUDYing）で数値が一致することを確認のうえ掲載しています。</li>
   </ul>
-  <p class="updated">最終更新：2026年8月12日（試験当日に解答速報の情報を追記予定）</p>
+  <p class="updated">最終更新：2026年8月30日（自己採点ツール・各社ボーダー比較枠を追加。正答データと各社予想は試験当日以降に反映予定）</p>
 
   <h2>あわせて読みたい</h2>
   <div class="toc" style="margin-top:6px">
@@ -229,5 +282,183 @@
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：フジケン</div>
   </div>
 </main>
+<script src="/kaitou-sokuhou/seitou.js?v=1"></script>
+<script>
+(function(){
+  "use strict";
+  var NQ=50, KEY="takkenSaiten2026";
+  var CATS=[
+    {name:"権利関係", from:1, to:14},
+    {name:"法令上の制限", from:15, to:22},
+    {name:"税・その他", from:23, to:25},
+    {name:"宅建業法", from:26, to:45},
+    {name:"5問免除科目", from:46, to:50}
+  ];
+  var grid=document.getElementById("stGrid");
+  var elCount=document.getElementById("stCount");
+  var elStatus=document.getElementById("stStatus");
+  var elResult=document.getElementById("stResult");
+  var btnScore=document.getElementById("btnScore");
+  var btnReset=document.getElementById("btnReset");
+  if(!grid||!elCount||!elStatus||!elResult||!btnScore||!btnReset)return;
+
+  // 選択状態（index 1〜50。0=未回答、1〜4=選択肢）
+  var sel=[];
+  for(var i=0;i<=NQ;i++)sel.push(0);
+  try{
+    var saved=JSON.parse(localStorage.getItem(KEY)||"null");
+    if(saved && Object.prototype.toString.call(saved)==="[object Array]" && saved.length===NQ+1){
+      for(var j=1;j<=NQ;j++){ var v=+saved[j]; sel[j]=(v>=1&&v<=4)?v:0; }
+    }
+  }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(sel)); }catch(e){} }
+
+  function getSeitou(){
+    var d=window.TAKKEN_SEITOU_2026;
+    if(!d || Object.prototype.toString.call(d.answers)!=="[object Array]" || d.answers.length!==NQ) return null;
+    var any=false;
+    for(var i=0;i<NQ;i++){ var a=+d.answers[i]; if(a>=1&&a<=4){any=true;} }
+    return any ? d : null;
+  }
+
+  // ステータス表示
+  (function(){
+    var d=getSeitou();
+    if(!d){
+      elStatus.innerHTML="<b>正答データ：未公開</b>　解答速報（正答データ）は<b>試験当日（令和8年10月18日）の試験終了後</b>にこのページへ反映予定です。反映されると、入力済みのマークがそのまま採点されます。いまは入力の練習・保存ができます。";
+    }else{
+      var label = d.status==="kakutei" ? "実施機関の公式発表ベース" : "各社速報ベース（後日修正の可能性あり）";
+      elStatus.innerHTML="<b>正答データ：反映済み</b>（"+label+"）"
+        +(d.source?"　出典："+esc(d.source):"")
+        +(d.updated?"　更新："+esc(d.updated):"");
+    }
+  })();
+
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  // マークシート生成
+  var frag=document.createDocumentFragment();
+  CATS.forEach(function(cat){
+    var h=document.createElement("div");
+    h.className="sgroup"; h.textContent=cat.name+"（問"+cat.from+"〜"+cat.to+"）";
+    frag.appendChild(h);
+    for(var q=cat.from;q<=cat.to;q++){
+      var row=document.createElement("div"); row.className="qrow";
+      var no=document.createElement("span"); no.className="qno"; no.textContent="問"+q;
+      row.appendChild(no);
+      var opts=document.createElement("div"); opts.className="opts";
+      for(var a=1;a<=4;a++){
+        var b=document.createElement("button");
+        b.type="button"; b.className="qbtn";
+        b.textContent=a;
+        b.setAttribute("data-q",q); b.setAttribute("data-a",a);
+        b.setAttribute("aria-pressed", sel[q]===a ? "true":"false");
+        b.setAttribute("aria-label","問"+q+"の選択肢"+a);
+        opts.appendChild(b);
+      }
+      row.appendChild(opts);
+      frag.appendChild(row);
+    }
+  });
+  grid.appendChild(frag);
+
+  function updateCount(){
+    var n=0; for(var i=1;i<=NQ;i++)if(sel[i])n++;
+    elCount.textContent=n; return n;
+  }
+  updateCount();
+
+  var scored=false;
+  grid.addEventListener("click",function(ev){
+    var b=ev.target;
+    if(!b || !b.getAttribute || !b.getAttribute("data-q"))return;
+    var q=+b.getAttribute("data-q"), a=+b.getAttribute("data-a");
+    sel[q]=(sel[q]===a)?0:a;  // 同じボタン再タップで解除（再入力可）
+    var btns=b.parentNode.children;
+    for(var i=0;i<btns.length;i++){
+      btns[i].setAttribute("aria-pressed", (+btns[i].getAttribute("data-a"))===sel[q] ? "true":"false");
+    }
+    save(); updateCount();
+    if(scored){
+      var st=document.getElementById("stStale");
+      if(!st){
+        st=document.createElement("div"); st.id="stStale"; st.className="stale";
+        st.textContent="入力を変更しました。もう一度「採点する」を押すと結果が更新されます。";
+        elResult.appendChild(st);
+      }
+    }
+  });
+
+  btnReset.addEventListener("click",function(){
+    if(!window.confirm("入力した50問のマークをすべて消します。よろしいですか？"))return;
+    for(var i=1;i<=NQ;i++)sel[i]=0;
+    save(); updateCount();
+    var pressed=grid.querySelectorAll('.qbtn[aria-pressed="true"]');
+    for(var k=0;k<pressed.length;k++)pressed[k].setAttribute("aria-pressed","false");
+    scored=false; elResult.innerHTML="";
+  });
+
+  var busy=false;
+  btnScore.addEventListener("click",function(){
+    if(busy)return; busy=true;
+    setTimeout(function(){busy=false;},400);  // 連打・二重実行ガード
+    var answered=updateCount();
+    var d=getSeitou();
+    if(!d){
+      elResult.innerHTML='<div class="sresult"><div style="font-weight:900;font-size:15px;margin-bottom:6px">正答データはまだ公開されていません</div>'
+        +'<p style="font-size:14px;margin:6px 0">採点は<b>試験当日（令和8年10月18日）の試験終了後</b>、正答データの反映と同時に有効になります。現在の入力（'+answered+'/50問）はこの端末に保存済みです。試験後にこのページを開き直して「採点する」を押してください。</p>'
+        +'<p style="font-size:13px;color:var(--muted);margin:6px 0">※ このツールの動作を試すデモとして、いまマークの入力・保存・リセットを体験できます。</p></div>';
+      return;
+    }
+    // 採点
+    var total=0, counted=0, pending=0, blank=0;
+    var catRows="";
+    CATS.forEach(function(cat){
+      var c=0, n=0;
+      for(var q=cat.from;q<=cat.to;q++){
+        var ans=+d.answers[q-1];
+        if(!(ans>=1&&ans<=4)){pending++;continue;}
+        n++;
+        if(sel[q]===0){blank++;continue;}
+        if(sel[q]===ans){c++;total++;}
+      }
+      counted+=n;
+      catRows+="<tr><td>"+cat.name+"（問"+cat.from+"〜"+cat.to+"）</td><td class=\"num\">"+c+" / "+n+"</td></tr>";
+    });
+    var zone, zoneHtml;
+    if(total>=38){
+      zone="ゾーン1";
+      zoneHtml='<div class="case ok" style="margin:12px 0 0"><span class="tagline">ゾーン1：直近6年の最高合格点（38点）以上</span>'
+        +'<h3>合格の可能性が高い水準です</h3>'
+        +'<p>合格発表（令和8年11月25日）を待ちつつ、登録実務講習・資格登録など合格後の手続きを下調べしておくとスムーズです。</p>'
+        +'<a class="mini" href="/blog/takken-goukakugo">▸ 宅建に合格した後の手続き（登録実務講習・資格登録・宅建士証）を見る</a></div>';
+    }else if(total>=33){
+      zone="ゾーン2";
+      zoneHtml='<div class="case" style="margin:12px 0 0"><span class="tagline" style="background:var(--brand)">ゾーン2：過去6年の合格点レンジ（33〜37点）の中</span>'
+        +'<h3>ボーダーゾーン。合否どちらでも損しない準備を</h3>'
+        +'<p>合格発表まで結果は確定しません。1日10〜15分の問題演習で習慣を切らさず、翌年度講座の早期割引の締切だけ調べておくのが現実的です。下の「自己採点したあと、何をするか」も読んでください。</p>'
+        +'<a class="backapp" href="/">無料の一問一答で習慣を切らさない →</a></div>';
+    }else{
+      zone="ゾーン3";
+      zoneHtml='<div class="case warn" style="margin:12px 0 0"><span class="tagline">ゾーン3：直近6年の最低合格点（33点）に未達</span>'
+        +'<h3>切り替えた人から翌年受かります</h3>'
+        +'<p>再挑戦を決めるなら11〜12月が最も余裕のあるタイミングです。同じ勉強法を繰り返す前に、どの分野で落としたか（上の分野別の内訳）を確認し、穴を埋められる手段を選び直しましょう。</p>'
+        +'<a class="cbtn" href="/courses/">宅建講座の比較（来年リベンジの選び方）→</a>'
+        +'<div style="margin-top:10px"><a class="mini" href="/blog/takken-saichousen">▸ 宅建に落ちた後の再挑戦戦略（点数別の立て直し方）を見る</a></div></div>';
+    }
+    var notes="";
+    if(pending>0)notes+='<p style="font-size:13px;color:var(--muted);margin:8px 0 0">※ 正答未確定の '+pending+' 問は採点対象外です（確定し次第このページで更新します）。</p>';
+    if(blank>0)notes+='<p style="font-size:13px;color:var(--muted);margin:8px 0 0">※ 未入力 '+blank+' 問は不正解として集計しています。</p>';
+    var label = d.status==="kakutei" ? "実施機関の公式発表ベース" : "各社速報ベースの参考採点（後日修正の可能性あり）";
+    elResult.innerHTML='<div class="sresult"><div style="font-size:13px;color:var(--muted);font-weight:800">あなたの自己採点結果（'+label+'）</div>'
+      +'<div class="big">'+total+'点<small> / '+counted+'問中</small></div>'
+      +'<div class="tw" style="margin:10px 0"><table class="catmini"><thead><tr><th>分野</th><th class="num">正解数</th></tr></thead><tbody>'+catRows+'</tbody></table></div>'
+      +zoneHtml+notes
+      +'<p style="font-size:12.5px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去6年の合格点実績（33〜38点）に基づく目安です。令和8年度の合格点は11月25日の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
+    scored=true;
+    try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
