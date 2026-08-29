@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>宅建 持ち物チェックリスト＆当日タイムライン【2026】前日夜から使えるチェック式ツール | 宅建GYM</title>
+<meta name="description" content="宅建試験（2026年10月18日）の持ち物と前日・当日にやることを、タップでチェックできる無料ツール。公式指定の持ち物4点・前日夜の準備・当日朝・会場での手順を26項目に整理。12時30分着席・13時開始のタイムライン付き。チェック状態は端末に保存。印刷・スクショにも対応。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://takken.mainichi-lab.com/toujitsu-check/">
+<link rel="stylesheet" href="/legal.css">
+<meta name="theme-color" content="#6a1fc7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="宅建GYM">
+<meta property="og:title" content="宅建 持ち物チェックリスト＆当日タイムライン【2026】">
+<meta property="og:description" content="公式指定の持ち物4点・前日夜・当日朝・会場での手順をタップでチェック。12時30分着席・13時開始のタイムライン付き。無料・登録不要。">
+<meta property="og:url" content="https://takken.mainichi-lab.com/toujitsu-check/">
+<meta property="og:image" content="https://takken.mainichi-lab.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7K99MCR7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
+<style>
+ article p,article li{font-size:15px;line-height:1.95}
+ .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
+ .bc a{color:var(--muted);text-decoration:none}
+ /* progress */
+ .prog{position:sticky;top:0;z-index:5;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:14px 0;display:flex;align-items:center;gap:12px}
+ .prog b{font-size:18px;color:var(--brand2);font-variant-numeric:tabular-nums;white-space:nowrap}
+ .pmeter{flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+ .pmeter i{display:block;height:100%;background:var(--brand);width:0;transition:width .25s}
+ .pdone{font-size:12.5px;font-weight:900;color:#2f9e6a;white-space:nowrap;display:none}
+ .prog.allok .pdone{display:inline}
+ /* checklist */
+ .sec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:4px 14px 14px;margin:16px 0}
+ .sec h2{font-size:16px;margin:14px 2px 4px}
+ .sec .note{font-size:12.5px;color:var(--muted);margin:2px 2px 10px;line-height:1.8}
+ .ck{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:52px;padding:12px 10px;margin:6px 0;
+  border:2px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;text-align:left;
+  font-family:inherit;font-size:15px;line-height:1.7;color:var(--ink);
+  touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+ .ck .box{flex:0 0 auto;width:24px;height:24px;margin-top:2px;border:2px solid var(--muted);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:transparent;background:var(--surface)}
+ .ck .tx b{font-weight:800}
+ .ck .tx small{display:block;font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:2px}
+ .ck[aria-pressed="true"]{border-color:#2f9e6a;background:rgba(47,158,106,.10)}
+ .ck[aria-pressed="true"] .box{border-color:#2f9e6a;background:#2f9e6a;color:#fff}
+ .ck[aria-pressed="true"] .tx{opacity:.72}
+ .must{display:inline-block;font-size:11px;font-weight:900;color:#c0392b;border:1px solid #c0392b;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+ .reset{width:100%;min-height:50px;margin:14px 0 4px;border:2px solid var(--line);border-radius:14px;
+  background:var(--surface);color:var(--muted);font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ .savenote{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.7;text-align:center}
+ /* timeline */
+ .tl{margin:14px 0;padding:0}
+ .tl li{list-style:none;position:relative;padding:0 0 18px 78px;min-height:44px}
+ .tl li::before{content:"";position:absolute;left:60px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--brand);border:2px solid var(--surface)}
+ .tl li::after{content:"";position:absolute;left:66px;top:20px;bottom:-4px;width:2px;background:var(--line)}
+ .tl li:last-child::after{display:none}
+ .tl .tm{position:absolute;left:0;top:2px;width:56px;font-size:12.5px;font-weight:900;color:var(--brand2);font-variant-numeric:tabular-nums;line-height:1.5;text-align:right}
+ .tl .ti{font-size:14.5px;font-weight:800;line-height:1.7}
+ .tl .td{font-size:13px;color:var(--muted);line-height:1.8;margin-top:2px}
+ .tl .of{display:inline-block;font-size:10.5px;font-weight:900;color:#2f9e6a;border:1px solid #2f9e6a;border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+ .tl .pr2{display:inline-block;font-size:10.5px;font-weight:900;color:var(--muted);border:1px solid var(--muted);border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+ .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #c0392b;border-radius:12px;padding:14px 18px;margin:18px 0}
+ .warn b{color:#c0392b}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:22px 0}
+ .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none;display:block;padding:9px 0;min-height:44px;line-height:1.7}
+ .src{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.8}
+ .src a{color:var(--muted)}
+ .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
+ .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:14px;min-height:44px;line-height:1.7}
+ .updated{font-size:12px;color:var(--muted);margin-top:10px}
+ /* print / screenshot */
+ @media print{
+  .top,.bc,.prog,.reset,.savenote,.cta-box,.rel,.foot,.noprint{display:none!important}
+  body{background:#fff}
+  .sec{border:1px solid #999;break-inside:avoid;padding:2px 10px 10px}
+  .ck{min-height:0;padding:6px 4px;margin:2px 0;border:none;background:none}
+  .ck .box{width:16px;height:16px;border-color:#333}
+  .ck[aria-pressed="true"] .box{background:#333;border-color:#333}
+  .ck[aria-pressed="true"] .tx{opacity:1}
+  .tl li{padding-bottom:8px}
+ }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},
+{"@type":"ListItem","position":2,"name":"宅建 持ち物チェックリスト＆当日タイムライン","item":"https://takken.mainichi-lab.com/toujitsu-check/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 持ち物チェックリスト＆当日タイムライン【2026】","url":"https://takken.mainichi-lab.com/toujitsu-check/","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建試験の持ち物と前日・当日にやることをタップでチェックできる無料ツール。公式指定の持ち物4点と当日タイムライン付き。","publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"}}
+</script>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="home" href="/">← 宅建GYM トップ</a>
+  <h1>宅建 持ち物チェックリスト＆当日タイムライン</h1>
+  <div class="sub">令和8年10月18日（日）対応｜タップでチェック・端末に保存・印刷OK</div>
+</div></div>
+<main>
+<article>
+  <p class="bc"><a href="/">宅建GYM</a> ＞ 持ち物チェックリスト＆当日タイムライン</p>
+  <p>宅建試験<b>前日の夜〜当日</b>に、このページを開いてタップしていくだけで準備が終わるチェックリストです。持ち物は機構の試験案内で指定されている物を基に整理しました（末尾に出典）。チェック状態はお使いの端末に保存されるので、前日夜にチェックした続きを当日朝に再開できます。印刷やスクリーンショットにも対応しています。</p>
+  <p class="noprint" style="font-size:13px;color:var(--muted)">ルールの背景や「なぜ筆箱が出せないのか」等の解説は、別ページ<a href="/blog/takken-shiken-toujitsu" style="color:var(--brand2);font-weight:800">試験当日ガイド（持ち物・時間配分・解く順番）</a>にまとめています。読むのは記事、当日使うのはこのページ、という分担です。</p>
+
+  <div class="prog" id="prog">
+    <b><span id="pNum">0</span> / <span id="pAll">0</span></b>
+    <div class="pmeter"><i id="pBar"></i></div>
+    <span class="pdone">準備完了！</span>
+  </div>
+
+  <div class="sec">
+    <h2>① 持ち物：公式指定の4点<span class="must">必須</span></h2>
+    <p class="note">試験案内が「持参してください」と指定している物。これだけは絶対に忘れられません。</p>
+    <button type="button" class="ck" data-k="jyukenhyo"><span class="box">✓</span><span class="tx"><b>受験票</b><small>10月2日（金）発送予定。机上に置く・書込み不可</small></span></button>
+    <button type="button" class="ck" data-k="enpitsu"><span class="box">✓</span><span class="tx"><b>BかHBの鉛筆、またはシャープペンシル</b><small>これ以外で解答すると無効。2Bは不可。芯の硬さを現物で確認</small></span></button>
+    <button type="button" class="ck" data-k="keshigomu"><span class="box">✓</span><span class="tx"><b>プラスチック製消しゴム</b><small>鉛筆・シャープペンシル付属の消しゴムは不適</small></span></button>
+    <button type="button" class="ck" data-k="tokei"><span class="box">✓</span><span class="tx"><b>腕時計</b><small>スマートウォッチ・置時計・タイマーは不可。動作音のないアナログが安全</small></span></button>
+  </div>
+
+  <div class="sec">
+    <h2>② 持ち物：あると安心な物</h2>
+    <p class="note">机上に置ける物・持参が推奨される物から。詳しい可否は<a href="/blog/takken-shiken-toujitsu#kinshi">当日ガイドの一覧</a>へ。</p>
+    <button type="button" class="ck" data-k="yobi"><span class="box">✓</span><span class="tx"><b>予備の筆記具</b><small>鉛筆3〜4本を削って／シャープペンシルは替芯も。芯ケースは机に出せない</small></span></button>
+    <button type="button" class="ck" data-k="mibun"><span class="box">✓</span><span class="tx"><b>顔写真付きの身分証明書</b><small>受験票を忘れた・届かない場合、会場の相談係で再発行に必要</small></span></button>
+    <button type="button" class="ck" data-k="uwagi"><span class="box">✓</span><span class="tx"><b>着脱しやすい上着</b><small>会場によっては冷暖房が入らない場合があると案内されています</small></span></button>
+    <button type="button" class="ck" data-k="hankachi"><span class="box">✓</span><span class="tx"><b>ハンカチ・ティッシュ</b><small>ティッシュは包装から出した中身のみ机に置けます</small></span></button>
+    <button type="button" class="ck" data-k="masuku"><span class="box">✓</span><span class="tx"><b>マスク・目薬・常備薬</b><small>マスク・目薬は机上OK。薬は移動中・入室前に</small></span></button>
+    <button type="button" class="ck" data-k="mimisen"><span class="box">✓</span><span class="tx"><b>耳栓（使う人だけ）</b><small>電子製品でない物に限る。着用は監督員の指示に従う</small></span></button>
+    <button type="button" class="ck" data-k="hirugohan"><span class="box">✓</span><span class="tx"><b>昼食・飲み物</b><small>試験室内での飲食は原則禁止。会場到着前に済ませる</small></span></button>
+    <button type="button" class="ck" data-k="genkin"><span class="box">✓</span><span class="tx"><b>交通系IC・現金</b><small>チャージ残高も前日に確認</small></span></button>
+  </div>
+
+  <div class="sec">
+    <h2>③ 前日の夜にやること</h2>
+    <button type="button" class="ck" data-k="z-shin"><span class="box">✓</span><span class="tx"><b>鉛筆・シャーペンの芯が「BかHB」か現物確認</b><small>2Bで解答すると無効。ここが前日チェックの最重要項目</small></span></button>
+    <button type="button" class="ck" data-k="z-keiro"><span class="box">✓</span><span class="tx"><b>会場の場所と経路・所要時間を地図で確認</b><small>会場の下見・問合せは不可と案内されています。確認は地図まで</small></span></button>
+    <button type="button" class="ck" data-k="z-alarm"><span class="box">✓</span><span class="tx"><b>腕時計のアラーム解除と動作確認</b><small>電池切れ・アラーム鳴動はここで潰す</small></span></button>
+    <button type="button" class="ck" data-k="z-kaban"><span class="box">✓</span><span class="tx"><b>持ち物を全部かばんに入れる</b><small>①②のチェックが全部済んでから。当日朝に詰めない</small></span></button>
+    <button type="button" class="ck" data-k="z-mezamashi"><span class="box">✓</span><span class="tx"><b>目覚ましをセットして早く寝る</b><small>新しい問題には手を出さず、統計の数字だけ見直して終了</small></span></button>
+  </div>
+
+  <div class="sec">
+    <h2>④ 当日の朝〜出発前</h2>
+    <button type="button" class="ck" data-k="a-asagohan"><span class="box">✓</span><span class="tx"><b>朝食をとる</b><small>試験は13〜15時。昼を軽めにする分、朝はしっかり</small></span></button>
+    <button type="button" class="ck" data-k="a-unkou"><span class="box">✓</span><span class="tx"><b>電車の運行情報・天気を確認</b><small>遅延があれば1本早く。傘の要否もここで</small></span></button>
+    <button type="button" class="ck" data-k="a-jyuken"><span class="box">✓</span><span class="tx"><b>受験票がかばんに入っているか最終確認</b><small>玄関を出る前にもう一度だけ</small></span></button>
+    <button type="button" class="ck" data-k="a-shuppatsu"><span class="box">✓</span><span class="tx"><b>12時前に会場に着ける時間に出発</b><small>着席刻限は12時30分。開始13時から逆算しない</small></span></button>
+  </div>
+
+  <div class="sec">
+    <h2>⑤ 会場に着いたら</h2>
+    <button type="button" class="ck" data-k="k-toire"><span class="box">✓</span><span class="tx"><b>トイレを済ませる</b><small>説明開始後および試験時間中の途中退出は禁止</small></span></button>
+    <button type="button" class="ck" data-k="k-sumaho"><span class="box">✓</span><span class="tx"><b>スマホの電源を切る準備</b><small>アラーム解除→電源オフ。配付される封筒に入れてのり付けします</small></span></button>
+    <button type="button" class="ck" data-k="k-fudebako"><span class="box">✓</span><span class="tx"><b>筆記具を筆箱から出す</b><small>筆箱・鉛筆キャップ・芯ケースは机に出せません。かばんへ</small></span></button>
+    <button type="button" class="ck" data-k="k-tsukue"><span class="box">✓</span><span class="tx"><b>机上セット：受験票・筆記具・消しゴム・腕時計</b><small>参考書・ノート類は試験時間中、机上に置くことも禁止</small></span></button>
+    <button type="button" class="ck" data-k="k-chakuseki"><span class="box">✓</span><span class="tx"><b>12時30分までに自席に着席</b><small>登録講習修了者（5問免除）は12時40分まで</small></span></button>
+  </div>
+
+  <button type="button" class="reset" id="bReset">チェックをすべてリセットする</button>
+  <p class="savenote" id="saveNote">チェック状態はこの端末のブラウザにのみ保存されます（サーバーには送信されません）。</p>
+
+  <h2 style="margin-top:34px">当日タイムライン（前日夜〜試験終了）</h2>
+  <p style="font-size:13px;color:var(--muted)"><span class="of" style="position:static">公式</span>＝機構の公式サイト・試験案内に記載の時刻　<span class="pr2" style="position:static">提案</span>＝本サイトの目安。<b>時刻は必ずお手元の受験票でも確認してください。</b></p>
+  <ul class="tl">
+    <li><span class="tm">前日夜</span><div class="ti">持ち物準備・早寝<span class="pr2">提案</span></div><div class="td">上の①〜③をチェック。新しい教材には手を出さない。</div></li>
+    <li><span class="tm">当日朝</span><div class="ti">朝食・最終確認・出発<span class="pr2">提案</span></div><div class="td">④をチェックして出発。</div></li>
+    <li><span class="tm">〜12:00</span><div class="ti">会場到着<span class="pr2">提案</span></div><div class="td">昼食は到着前に。着いたら⑤（トイレ・スマホ・筆記具）。</div></li>
+    <li><span class="tm">12:30</span><div class="ti">着席刻限（一般申込者）<span class="of">公式</span></div><div class="td">登録講習修了者は12時40分まで。以後、受験上の注意事項の説明があり、説明開始後の途中退出は禁止。</div></li>
+    <li><span class="tm">13:00</span><div class="ti">試験開始<span class="of">公式</span></div><div class="td">登録講習修了者は13時10分開始（1時間50分）。</div></li>
+    <li><span class="tm">13:30</span><div class="ti">これ以降は入室できません</div><div class="td">試験案内の記載。遅刻の扱いはお手元の受験票で必ず確認を。</div></li>
+    <li><span class="tm">15:00</span><div class="ti">試験終了<span class="of">公式</span></div><div class="td">お疲れさまでした。受験票は合格発表まで保管。</div></li>
+    <li><span class="tm">15時〜</span><div class="ti">自己採点<span class="pr2">提案</span></div><div class="td">当日中の自己採点がおすすめ。<a href="/kaitou-sokuhou/" style="color:var(--brand2);font-weight:800">解答速報・自己採点ページ</a>を当日15時以降に公開します。</div></li>
+    <li><span class="tm">11/25</span><div class="ti">合格発表（水曜）<span class="of">公式</span></div><div class="td">機構の公式サイトで発表されます。</div></li>
+  </ul>
+  <div class="warn">
+    <p style="margin:0"><b>時間の勘違いに注意。</b>「試験開始13時だから12時50分着でOK」は間に合いません。着席刻限は<b>12時30分</b>です。時間配分と解く順番の作戦は<a href="/blog/takken-shiken-toujitsu#junban" style="font-weight:800">当日ガイドの提案</a>を前日までに読んでおいてください。</p>
+  </div>
+
+  <div class="cta-box noprint">
+    <b>直前の総仕上げはこちら（無料）</b>
+    <a href="/chikaradameshi/">▸ 力試し模試——本試験形式で腕試し</a>
+    <a href="/toukei-quiz/">▸ 統計クイズ（問48）——前日夜と当日朝の1分チェックに最適</a>
+    <a href="/blog/takken-shiken-toujitsu">▸ 試験当日ガイド——時間配分・解く順番・マークミス対策</a>
+  </div>
+
+  <h2 id="src">出典・注意</h2>
+  <p class="src">
+    ・試験日時（10月18日13時〜15時・登録講習修了者13時10分〜）、着席刻限（12時30分・登録講習修了者12時40分）、受験票発送日（10月2日）、合格発表日（11月25日）：一般財団法人不動産適正取引推進機構「<a href="https://www.retio.or.jp/exam/schedule/" target="_blank" rel="noopener">令和8年度のスケジュール</a>」「<a href="https://www.retio.or.jp/exam/exam_detail.html" target="_blank" rel="noopener">試験の概要</a>」（2026年8月30日確認）<br>
+    ・持ち物の指定・机上に置ける物・13時30分以降入室不可・途中退出禁止・下見不可：同機構「令和8年度宅地建物取引士資格試験 試験案内」の記載に基づく整理（詳細は<a href="/blog/takken-shiken-toujitsu">当日ガイド</a>の出典参照）<br>
+    ・「提案」ラベルの項目（到着目安時刻・過ごし方）は本サイトの目安であり、公的な指針ではありません。<b>試験当日の正式な時刻・持ち物は、必ずお手元の受験票と試験案内でご確認ください。</b>
+  </p>
+  <p class="updated">最終更新：2026年8月30日</p>
+
+  <div class="rel noprint">
+    <a href="/blog/takken-shiken-toujitsu">▸ 宅建試験当日の持ち物・時間配分・解く順番【解説記事】</a>
+    <a href="/kaitou-sokuhou/">▸ 宅建 解答速報・自己採点【2026年度】</a>
+    <a href="/chikaradameshi/">▸ 力試し模試（無料）</a>
+    <a href="/toukei-quiz/">▸ 宅建 統計クイズ 2026（問48）</a>
+    <a href="/blog/takken-chokuzenki-2kagetsu">▸ 宅建 直前期2か月の勉強法</a>
+    <a href="/blog/">▸ 記事一覧</a>
+    <a href="/">▸ 宅建GYMで一問一答を回す（無料）</a>
+  </div>
+
+  <div class="foot">
+    <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：フジケン</div>
+  </div>
+</article>
+</main>
+<script>
+(function(){
+  var KEY="takkenToujitsuCheck2026";
+  var btns=Array.prototype.slice.call(document.querySelectorAll(".ck"));
+  var pNum=document.getElementById("pNum"),pAll=document.getElementById("pAll"),
+      pBar=document.getElementById("pBar"),prog=document.getElementById("prog"),
+      saveNote=document.getElementById("saveNote");
+  pAll.textContent=btns.length;
+
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(!raw)return{};
+      var obj=JSON.parse(raw);
+      return (obj&&typeof obj==="object")?obj:{};
+    }catch(e){return{};}
+  }
+  function save(state){
+    try{localStorage.setItem(KEY,JSON.stringify(state));}
+    catch(e){
+      if(saveNote)saveNote.textContent="※ この環境ではチェック状態を保存できません（ページを閉じるとリセットされます）。";
+    }
+  }
+  var state=load();
+
+  function render(){
+    var done=0;
+    btns.forEach(function(b){
+      var on=!!state[b.getAttribute("data-k")];
+      b.setAttribute("aria-pressed",on?"true":"false");
+      if(on)done++;
+    });
+    pNum.textContent=done;
+    pBar.style.width=(btns.length?Math.round(done/btns.length*100):0)+"%";
+    if(done===btns.length&&btns.length>0){prog.classList.add("allok");}
+    else{prog.classList.remove("allok");}
+  }
+
+  btns.forEach(function(b){
+    b.addEventListener("click",function(){
+      var k=b.getAttribute("data-k");
+      state[k]=!state[k];
+      if(!state[k])delete state[k];
+      save(state);
+      render();
+    });
+  });
+
+  document.getElementById("bReset").addEventListener("click",function(){
+    if(!confirm("チェックをすべてリセットします。よろしいですか？"))return;
+    state={};
+    try{localStorage.removeItem(KEY);}catch(e){}
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
