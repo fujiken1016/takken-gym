@@ -6,3 +6,7 @@
 /sokuhou  /kaitou-sokuhou/  301
 /takken  /  301
 /takken.html  /  301
+
+# 運用ドキュメント(.md)を公開URLから外す（実測テスト: 明示パス / splat）
+/README.md  /404.html  404
+/*.md  /404.html  404
