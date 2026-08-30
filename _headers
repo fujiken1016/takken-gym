@@ -1,6 +1,10 @@
 // リポジトリ直下＝Cloudflare Pages の公開ディレクトリなので、運用ドキュメント(.md)も
-// URLとして生きてしまう。消すと履歴が失われるため、検索インデックスからだけ外す。
-// （robots.txt の Disallow は使わない。クロールを止めると noindex を読んでもらえないため）
+// URLとして生きてしまう。
+// 🔴 2026-08-30 方針変更：noindex は「検索に出さない」だけでURL直打ちは読めてしまうため、
+//    実際の遮断は functions/_middleware.js（＋_routes.json）で404を返す方式に変更した。
+//    以下の noindex は多重防御として残す（万一Functionsが外れてもインデックスはされない）。
+// 実測メモ：_redirects の404ルール（明示パス/splat）・ドット始まりディレクトリ・.cfignore・
+//    .assetsignore はいずれもCF Pagesでは効かない（静的アセットが優先される）。
 /*.md
   X-Robots-Tag: noindex
 /README.md
