@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": [
+    "/README.md",
+    "/AFF_SLOTS.md",
+    "/SEO_SENRYAKU.md",
+    "/HOUKAISEI_CHECK.md",
+    "/KAITOU_SOKUHOU_RUNBOOK.md",
+    "/vercel.json"
+  ],
+  "exclude": []
+}
