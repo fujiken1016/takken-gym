@@ -255,6 +255,9 @@
     <a href="/ichimon/kenri">▸ 権利関係の一問一答（○×26問）</a>
     <a href="/ichimon/horei">▸ 法令上の制限の一問一答（○×18問）</a>
     <a href="/ichimon/zei">▸ 税・その他の一問一答（○×16問）</a>
+    <a href="/toukei-quiz/">▸ 統計クイズ2026（問48対策の暗記チェック12問／無料）</a>
+    <a href="/toujitsu-check/">▸ 試験当日の持ち物チェックリスト＆タイムライン</a>
+    <a href="/kaitou-sokuhou/">▸ 宅建 解答速報・自己採点【2026年度】（50問自動採点）</a>
     <a href="/blog/takken-chokuzenki-2kagetsu">▸ 直前期2か月の勉強法</a>
     <a href="/chinkan/chikaradameshi/">▸ 賃管士版の力試し（無料12問・併願する人向け）</a>
     <a href="/">▸ 宅建GYM トップ（4択100問アプリ）</a>
@@ -354,6 +357,7 @@
    }
    document.getElementById('shareText').textContent=
      '宅建 力試し '+total+'/50点【'+g.label+'】\n'+gridLines.join('\n')+'\nhttps://takken.mainichi-lab.com/chikaradameshi/';
+   try{gtag('event','quiz_complete',{quiz_name:'chikaradameshi_quick',score:total,grade:g.label});}catch(e){}
  }
  function copyResult(){
    var text=document.getElementById('shareText').textContent;
@@ -429,6 +433,7 @@
    hbCopy.textContent='結果をコピーする';
    showOnly(htr);render();
    H.timerId=setInterval(tick,500);
+   try{gtag('event','mock_exam_start',{quiz_name:'chikaradameshi_honban'});}catch(e){}
  }
  function tick(){
    if(H.phase!=='run')return; /* 文脈ガード：run中以外は何もしない */
@@ -531,6 +536,7 @@
    }
    hRev.innerHTML=rev;
    showOnly(hres);
+   try{gtag('event','mock_exam_complete',{quiz_name:'chikaradameshi_honban',score:total,grade:g.label,time_up:!!timeup});}catch(e){}
  }
  function copyResult(){
    var text=hShareText.textContent;
