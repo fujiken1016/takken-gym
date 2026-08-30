@@ -32,9 +32,9 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ItemList","name":"宅建GYM ブログ記事一覧","numberOfItems":12,"itemListElement":[{"@type":"ListItem","position":1,"name":"宅建の独学・勉強法","url":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"},{"@type":"ListItem","position":2,"name":"宅建の勉強時間の目安","url":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"},{"@type":"ListItem","position":3,"name":"宅建の統計問題【2026年度】","url":"https://takken.mainichi-lab.com/blog/takken-toukei-2026"},{"@type":"ListItem","position":4,"name":"宅建 直前期2か月の勉強法","url":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"},{"@type":"ListItem","position":5,"name":"宅建試験当日の持ち物・時間配分","url":"https://takken.mainichi-lab.com/blog/takken-shiken-toujitsu"},{"@type":"ListItem","position":6,"name":"宅建の法改正2026","url":"https://takken.mainichi-lab.com/blog/takken-hokaisei-2026"},{"@type":"ListItem","position":7,"name":"宅建の個数問題の解き方","url":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"},{"@type":"ListItem","position":8,"name":"宅建 問46〜50（5問免除科目）の攻略","url":"https://takken.mainichi-lab.com/blog/takken-mon46-50"},{"@type":"ListItem","position":9,"name":"宅建業法の引っかけ肢まとめ","url":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"},{"@type":"ListItem","position":10,"name":"法令上の制限「数字」総まとめ","url":"https://takken.mainichi-lab.com/blog/takken-houreiseigen-suuji"},{"@type":"ListItem","position":11,"name":"宅建に合格した後の手続き","url":"https://takken.mainichi-lab.com/blog/takken-goukakugo"},{"@type":"ListItem","position":12,"name":"宅建に落ちた後の再挑戦戦略","url":"https://takken.mainichi-lab.com/blog/takken-saichousen"}]}
 </script>
+<title>宅建GYM｜宅建士の一問一答・過去問トレーニング（無料アプリ）</title>
 </head>
 <body>
-<title>宅建GYM｜宅建士の一問一答・過去問トレーニング（無料アプリ）</title>
 <style>
   :root{
     --bg:#f2f0f7; --surface:#ffffff; --surface-2:#f4f1fa; --surface-3:#ece7f6;
@@ -165,6 +165,31 @@
   .weak .txt .l{font-size:11px;color:var(--faint);font-weight:800;letter-spacing:.08em}
   .weak .txt .t{font-weight:800;font-size:15px}
   .weak .go{background:var(--brand);color:var(--on-brand);font-weight:800;font-size:13px;padding:9px 15px;border-radius:20px;flex-shrink:0}
+
+  /* 状態別の入口（商戦期ルーター） */
+  .dday{font-size:12px;font-weight:800;color:var(--brand);white-space:nowrap}
+  .routes{display:flex;flex-direction:column;gap:10px}
+  .rt{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);
+    border-left:4px solid var(--line-strong);border-radius:var(--r-sm);padding:12px 14px;min-height:60px;
+    text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .12s,border-color .2s}
+  .rt:active{transform:scale(.99)}
+  .rt:hover{border-color:var(--brand)}
+  .rt .ic{font-size:21px;line-height:1;flex-shrink:0;width:26px;text-align:center}
+  .rt .txt{display:block;flex:1;min-width:0}
+  .rt .q{display:block;font-size:11px;color:var(--faint);font-weight:800;letter-spacing:.04em;line-height:1.4}
+  .rt .t{display:block;font-size:15px;font-weight:900;line-height:1.4;margin-top:2px}
+  .rt .d{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+  .rt .chev{color:var(--faint);font-size:17px;font-weight:800;flex-shrink:0}
+  .rt.top{border-left-color:var(--brand);background:linear-gradient(180deg,var(--brand-soft),var(--surface) 72%)}
+  .rt.top .t{font-size:16.5px}
+  .rt .now{display:inline-block;font-size:10px;font-weight:900;color:var(--on-brand);background:var(--brand);
+    border-radius:5px;padding:2px 6px;margin-left:6px;vertical-align:2px;letter-spacing:.02em}
+  .routes-more{margin-top:2px}
+  .routes-more>summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;
+    justify-content:center;font-size:12.5px;font-weight:800;color:var(--brand)}
+  .routes-more>summary::-webkit-details-marker{display:none}
+  .routes-more[open]>summary{color:var(--muted)}
+  .routes-more .routes{margin-top:8px}
 
   /* BADGES strip */
   .badge-strip{display:flex;gap:10px;overflow-x:auto;padding:2px 3px 6px;scrollbar-width:none}
@@ -482,6 +507,16 @@
         <span class="ic">🎯</span>
         <div class="txt"><div class="l">今日の弱点</div><div class="t" id="weakName">–</div></div>
         <button class="go" id="weakGo">特訓</button>
+      </div>
+
+      <!-- 状態別の入口（商戦期ルーター）：日付と学習量で並びが変わる -->
+      <div id="routeWrap">
+        <div class="sec"><h2 id="routeTitle">いまの状況から選ぶ</h2><span class="dday" id="routeDday"></span></div>
+        <div class="routes" id="homeRoutes"></div>
+        <details class="routes-more" id="routesMore">
+          <summary>ほかの入口も見る ＋</summary>
+          <div class="routes" id="homeRoutesRest"></div>
+        </details>
       </div>
 
       <div>
@@ -1049,7 +1084,9 @@ applyTheme();applyFont();
 
 // ============ Nav ============
 const views={home:"v-home",train:"v-train",notes:"v-notes",stats:"v-stats",quiz:"v-quiz",result:"v-result",ox:"v-ox",oxresult:"v-oxresult"};
+let CURVIEW="home";
 function show(v){
+  CURVIEW=v;
   Object.values(views).forEach(id=>document.getElementById(id).classList.remove("active"));
   document.getElementById(views[v]).classList.add("active");
   const inQuiz=(v==="quiz"||v==="result"||v==="ox"||v==="oxresult");
@@ -1129,6 +1166,81 @@ function adCard(k,lead,h,s,cta){
     +a8pixel(k)+'</div>';
 }
 
+// ============ 状態別の入口（商戦期ルーター） ============
+// 令和8年度 宅建試験＝2026年10月18日（日）13:00 ／ 賃管士＝2026年11月15日（日）
+const EXAM_Y=2026,EXAM_M=9,EXAM_D=18; // Date の月は0始まり＝9で10月
+function examDaysLeft(now){
+  const t=now||new Date();
+  const a=new Date(t.getFullYear(),t.getMonth(),t.getDate());
+  const b=new Date(EXAM_Y,EXAM_M,EXAM_D);
+  return Math.round((b-a)/86400000);
+}
+function routePhase(d){return d<0?"after":d===0?"exam":d<=21?"chokuzen":"pre";}
+// 入口の定義（id → 表示内容）。href は本番で200を実測済みのURLのみ
+const ROUTES={
+  chikaradameshi:{ic:"🎯",q:"まず今の実力を知りたい",t:"宅建 力試し（12問）",d:"約2分・50点換算でS〜C判定。分野別の弱点も出ます",href:"/chikaradameshi/"},
+  mogi:{ic:"⏱",q:"本番形式で点を測りたい",t:"無料Web模試（50問・120分）",d:"本試験と同じ出題順・タイマー・登録不要",href:"/chikaradameshi/?mode=honban"},
+  ichimon:{ic:"📚",q:"分野・論点で潰したい",t:"一問一答（分野別＋論点別）",d:"○×84問＋頻出6論点（報酬計算ほか）",href:"/ichimon/"},
+  toukei:{ic:"📊",q:"直前に詰めれば取れる1点",t:"統計クイズ2026（問48）",d:"12問・毎年出る数字だけを1分で確認",href:"/toukei-quiz/"},
+  toujitsu:{ic:"🧳",q:"当日の段取りを固めたい",t:"持ち物チェック＆当日タイムライン",d:"13:00開始から逆算・前日夜から使える",href:"/toujitsu-check/"},
+  sokuhou:{ic:"📝",q:"試験が終わった・自己採点したい",t:"解答速報・自己採点（10月18日）",d:"自己採点ツール＋合格ラインの推移",href:"/kaitou-sokuhou/"},
+  revenge:{ic:"🔁",q:"今年がだめでも、次がある",t:"落ちた人の再挑戦プラン",d:"再受講割引・学習経験者コースを6社で比較",href:"/blog/takken-ochita-revenge"},
+  chinkan:{ic:"🏠",q:"賃管士も受ける・併願したい",t:"賃貸不動産経営管理士（11月15日）",d:"重複範囲の解説＋一問一答30問",href:"/chinkan/"}
+};
+// フェーズごとの並び。先頭5件を表示、残りは details 内。全idを必ず1回ずつ含める
+const ROUTE_ORDER={
+  pre:      ["chikaradameshi","mogi","ichimon","toukei","chinkan","toujitsu","sokuhou","revenge"],
+  pre_exp:  ["mogi","chikaradameshi","ichimon","toukei","chinkan","toujitsu","sokuhou","revenge"],
+  chokuzen: ["mogi","toukei","toujitsu","chikaradameshi","ichimon","chinkan","sokuhou","revenge"],
+  exam:     ["toujitsu","sokuhou","toukei","mogi","ichimon","chikaradameshi","chinkan","revenge"],
+  after:    ["sokuhou","revenge","chinkan","ichimon","mogi","chikaradameshi","toukei","toujitsu"]
+};
+const ROUTE_HEAD={
+  pre:{title:"いまの状況から選ぶ"},chokuzen:{title:"直前期：残りでやること"},
+  exam:{title:"試験当日"},after:{title:"試験おつかれさまでした"}
+};
+const ROUTE_VISIBLE=5;
+// 表示すべき状態を1か所で計算する（DOMはこの戻り値だけから作る）
+function routeState(){
+  const d=examDaysLeft(),ph=routePhase(d);
+  const experienced=(S.answered||0)>=40;
+  const key=(ph==="pre"&&experienced)?"pre_exp":ph;
+  const ids=ROUTE_ORDER[key].slice();
+  return{days:d,phase:ph,orderKey:key,experienced,ids:ids,
+    shown:ids.slice(0,ROUTE_VISIBLE),rest:ids.slice(ROUTE_VISIBLE)};
+}
+function routeCardHTML(id,i,st){
+  const r=ROUTES[id];if(!r)return"";
+  const top=(i===0);
+  return '<a class="rt'+(top?" top":"")+'" href="'+r.href+'" data-route="'+id+'" data-slot="'+(i+1)+'">'
+    +'<span class="ic" aria-hidden="true">'+r.ic+'</span>'
+    +'<span class="txt"><span class="q">'+r.q+'</span>'
+    +'<span class="t">'+r.t+(top?'<span class="now">おすすめ</span>':'')+'</span>'
+    +'<span class="d">'+r.d+'</span></span>'
+    +'<span class="chev" aria-hidden="true">›</span></a>';
+}
+// このブロックが所有する要素は毎回すべて描き直す（部分更新をしない）
+function renderRoutes(){
+  const st=routeState();
+  const head=ROUTE_HEAD[st.phase];
+  document.getElementById("routeTitle").textContent=head.title;
+  const dd=document.getElementById("routeDday");
+  dd.textContent = st.phase==="after" ? "自己採点と、次の一手"
+    : st.phase==="exam" ? "10月18日（日）13:00開始"
+    : "本試験まであと"+st.days+"日（10/18）";
+  document.getElementById("homeRoutes").innerHTML=
+    st.shown.map((id,i)=>routeCardHTML(id,i,st)).join("");
+  document.getElementById("homeRoutesRest").innerHTML=
+    st.rest.map((id,i)=>routeCardHTML(id,i+ROUTE_VISIBLE,st)).join("");
+  document.getElementById("routesMore").style.display=st.rest.length?"":"none";
+  return st;
+}
+// クリック計測（既存の命名流儀に合わせた snake_case）。委譲なので再描画しても外れない
+document.getElementById("routeWrap").addEventListener("click",function(e){
+  const a=e.target.closest("a.rt");if(!a)return;
+  try{gtag("event","home_entry_click",{entry_id:a.dataset.route,entry_slot:Number(a.dataset.slot),entry_phase:routePhase(examDaysLeft())});}catch(_){}
+});
+
 // ============ Home ============
 function renderHome(){
   if(S.todayDay!==today()){S.todayCount=0;S.todayDay=today();save();}
@@ -1158,8 +1270,24 @@ function renderHome(){
     "アプリで基礎、講座で得点力。",
     "月額1,628円〜で宅建を含む多資格が学び放題。動画とアプリで通勤中も学べます。",
     "オンスク.JPを見る");
+  renderRoutes();
   updateNoteDot();
 }
+// テスト用フック（chikaradameshi の window.__CD.getState と同じ流儀）
+window.__GYM={
+  getState:function(){
+    const st=routeState();
+    const act=[...document.querySelectorAll(".view.active")].map(e=>e.id);
+    const dom=[...document.querySelectorAll("#homeRoutes a.rt")].map(a=>a.dataset.route);
+    const domRest=[...document.querySelectorAll("#homeRoutesRest a.rt")].map(a=>a.dataset.route);
+    return{view:CURVIEW,activeIds:act,expectedActive:views[CURVIEW],
+      phase:st.phase,days:st.days,orderKey:st.orderKey,answered:S.answered||0,
+      expectedShown:st.shown,domShown:dom,expectedRest:st.rest,domRest:domRest,
+      featuredTop:!!(document.querySelector("#homeRoutes a.rt")||{}).classList&&document.querySelector("#homeRoutes a.rt").classList.contains("top"),
+      topCount:document.querySelectorAll("#homeRoutes a.rt.top,#homeRoutesRest a.rt.top").length};
+  },
+  show:function(v){show(v);}
+};
 document.getElementById("startToday").onclick=()=>startSession(buildSmart(),{label:"今日のワークアウト"});
 document.getElementById("resumeBtn").onclick=resumeSession;
 document.getElementById("weakGo").onclick=()=>{const a=document.getElementById("weakCard").dataset.area;if(a)startSession(weakSession(a),{label:AREAS[a].name+"特訓"});};
