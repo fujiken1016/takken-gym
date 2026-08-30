@@ -319,7 +319,16 @@
 
   function getSeitou(){
     var d=window.TAKKEN_SEITOU_2026;
-    if(!d || Object.prototype.toString.call(d.answers)!=="[object Array]" || d.answers.length!==NQ) return null;
+    if(!d || Object.prototype.toString.call(d.answers)!=="[object Array]") return null;
+    // 差し込みミス（要素数違い・範囲外の値）を黙って「未公開」に落とさない。
+    // 当日は誰も気づけないので、必ずコンソールに出す。事前チェック＝ ~/Desktop/claude/tools/check_seitou.py
+    if(d.answers.length!==NQ){
+      if(d.answers.length>0)try{console.error("[seitou.js] answers の要素数が "+d.answers.length+" 個です（50個必要）。採点は無効のままです。");}catch(e){}
+      return null;
+    }
+    for(var k=0;k<NQ;k++){ var vv=d.answers[k];
+      if(!(vv===0||vv===1||vv===2||vv===3||vv===4)){ try{console.error("[seitou.js] 問"+(k+1)+" の値が不正です: "+vv+"（0〜4のみ）");}catch(e){} }
+    }
     var any=false;
     for(var i=0;i<NQ;i++){ var a=+d.answers[i]; if(a>=1&&a<=4){any=true;} }
     return any ? d : null;
@@ -429,14 +438,25 @@
       counted+=n;
       catRows+="<tr><td>"+cat.name+"（問"+cat.from+"〜"+cat.to+"）</td><td class=\"num\">"+c+" / "+n+"</td></tr>";
     });
+    // ゾーン判定は「確定分の点数(lo)」と「未採点が全部正解だった場合の上限(hi)」の
+    // レンジで行う。当日夕方は各社の速報が割れて pending>0 が通常状態なので、
+    // 確定分の素点だけで「33点未達＝不合格ゾーン」と断定すると、
+    // 実際には合格しているかもしれない人にリベンジ講座を売る形になる（2026-08-31 リハで検出）。
+    var lo=total, hi=total+pending;
     var zone, zoneHtml;
-    if(total>=38){
+    if(hi>lo && !(lo>=38) && !(hi<=32) && !(lo>=33&&hi<=37)){
+      zone="判定保留";
+      zoneHtml='<div class="case" style="margin:12px 0 0"><span class="tagline" style="background:#8a6d1f">判定保留：未採点の'+pending+'問しだいで結論が変わります</span>'
+        +'<h3>いまの確定分では合否ゾーンを断定できません</h3>'
+        +'<p>確定している'+counted+'問での得点は<b>'+lo+'点</b>。未採点の'+pending+'問を全部正解していれば<b>'+hi+'点</b>まで伸びます（過去6年の合格点は33〜38点）。<b>この段階で合否を判断しないでください。</b>各社の速報が出そろい次第このページの正答データを更新するので、あらためて採点し直してください。</p>'
+        +'<a class="mini" href="#border">▸ 各社の予想合格ライン比較を見る</a></div>';
+    }else if(lo>=38){
       zone="ゾーン1";
       zoneHtml='<div class="case ok" style="margin:12px 0 0"><span class="tagline">ゾーン1：直近6年の最高合格点（38点）以上</span>'
         +'<h3>合格の可能性が高い水準です</h3>'
         +'<p>合格発表（令和8年11月25日）を待ちつつ、登録実務講習・資格登録など合格後の手続きを下調べしておくとスムーズです。</p>'
         +'<a class="mini" href="/blog/takken-goukakugo">▸ 宅建に合格した後の手続き（登録実務講習・資格登録・宅建士証）を見る</a></div>';
-    }else if(total>=33){
+    }else if(lo>=33){
       zone="ゾーン2";
       zoneHtml='<div class="case" style="margin:12px 0 0"><span class="tagline" style="background:var(--brand)">ゾーン2：過去6年の合格点レンジ（33〜37点）の中</span>'
         +'<h3>ボーダーゾーン。合否どちらでも損しない準備を</h3>'
@@ -452,11 +472,12 @@
         +'<div style="margin-top:6px"><a class="mini" href="/courses/">▸ 宅建講座の選び方（通信・通学・オンライン5社比較）を見る</a></div></div>';
     }
     var notes="";
-    if(pending>0)notes+='<p style="font-size:13px;color:var(--muted);margin:8px 0 0">※ 正答未確定の '+pending+' 問は採点対象外です（確定し次第このページで更新します）。</p>';
+    if(pending>0)notes+='<p style="font-size:13px;color:var(--muted);margin:8px 0 0">※ 正答未確定の '+pending+' 問は採点対象外です（各社の速報が割れている問など）。この '+pending+' 問しだいで最終的な点数は <b>'+lo+'〜'+hi+'点</b> の範囲で動きます。確定し次第このページで更新するので、後ほど採点し直してください。</p>';
     if(blank>0)notes+='<p style="font-size:13px;color:var(--muted);margin:8px 0 0">※ 未入力 '+blank+' 問は不正解として集計しています。</p>';
     var label = d.status==="kakutei" ? "実施機関の公式発表ベース" : "各社速報ベースの参考採点（後日修正の可能性あり）";
     elResult.innerHTML='<div class="sresult"><div style="font-size:13px;color:var(--muted);font-weight:800">あなたの自己採点結果（'+label+'）</div>'
       +'<div class="big">'+total+'点<small> / '+counted+'問中</small></div>'
+      +(pending>0?'<div style="font-size:13.5px;font-weight:800;color:var(--muted);margin-top:2px">未採点'+pending+'問を含めた最終レンジ：<b style="color:var(--brand2)">'+lo+'〜'+hi+'点</b></div>':'')
       +'<div class="tw" style="margin:10px 0"><table class="catmini"><thead><tr><th>分野</th><th class="num">正解数</th></tr></thead><tbody>'+catRows+'</tbody></table></div>'
       +zoneHtml+notes
       +'<p style="font-size:12.5px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去6年の合格点実績（33〜38点）に基づく目安です。令和8年度の合格点は11月25日の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
