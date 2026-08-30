@@ -23,7 +23,7 @@
 | A8_SQUARE | `/courses/` | 資格スクエア | 4B9XTF+CSTKJM+373C+7CX1E |
 | A8_SMART | `/courses/` | SMART合格講座（全日本情報学習振興協会） | 4B9XTF+CTF05E+4LOQ+60OXE |
 | A8_ONSUKU | `/courses/`・`index.html` ホーム画面 | オンスク.JP（ウケホーダイ） | 4B9XTF+CR19QA+408S+5YRHE |
-| A8_TAISAKU | `/courses/`（関連資格セクション。宅建講座ではないので比較表には入れない） | 資格対策ドットコム（FP・金融系） | 4B9XTF+CQFU4I+3L4C+6DC6A |
+| A8_TAISAKU | `/courses/`（補足セクション。料金・申込受付期間が公式ページで確認できないため比較表には入れない） | 資格対策ドットコム 宅建士eラーニング講座（素材ID 065・着地 shikakutaisaku.com/personal/takken.html） | 4B9XTF+CQFU4I+3L4C+6C9LE |
 
 - `index.html` 内は JS の `A8` オブジェクト（`const A8={...}`、約1079行）が正本。`adCard()` が `data-aff="A8_<KEY大文字>"` を自動付与するため、grepでは `data-aff="A8_'+k.toUpperCase()+'"` としか出ない点に注意。
 - `A8` オブジェクトには `yotsuya` / `square` / `onsuku` / `smart` の**4キーが定義されているが、実際に `adCard()` で描画されるのは `onsuku`（ホーム）と `yotsuya`（演習結果）の2つだけ**。`square` / `smart` は定義のみで未使用（枠を増やすときの予備）。
@@ -56,9 +56,9 @@
 
 | 予定スロット名 | リンク種別 |
 |---|---|
-| A8_STUDYING | スタディング 宅建講座（A8審査中） |
-| A8_AGAROOT | アガルート 宅建講座（A8審査中） |
-| A8_FORESIGHT | フォーサイト 宅建講座（A8審査中） |
+| A8_STUDYING | スタディング 宅建講座（A8審査中・申込 2026/08/04〜。2026-08-30時点も申込中） |
+| A8_AGAROOT | アガルート 宅建講座（**未提携**。A8の参加中/申込中/解除のいずれにも無し＝否認済み。2026-08-30実査） |
+| A8_FORESIGHT | フォーサイト 宅建講座（A8審査中・申込 2026/08/04〜。2026-08-30時点も申込中） |
 
 - バリューコマースの宅建GYMサイト審査は**通過済み**（VC_LEC として掲載中）。
 
