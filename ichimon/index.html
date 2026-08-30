@@ -74,6 +74,10 @@
   padding:14px 16px;text-decoration:none;color:var(--ink);border-left:4px solid var(--brand)}
  .acard .at{font-size:15.5px;font-weight:800;color:var(--brand2);display:block;line-height:1.6}
  .acard .ad{font-size:13.5px;color:var(--muted);display:block;margin-top:5px;line-height:1.85}
+ /* 論点別カード＝分野別カードと区別する（角丸の帯＋分野バッジ） */
+ .acard.topic{border-left-width:6px;background:transparent}
+ .acard.topic .fld{display:inline-block;font-size:11.5px;font-weight:800;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:3px 9px;margin-bottom:7px;line-height:1.6}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -86,6 +90,15 @@
 {"@type":"ListItem","position":2,"name":"権利関係の一問一答","url":"https://takken.mainichi-lab.com/ichimon/kenri"},
 {"@type":"ListItem","position":3,"name":"法令上の制限の一問一答","url":"https://takken.mainichi-lab.com/ichimon/horei"},
 {"@type":"ListItem","position":4,"name":"税・その他の一問一答","url":"https://takken.mainichi-lab.com/ichimon/zei"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"宅建 論点別の問題","url":"https://takken.mainichi-lab.com/ichimon/","numberOfItems":6,"itemListElement":[
+{"@type":"ListItem","position":1,"name":"クーリング・オフの問題","url":"https://takken.mainichi-lab.com/ichimon/cooling-off"},
+{"@type":"ListItem","position":2,"name":"報酬計算の問題","url":"https://takken.mainichi-lab.com/ichimon/hoshu"},
+{"@type":"ListItem","position":3,"name":"意思表示の問題","url":"https://takken.mainichi-lab.com/ichimon/ishihyoji"},
+{"@type":"ListItem","position":4,"name":"農地法の問題","url":"https://takken.mainichi-lab.com/ichimon/nochiho"},
+{"@type":"ListItem","position":5,"name":"開発許可の問題","url":"https://takken.mainichi-lab.com/ichimon/kaihatsu"},
+{"@type":"ListItem","position":6,"name":"建蔽率・容積率の計算問題","url":"https://takken.mainichi-lab.com/ichimon/kenpei-yoseki"}]}
 </script>
 </head>
 <body>
@@ -100,7 +113,8 @@
   <p>宅建（宅地建物取引士）試験の<b>一問一答（○×）を分野別に分けた無料ページ</b>です。解きたい分野だけを選んで、1問ずつ○か×で答えると、その場で正誤と解説が出ます。<b>結果は自動で流れません</b>。解説を読み終えてから自分で次に進めます。</p>
   <p>全部まとめて解きたいときは<a href="/">宅建GYMのアプリ本体</a>（4択100問＋○×84問・進捗の記録つき）をどうぞ。このページは「今日は宅建業法だけ」「移動中に法令の数字だけ」というときのための入口です。</p>
 
-  <h2>分野を選ぶ</h2>
+  <h2>分野別の一問一答（○×84問）</h2>
+  <p>まずは分野を選んで、その分野の問題をひととおり解く入口です。</p>
   <ul class="alist">
     <li><a class="acard" href="/ichimon/gyoho" style="border-left-color:#7a2fe0"><span class="at">宅建業法の一問一答（○×24問）</span><span class="ad">本試験の出題は20問（問26〜45）。免許・宅建士・35条書面・37条書面・8種制限・報酬額の制限など、条文の数字と主語がそのまま問われるので、○×で「どこが入れ替えられているか」を高速に見抜く練習が効きます。</span></a></li>
     <li><a class="acard" href="/ichimon/kenri" style="border-left-color:#e0692f"><span class="at">権利関係の一問一答（○×26問）</span><span class="ad">本試験の出題は14問（問1〜14）。民法を中心に、借地借家法・区分所有法・不動産登記法まで範囲が広く、深追いすると時間が溶ける分野です。</span></a></li>
@@ -108,19 +122,15 @@
     <li><a class="acard" href="/ichimon/zei" style="border-left-color:#c0398f"><span class="at">税・その他の一問一答（○×16問）</span><span class="ad">本試験の出題は8問（税2問＋地価公示または鑑定評価1問＋5問免除科目5問）。1テーマあたりの出題は少ないぶん、押さえる論点を絞れば得点しやすい分野です。</span></a></li>
   </ul>
 
-  <h2>論点別の一問一答（頻出テーマを深掘り）</h2>
+  <h2>論点別の問題（頻出テーマを深掘り）</h2>
+  <p>よく検索される論点は、分野ページから切り出して専用の問題ページにしています。○×だけでなく<b>計算して選ぶ形式</b>のページもあります。1つの論点を続けて解けるので、「ここだけ苦手」を潰すのに向いています。</p>
   <ul class="alist">
-    <li><a class="acard" href="/ichimon/cooling-off"><span class="at">クーリング・オフの問題（○×17問）</span><span class="ad">宅建業法37条の2の頻出論点だけを集中演習。事務所等の範囲・8日の起算日・特約の有効性まで、解説に根拠条文つき。</span></a></li>
-    <li><a class="acard" href="/ichimon/nochiho" style="border-left-color:#2f9e6a"><span class="at">農地法の問題（○×14問）</span><span class="ad">ほぼ毎年1問出る農地法だけを集中演習。3条・4条・5条の許可権者、市街化区域内の特例、相続の扱い、4ha超の大臣協議まで、解説に根拠条文つき。</span></a></li>
-    <li><a class="acard" href="/ichimon/kaihatsu" style="border-left-color:#1f7ad3"><span class="at">開発許可の問題（○×22問）</span><span class="ad">都市計画法29条の頻出論点だけを集中演習。市街化区域1,000㎡・三大都市圏500㎡・市街化調整区域は規模不問という面積基準、農林漁業用と公益上必要な建築物の例外、変更/廃止/承継、工事完了公告前後の建築制限まで、解説に根拠条文つき。</span></a></li>
-    <li><a class="acard" href="/ichimon/ishihyoji" style="border-left-color:#d38a1f"><span class="at">意思表示の問題（○×18問）</span><span class="ad">権利関係の最頻出テーマを集中演習。心裡留保・虚偽表示・錯誤（動機の錯誤・重過失）・詐欺・強迫と、第三者保護が「善意」か「善意無過失」かの横断比較表つき。</span></a></li>
-  </ul>
-
-  <h2>論点別の問題</h2>
-  <p>サジェストの多い論点は、分野ページから切り出して専用の問題ページにしています。</p>
-  <ul class="alist">
-    <li><a class="acard" href="/ichimon/hoshu" style="border-left-color:#7a2fe0"><span class="at">報酬計算の問題（計算して選ぶ13問）</span><span class="ad">速算式（3%＋6万円）・消費税の課税/免税・代理の2倍・賃貸の借賃1か月・権利金・800万円以下の空家等の特例（令和6年改正）まで。解説に根拠告示つき。</span></a></li>
-    <li><a class="acard" href="/ichimon/kenpei-yoseki" style="border-left-color:#2f9e6a"><span class="at">建蔽率・容積率の計算問題（計算して選ぶ13問）</span><span class="ad">角地＋1/10・防火地域内の耐火建築物＋1/10・両方で＋2/10・建蔽率8割地域の適用除外・前面道路の幅員×法定乗数（住居系4/10、その他6/10）と指定容積率の小さい方・2地域にまたがる加重平均まで。解説に建築基準法52条/53条の根拠つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/cooling-off" style="border-left-color:#7a2fe0"><span class="fld">宅建業法</span><span class="at">クーリング・オフの問題（○×17問）</span><span class="ad">宅建業法37条の2の頻出論点だけを集中演習。事務所等の範囲・8日の起算日・特約の有効性まで、解説に根拠条文つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/hoshu" style="border-left-color:#7a2fe0"><span class="fld">宅建業法・計算</span><span class="at">報酬計算の問題（計算して選ぶ13問）</span><span class="ad">速算式（3%＋6万円）・消費税の課税/免税・代理の2倍・賃貸の借賃1か月・権利金・800万円以下の空家等の特例（令和6年改正）まで。解説に根拠告示つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/ishihyoji" style="border-left-color:#e0692f"><span class="fld">権利関係</span><span class="at">意思表示の問題（○×18問）</span><span class="ad">権利関係の最頻出テーマを集中演習。心裡留保・虚偽表示・錯誤（動機の錯誤・重過失）・詐欺・強迫と、第三者保護が「善意」か「善意無過失」かの横断比較表つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/nochiho" style="border-left-color:#2f9e6a"><span class="fld">法令上の制限</span><span class="at">農地法の問題（○×14問）</span><span class="ad">ほぼ毎年1問出る農地法だけを集中演習。3条・4条・5条の許可権者、市街化区域内の特例、相続の扱い、4ha超の大臣協議まで、解説に根拠条文つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/kaihatsu" style="border-left-color:#2f9e6a"><span class="fld">法令上の制限</span><span class="at">開発許可の問題（○×22問）</span><span class="ad">都市計画法29条の頻出論点だけを集中演習。市街化区域1,000㎡・三大都市圏500㎡・市街化調整区域は規模不問という面積基準、農林漁業用と公益上必要な建築物の例外、変更/廃止/承継、工事完了公告前後の建築制限まで、解説に根拠条文つき。</span></a></li>
+    <li><a class="acard topic" href="/ichimon/kenpei-yoseki" style="border-left-color:#2f9e6a"><span class="fld">法令上の制限・計算</span><span class="at">建蔽率・容積率の計算問題（計算して選ぶ13問）</span><span class="ad">角地＋1/10・防火地域内の耐火建築物＋1/10・両方で＋2/10・建蔽率8割地域の適用除外・前面道路の幅員×法定乗数（住居系4/10、その他6/10）と指定容積率の小さい方・2地域にまたがる加重平均まで。解説に建築基準法52条/53条の根拠つき。</span></a></li>
   </ul>
 
   <h2>一問一答の使い方</h2>
