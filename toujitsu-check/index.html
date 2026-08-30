@@ -233,6 +233,7 @@
   }
   var state=load();
 
+  var _allok=null; /* 全完了イベントは「未完了→完了」の遷移時のみ送る（読込時の再送防止） */
   function render(){
     var done=0;
     btns.forEach(function(b){
@@ -242,8 +243,11 @@
     });
     pNum.textContent=done;
     pBar.style.width=(btns.length?Math.round(done/btns.length*100):0)+"%";
-    if(done===btns.length&&btns.length>0){prog.classList.add("allok");}
+    var isAll=(done===btns.length&&btns.length>0);
+    if(isAll){prog.classList.add("allok");}
     else{prog.classList.remove("allok");}
+    if(_allok===false&&isAll){try{gtag('event','checklist_complete',{tool_name:'toujitsu_check',items:btns.length});}catch(e){}}
+    _allok=isAll;
   }
 
   btns.forEach(function(b){

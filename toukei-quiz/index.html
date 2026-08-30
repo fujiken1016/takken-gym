@@ -131,6 +131,8 @@
     <a href="/blog/takken-toukei-2026">▸ 宅建の統計問題2026【令和8年度】数字まとめ</a>
     <a href="/blog/takken-mon46-50">▸ 宅建 問46〜50（5問免除科目）の攻略</a>
     <a href="/chikaradameshi/">▸ 宅建 力試し（12問ミニテスト・50点換算の判定つき／無料）</a>
+    <a href="/toujitsu-check/">▸ 試験当日の持ち物チェックリスト＆タイムライン</a>
+    <a href="/kaitou-sokuhou/">▸ 宅建 解答速報・自己採点【2026年度】（50問自動採点）</a>
     <a href="/ichimon/">▸ 分野別の一問一答○×84問（無料）</a>
     <a href="/blog/takken-chokuzenki-2kagetsu">▸ 直前期2か月の勉強法</a>
     <a href="/">▸ 宅建GYM トップ（4択100問アプリ）</a>
@@ -237,6 +239,7 @@
    var g=rank(ok);
    var rk=document.getElementById('rRank');
    rk.textContent=g.label; rk.className='rrank '+g.cls;
+   try{gtag('event','quiz_complete',{quiz_name:'toukei_quiz',score:ok,grade:g.label});}catch(e){}
    var mBox=document.getElementById('rMiss');
    mBox.hidden=false;
    if(miss.length){
