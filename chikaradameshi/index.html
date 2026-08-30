@@ -169,7 +169,7 @@
       <b style="font-size:16px">本番モード（無料Web模試）</b>
       <ul style="margin:12px 0;padding-left:20px;font-size:14.5px;line-height:2">
         <li><b>50問・制限時間120分</b>（本試験と同じ分量・時間）</li>
-        <li>出題順も本試験どおり：<b>権利14問 → 法令8問 → 税・その他3問 → 業法20問 → 免除科目枠5問</b></li>
+        <li>出題順も本試験どおり：<b>権利14問 → 法令8問 → 税・その他3問 → 業法20問 → 免除科目5問</b>（問46〜50は機構・景表法・統計・土地・建物の専用問題）</li>
         <li>本試験のつもりで解けるよう、<b>途中の正誤表示はありません</b>（終了後に全問の解き直しつき）</li>
         <li>画面上部に<b>時間配分のペース目安</b>を常時表示（貯金/ビハインドが分かる）</li>
         <li>○×形式のため実際の4択より正答しやすい点はご了承ください</li>
@@ -234,7 +234,7 @@
   </div>
 
   <h2>このテストの仕組み</h2>
-  <p>問題は宅建GYMの<a href="/ichimon/">分野別 一問一答（○×84問・解説つき）</a>から出題しています。<b>クイック12問</b>は本試験50問の配点比（宅建業法20問・権利関係14問・法令上の制限8問・税その他8問）に合わせて毎回12問を抽選し、分野ごとの正答率に本試験の配点を掛けて50点満点に換算します。<b>本番モード</b>は本試験と同じ50問を出題順どおり（問1〜14権利関係／問15〜22法令上の制限／問23〜25税・その他／問26〜45宅建業法／問46〜50は免除科目の枠として税・その他から出題）に並べ、1問1点の50点満点で採点します。○×形式のため実際の4択より正答しやすい点に注意してください。法令基準日は令和8年（2026年）4月1日です。</p>
+  <p>問題は宅建GYMの<a href="/ichimon/">分野別 一問一答（○×84問・解説つき）</a>と、本番モードの問46〜50用に一次情報（法令原文・公表統計）で作成した免除科目の専用問題から出題しています。<b>クイック12問</b>は本試験50問の配点比（宅建業法20問・権利関係14問・法令上の制限8問・税その他8問）に合わせて毎回12問を抽選し、分野ごとの正答率に本試験の配点を掛けて50点満点に換算します。<b>本番モード</b>は本試験と同じ50問を出題順どおり（問1〜14権利関係／問15〜22法令上の制限／問23〜25税・その他／問26〜45宅建業法）に並べ、1問1点の50点満点で採点します。問46〜50は本試験と同じ<b>免除科目の専用問題</b>（問46住宅金融支援機構・問47景品表示法〔表示規約〕・問48統計・問49土地・問50建物）を出題します。統計（問48）の数値は<a href="/blog/takken-toukei-2026">統計まとめ記事</a>と同じ公表資料に基づきます。○×形式のため実際の4択より正答しやすい点に注意してください。法令基準日は令和8年（2026年）4月1日です。</p>
 
   <h2>宅建の時間配分の目安（120分の配り方）</h2>
   <p>本番モードのペース表示は、次の時間配分を目安にしています。合計110分で解き切り、<b>最後に10分の見直し時間</b>を残す配分です。</p>
@@ -385,18 +385,31 @@
 /* ===== 本番モード（50問・120分）＋モード切替 ===== */
 (function(){
  var POOL=window.__CD.pool;
+ /* 免除科目（問46〜50）専用問題。出題順は本試験どおり固定：問46機構→問47景表法→問48統計→問49土地→問50建物。
+    出典：問46＝住宅金融支援機構法13条1項5号（e-Gov原文で確認・2026-08-30）／
+    問47＝不動産の表示に関する公正競争規約施行規則7条6号（不動産公取協連合会公表の規約全文PDFで確認）／
+    問48＝建築着工統計調査報告 令和7年計（国交省・令和8年1月30日公表。裏取り済み正本＝/blog/takken-toukei-2026）／
+    問49・50＝土地・建物の定番論点（過去問頻出の基礎知識） */
+ var MENJO=[
+  {a:true, q:"独立行政法人住宅金融支援機構は、災害復興建築物の建設又は購入に必要な資金の貸付けを、自ら行うことができる。",e:"機構法13条1項5号。一般の住宅取得資金は金融機関の貸付債権の買取り（証券化支援）が基本だが、災害復興関連は機構が直接貸付けを行える。"},
+  {a:true, q:"市街化調整区域内の土地（開発許可を受けているもの等を除く）を新聞折込チラシで広告するときは、「市街化調整区域。宅地の造成及び建物の建築はできません。」と16ポイント以上の文字で明示しなければならない。",e:"表示規約施行規則7条6号。新聞折込チラシ等・パンフレット等では16ポイント以上の大きさの文字と定められている。"},
+  {a:false,q:"令和7年の新設住宅着工戸数は約74万戸で、前年に比べ増加した。",e:"約74万戸は正しいが、前年比6.5％減で3年連続の減少（建築着工統計・令和7年計）。統計は「増減の向き」の入替えが引っかけの定番。"},
+  {a:false,q:"自然堤防の背後に広がる後背低地は、水はけがよく地盤も安定しているため、宅地として適している。",e:"逆。後背低地（後背湿地）は洪水時に水が滞留しやすく地盤も軟弱で、一般に宅地に適しない。微高地の自然堤防のほうが比較的宅地に適する。"},
+  {a:true, q:"鉄筋コンクリート造は、圧縮力に強いコンクリートと引張力に強い鉄筋が、互いの弱点を補い合う構造である。",e:"コンクリートは圧縮に強く引張に弱い。引張力は鉄筋が負担する。この役割を入れ替えた出題が問50の定番の引っかけ。"}
+ ];
  var SECTS=[
   {k:"kenri",name:"権利関係",take:14,budget:40,range:"問1〜14"},
   {k:"horei",name:"法令上の制限",take:8,budget:15,range:"問15〜22"},
-  {k:"zei",name:"税・その他",take:3,budget:6,range:"問23〜25",slice:[0,3]},
+  {k:"zei",name:"税・その他",take:3,budget:6,range:"問23〜25"},
   {k:"gyoho",name:"宅建業法",take:20,budget:40,range:"問26〜45"},
-  {k:"zei",name:"税・その他（免除科目枠）",take:5,budget:9,range:"問46〜50",slice:[3,8]}
+  {k:"menjo",name:"免除科目",take:5,budget:9,range:"問46〜50"}
  ];
  var AGG=[
   {k:"gyoho",name:"宅建業法",total:20,honban:"20問",url:"/ichimon/gyoho"},
   {k:"kenri",name:"権利関係",total:14,honban:"14問",url:"/ichimon/kenri"},
   {k:"horei",name:"法令上の制限",total:8,honban:"8問",url:"/ichimon/horei"},
-  {k:"zei",name:"税・その他",total:8,honban:"8問",url:"/ichimon/zei"}
+  {k:"zei",name:"税・その他",total:3,honban:"3問",url:"/ichimon/zei"},
+  {k:"menjo",name:"免除科目",total:5,honban:"5問",url:"/blog/takken-mon46-50"}
  ];
  var LIMIT=120*60*1000,N=50;
  var $=function(id){return document.getElementById(id);};
@@ -419,12 +432,12 @@
  function elapsed(){return (H.phase==='pause'?H.pauseAt:Date.now())-H.startAt-H.pausedMs;}
  function reset(){clearTimers();H.phase='intro';H.order=[];H.i=0;H.ans=[];H.pausedMs=0;H.locked=false;showOnly(hIntro);}
  function draw(){
-   var zeiPick=shuffle(POOL.zei).slice(0,8);
-   var picked={kenri:shuffle(POOL.kenri).slice(0,14),horei:shuffle(POOL.horei).slice(0,8),gyoho:shuffle(POOL.gyoho).slice(0,20)};
+   var picked={kenri:shuffle(POOL.kenri).slice(0,14),horei:shuffle(POOL.horei).slice(0,8),
+               zei:shuffle(POOL.zei).slice(0,3),gyoho:shuffle(POOL.gyoho).slice(0,20),
+               menjo:MENJO}; /* 免除科目は専用5問・本試験どおりの順で固定 */
    var order=[];
    SECTS.forEach(function(sec,si){
-     var src=sec.slice?zeiPick.slice(sec.slice[0],sec.slice[1]):picked[sec.k];
-     src.forEach(function(q){order.push({s:si,k:sec.k,q:q.q,a:q.a,e:q.e});});
+     picked[sec.k].forEach(function(q){order.push({s:si,k:sec.k,q:q.q,a:q.a,e:q.e});});
    });
    return order;
  }
