@@ -599,6 +599,11 @@
  }
  mQuick.addEventListener('click',function(){setMode('quick');});
  mHonban.addEventListener('click',function(){setMode('honban');});
+ /* トップの「本番形式で測りたい」導線からの直リンク（?mode=honban / #honban）で本番モードを開く */
+ try{
+   var _q=new URLSearchParams(location.search);
+   if(_q.get('mode')==='honban'||location.hash==='#honban'){setMode('honban');}
+ }catch(e){}
  window.__CD.getState=function(){return {mode:MODE,phase:H.phase,i:H.i,answered:H.ans.filter(function(x){return x!==null;}).length,timerOn:H.timerId!==null};};
 })();
 </script>
