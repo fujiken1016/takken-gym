@@ -35,6 +35,16 @@
  .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0}
  .toc a{display:block;font-size:13.5px;font-weight:700;color:var(--brand2);text-decoration:none;padding:4px 0}
  .backapp{display:inline-block;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;padding:12px 20px;border-radius:12px;font-size:14px}
+ .course{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 1px 2px rgba(40,20,80,.05);position:relative}
+ .badge-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+ .rank{font-size:11px;font-weight:900;letter-spacing:.05em;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px}
+ .tag{font-size:11px;font-weight:800;color:var(--brand2);background:rgba(139,63,240,.10);border-radius:6px;padding:2px 9px}
+ .course h3{font-size:18px;font-weight:900;margin:2px 0 8px}
+ .spec{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px;margin:8px 0 4px}
+ .spec dt{font-weight:800;color:var(--muted);white-space:nowrap}
+ .spec dd{margin:0}
+ .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;margin-top:12px;line-height:1.4}
+ @media(max-width:400px){.spec{grid-template-columns:1fr;gap:2px}.spec dd{margin:0 0 6px}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -53,7 +63,7 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（ページ内から講座の紹介ページへ移動できます）。</p>
+  <p class="pr-line" style="font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（ページ内から講座の紹介ページへ移動できます）。宅建GYMは提携する各サービスへの申込・購入に応じて紹介料を受け取ることがあります。掲載基準：当サイトが提携するアフィリエイトプログラムのある講座のみを掲載しており、賃貸不動産経営管理士の講座を網羅するものではありません（<b>現在の掲載は1社</b>）。料金は変更されるため、最新情報は必ず各公式サイトでご確認ください。</p>
 
   <p>宅建（宅地建物取引士）を受ける人が、もう1つ受けるならどれか——という話で必ず名前が挙がるのが<b>賃貸不動産経営管理士（賃管士）</b>です。理由は3つあります。<b>試験日が宅建のちょうど4週間後</b>であること、<b>出題範囲の一部が宅建と重なる</b>こと、そして<b>受験資格に制限がない</b>ことです。</p>
   <p>ただし、いちばん大事な事実はここです。<b>2026年度の申込は9月30日で締め切られます</b>。つまり<b>10月18日の宅建本試験を受けたあとで「やっぱり受けよう」と決めることはできません</b>。この記事は、その判断を9月中にするための材料をまとめたものです。日程・料金・範囲はすべて<a href="https://www.chintaikanrishi.jp/exam/summary/" target="_blank" rel="noopener">賃貸不動産経営管理士協議会の公式発表</a>で確認し、確認できなかった項目は書いていません。</p>
@@ -66,7 +76,8 @@
     <a href="#chofuku">▸ 5. 宅建と重なる範囲・重ならない範囲</a>
     <a href="#menjo">▸ 6. 5問免除の講習（9月25日まで）</a>
     <a href="#takkenshi">▸ 7. 宅建士なら試験を受けずに業務管理者になる道もある</a>
-    <a href="#kiji">▸ 8. 併願を決める前に読む記事</a>
+    <a href="#kouza">▸ 8. 独学で走りきれないときの選択肢（講座）</a>
+    <a href="#kiji">▸ 9. 併願を決める前に読む記事</a>
   </div>
 
   <h2 id="nittei">1. 2026年度（令和8年度）の日程と申込</h2>
@@ -182,7 +193,28 @@
   </div>
   <p>したがって、<b>すでに管理会社で働いていて業務管理者の設置要件を満たすことだけが目的なら、宅建士＋指定講習のほうが早い</b>ことがあります。逆に、<b>資格そのものを持ちたい・転職や社内評価で示したい・実務経験がまだない</b>のであれば、試験を受けるルートになります。まずここを自分で切り分けてから、併願を決めてください。</p>
 
-  <h2 id="kiji">8. 併願を決める前に読む記事</h2>
+  <h2 id="kouza">8. 独学で走りきれないときの選択肢（講座）</h2>
+  <p>賃管士は市販のテキストと過去問で独学する人が多い試験です。ただ、<b>申込期限（9月30日）も学習期間も、宅建の直前期とそのまま重なる</b>のがこの併願の難しさで、「範囲の切り方とペース配分を自分で組み直す時間がない」という理由で見送る人がいます。そこに対しては、<b>宅建受験者を前提に組まれたコース</b>という選択肢があります。</p>
+  <p>当サイトが提携しているのは<b>LEC東京リーガルマインドの1社だけ</b>なので、これは比較ではなく「そういうコースが実在する」という事実の紹介です。以下の回数・料金・割引は、<b>2026年8月30日にLEC公式サイトとLECオンラインショップで確認した実測値</b>だけを載せています。</p>
+
+  <div class="course">
+    <div class="badge-row"><span class="rank">宅建受験者向けコースあり</span><span class="tag">通信・通学</span></div>
+    <h3>LEC東京リーガルマインド 賃貸不動産経営管理士講座</h3>
+    <dl class="spec">
+      <dt>2026年度のコース</dt><dd>合格プライムコース（全16回・2026年度宅建士試験の受験者向け）／合格スタンダードコース（全26回・宅建合格者、法律学習経験者向け）／合格フルコース（全29回・初学者向け）</dd>
+      <dt>料金（税込・一般価格）</dt><dd>通信Webの一般価格で、プライム<b>52,800円</b>／スタンダード<b>71,500円</b>／フル<b>82,500円</b>。通信DVD・通学はこれと別の価格設定です</dd>
+      <dt>宅建受験者の割引</dt><dd>「宅建・管業・マン管・賃貸・FP受験者割引」＝一般価格より<b>20%OFF</b>（2026年11月15日まで／宅建士試験の申込または合格を確認できる書類が必要／各種割引は該当する中で最も高いもの1つだけ利用可）</dd>
+      <dt>無料で試せる範囲</dt><dd>「おためしWeb受講制度」で合格プライム講座の第1回を無料視聴できます（レジュメあり）。各校の講座説明会は参加無料・予約不要</dd>
+    </dl>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">宅建受験者にとって現実的なのは<b>合格プライムコース</b>です。LECが公式に示している対象者が「2026年度宅建士試験後から学習開始してW合格を目指す方」で、<b>学習開始の目安は8月〜10月、販売終了日は試験日当日の2026年11月15日</b>。このページで見てきた「宅建後の4週間」をそのまま前提にした設計になっています。ただし<b>期間限定割引が入る時期があり、表示価格は月単位で変わります</b>。上の金額は割引前の一般価格なので、申込前に必ず公式で最新の価格・申込期限を確認してください。</p>
+    <a class="cbtn" data-aff="VC_LEC_CHINKAN" href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3777672&pid=892677873&vc_url=https%3A%2F%2Fwww.lec-jp.com%2Fchintai%2F" target="_blank" rel="nofollow sponsored noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3777672&pid=892677873" height="1" width="1" border="0" alt="">LEC 賃貸不動産経営管理士講座（公式）→</a>
+  </div>
+  <p class="src">出典：LEC東京リーガルマインド「賃貸不動産経営管理士 講座一覧」「割引制度」および同社オンラインショップの各コース商品ページ（いずれも2026年8月30日確認）。価格・割引・販売期間は変更されます。当サイトは合格を保証するものではありません。</p>
+  <div class="warn">
+    <b>順番だけは間違えないでください。</b>9月の時点で宅建の模試が合格ラインに届いていないなら、賃管士に講座を足すより<b>宅建に全部を投じるほうが合理的</b>です。二兎を追って本命を落とすのがいちばん損をします。賃管士の講座を検討する価値があるのは、<b>宅建が仕上がっていて、10月19日以降にまとまった時間を取れる人</b>に限られます。
+  </div>
+
+  <h2 id="kiji">9. 併願を決める前に読む記事</h2>
   <div class="cta-box">
     <b>まず30問だけ解いてみる。</b>賃管士の学習範囲を○×30問で試せます（無料・登録不要。根拠条文つき）。 → <a href="/chinkan/ichimon/">賃貸不動産経営管理士の一問一答（○×30問）</a><br>
     <b>実力を2分で測るなら。</b>12問→50点換算でS〜C判定。 → <a href="/chinkan/chikaradameshi/">賃管士 力試し（無料12問）</a>
