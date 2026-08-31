@@ -1,2 +1,7 @@
 .DS_Store
 .vercel
+
+# 監査・検算の作業md（repo直下＝CF Pagesの公開ディレクトリ。commitすると公開URLで200配信される。
+# 日本語ファイル名は _routes.json の include に載せても middleware に拾われないため、git管理から外して防ぐ）
+/検算結果_一問一答_*.md
+/横断整合チェック_*.md
