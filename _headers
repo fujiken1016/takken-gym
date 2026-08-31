@@ -5,8 +5,13 @@
 //    以下の noindex は多重防御として残す（万一Functionsが外れてもインデックスはされない）。
 // 実測メモ：_redirects の404ルール（明示パス/splat）・ドット始まりディレクトリ・.cfignore・
 //    .assetsignore はいずれもCF Pagesでは効かない（静的アセットが優先される）。
+// 🔴 2026-08-31 追記：.md をエッジに長期キャッシュさせない。
+//    実測＝公開中に一度取得されたmdは CF既定の s-maxage=604800 でエッジに7日残り、
+//    リポジトリから削除しても生パスURLが200を返し続けた（cache-buster付きだと404）。
+//    Functions(_middleware)もキャッシュヒットを覆せず、手動パージが必要になった。
 /*.md
   X-Robots-Tag: noindex
+  Cache-Control: no-store
 /README.md
   X-Robots-Tag: noindex
 /AFF_SLOTS.md
