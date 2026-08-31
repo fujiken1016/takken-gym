@@ -74,6 +74,14 @@
   padding:14px 16px;text-decoration:none;color:var(--ink);border-left:4px solid var(--brand)}
  .acard .at{font-size:15.5px;font-weight:800;color:var(--brand2);display:block;line-height:1.6}
  .acard .ad{font-size:13.5px;color:var(--muted);display:block;margin-top:5px;line-height:1.85}
+ /* 次の一手（完了画面の回遊。2026-08-31 サイクル17） */
+ .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 15px;margin:16px 0 4px;text-align:left}
+ .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
+ .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .nx.warm{border-left-color:#d33b53}
+ .nx.done{border-left-color:#2f9e6a}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -109,6 +117,7 @@
     <div style="font-size:13px;font-weight:800;color:var(--muted)">法令上の制限・一問一答の結果</div>
     <div class="big" id="rBig">—</div>
     <div id="rSub" style="font-size:14px;color:var(--muted)"></div>
+    <div class="nx" id="rNext" hidden></div>
     <button type="button" class="tnext" id="bAgain">もう一度、最初から</button>
     <button type="button" class="tsub" id="bWrong" hidden>間違えた問題だけもう一度</button>
   </div>
@@ -204,6 +213,33 @@
 </article>
 </main>
 <script>
+/* 完了画面の「次の一手」＝正答率に応じて次にやる論点を名指しで出す（サイクル17・2026-08-31）
+   商品導線はここには置かない（学習の次の一手が主・商品は下のCTAで従） */
+window.__NX = {"tool": "ichimon_horei", "low": {"h": "法令上の制限は「数字」で落ちています。頻出2論点から。", "s": "下の「間違えた問題だけもう一度」で取りこぼしを潰してから進むと、同じ論点で二度落とさずに済みます。", "items": [{"u": "/ichimon/kaihatsu", "t": "開発許可の問題（○×22問）", "d": "市街化区域1,000㎡・三大都市圏500㎡・調整区域は規模不問。面積基準の当てはめが本番"}, {"u": "/ichimon/kenpei-yoseki", "t": "建蔽率・容積率の計算問題（計算して選ぶ13問）", "d": "角地＋1/10・防火＋1/10・前面道路×法定乗数。計算は落とさない1点"}]}, "high": {"h": "法令は及第点。あとは頻出3論点で取りこぼしを消す。", "s": "本試験8問。都市計画法・建築基準法・農地法から確実に拾います。", "items": [{"u": "/ichimon/kaihatsu", "t": "開発許可の問題（○×22問）", "d": "市街化区域1,000㎡・三大都市圏500㎡・調整区域は規模不問。面積基準の当てはめが本番"}, {"u": "/ichimon/kenpei-yoseki", "t": "建蔽率・容積率の計算問題（計算して選ぶ13問）", "d": "角地＋1/10・防火＋1/10・前面道路×法定乗数。計算は落とさない1点"}, {"u": "/ichimon/nochiho", "t": "農地法の問題（○×14問）", "d": "ほぼ毎年1問。3条4条5条の許可権者と市街化区域内の特例だけで取れる"}]}};
+window.renderNextStep=function(ok,total){
+  var box=document.getElementById('rNext'); if(!box||!window.__NX)return;
+  var rate=total?Math.round(ok/total*100):0;
+  var band=(rate>=70)?'high':'low';
+  var cfg=window.__NX[band];
+  var html='<p class="nxh">'+cfg.h+'</p>'+(cfg.s?'<p class="nxs">'+cfg.s+'</p>':'');
+  cfg.items.forEach(function(it){
+    html+='<a class="nxa" href="'+it.u+'">▸ '+it.t+'<span>'+it.d+'</span></a>';
+  });
+  box.className='nx '+(band==='high'?'done':'warm');
+  box.setAttribute('data-band',band);
+  box.innerHTML=html;
+  box.hidden=false;
+  if(!box.__bound){
+    box.__bound=1;
+    box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:window.__NX.tool,to_page:a.getAttribute('href'),band:box.getAttribute('data-band')});}catch(err){}
+    });
+  }
+  try{gtag('event','next_step_shown',{tool_name:window.__NX.tool,score_rate:rate,band:band});}catch(err){}
+};
+</script>
+<script>
 (function(){
  var list=[].slice.call(document.querySelectorAll('#qlist>li')).map(function(li){
    var e=li.querySelector('.exp').cloneNode(true);
@@ -254,6 +290,8 @@
    var rate=Math.round(ok/order.length*100);
    document.getElementById('rBig').textContent=rate+'%';
    document.getElementById('rSub').textContent=order.length+'問中 '+ok+'問 正解';
+   try{window.renderNextStep(ok,order.length);}catch(e){}
+   try{gtag('event','quiz_complete',{quiz_name:'ichimon_horei',score:ok,total:order.length});}catch(e){}
    var bw=document.getElementById('bWrong');
    if(wrong.length){bw.hidden=false;bw.textContent='間違えた'+wrong.length+'問だけもう一度';}
    else{bw.hidden=true;}

@@ -82,6 +82,14 @@
  .swipe{font-size:12px;color:var(--muted);font-weight:800;margin:12px 0 0}
  .note{background:var(--surface);border:1px solid var(--line);border-left:4px solid #d33b53;border-radius:12px;padding:14px 16px;margin:18px 0}
  .note p{margin:0;font-size:14.5px;line-height:1.9}
+ /* 次の一手（完了画面の回遊。2026-08-31 サイクル17） */
+ .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 15px;margin:16px 0 4px;text-align:left}
+ .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
+ .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .nx.warm{border-left-color:#d33b53}
+ .nx.done{border-left-color:#2f9e6a}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -117,6 +125,7 @@
     <div style="font-size:13px;font-weight:800;color:var(--muted)">意思表示・一問一答の結果</div>
     <div class="big" id="rBig">—</div>
     <div id="rSub" style="font-size:14px;color:var(--muted)"></div>
+    <div class="nx" id="rNext" hidden></div>
     <button type="button" class="tnext" id="bAgain">もう一度、最初から</button>
     <button type="button" class="tsub" id="bWrong" hidden>間違えた問題だけもう一度</button>
   </div>
@@ -233,6 +242,33 @@
 </article>
 </main>
 <script>
+/* 完了画面の「次の一手」＝正答率に応じて次にやる論点を名指しで出す（サイクル17・2026-08-31）
+   商品導線はここには置かない（学習の次の一手が主・商品は下のCTAで従） */
+window.__NX = {"tool": "ichimon_ishihyoji", "low": {"h": "意思表示は第三者保護の要件で落ちがち。権利関係全体で確かめる。", "s": "下の「間違えた問題だけもう一度」で取りこぼしを潰してから進むと、同じ論点で二度落とさずに済みます。", "items": [{"u": "/ichimon/kenri", "t": "権利関係の一問一答（○×26問）", "d": "本試験14問。民法・借地借家法・区分所有法まで横断で"}]}, "high": {"h": "意思表示は得点源。権利関係の他テーマへ広げる。", "s": "本試験14問。頻出から順に面を広げるのが最短です。", "items": [{"u": "/ichimon/kenri", "t": "権利関係の一問一答（○×26問）", "d": "本試験14問。民法・借地借家法・区分所有法まで横断で"}, {"u": "/chikaradameshi/", "t": "宅建 力試し（12問ミニテスト／50問の本番モード）", "d": "分野別の正答率とS〜C判定が出ます。今の位置を測ってから次を決める"}]}};
+window.renderNextStep=function(ok,total){
+  var box=document.getElementById('rNext'); if(!box||!window.__NX)return;
+  var rate=total?Math.round(ok/total*100):0;
+  var band=(rate>=70)?'high':'low';
+  var cfg=window.__NX[band];
+  var html='<p class="nxh">'+cfg.h+'</p>'+(cfg.s?'<p class="nxs">'+cfg.s+'</p>':'');
+  cfg.items.forEach(function(it){
+    html+='<a class="nxa" href="'+it.u+'">▸ '+it.t+'<span>'+it.d+'</span></a>';
+  });
+  box.className='nx '+(band==='high'?'done':'warm');
+  box.setAttribute('data-band',band);
+  box.innerHTML=html;
+  box.hidden=false;
+  if(!box.__bound){
+    box.__bound=1;
+    box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:window.__NX.tool,to_page:a.getAttribute('href'),band:box.getAttribute('data-band')});}catch(err){}
+    });
+  }
+  try{gtag('event','next_step_shown',{tool_name:window.__NX.tool,score_rate:rate,band:band});}catch(err){}
+};
+</script>
+<script>
 (function(){
  var list=[].slice.call(document.querySelectorAll('#qlist>li')).map(function(li){
    var e=li.querySelector('.exp').cloneNode(true);
@@ -283,6 +319,7 @@
    var rate=Math.round(ok/order.length*100);
    document.getElementById('rBig').textContent=rate+'%';
    document.getElementById('rSub').textContent=order.length+'問中 '+ok+'問 正解';
+   try{window.renderNextStep(ok,order.length);}catch(e){}
    if(window.gtag)gtag('event','quiz_complete',{quiz_name:'ichimon_ishihyoji',score:ok,total:order.length});
    var bw=document.getElementById('bWrong');
    if(wrong.length){bw.hidden=false;bw.textContent='間違えた'+wrong.length+'問だけもう一度';}

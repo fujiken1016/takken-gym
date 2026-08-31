@@ -72,6 +72,11 @@
  .share{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:14px;margin:16px 0 0}
  .share pre{margin:0 0 10px;font-family:inherit;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-all}
  .share .note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+ /* 次の一手（弱点→次ページの名指し。サイクル17・2026-08-31） */
+ .weak b.nxh{display:block;font-size:14.5px;margin:0 0 4px}
+ .weak .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:4px 0 2px}
+ .weak a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .weak a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -151,6 +156,37 @@
 </article>
 </main>
 <script>
+/* 完了画面の「次の一手」＝最も弱かった分野に対応するページを名指しで推薦（サイクル17・2026-08-31） */
+window.__NXT={"gyoho": {"name": "賃貸住宅管理業法", "topics": [{"u": "/chinkan/ichimon/", "t": "賃管士の一問一答（○×30問・根拠条文つき）", "d": "業法（ホ）は出題の主軸。登録・業務管理者・重要事項説明を条文で"}, {"u": "/chinkan/shutsudai-taisaku", "t": "賃管士の出題範囲と対策（6分野の全体像）", "d": "宅建にない3分野の潰し方。どこから手を付けるかが決まります"}]}, "sub": {"name": "サブリース規制", "topics": [{"u": "/chinkan/ichimon/", "t": "賃管士の一問一答（○×30問・根拠条文つき）", "d": "誇大広告・不当勧誘・重要事項説明の3点セットを条文で"}, {"u": "/chinkan/shutsudai-taisaku", "t": "賃管士の出題範囲と対策（6分野の全体像）", "d": "サブリースは宅建にない分野。優先順位を先に決めます"}]}, "chintai": {"name": "賃貸借（民法・借地借家法）", "topics": [{"u": "/chinkan/takken-chofuku", "t": "宅建と賃管士はどこまで範囲が重なるか", "d": "条文単位で分解。宅建の貯金がそのまま使える範囲が分かります"}, {"u": "/chinkan/ichimon/", "t": "賃管士の一問一答（○×30問・根拠条文つき）", "d": "賃貸借は宅建と重なる分野。取りこぼすと最ももったいない枠"}]}};
+window.renderWeakNext=function(box,tool,weakest,second,allDone){
+  box.hidden=false;
+  function link(it){return '<a class="nxa" href="'+it.u+'">▸ '+it.t+'<span>'+it.d+'</span></a>';}
+  var html;
+  if(allDone){
+    box.style.borderLeftColor='#2f9e6a'; box.setAttribute('data-weak','none');
+    html='<b class="nxh">全問正解。この12問に穴はありません。</b><p class="nxs">次は30問で網羅を確認し、宅建にない3分野へ進みます。</p>'+
+      link({u:'/chinkan/ichimon/',t:'賃管士の一問一答（○×30問・根拠条文つき）',d:'管理業法・サブリース・賃貸借を横断で'})+
+      link({u:'/chinkan/shutsudai-taisaku',t:'賃管士の出題範囲と対策（6分野の全体像）',d:'宅建にない3分野の潰し方。残り時間の配り方が決まります'});
+  }else{
+    var c=window.__NXT[weakest.key]; if(!c){box.hidden=true;return;}
+    box.style.borderLeftColor='#d33b53'; box.setAttribute('data-weak',weakest.key);
+    html='<b class="nxh">いちばん失点したのは「'+c.name+'」（'+weakest.ok+'／'+weakest.total+'問・正答率'+Math.round(weakest.rate*100)+'%）。</b>'+
+         '<p class="nxs">今日はここだけ塞ぎます。この順に進むのがおすすめです。</p>';
+    c.topics.forEach(function(it){html+=link(it);});
+    if(second&&second.key!==weakest.key&&second.rate<1&&window.__NXT[second.key]){
+      html+='<p class="nxs" style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">次に弱いのは「'+
+            window.__NXT[second.key].name+'」（'+second.ok+'／'+second.total+'問・'+Math.round(second.rate*100)+'%）です。</p>';
+    }
+  }
+  box.innerHTML=html;
+  if(!box.__bound){box.__bound=1;box.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+    try{gtag('event','next_step_click',{tool_name:tool,to_page:a.getAttribute('href'),weak_field:box.getAttribute('data-weak')||''});}catch(err){}
+  });}
+  try{gtag('event','next_step_shown',{tool_name:tool,weak_field:box.getAttribute('data-weak'),weak_rate:allDone?100:Math.round(weakest.rate*100)});}catch(err){}
+};
+</script>
+<script>
 (function(){
  /* 問題データ：/chinkan/ichimon/ の qlist 30問から生成（正本はichimon側。再生成手順はリポジトリREADME） */
  var POOL={"gyoho":[{"a":true,"q":"旅館業法3条1項の許可に係る施設である住宅は、賃貸住宅管理業法上の「賃貸住宅」から除かれる。","e":"「人の生活の本拠として使用する目的以外の目的に供されている」ものとして省令が挙げるのは、旅館業法の許可施設・国家戦略特区の認定施設・住宅宿泊事業の届出住宅の3つ。","l":"賃貸住宅管理業法施行規則1条1号"},{"a":false,"q":"賃貸住宅管理業者は、自己の名義をもって、他人に賃貸住宅管理業を営ませることができる。","e":"名義貸しは禁止されている。条文は「営ませてはならない」と言い切っている。","l":"賃貸住宅管理業法11条"},{"a":false,"q":"登録を取り消された者は、その取消しの日から3年を経過すれば、再び賃貸住宅管理業の登録を受けることができる。","e":"取消しの日から5年を経過しない者は登録を拒否される。法人の場合、取消しの日前30日以内に役員であった者も同じ扱い。","l":"賃貸住宅管理業法6条1項3号"},{"a":false,"q":"国土交通大臣は、賃貸住宅管理業の登録を拒否したときは、その理由を示さずに申請者に通知すれば足りる。","e":"「遅滞なく、その理由を示して」通知しなければならない。理由の提示は省略できない。","l":"賃貸住宅管理業法6条2項"},{"a":false,"q":"賃貸住宅管理業者登録簿は、利害関係を有する者に限り閲覧することができる。","e":"条文は「一般の閲覧に供しなければならない」。閲覧できる者を利害関係人に限る規定はない。","l":"賃貸住宅管理業法8条"},{"a":true,"q":"賃貸住宅管理業の登録の申請書には、営業所又は事務所の名称及び所在地を記載しなければならない。","e":"ほかに商号・名称・氏名及び住所、法人なら役員の氏名、未成年者なら法定代理人の氏名及び住所も記載事項。","l":"賃貸住宅管理業法4条1項4号"},{"a":true,"q":"賃貸住宅管理業者は、その営業所又は事務所ごとに、1人以上の業務管理者を選任しなければならない。","e":"「営業所又は事務所ごとに、一人以上」。会社に1人ではなく、拠点ごとに必要になる点が急所。","l":"賃貸住宅管理業法12条1項"},{"a":true,"q":"賃貸住宅管理業者は、信義を旨とし、誠実にその業務を行わなければならない。","e":"業務処理の原則を定めた条文で、一行しかない。短い条文ほどそのまま出題されやすい。","l":"賃貸住宅管理業法10条"},{"a":false,"q":"標識は、賃貸住宅管理業者の主たる営業所にのみ掲げれば足りる。","e":"「その営業所又は事務所ごとに、公衆の見やすい場所に」掲げなければならない。様式は国土交通省令で定められている。","l":"賃貸住宅管理業法19条"},{"a":false,"q":"賃貸住宅管理業者の使用人その他の従業者は、その従業者でなくなった後は、業務を補助して知り得た秘密を守る義務を負わない。","e":"21条2項は「代理人、使用人その他の従業者でなくなった後においても、同様とする」と定める。義務は退職後も続く。","l":"賃貸住宅管理業法21条2項"},{"a":true,"q":"賃貸住宅管理業者に対する立入検査の権限は、犯罪捜査のために認められたものと解してはならない。","e":"行政上の検査権限であって捜査権限ではない。検査をする職員は身分証明書を携帯し、関係者に提示する必要がある。","l":"賃貸住宅管理業法26条3項"},{"a":true,"q":"国土交通大臣は、賃貸住宅管理業の登録がその効力を失ったときは、当該登録を抹消しなければならない。","e":"有効期間の満了・廃業等の届出による失効・登録の取消しのいずれの場合も、抹消は義務（「しなければならない」）。","l":"賃貸住宅管理業法24条"},{"a":true,"q":"国土交通大臣は、賃貸住宅管理業の適正な運営を確保するため必要があると認めるときは、賃貸住宅管理業者に対し、業務の運営の改善に必要な措置をとるべきことを命ずることができる。","e":"業務改善命令。「その必要の限度において」という縛りが条文に書かれている点も押さえたい。","l":"賃貸住宅管理業法22条"}],"sub":[{"a":true,"q":"誇大広告等が禁止される事項には、賃貸住宅の維持保全に要する費用の分担に関する事項が含まれる。","e":"省令が挙げるのは、①家賃の額・支払期日・支払方法等の賃貸の条件とその変更、②維持保全の実施方法、③維持保全に要する費用の分担、④契約の解除の4つ。","l":"賃貸住宅管理業法施行規則42条3号"},{"a":false,"q":"誇大広告等の禁止で対象となるのは、著しく事実に相違する表示だけであり、実際より著しく優良・有利であると誤認させる表示は含まれない。","e":"条文は「著しく事実に相違する表示をし、又は実際のものよりも著しく優良であり、若しくは有利であると人を誤認させるような表示をしてはならない」と、両方を禁じている。","l":"賃貸住宅管理業法28条"},{"a":true,"q":"特定賃貸借契約の解除を妨げるために相手方を威迫する行為は、不当な勧誘等として禁止されている。","e":"法29条2号を受けた省令が、威迫・迷惑を覚えさせる時間の電話や訪問・深夜や長時間の勧誘・執ような勧誘の4類型を挙げている。","l":"賃貸住宅管理業法施行規則43条1号"},{"a":true,"q":"特定賃貸借契約を締結しない旨の意思を表示した相手方に対して執ように勧誘する行為は、禁止されている。","e":"「勧誘を受けることを希望しない旨の意思」を表示した場合も含まれる、と省令のかっこ書が明記している。","l":"賃貸住宅管理業法施行規則43条4号"},{"a":true,"q":"特定賃貸借契約の締結時に交付する書面には、転借人の資格その他の転貸の条件に関する事項を記載しなければならない。","e":"ほかに対象となる賃貸住宅、家賃その他の賃貸の条件、維持保全の実施方法、契約期間、更新・解除の定めがあるときはその内容が記載事項。","l":"賃貸住宅管理業法31条1項5号"},{"a":false,"q":"勧誘者に対しては、国土交通大臣は指示をすることはできても、勧誘を行うことを停止すべきことを命ずることはできない。","e":"勧誘者が誇大広告等の禁止・不当な勧誘等の禁止に違反したときなどは、1年以内の期間を限り勧誘の停止を命ずることができる。","l":"賃貸住宅管理業法34条2項"}],"chintai":[{"a":false,"q":"賃借人の責めに帰すべき事由によって修繕が必要となったときでも、賃貸人は修繕をする義務を負う。","e":"606条1項本文は賃貸人の修繕義務を定めるが、ただし書が「賃借人の責めに帰すべき事由によってその修繕が必要となったときは、この限りでない」と外している。","l":"民法606条1項ただし書"},{"a":false,"q":"賃借人は、急迫の事情がある場合でも、賃貸人に修繕が必要である旨を通知して相当の期間が経過しなければ、自ら修繕をすることはできない。","e":"賃借人が自ら修繕できるのは、①通知した（又は賃貸人が知った）のに相当の期間内に修繕しないとき、②急迫の事情があるときの2つ。②は通知も期間の経過も要らない。","l":"民法607条の2第2号"},{"a":false,"q":"賃借物の一部が使用収益できなくなり、残存する部分のみでは賃借した目的を達することができない場合でも、賃借人は賃料の減額を求められるにとどまり、契約を解除することはできない。","e":"611条2項は「賃借人は、契約の解除をすることができる」と定める。しかもこの解除は、賃借人の責めに帰すべき事由の有無を条文上の要件としていない。","l":"民法611条2項"},{"a":true,"q":"賃借人が賃貸人の承諾を得ずに第三者に賃借物の使用又は収益をさせたときは、賃貸人は契約を解除することができる。","e":"612条1項が無断の譲渡・転貸を禁じ、2項が違反した場合の解除権を定める。","l":"民法612条2項"},{"a":true,"q":"賃借人が適法に転貸した場合、賃貸人は、賃借人との賃貸借を合意により解除したことを転借人に対抗することができない。","e":"ただし、解除の当時に賃貸人が賃借人の債務不履行による解除権を有していたときは対抗できる（613条3項ただし書）。","l":"民法613条3項"},{"a":false,"q":"建物の賃料は、特約がなければ毎月初めに前払いしなければならない。","e":"民法の原則は後払いで、動産・建物・宅地は毎月末、その他の土地は毎年末。実務で前払いが多いのは特約によるもの。","l":"民法614条"},{"a":false,"q":"建物の賃貸借は、その登記をしなければ、その後その建物について物権を取得した者に対抗することができない。","e":"「その登記がなくても、建物の引渡しがあったときは」効力を生ずる。しかもこれに反する特約で賃借人・転借人に不利なものは無効（37条）。","l":"借地借家法31条"},{"a":true,"q":"賃貸人が期間満了の1年前から6月前までの間に更新をしない旨の通知をしていた場合でも、期間満了後に賃借人が使用を継続し、賃貸人が遅滞なく異議を述べなかったときは、契約は更新されたものとみなされる。","e":"通知を出しても、そのあと黙って使わせ続ければ法定更新になる。更新後の期間は「定めがないもの」となる。転借人の使用継続も賃借人の使用継続とみなされる（26条3項）。","l":"借地借家法26条2項"},{"a":false,"q":"一定の期間建物の借賃を増額しない旨の特約がある場合でも、賃貸人は借賃の増額を請求することができる。","e":"32条1項ただし書は「一定の期間建物の借賃を増額しない旨の特約がある場合には、その定めに従う」とする。増額しない特約は有効。なお減額しない特約は同様の規定がない。","l":"借地借家法32条1項ただし書"},{"a":false,"q":"建物の賃貸借が期間の満了により終了する場合、賃貸人が転借人に終了の通知をしたときは、転貸借は直ちに終了する。","e":"通知がされた日から6月を経過することによって終了する。通知をしなければそもそも終了を転借人に対抗できない（34条1項）。","l":"借地借家法34条2項"},{"a":true,"q":"居住用建物の賃借人が相続人なしに死亡した場合、婚姻の届出はしていないが事実上夫婦と同様の関係にあった同居者は、賃借人の権利義務を承継する。","e":"ただし、相続人なしに死亡したことを知った後1月以内に賃貸人へ反対の意思を表示したときは承継しない。事実上の養親子も同じ扱い。","l":"借地借家法36条1項"}]};
@@ -213,7 +249,7 @@
  }
  function finish(){
    tr.hidden=true; res.hidden=false;
-   var okAll=0,rows='',weakest=null,gridLines=[];
+   var okAll=0,rows='',ranked=[],gridLines=[];
    CATS.forEach(function(c){
      var arr=resByCat[c.k],okN=arr.filter(Boolean).length;
      okAll+=okN;
@@ -222,8 +258,9 @@
      gridLines.push(c.short+' '+grid);
      rows+='<tr><td>'+c.name+'</td>'+
            '<td class="num">'+okN+' / '+c.take+'</td><td class="g">'+grid+'</td></tr>';
-     if(weakest===null||rate<weakest.rate)weakest={rate:rate,cat:c};
+     ranked.push({key:c.k,name:c.name,ok:okN,total:c.take,rate:rate});
    });
+   ranked.sort(function(a,b){return a.rate-b.rate;});
    var total=Math.round(okAll/order.length*50);
    var g=grade(total);
    document.getElementById('rPts').textContent=total;
@@ -231,15 +268,8 @@
    rk.textContent=g.label; rk.className='rrank '+g.cls;
    document.getElementById('rRows').innerHTML=rows;
    var weakBox=document.getElementById('rWeak');
-   if(weakest&&weakest.rate<1){
-     weakBox.hidden=false;
-     weakBox.style.borderLeftColor='#d33b53';
-     weakBox.innerHTML='いちばん失点したのは<b>'+weakest.cat.name+'</b>。<a href="/chinkan/ichimon/">賃管士の一問一答（無料・根拠条文つき）</a>で今日中に塞いでおきましょう。';
-   }else{
-     weakBox.hidden=false;
-     weakBox.style.borderLeftColor='#2f9e6a';
-     weakBox.innerHTML='全問正解！この12問に穴はありません。<a href="/chinkan/ichimon/">一問一答の全30問</a>で網羅を確認しましょう。';
-   }
+   try{window.renderWeakNext(weakBox,'chinkan_chikaradameshi',ranked[0],ranked[1],(ranked.length>0&&ranked[0].rate>=1));}catch(e){}
+   try{gtag('event','quiz_complete',{quiz_name:'chinkan_chikaradameshi',score:total,grade:g.label});}catch(e){}
    document.getElementById('shareText').textContent=
      '賃管士 力試し '+total+'/50点【'+g.label+'】\n'+gridLines.join('\n')+'\nhttps://takken.mainichi-lab.com/chinkan/chikaradameshi/';
  }
