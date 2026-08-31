@@ -7,8 +7,7 @@
     "/HOUKAISEI_CHECK.md",
     "/KAITOU_SOKUHOU_RUNBOOK.md",
     "/vercel.json",
-    "/.docs/HOUKAISEI_CHECK.md",
-    "/横断整合チェック_2026-08-31.md"
+    "/.docs/HOUKAISEI_CHECK.md"
   ],
   "exclude": []
 }
