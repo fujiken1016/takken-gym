@@ -83,6 +83,12 @@
  .v-ok{border-left:4px solid #2e8b57}
  .v-mid{border-left:4px solid #d99a00}
  .v-ng{border-left:4px solid #c8471b}
+ /* 次の一手（完了時の回遊。サイクル17・2026-08-31） */
+ .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:12px;padding:14px 15px;margin:18px 0 4px;text-align:left}
+ .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
+ .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -202,6 +208,7 @@
     </ul>
   </div>
 
+  <div class="nx" id="rNext" hidden></div>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px">
     <button class="rst" id="rst" type="button">このリストのチェックを消す</button>
     <span class="saved" id="saved"></span>
@@ -336,7 +343,29 @@
     });
     num.textContent = done + ' / ' + boxes.length;
     fill.style.width = boxes.length ? (done / boxes.length * 100) + '%' : '0';
+    var isAll = (boxes.length > 0 && done === boxes.length);
+    if (_allok === false && isAll) {
+      try{gtag('event','checklist_complete',{tool_name:'chinkan_moushikomi',mode:mode,items:boxes.length});}catch(e){}
+      try{gtag('event','next_step_shown',{tool_name:'chinkan_moushikomi'});}catch(e){}
+    }
+    nxRender(isAll,'chinkan_moushikomi');
+    _allok = isAll;
   }
+
+  var NX_HTML = '<p class="nxh">申込はこれで完了です。ここからは中身の勝負。</p>'+'<p class="nxs">教材を決める前に、まず今どのくらい取れるのかを測るほうが遠回りになりません。</p>'+'<a class="nxa" href="/chinkan/chikaradameshi/">▸ 賃管士 力試し（無料12問・50点換算）<span>2分で現在地。分野別の正答率とS〜C判定が出ます</span></a>'+'<a class="nxa" href="/chinkan/ichimon/">▸ 賃管士の一問一答（○×30問・根拠条文つき）<span>そのまま演習に入る。登録不要・無料</span></a>'+'<a class="nxa" href="/chinkan/shutsudai-taisaku">▸ 賃管士の出題範囲と対策（6分野の全体像）<span>宅建にない3分野の潰し方。残り時間の配り方が決まります</span></a>';
+  var _allok = null; /* 完了イベントは「未完了→完了」の遷移時のみ（読込時の再送防止） */
+  /* ---- 次の一手（全項目チェック時だけ出す。サイクル17・2026-08-31） ---- */
+  function nxRender(show,tool){
+    var box=document.getElementById('rNext'); if(!box)return;
+    if(!show){box.hidden=true;return;}
+    if(box.innerHTML==='')box.innerHTML=NX_HTML;
+    box.hidden=false;
+    if(!box.__bound){box.__bound=1;box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:tool,to_page:a.getAttribute('href')});}catch(err){}
+    });}
+  }
+
 
   function persist(mode){
     var ul = listOf(mode);

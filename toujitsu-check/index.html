@@ -81,6 +81,12 @@
   .ck[aria-pressed="true"] .tx{opacity:1}
   .tl li{padding-bottom:8px}
  }
+ /* 次の一手（完了時の回遊。サイクル17・2026-08-31） */
+ .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:12px;padding:14px 15px;margin:18px 0 4px;text-align:left}
+ .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
+ .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -157,6 +163,7 @@
     <button type="button" class="ck" data-k="k-chakuseki"><span class="box">✓</span><span class="tx"><b>12時30分までに自席に着席</b><small>登録講習修了者（5問免除）は12時40分まで</small></span></button>
   </div>
 
+  <div class="nx noprint" id="rNext" hidden></div>
   <button type="button" class="reset" id="bReset">チェックをすべてリセットする</button>
   <p class="savenote" id="saveNote">チェック状態はこの端末のブラウザにのみ保存されます（サーバーには送信されません）。</p>
 
@@ -233,6 +240,20 @@
   }
   var state=load();
 
+  var NX_HTML='<p class="nxh">準備はこれで完了です。あとは当日の3つだけ。</p>'+'<p class="nxs">今夜は新しい問題に手を出さないのが正解。当日朝と試験後にやることだけ置いておきます。</p>'+'<a class="nxa" href="/toukei-quiz/">▸ 統計クイズ2026（暗記チェック12問）<span>当日朝の最終確認に。問48は直前に見た数字がそのまま1点になります</span></a>'+'<a class="nxa" href="/blog/takken-shiken-toujitsu#junban">▸ 当日ガイド：時間配分と解く順番<span>どの分野から解くかは今日のうちに決めておく。本番で迷わないために</span></a>'+'<a class="nxa" href="/kaitou-sokuhou/">▸ 解答速報・自己採点【2026年度】<span>試験当日15時以降に公開。50問を入力すると自動採点されます</span></a>';
+
+  /* ---- 次の一手（全項目チェック時だけ出す。サイクル17・2026-08-31） ---- */
+  function nxRender(show,tool){
+    var box=document.getElementById('rNext'); if(!box)return;
+    if(!show){box.hidden=true;return;}
+    if(box.innerHTML==='')box.innerHTML=NX_HTML;
+    box.hidden=false;
+    if(!box.__bound){box.__bound=1;box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:tool,to_page:a.getAttribute('href')});}catch(err){}
+    });}
+  }
+
   var _allok=null; /* 全完了イベントは「未完了→完了」の遷移時のみ送る（読込時の再送防止） */
   function render(){
     var done=0;
@@ -246,7 +267,11 @@
     var isAll=(done===btns.length&&btns.length>0);
     if(isAll){prog.classList.add("allok");}
     else{prog.classList.remove("allok");}
-    if(_allok===false&&isAll){try{gtag('event','checklist_complete',{tool_name:'toujitsu_check',items:btns.length});}catch(e){}}
+    if(_allok===false&&isAll){
+      try{gtag('event','checklist_complete',{tool_name:'toujitsu_check',items:btns.length});}catch(e){}
+      try{gtag('event','next_step_shown',{tool_name:'toujitsu_check'});}catch(e){}
+    }
+    nxRender(isAll,'toujitsu_check');
     _allok=isAll;
   }
 

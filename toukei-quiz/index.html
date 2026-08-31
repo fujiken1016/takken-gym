@@ -70,6 +70,14 @@
  .share{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:14px;margin:16px 0 0}
  .share pre{margin:0 0 10px;font-family:inherit;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-all}
  .share .note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+ /* 次の一手（完了画面の回遊。サイクル17・2026-08-31） */
+ .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 15px;margin:16px 0 4px;text-align:left}
+ .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
+ .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .nx.warm{border-left-color:#d33b53}
+ .nx.done{border-left-color:#2f9e6a}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -115,6 +123,7 @@
       <button type="button" class="tsub" id="bCopy" style="margin-top:0">結果をコピーする</button>
       <p class="note">X・LINE・勉強仲間のグループにそのまま貼れます。</p>
     </div>
+    <div class="nx" id="rNext" hidden></div>
     <button type="button" class="tnext" id="bAgain">もう一度チェックする</button>
   </div>
 
@@ -144,6 +153,30 @@
   </div>
 </article>
 </main>
+<script>
+/* 完了画面の「次の一手」（サイクル17・2026-08-31） */
+window.__NX = {"tool": "toukei_quiz", "low": {"h": "統計はまだ数字が入っていません。表で入れ直す。", "s": "問48は「覚えていれば取れる1点」。今日中に表を1回見直して、明日もう一度ここに戻ってください。", "items": [{"u": "/blog/takken-toukei-2026", "t": "統計問題2026の数字まとめ（出典つき）", "d": "公表資料の出典つき。増減の向きまで表で確認できます"}, {"u": "/ichimon/zei", "t": "税・その他の一問一答（○×16問）", "d": "問48と同じ「税・その他」枠。論点が少ないぶん確実に取りにいける"}]}, "high": {"h": "統計の1点はほぼ確保。次は全体を測る。", "s": "統計は試験週にもう一度だけ回せば十分です。", "items": [{"u": "/chikaradameshi/", "t": "宅建 力試し（12問ミニテスト／50問の本番モード）", "d": "分野別の正答率とS〜C判定。今の位置を測ってから次を決める"}, {"u": "/ichimon/zei", "t": "税・その他の一問一答（○×16問）", "d": "問23〜25の税と地価公示・鑑定評価。統計と同じ枠でもう1点"}]}};
+window.renderNextStep=function(ok,total){
+  var box=document.getElementById('rNext'); if(!box||!window.__NX)return;
+  var rate=total?Math.round(ok/total*100):0;
+  var band=(rate>=70)?'high':'low';
+  var cfg=window.__NX[band];
+  var html='<p class="nxh">'+cfg.h+'</p>'+(cfg.s?'<p class="nxs">'+cfg.s+'</p>':'');
+  cfg.items.forEach(function(it){html+='<a class="nxa" href="'+it.u+'">▸ '+it.t+'<span>'+it.d+'</span></a>';});
+  box.className='nx '+(band==='high'?'done':'warm');
+  box.setAttribute('data-band',band);
+  box.innerHTML=html;
+  box.hidden=false;
+  if(!box.__bound){
+    box.__bound=1;
+    box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:window.__NX.tool,to_page:a.getAttribute('href'),band:box.getAttribute('data-band')});}catch(err){}
+    });
+  }
+  try{gtag('event','next_step_shown',{tool_name:window.__NX.tool,score_rate:rate,band:band});}catch(err){}
+};
+</script>
 <script>
 (function(){
  /* 出題データ：正本＝/blog/takken-toukei-2026（国交省・財務省の公表値を出典つきで整理済み）。
@@ -241,6 +274,7 @@
    var rk=document.getElementById('rRank');
    rk.textContent=g.label; rk.className='rrank '+g.cls;
    try{gtag('event','quiz_complete',{quiz_name:'toukei_quiz',score:ok,grade:g.label});}catch(e){}
+   try{window.renderNextStep(ok,12);}catch(e){}
    var mBox=document.getElementById('rMiss');
    mBox.hidden=false;
    if(miss.length){

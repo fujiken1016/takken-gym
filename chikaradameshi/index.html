@@ -104,6 +104,13 @@
  .paceT th,.paceT td{font-size:13.5px;padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;line-height:1.6}
  .paceT th{color:var(--muted);font-size:12px;font-weight:800}
  .paceT td.num{text-align:right;white-space:nowrap;font-weight:800}
+ /* 次の一手（弱点→論点別ページの名指し推薦。サイクル17・2026-08-31） */
+ .weak b.nxh{display:block;font-size:14.5px;margin:0 0 4px}
+ .weak .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:4px 0 2px}
+ .weak a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
+ .weak a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .weak .nxp{font-size:12px;color:var(--muted);line-height:1.8;margin:10px 0 0;border-top:1px dashed var(--line);padding-top:9px}
+ .weak .nxp a{color:var(--brand2);font-weight:800}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -271,6 +278,56 @@
 </article>
 </main>
 <script>
+/* 完了画面の「次の一手」＝最も弱かった分野に対応する論点別ページを名指しで推薦する
+   （サイクル17・2026-08-31。学習の次の一手が主、商品はページ下部のCTAで従） */
+window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho", "t": "宅建業法の一問一答（○×24問）", "d": "分野をまとめて回すならこちら。本試験20問の最大分野"}, "topics": [{"u": "/ichimon/cooling-off", "t": "クーリング・オフの問題（○×17問）", "d": "8種制限の最頻出。事務所等の範囲・8日の起算日・特約の可否を根拠条文つきで"}, {"u": "/ichimon/hoshu", "t": "報酬計算の問題（計算して選ぶ13問）", "d": "速算式3%＋6万円・代理は2倍・空家等の特例まで。計算は覚えれば落とさない"}]}, "kenri": {"name": "権利関係", "field": {"u": "/ichimon/kenri", "t": "権利関係の一問一答（○×26問）", "d": "分野をまとめて回すならこちら。本試験14問"}, "topics": [{"u": "/ichimon/ishihyoji", "t": "意思表示の問題（○×18問）", "d": "権利関係の最頻出。第三者保護が「善意」か「善意無過失」かの比較表つき"}]}, "horei": {"name": "法令上の制限", "field": {"u": "/ichimon/horei", "t": "法令上の制限の一問一答（○×18問）", "d": "分野をまとめて回すならこちら。本試験8問"}, "topics": [{"u": "/ichimon/kaihatsu", "t": "開発許可の問題（○×22問）", "d": "市街化区域1,000㎡・三大都市圏500㎡・調整区域は規模不問。面積基準の当てはめが本番"}, {"u": "/ichimon/kenpei-yoseki", "t": "建蔽率・容積率の計算問題（計算して選ぶ13問）", "d": "角地＋1/10・防火＋1/10・前面道路×法定乗数。計算は落とさない1点"}, {"u": "/ichimon/nochiho", "t": "農地法の問題（○×14問）", "d": "ほぼ毎年1問。3条4条5条の許可権者と市街化区域内の特例だけで取れる"}]}, "zei": {"name": "税・その他", "field": {"u": "/ichimon/zei", "t": "税・その他の一問一答（○×16問）", "d": "分野をまとめて回すならこちら。論点が少ないぶん確実に取りにいける"}, "topics": [{"u": "/toukei-quiz/", "t": "統計クイズ2026（暗記チェック12問）", "d": "問48は覚えていれば取れる1点。増減の向きの入替えが定番の引っかけ"}, {"u": "/blog/takken-mon46-50", "t": "問46〜50（免除科目）の対策まとめ", "d": "機構・景表法・統計・土地・建物。出典つきで押さえる範囲を絞る"}], "note": "問25（地価公示法・不動産鑑定評価基準）を条文の原文まで詰めたい場合は、運営者が自分で作った教材（<a href=\"https://note.com/fujiken818/n/ne087a09b24d4\" target=\"_blank\" rel=\"noopener\">note ¥300</a>）もあります。まずは上の無料ページで足ります。"}, "menjo": {"name": "免除科目", "field": {"u": "/blog/takken-mon46-50", "t": "問46〜50（免除科目）の対策まとめ", "d": "機構・景表法・統計・土地・建物。出典つきで押さえる範囲を絞る"}, "topics": [{"u": "/toukei-quiz/", "t": "統計クイズ2026（暗記チェック12問）", "d": "問48は覚えていれば取れる1点。増減の向きの入替えが定番の引っかけ"}]}};
+(function(){
+ function link(it){return '<a class="nxa" href="'+it.u+'">▸ '+it.t+'<span>'+it.d+'</span></a>';}
+ function bind(box,tool){
+   if(box.__bound)return; box.__bound=1;
+   box.addEventListener('click',function(e){
+     var a=e.target&&e.target.closest?e.target.closest('a.nxa,.nxn a,.nxp a'):null; if(!a)return;
+     try{gtag('event','next_step_click',{tool_name:tool,to_page:a.getAttribute('href'),weak_field:box.getAttribute('data-weak')||''});}catch(err){}
+   });
+ }
+ /* weakest/second = {key,name,ok,total,rate} ／ allDone=全問正解 */
+ window.renderWeakNext=function(box,tool,weakest,second,allDone,perfectItems,perfectMsg){
+   box.hidden=false;
+   if(allDone){
+     box.style.borderLeftColor='#2f9e6a';
+     box.setAttribute('data-weak','none');
+     var h='<b class="nxh">全問正解。この範囲に穴はありません。</b><p class="nxs">'+perfectMsg+'</p>';
+     (perfectItems||[]).forEach(function(it){h+=link(it);});
+     box.innerHTML=h;
+     bind(box,tool);
+     try{gtag('event','next_step_shown',{tool_name:tool,weak_field:'none',weak_rate:100});}catch(err){}
+     return;
+   }
+   var c=window.__NXT[weakest.key]; if(!c){box.innerHTML='';box.hidden=true;return;}
+   box.style.borderLeftColor='';
+   box.setAttribute('data-weak',weakest.key);
+   var pct=Math.round(weakest.rate*100);
+   var html='<b class="nxh">いちばん失点したのは「'+c.name+'」（'+weakest.ok+'／'+weakest.total+'問・正答率'+pct+'%）。</b>'+
+            '<p class="nxs">今日はここだけ塞ぎます。この順に解くのがおすすめです。</p>';
+   c.topics.forEach(function(it){html+=link(it);});
+   html+=link(c.field);
+   if(second&&second.key!==weakest.key&&second.rate<1){
+     var c2=window.__NXT[second.key];
+     if(c2){
+       var t2=c2.topics[0]||c2.field;
+       html+='<p class="nxs nxn" style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">'+
+             '次に弱いのは「'+c2.name+'」（'+second.ok+'／'+second.total+'問・'+Math.round(second.rate*100)+'%）。時間が残ったら → '+
+             '<a href="'+t2.u+'" style="color:var(--brand2);font-weight:900;text-decoration:none">'+t2.t+'</a></p>';
+     }
+   }
+   if(c.note)html+='<p class="nxp">'+c.note+'</p>';
+   box.innerHTML=html;
+   bind(box,tool);
+   try{gtag('event','next_step_shown',{tool_name:tool,weak_field:weakest.key,weak_rate:pct});}catch(err){}
+ };
+})();
+</script>
+<script>
 (function(){
  /* 問題データ：/ichimon/ 4ページの qlist から生成（正本はichimon側。再生成手順はリポジトリREADME） */
  var POOL={"gyoho":[{"a":true,"q":"自ら貸借（転貸を含む）は宅建業に当たらないので、免許は不要である。","e":"自ら貸借は「業」に含まれず免許不要。売買・媒介・代理は必要。"},{"a":false,"q":"宅地建物取引士証の有効期間は3年である。","e":"正しくは5年。更新時は原則、法定講習の受講が必要。"},{"a":false,"q":"重要事項の説明は、契約が成立した後に行えばよい。","e":"契約成立『前』に宅建士が行う。"},{"a":true,"q":"37条書面には宅地建物取引士の記名が必要である。","e":"記名は必要（説明までは不要）。契約成立後に交付。"},{"a":true,"q":"クーリング・オフは、書面で告げられた日から8日以内に書面で行う。","e":"8日以内・書面で行う（発信主義）。"},{"a":false,"q":"業者売主・非業者買主の場合、手付は代金の3割まで受領できる。","e":"上限は代金の2割（10分の2）。"},{"a":true,"q":"営業保証金は、主たる事務所につき1,000万円である。","e":"その他の事務所は各500万円。有価証券でも可。"},{"a":true,"q":"保証協会の弁済業務保証金分担金は、主たる事務所につき60万円である。","e":"その他は各30万円。金銭で納付（有価証券不可）。"},{"a":false,"q":"専任媒介契約の有効期間は最長6か月である。","e":"最長3か月。超える定めは3か月に短縮。"},{"a":true,"q":"専任媒介では、レインズへの登録を契約日から7日以内（休業日を除く）に行う。","e":"専属専任はさらに厳しく5日以内。"},{"a":true,"q":"事務所には、業務に従事する者5人に1人以上の割合で専任宅建士を置く。","e":"不足したら2週間以内に補充が必要。"},{"a":false,"q":"誇大広告は、実際に損害が発生しなければ違反にならない。","e":"損害がなく契約に至らなくても違反となる。"},{"a":false,"q":"未完成物件は、建築確認等の前でも広告を開始できる。","e":"必要な許可・確認の後でなければ広告できない。"},{"a":false,"q":"宅建業者は、複数の保証協会に同時に加入できる。","e":"一の協会にしか加入できない。"},{"a":false,"q":"重要事項説明の際、宅建士は相手方の請求がなければ宅建士証を提示しなくてよい。","e":"請求がなくても提示しなければならない。"},{"a":true,"q":"業務停止処分の期間は、1年以内である。","e":"指示・業務停止（1年以内）・免許取消しが監督処分。"},{"a":true,"q":"事務所ごとに、公衆の見やすい場所に標識を掲げなければならない。","e":"案内所等にも標識の掲示が必要。"},{"a":true,"q":"宅建業の帳簿は、各事業年度末に閉鎖し、原則5年間保存する。","e":"自ら売主の新築住宅は10年間。従業者名簿は10年間。"},{"a":false,"q":"代理の場合の報酬限度額は、媒介の場合の3倍である。","e":"2倍が上限。"},{"a":false,"q":"クーリング・オフされた場合、業者は買主に損害賠償を請求できる。","e":"損害賠償・違約金は請求できず、手付金等を速やかに返還する。"},{"a":false,"q":"手付金等の保全措置は、手付金等を受領した後に講じればよい。","e":"受領する『前』に講じる必要がある。"},{"a":false,"q":"8種制限は、買主が宅建業者であっても適用される。","e":"買主が業者の場合は適用されない。"},{"a":true,"q":"刑法改正により、宅建業法の欠格事由の「禁錮以上の刑」は「拘禁刑以上の刑」に改められた。","e":"2025年6月1日施行。懲役と禁錮が拘禁刑に一本化された。"},{"a":false,"q":"35条書面・37条書面は、相手方の承諾があっても電磁的方法で提供できない。","e":"承諾があれば電子交付できる（2022年5月施行）。押印義務も廃止。"}],"kenri":[{"a":true,"q":"未成年者が法定代理人の同意なくした契約は、原則として取り消せる。","e":"単に利益を得る行為等は例外。"},{"a":false,"q":"詐欺による取消しは、善意無過失の第三者に対抗できる。","e":"対抗できない（第三者が保護される）。"},{"a":true,"q":"強迫による取消しは、善意の第三者にも対抗できる。","e":"強迫された者を厚く保護。"},{"a":false,"q":"錯誤による意思表示は、無効である。","e":"2020年改正で『取消し』事由になった。"},{"a":true,"q":"不動産の二重譲渡では、先に登記を備えた者が優先する。","e":"契約の先後ではなく登記の先後。"},{"a":true,"q":"取得時効は、善意無過失なら10年で完成する。","e":"そうでなければ20年。"},{"a":false,"q":"保証契約は、口頭の合意だけで有効に成立する。","e":"書面（電磁的記録）でしなければ効力を生じない。"},{"a":false,"q":"連帯保証人には、検索の抗弁権がある。","e":"催告・検索の抗弁権も分別の利益もない。"},{"a":true,"q":"普通借地権の存続期間は、原則30年である。","e":"短い定めは30年に。長い定めは有効。"},{"a":true,"q":"建物賃貸借で期間を1年未満と定めると、期間の定めのない賃貸借とみなされる。","e":"借地の30年とは別のルール。"},{"a":false,"q":"配偶者と子が相続人の場合、配偶者の相続分は3分の2である。","e":"各2分の1。直系尊属となら2/3。"},{"a":true,"q":"兄弟姉妹には遺留分がない。","e":"遺留分権利者は配偶者・子・直系尊属。"},{"a":false,"q":"抵当権は、目的物の引渡しがなければ成立しない。","e":"非占有担保。登記で対抗し引渡しは不要。"},{"a":true,"q":"自己契約・双方代理は、原則として無権代理とみなされる。","e":"本人の許諾・債務の履行は例外。"},{"a":true,"q":"共有物の保存行為は、各共有者が単独でできる。","e":"軽微でない変更は全員の同意、管理・軽微な変更（形状・効用の著しい変更を伴わないもの）は持分価格の過半数（2023年施行の民法改正）。"},{"a":false,"q":"敷金は、賃借人が明渡しをする前に返還しなければならない。","e":"明渡し後に、未払賃料等を控除して返還。"},{"a":true,"q":"心裡留保による意思表示は、原則として有効である。","e":"相手方が悪意・有過失なら無効。"},{"a":true,"q":"公序良俗に反する法律行為は、無効である。","e":"当事者が合意していても無効。"},{"a":true,"q":"相手方のある意思表示は、原則として相手方に到達した時に効力を生じる。","e":"到達主義。クーリング・オフは例外的に発信主義。"},{"a":true,"q":"譲渡制限の意思表示がされた債権でも、譲渡自体は原則として有効である。","e":"2020年改正。悪意・重過失の譲受人には履行を拒める。"},{"a":false,"q":"催告をすれば、それだけで時効は更新される。","e":"催告は6か月の完成猶予にとどまる。"},{"a":false,"q":"留置権には、原則として優先弁済的効力がある。","e":"優先弁済的効力はない（事実上の弁済を促す）。"},{"a":true,"q":"賃借人が対抗要件を備えた後に不動産が譲渡されると、賃貸人たる地位は原則として譲受人に移転する。","e":"敷金関係も承継。対抗には所有権移転登記が必要。"},{"a":true,"q":"遺産分割の効力は、原則として相続開始の時にさかのぼって生じる。","e":"いつでも分割請求可（遺言による5年以内の禁止等は例外）。"},{"a":true,"q":"相続により所有権を取得した者は、原則として3年以内に相続登記を申請しなければならない。","e":"2024年4月1日施行で義務化。怠ると10万円以下の過料。"},{"a":false,"q":"専有部分と敷地利用権は、原則として分離して処分することができる。","e":"原則、分離処分は禁止（規約に別段の定めがあるときを除く）。"}],"horei":[{"a":true,"q":"市街化区域内では、1,000㎡以上の開発行為に原則として許可が必要である。","e":"三大都市圏の一定区域は500㎡以上。"},{"a":false,"q":"市街化調整区域では、規模が小さければ開発許可は不要である。","e":"規模にかかわらず原則許可が必要。"},{"a":false,"q":"開発許可は、市町村長が行う。","e":"都道府県知事（指定都市等の長）が行う。"},{"a":true,"q":"建築物の敷地は、原則として幅員4m以上の道路に2m以上接する必要がある。","e":"接道義務。2項道路はみなし道路。"},{"a":true,"q":"防火地域内の耐火建築物等は、建蔽率が10分の1緩和される。","e":"指定角地でさらに1/10緩和。"},{"a":false,"q":"容積率は、建築面積の敷地面積に対する割合である。","e":"それは建蔽率。容積率は延べ面積の割合。"},{"a":true,"q":"国土法の事後届出は、契約締結日から2週間以内に行う。","e":"届け出るのは権利取得者（買主等）。"},{"a":false,"q":"対価のない贈与でも、国土法の事後届出が必要である。","e":"対価がないので届出不要。"},{"a":true,"q":"農地の権利移動（3条）には、農業委員会の許可が必要である。","e":"4条・5条は原則、知事等の許可。"},{"a":true,"q":"市街化区域内の農地の転用（4条）は、農業委員会への届出でよい。","e":"あらかじめ届出をすれば許可不要。"},{"a":false,"q":"盛土規制法の規制区域の指定は、市町村長が行う。","e":"都道府県知事が指定する。"},{"a":true,"q":"用途地域は、全部で13種類ある。","e":"住居系8・商業系2・工業系3。"},{"a":false,"q":"工業専用地域内には、住宅を建築できる。","e":"工業専用地域に住宅は建てられない。"},{"a":true,"q":"換地処分の公告日の翌日に、換地は従前の宅地とみなされる。","e":"仮換地指定で従前地は使用収益できなくなる。"},{"a":true,"q":"防火・準防火地域外では、床面積10㎡以内の増築に建築確認は不要である。","e":"10㎡を超えると確認が必要。"},{"a":true,"q":"低層住居専用地域・田園住居地域には、絶対高さの限度（10m又は12m）がある。","e":"絶対高さ制限はこれらの地域に限られる。"},{"a":true,"q":"日影規制は、商業地域・工業地域・工業専用地域には原則として適用されない。","e":"住居系等が中心。"},{"a":false,"q":"仮換地の指定を受けても、従前の宅地を引き続き使用収益できる。","e":"従前地は使用収益できなくなり、仮換地を使用収益する。"}],"zei":[{"a":true,"q":"不動産取得税は、都道府県税である。","e":"相続による取得は非課税。"},{"a":false,"q":"相続による不動産の取得にも、不動産取得税が課される。","e":"相続取得は非課税。"},{"a":true,"q":"固定資産税は、毎年1月1日現在の所有者に課税される。","e":"市町村税、標準税率1.4％。"},{"a":false,"q":"固定資産税は、都道府県税である。","e":"市町村税。"},{"a":false,"q":"建物の賃貸借契約書には、印紙税が課される。","e":"建物の賃貸借は不課税（土地は課税）。"},{"a":false,"q":"印紙税を納付しないと、契約は無効になる。","e":"効力に影響なし。過怠税が課される。"},{"a":true,"q":"登録免許税は、国税である。","e":"登記等に課される。表示登記は原則非課税。"},{"a":false,"q":"土地建物の譲渡所得は、他の所得と合算して総合課税される。","e":"分離課税。"},{"a":true,"q":"譲渡年の1月1日で所有期間が5年超なら、長期譲渡所得となる。","e":"5年以下は短期。税率が異なる。"},{"a":true,"q":"地価公示の標準地の価格は、毎年1月1日を基準日とする。","e":"土地鑑定委員会が判定・公示。指標にとどまる。"},{"a":true,"q":"鑑定評価の三手法は、原価法・取引事例比較法・収益還元法である。","e":"複数手法の適用が原則。"},{"a":false,"q":"住宅金融支援機構は、個人向けの直接融資を主要業務としている。","e":"証券化支援（フラット35）が主。直接融資は例外的。"},{"a":true,"q":"徒歩所要時間は、道路距離80mにつき1分で算出する。","e":"端数は切り上げ。"},{"a":false,"q":"「新築」とは、建築後3年未満で未使用の住宅をいう。","e":"建築後1年未満かつ未使用。"},{"a":true,"q":"都市計画税は、原則として市街化区域内の土地・家屋の所有者に課される市町村税である。","e":"制限税率0.3％の目的税。"},{"a":true,"q":"小規模住宅用地（200㎡以下の部分）の固定資産税は、課税標準が価格の6分の1に軽減される。","e":"一般住宅用地は1/3。評価替えは原則3年ごと。"}]};
@@ -332,7 +389,7 @@
  }
  function finish(){
    tr.hidden=true; res.hidden=false;
-   var total=0,rows='',weakest=null,gridLines=[];
+   var total=0,rows='',ranked=[],gridLines=[];
    CATS.forEach(function(c){
      var arr=resByCat[c.k],okN=arr.filter(Boolean).length;
      var pts=Math.round(okN/c.take*c.pts); total+=pts;
@@ -341,22 +398,20 @@
      gridLines.push(c.short+' '+grid);
      rows+='<tr><td><a href="'+c.url+'">'+c.name+'</a><span style="color:var(--muted);font-size:12px">（'+c.honban+'）</span></td>'+
            '<td class="num">'+okN+' / '+c.take+'</td><td class="g">'+grid+'</td></tr>';
-     if(weakest===null||rate<weakest.rate)weakest={rate:rate,cat:c};
+     ranked.push({key:c.k,name:c.name,ok:okN,total:c.take,rate:rate});
    });
    var g=grade(total);
    document.getElementById('rPts').textContent=total;
    var rk=document.getElementById('rRank');
    rk.textContent=g.label; rk.className='rrank '+g.cls;
    document.getElementById('rRows').innerHTML=rows;
+   ranked.sort(function(a,b){return a.rate-b.rate;});
    var weakBox=document.getElementById('rWeak');
-   if(weakest&&weakest.rate<1){
-     weakBox.hidden=false;
-     weakBox.innerHTML='いちばん失点したのは<b>'+weakest.cat.name+'</b>。<a href="'+weakest.cat.url+'">'+weakest.cat.name+'の一問一答（無料・解説つき）</a>で今日中に塞いでおきましょう。';
-   }else{
-     weakBox.hidden=false;
-     weakBox.style.borderLeftColor='#2f9e6a';
-     weakBox.innerHTML='全問正解！この12問に穴はありません。<a href="/ichimon/">残りの一問一答（計84問）</a>で網羅を確認しましょう。';
-   }
+   var allDone=(ranked.length>0&&ranked[0].rate>=1);
+   try{window.renderWeakNext(weakBox,'chikaradameshi_quick',ranked[0],ranked[1],allDone,
+     [{u:'/chikaradameshi/?mode=honban',t:'本番モード 50問・120分で測る',d:'本試験と同じ分量・出題順。時間配分のペース表示つき'},
+      {u:'/ichimon/',t:'論点別の問題ページ（頻出6テーマ）',d:'クーリング・オフ／報酬計算／意思表示／農地法／開発許可／建蔽率・容積率'}],
+     'この12問は網羅の目安なので、次は分量と時間配分を試します。');}catch(e){}
    document.getElementById('shareText').textContent=
      '宅建 力試し '+total+'/50点【'+g.label+'】\n'+gridLines.join('\n')+'\nhttps://takken.mainichi-lab.com/chikaradameshi/';
    try{gtag('event','quiz_complete',{quiz_name:'chikaradameshi_quick',score:total,grade:g.label});}catch(e){}
@@ -521,21 +576,20 @@
    hPts.textContent=total;
    hRank.textContent=g.label;hRank.className='rrank '+g.cls;
    hTime.textContent='解答時間 '+fmt(used)+(timeup?'（時間切れ）':'')+'／制限 2:00:00';
-   var rows='',weakest=null;
+   var rows='',ranked=[];
    AGG.forEach(function(a){
      var r=agg[a.k],rate=r.ok/a.total;
      rows+='<tr><td><a href="'+a.url+'">'+a.name+'</a><span style="color:var(--muted);font-size:12px">（'+a.honban+'）</span></td>'+
            '<td class="num">'+r.ok+' / '+a.total+'</td><td class="num">'+Math.round(rate*100)+'%</td></tr>';
-     if(weakest===null||rate<weakest.rate)weakest={rate:rate,cat:a};
+     ranked.push({key:a.k,name:a.name,ok:r.ok,total:a.total,rate:rate});
    });
    hRows.innerHTML=rows;
-   hWeak.hidden=false;hWeak.style.borderLeftColor='';
-   if(weakest&&weakest.rate<1){
-     hWeak.innerHTML='いちばん失点したのは<b>'+weakest.cat.name+'</b>。<a href="'+weakest.cat.url+'">'+weakest.cat.name+'の一問一答（無料・解説つき）</a>で今日中に塞いでおきましょう。';
-   }else{
-     hWeak.style.borderLeftColor='#2f9e6a';
-     hWeak.innerHTML='全問正解！<a href="/ichimon/">一問一答（計84問）</a>で網羅を確認しましょう。';
-   }
+   ranked.sort(function(a,b){return a.rate-b.rate;});
+   var allDone=(ranked.length>0&&ranked[0].rate>=1);
+   try{window.renderWeakNext(hWeak,'chikaradameshi_honban',ranked[0],ranked[1],allDone,
+     [{u:'/ichimon/',t:'論点別の問題ページ（頻出6テーマ）',d:'クーリング・オフ／報酬計算／意思表示／農地法／開発許可／建蔽率・容積率'},
+      {u:'/toukei-quiz/',t:'統計クイズ2026（暗記チェック12問）',d:'問48は直前に数字が入れ替わる枠。試験週にもう一度回す'}],
+     '50問すべて正解です。あとは4択と、直前に動く数字（統計）だけ落とさないように。');}catch(e){}
    var lines=SECTS.map(function(s,si){return (si===0?'権利 ':si===1?'法令 ':si===2?'税他 ':si===3?'業法 ':'免除 ')+gridBySec[si];});
    hShareText.textContent='宅建 力試し 本番モード（50問・120分） '+total+'/50点【'+g.label+'】\n'+lines.join('\n')+'\nhttps://takken.mainichi-lab.com/chikaradameshi/';
    var rev='';
