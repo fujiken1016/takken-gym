@@ -595,6 +595,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
    clearTimers();H.phase='intro';H.order=[];H.i=0;H.ans=[];H.pausedMs=0;H.locked=false;H.stamp=[];
    hblk.hidden=true;hblk.innerHTML='';
    refreshPlan();          /* 開始前に戻るたび localStorage を読み直す（別タブで作り直した場合に追随） */
+   buildRun();             /* 開始前の RUN も現在の選択に合わせておく（状態と表示を常に一致させる） */
    showOnly(hIntro);
  }
  /* 時間割の読み込みと開始前カードの描画。所有要素を毎回すべて描き直す */
@@ -686,8 +687,8 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
    if(left>=0)tail='このブロックの残り <span class="fine">'+Math.ceil(left)+'分</span>';
    else tail='このブロックの予定を <span class="over">'+Math.floor(-left)+'分 超過</span>';
    var clock=(b.startMin!=null)?'（本番なら '+TJ.fmt(b.startMin)+'〜'+TJ.fmt(b.endMin)+'）':'';
-   hblk.innerHTML='<span class="bk">いま：'+b.name+'（'+b.range+'）'+inBlock+'／'+b.take+'問目'+
-                  '＝ 解答用紙は <span class="bk">問'+it.no+'</span> の行</span><br>'+
+   hblk.innerHTML='<span class="bk">いま：'+b.name+'（'+b.range+'）'+inBlock+'／'+b.take+'問目</span>'+
+                  ' ｜ 解答用紙は <span class="bk">問'+it.no+'</span> の行<br>'+
                   '予定 '+Math.round(start)+'〜'+Math.round(endM)+'分'+clock+' ｜ '+tail;
  }
  function blockOffset(bi){var o=0;for(var i=0;i<bi;i++)o+=RUN.blocks[i].take;return o;}
@@ -904,7 +905,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
    limitMin:RUN?RUN.limitMs/60000:0,
    blocks:RUN?RUN.blocks.map(function(b){return b.k+':'+b.take+':'+b.mins;}):[],
    qno:(H.phase==='run'&&H.order[H.i])?H.order[H.i].no:null};};
- window.__CD.refreshPlan=function(){if(H.phase==='intro')refreshPlan();};
+ window.__CD.refreshPlan=function(){if(H.phase==='intro'){refreshPlan();buildRun();}};
 })();
 </script>
 </body>
