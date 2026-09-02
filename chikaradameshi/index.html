@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 力だめし（12問ミニテスト＋50問Web模試）","url":"https://takken.mainichi-lab.com/chikaradameshi/","applicationCategory":"EducationalApplication","applicationSubCategory":"宅地建物取引士試験の学習ツール","operatingSystem":"Web","browserRequirements":"JavaScriptを有効にしたウェブブラウザ","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建の力試しが無料でできるWebツール。約2分の12問クイック診断と、本試験と同じ50問・120分の本番モードの2モード。時間配分ペース表示・S〜C判定・分野別の弱点・間違いの解き直しつき。登録不要。","featureList":["12問クイック診断（約2分）","50問・120分の本番モード","時間配分のペース表示","S〜C判定と分野別の弱点表示","間違えた問題の解き直し"],"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 力だめし（12問ミニテスト＋50問Web模試）","url":"https://takken.mainichi-lab.com/chikaradameshi/","applicationCategory":"EducationalApplication","applicationSubCategory":"宅地建物取引士試験の学習ツール","operatingSystem":"Web","browserRequirements":"JavaScriptを有効にしたウェブブラウザ","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建の力試しが無料でできるWebツール。約2分の12問クイック診断と、本試験と同じ50問・120分の本番モードの2モード。時間配分ペース表示・S〜C判定・分野別の弱点・間違いの解き直しつき。登録不要。","featureList":["12問クイック診断（約2分）","50問・120分の本番モード","時間配分のペース表示","S〜C判定と分野別の弱点表示","間違えた問題の解き直し","作った模試の印刷・PDF保存（紙で解ける）"],"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"}}
 </script>
-<title>宅建 力試し｜無料12問ミニテスト＋50問Web模試（120分タイマー） | 宅建GYM</title>
-<meta name="description" content="宅建の力試しが無料でできるWebツール。約2分の12問クイック診断と、本試験と同じ50問・120分の本番モード（無料Web模試）の2モード。本試験の出題順・時間配分ペース表示・S〜C判定・分野別弱点・間違いの解き直しつき。登録不要・無料。">
+<title>宅建 力試し｜無料50問模試（120分）＋印刷・PDF保存で紙で解ける・登録不要 | 宅建GYM</title>
+<meta name="description" content="宅建の力試しが無料でできるWebツール。約2分の12問クイック診断と、本試験と同じ50問・120分の本番モード（無料Web模試）。作った模試はそのまま印刷・PDF保存でき、紙で解けます（登録不要・会員登録なし）。押すたびに別の50問。解答・解説と採点欄つき。法令基準日は令和8年4月1日。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://takken.mainichi-lab.com/chikaradameshi/">
 <link rel="stylesheet" href="/legal.css">
 <meta name="theme-color" content="#6a1fc7">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="宅建GYM">
-<meta property="og:title" content="宅建 力試し｜無料12問ミニテスト＋50問Web模試（120分）">
-<meta property="og:description" content="約2分の12問診断と、本試験どおり50問・120分の本番モード。時間配分ペース表示・S〜C判定・弱点表示つき。無料・登録不要。">
+<meta property="og:title" content="宅建 力試し｜無料50問模試（120分）＋印刷・PDF保存で紙で解ける">
+<meta property="og:description" content="約2分の12問診断と、本試験どおり50問・120分の本番モード。作った模試はそのまま印刷・PDF保存でき、紙で解けます。無料・登録不要。">
 <meta property="og:url" content="https://takken.mainichi-lab.com/chikaradameshi/">
 <meta property="og:image" content="https://takken.mainichi-lab.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -142,6 +142,52 @@
  .weak a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
  .weak .nxp{font-size:12px;color:var(--muted);line-height:1.8;margin:10px 0 0;border-top:1px dashed var(--line);padding-top:9px}
  .weak .nxp a{color:var(--brand2);font-weight:800}
+
+ /* ===== 印刷／PDF保存（サイクル23・2026-09-02） =====
+    新規URLは作らず、この模試ページに「紙に落とす」出口を足す。
+    画面用の入口＝#psec ／ 実際に紙へ出す本体＝#printSheet（body直下に動的生成・画面では非表示） */
+ .psec{border:2px solid var(--brand2);border-radius:14px;padding:16px 15px 15px;margin:26px 0 6px;background:#fbf8ff}
+ .psec h2{margin:0 0 8px;font-size:17px;line-height:1.6;border:0;padding:0}
+ .psec p{font-size:14px;line-height:1.95;margin:0 0 10px}
+ .psec .pbtn{display:block;width:100%;min-height:56px;border:0;border-radius:12px;background:var(--brand2);color:#fff;
+   font-size:16px;font-weight:900;line-height:1.5;padding:14px 12px;cursor:pointer;margin:12px 0 4px}
+ .psec .pbtn:active{opacity:.85}
+ .psec .pmini{font-size:12.5px;color:var(--muted);line-height:1.85;margin:8px 0 0}
+ .psec .phow{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:11px}
+ .psec .phow b{font-size:13.5px}
+ .psec .phow ul{margin:6px 0 0;padding-left:19px;font-size:13px;line-height:1.95;color:var(--muted)}
+ .hprint{display:block;width:100%;min-height:52px;border:2px solid var(--brand2);border-radius:12px;background:#fff;
+   color:var(--brand2);font-size:15px;font-weight:900;padding:13px 12px;cursor:pointer;margin:10px 0 0}
+ #printSheet{display:none}
+
+ @media print{
+  /* 画面用の要素は全部落として、紙にはこのシートだけを出す */
+  body>*{display:none !important}
+  body>#printSheet{display:block !important}
+  @page{size:A4 portrait;margin:14mm 12mm}
+  html,body{background:#fff !important;color:#000 !important}
+  #printSheet{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    font-size:10pt;line-height:1.62;color:#000}
+  #printSheet .ph1{font-size:15pt;font-weight:800;margin:0 0 4pt;letter-spacing:.02em}
+  #printSheet .pmeta{font-size:8.5pt;line-height:1.6;margin:0 0 5pt;color:#000}
+  #printSheet .pnote{font-size:8.5pt;line-height:1.6;margin:0 0 8pt;padding:4pt 6pt;border:1px solid #000}
+  #printSheet .ph2{font-size:11pt;font-weight:800;margin:9pt 0 4pt;padding:2pt 0 2pt 5pt;border-left:3pt solid #000;
+    break-after:avoid;page-break-after:avoid}
+  #printSheet .pq{display:flex;gap:5pt;align-items:flex-start;margin:0 0 4.5pt;
+    break-inside:avoid;page-break-inside:avoid}
+  #printSheet .pn{flex:0 0 auto;font-weight:800;font-size:9.5pt;min-width:30pt}
+  #printSheet .pt{flex:1 1 auto}
+  #printSheet .pc{flex:0 0 auto;font-size:9.5pt;letter-spacing:.06em;white-space:nowrap;padding-left:4pt}
+  #printSheet .pbreak{break-before:page;page-break-before:always}
+  #printSheet .pscore{margin:10pt 0 0;padding:6pt;border:1.5pt solid #000;font-size:9.5pt;line-height:1.9}
+  #printSheet table.pa{width:100%;border-collapse:collapse;font-size:9pt;margin:5pt 0 0}
+  #printSheet table.pa th,#printSheet table.pa td{border:.6pt solid #444;padding:3pt 4pt;vertical-align:top;text-align:left}
+  #printSheet table.pa th{background:#eee;font-weight:800}
+  #printSheet table.pa td.n{white-space:nowrap;font-weight:800;width:34pt}
+  #printSheet table.pa td.k{white-space:nowrap;text-align:center;width:26pt;font-weight:800}
+  #printSheet table.pa tr{break-inside:avoid;page-break-inside:avoid}
+  #printSheet .pfoot{margin:9pt 0 0;padding-top:5pt;border-top:.6pt solid #666;font-size:8pt;line-height:1.7;color:#222}
+ }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -296,9 +342,26 @@
         <p class="note">X・LINE・勉強仲間のグループにそのまま貼れます。</p>
       </div>
       <div class="rev" id="hRev"></div>
+      <button type="button" class="hprint" id="hbPrint">いま解いた問題を印刷／PDF保存する（自分の解答つき）</button>
       <button type="button" class="tnext" id="hbAgain">別の50問でもう一度</button>
     </div>
   </div><!-- /hsec -->
+
+  <!-- 印刷／PDF保存の入口（サイクル23）。モードに関係なく常に見える＝「PDFで欲しい」で来た人の着地点 -->
+  <section class="psec" id="psec">
+    <h2>紙で解きたい人へ：この模試をそのまま印刷／PDF保存できます</h2>
+    <p>下のボタンで<b>50問の問題用紙（○×を丸で囲む形式）＋採点欄＋解答・解説</b>を組み立てて、そのまま印刷できます。印刷ダイアログで「PDFに保存」を選べば<b>PDFファイルとしても保存できます</b>。<b>会員登録・メールアドレスの入力は不要</b>です。</p>
+    <button type="button" class="pbtn" id="pBtn">模試を作って印刷する（PDF保存もできる）</button>
+    <p class="pmini">押すたびに<b>別の50問</b>を組み直します（本試験と同じ出題順：権利14／法令8／税その他3／業法20／免除5）。何回でも無料です。</p>
+    <div class="phow">
+      <b>スマホからPDFにする手順</b>
+      <ul>
+        <li><b>iPhone（Safari）</b>：ボタン → 印刷プレビュー → 右上の共有 →「ファイルに保存」</li>
+        <li><b>Android（Chrome）</b>：ボタン → 送信先を「<b>PDF に保存</b>」に変更 → 保存</li>
+        <li><b>パソコン</b>：ボタン → 送信先／プリンターを「PDFに保存」にすると1ファイルになります</li>
+      </ul>
+    </div>
+  </section>
 
   <div class="cta-box">
     <b>力試しの後は、穴を塞ぐ。</b>
@@ -310,6 +373,9 @@
 
   <h2>このテストの仕組み</h2>
   <p>問題は宅建GYMの<a href="/ichimon/">分野別 一問一答（○×84問・解説つき）</a>と、本番モードの問46〜50用に一次情報（法令原文・公表統計）で作成した免除科目の専用問題から出題しています。<b>クイック12問</b>は本試験50問の配点比（宅建業法20問・権利関係14問・法令上の制限8問・税その他8問）に合わせて毎回12問を抽選し、分野ごとの正答率に本試験の配点を掛けて50点満点に換算します。<b>本番モード</b>は本試験と同じ50問を出題順どおり（問1〜14権利関係／問15〜22法令上の制限／問23〜25税・その他／問26〜45宅建業法）に並べ、1問1点の50点満点で採点します。問46〜50は本試験と同じ<b>免除科目の専用問題</b>（問46住宅金融支援機構・問47景品表示法〔表示規約〕・問48統計・問49土地・問50建物）を出題します。統計（問48）の数値は<a href="/blog/takken-toukei-2026">統計まとめ記事</a>と同じ公表資料に基づきます。○×形式のため実際の4択より正答しやすい点に注意してください。法令基準日は令和8年（2026年）4月1日です。</p>
+
+  <h2>無料の模試をPDFにして紙で解きたい人へ</h2>
+  <p>「宅建の模試をPDFでダウンロードして印刷したい」という使い方には、上の<a href="#psec">印刷／PDF保存</a>が対応しています。あらかじめ用意した固定のPDFファイルを配る形ではなく、<b>ボタンを押したその場で50問を組み立てて、ブラウザの印刷機能で紙にもPDFにも出せる</b>形にしています。理由は3つです。①<b>会員登録もメールアドレスの入力も不要</b>で完結する（ダウンロードページを挟まない）②<b>押すたびに別の50問</b>になるので、同じ問題を覚えてしまわず何回でも通し演習できる③問題を直したときに<b>常に最新の内容が印刷される</b>（古いPDFが出回らない）。紙面は「問題用紙（○×を丸で囲む形式）＋採点欄」と「解答・解説」の2部構成で、答えは別ページに分けてあります。法令基準日は本試験と同じ<b>令和8年（2026年）4月1日</b>です。</p>
 
   <h2>宅建の時間配分の目安（120分の配り方）</h2>
   <p>本番モードのペース表示は、次の時間配分を目安にしています。合計110分で解き切り、<b>最後に10分の見直し時間</b>を残す配分です。</p>
@@ -544,7 +610,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      hnoMax=$('hnoMax'),hcat=$('hcat'),hq=$('hq'),hbO=$('hbO'),hbX=$('hbX'),hbPause=$('hbPause'),
      hbResume=$('hbResume'),hbQuit=$('hbQuit'),hPauseRemain=$('hPauseRemain'),
      hTimeup=$('hTimeup'),hPts=$('hPts'),hRank=$('hRank'),hTime=$('hTime'),hRows=$('hRows'),
-     hWeak=$('hWeak'),hShareText=$('hShareText'),hbCopy=$('hbCopy'),hbAgain=$('hbAgain'),hRev=$('hRev'),
+     hWeak=$('hWeak'),hShareText=$('hShareText'),hbCopy=$('hbCopy'),hbAgain=$('hbAgain'),hRev=$('hRev'),hbPrint=$('hbPrint'),
      hblk=$('hblk'),hPlan=$('hPlan'),hPlanSum=$('hPlanSum'),hPlanRows=$('hPlanRows'),hPlanNote=$('hPlanNote'),
      hPlanOn=$('hPlanOn'),hPlanOff=$('hPlanOff'),hPlanMiss=$('hPlanMiss'),
      hLiCount=$('hLiCount'),hLiOrder=$('hLiOrder'),hResHead=$('hResHead'),hPtsMax=$('hPtsMax'),
@@ -849,6 +915,72 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      navigator.clipboard.writeText(text).then(function(){if(!hres.hidden)done();},function(){fallback();});
    }else{fallback();}
  }
+ /* ===== 印刷／PDF保存（サイクル23・2026-09-02） =====
+    「宅建 模試 無料pdf」で来る＝登録を嫌って紙／PDFを探している層の出口。新規URLは作らず、
+    この模試の出題ロジックをそのまま紙に流す（＝同じ内容のページを2つ作らない）。
+    ⚠️ 実施中の状態（H・RUN）には一切触らない。紙用の抽選は独立した drawPaper() で行い、
+       画面側のタイマー・解答・出題順を書き換えない（非同期＋共有状態の事故を作らないため）。 */
+ function drawPaper(){
+   var order=[];
+   SECTS.forEach(function(s,si){                       /* 常に本試験どおり50問（時間割設定の影響を受けない） */
+     var qs=(s.k==='menjo')?MENJO:shuffle(POOL[s.k]).slice(0,s.take);
+     qs.forEach(function(q,j){order.push({s:si,no:s.base+j,k:s.k,q:q.q,a:q.a,e:q.e});});
+   });
+   return order;
+ }
+ function myMap(){var m={};H.order.forEach(function(it,idx){m[it.no]=H.ans[idx];});return m;}
+ function sheetHTML(order,mine,limitMin){
+   var list=order.slice().sort(function(a,b){return a.no-b.no;}),n=list.length,d=new Date();
+   var stamp=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 '+pad(d.getHours())+':'+pad(d.getMinutes())+'作成';
+   var h='<div class="ph1">宅建 予想模試（○×'+n+'問）</div>';
+   h+='<p class="pmeta">制限時間'+(limitMin||120)+'分／1問1点・'+n+'点満点｜法令基準日：令和8年（2026年）4月1日｜'+stamp+'<br>'+
+      '宅建GYM（takken.mainichi-lab.com/chikaradameshi/）｜無料・登録不要。個人の学習用に自由に印刷して使えます。</p>';
+   h+='<p class="pnote">【解き方】各問の右の「○ ・ ×」のどちらかを丸で囲んでください（正しければ○、誤りなら×）。'+
+      '解答・解説は問題の次のページにまとめてあります。'+(mine?'この用紙は、あなたが画面で解いた回の問題です。':'')+'</p>';
+   var cur=-1;
+   list.forEach(function(it){
+     if(it.s!==cur){cur=it.s;h+='<div class="ph2">'+esc(SECTS[cur].name)+'（'+esc(SECTS[cur].range)+'）</div>';}
+     h+='<div class="pq"><span class="pn">問'+it.no+'</span><span class="pt">'+esc(it.q)+'</span><span class="pc">○ ・ ×</span></div>';
+   });
+   h+='<div class="pscore">得点　　　　　／ '+n+'点　｜　直近の本試験の合格ラインは33〜37点で推移（安全圏の目安は38点）。'+
+      '○×形式のため、実際の4択より高い点が出やすい点に注意してください。</div>';
+   h+='<div class="pbreak"></div><div class="ph1">解答・解説</div>';
+   h+='<p class="pmeta">全'+n+'問、令和8年（2026年）4月1日施行の法令を基準に検算済みです（正解・設問・解説の三者整合と法令内容を全問チェック）。'+
+      '免除科目（問46〜50）は、住宅金融支援機構法・不動産の表示に関する公正競争規約施行規則の条文原文と、国土交通省の公表統計で裏を取っています。</p>';
+   h+='<table class="pa"><thead><tr><th>問</th><th>正解</th>'+(mine?'<th>あなた</th>':'')+'<th>解説</th></tr></thead><tbody>';
+   list.forEach(function(it){
+     var my='';
+     if(mine){var v=mine[it.no];my='<td class="k">'+(v===undefined||v===null?'—':(v?'○':'×'))+(v===undefined||v===null||v===it.a?'':' ✗')+'</td>';}
+     h+='<tr><td class="n">問'+it.no+'</td><td class="k">'+(it.a?'○':'×')+'</td>'+my+'<td>'+esc(it.e)+'</td></tr>';
+   });
+   h+='</tbody></table>';
+   h+='<p class="pfoot">出題＝宅建GYMの分野別一問一答（○×84問）と、免除科目用に一次情報から作成した専用5問（問46住宅金融支援機構／問47景品表示法〔表示規約〕／問48統計／問49土地／問50建物）。'+
+      '○×形式のため本試験の4択とは難易度が異なります。最新版・Web版（自動採点・120分タイマーつき）は takken.mainichi-lab.com/chikaradameshi/ から。</p>';
+   return h;
+ }
+ function printPaper(order,mine,limitMin){
+   if(!order||!order.length)return;
+   var box=document.getElementById('printSheet');
+   if(!box){box=document.createElement('div');box.id='printSheet';document.body.appendChild(box);}
+   box.innerHTML=sheetHTML(order,mine||null,limitMin);   /* 所有要素は毎回まるごと描き直す */
+   try{gtag('event','print_paper',{tool_name:'chikaradameshi',questions:order.length,with_answers:!!mine});}catch(e){}
+   window.print();
+ }
+ $('pBtn').addEventListener('click',function(){
+   if(H.phase==='run'||H.phase==='pause'){
+     if(!confirm('本番モードを実施中です。印刷用の用紙には解答・解説も載るため、いま印刷すると答えが目に入ります。印刷しますか？（実施中の模試はそのまま続けられます）'))return;
+   }
+   printPaper(drawPaper(),null,120);
+ });
+ hbPrint.addEventListener('click',function(){
+   if(H.phase!=='done')return;                          /* 文脈ガード：結果画面のときだけ */
+   printPaper(H.order,myMap(),Math.round(RUN.limitMs/60000));
+ });
+ /* 検証用（印刷ダイアログを開かずに紙面HTMLを取る） */
+ window.__CD.paperTest=function(useMine){
+   var o=(useMine&&H.order.length)?H.order:drawPaper();
+   return {n:o.length,html:sheetHTML(o,useMine?myMap():null,useMine?Math.round(RUN.limitMs/60000):120)};
+ };
  hStart.addEventListener('click',begin);
  hbO.addEventListener('click',function(){answer(true);});
  hbX.addEventListener('click',function(){answer(false);});
