@@ -12,6 +12,13 @@
  *   aff_click    { network, item_id, from_page } … A8 / 楽天アフィリ
  *
  * 注意：gtag が未ロード（広告ブロッカー等）でも例外を投げない。UIを壊さないこと優先。
+ *
+ * 2026-09-02 追加：note リンクへの utm 自動付与（decorateNoteLinks）。
+ *   9/2の初売上で「どこから来た人が買ったか」が4手段とも追えなかったため。
+ *   🔴 HTML側の href には utm を書かない。ここで一元的に付ける
+ *      （新しいnoteリンクを足しても自動で付く／規則を変えるときも1ファイルで済む）。
+ *   規則の正本＝ ~/Desktop/claude/memory/analytics_snapshot.md
+ *              「## note流入の計測（2026-09-02確立）」§utm命名規則
  */
 (function () {
   var NOTE_MAP = {
@@ -78,4 +85,49 @@
     },
     true
   );
+
+  /* ---- note リンクへの utm 付与 ----------------------------------------
+   * utm_source   = takkengym（このサイト固定）
+   * utm_medium   = owned_site（自社サイトからの送客。data-utm-medium で個別上書き可）
+   * utm_campaign = 送客先の商品＝上の NOTE_MAP の値（note_click の product と同じ値）
+   * utm_content  = 送り出したページのスラッグ（note_click の from_page と対になる）
+   * ※ note側にリファラ／流入元レポートは存在しない（2026-09-02 実測で確認）。
+   *   実際に読めるのは自社側の note_click イベントの方。utm は
+   *   「noteが将来レポートを出した時／URLを人が見た時」のための保険として付ける。
+   * -------------------------------------------------------------------- */
+  var UTM_SOURCE = "takkengym";
+
+  function pageSlug() {
+    var p = location.pathname.replace(/index\.html$/, "").replace(/\.html$/, "");
+    p = p.replace(/^\/+|\/+$/g, "").replace(/[\/.]/g, "_");
+    return p || "home";
+  }
+
+  function decorateNoteLinks() {
+    var slug = pageSlug();
+    var list = document.querySelectorAll('a[href*="note.com/fujiken818"]');
+    for (var i = 0; i < list.length; i++) {
+      var a = list[i];
+      var href = a.getAttribute("href") || "";
+      if (href.indexOf("utm_source=") > -1) continue; // 二重付与しない
+      var k = href.match(/\/n\/(n[0-9a-z]+)/);
+      var camp = (k && NOTE_MAP[k[1]]) || "note_other";
+      var med = a.getAttribute("data-utm-medium") || "owned_site";
+      a.setAttribute(
+        "href",
+        href +
+          (href.indexOf("?") > -1 ? "&" : "?") +
+          "utm_source=" + UTM_SOURCE +
+          "&utm_medium=" + med +
+          "&utm_campaign=" + camp +
+          "&utm_content=" + slug
+      );
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", decorateNoteLinks);
+  } else {
+    decorateNoteLinks();
+  }
 })();
