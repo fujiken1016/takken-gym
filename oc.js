@@ -82,6 +82,17 @@
         });
         return;
       }
+
+      /* バリューコマース。ck. が離脱クリック用、ad. は表示計測の img なので拾わない */
+      if (href.indexOf("ck.jp.ap.valuecommerce.com") > -1) {
+        var v = href.match(/[?&]pid=(\d+)/);
+        send("aff_click", {
+          network: "vc",
+          item_id: v ? v[1] : "unknown",
+          from_page: from
+        });
+        return;
+      }
     },
     true
   );
