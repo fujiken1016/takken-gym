@@ -543,6 +543,7 @@
           <a href="/chikaradameshi/">宅建 力試し（50点換算の判定つき）<span class="n">12問 ›</span></a>
           <a href="/toukei-quiz/">統計クイズ2026（問48の暗記チェック）<span class="n">12問 ›</span></a>
           <a href="/toujitsu-check/">試験当日の持ち物チェック＆タイムライン<span class="n">無料 ›</span></a>
+          <a href="/jikan-haibun/">時間配分・解く順番シミュレータ（13時開始の実時刻）<span class="n">無料 ›</span></a>
           <a href="/ichimon/">論点別の問題（クーリング・オフ／報酬計算／意思表示／農地法／開発許可／建蔽率・容積率）<span class="n">6本 ›</span></a>
           <a href="/ichimon/">分野別 一問一答の一覧を見る ›</a>
           <a href="/chinkan/ichimon/">賃貸不動産経営管理士の一問一答<span class="n">30問 ›</span></a>
@@ -566,6 +567,7 @@
         <a href="/contact">お問い合わせ</a><span>・</span>
         <a href="/kaitou-sokuhou/">解答速報・自己採点</a>
         <a href="/toujitsu-check/">当日の持ち物チェック</a>
+        <a href="/jikan-haibun/">時間配分シミュレータ</a>
         <a href="/ichimon/">分野別 一問一答</a>
         <a href="/courses/">宅建講座の選び方</a>
         <a href="/blog/">記事一覧をすべて見る</a>
@@ -818,6 +820,7 @@
       <a href="/contact">お問い合わせ</a><span>・</span>
         <a href="/kaitou-sokuhou/">解答速報・自己採点</a>
         <a href="/toujitsu-check/">当日の持ち物チェック</a>
+        <a href="/jikan-haibun/">時間配分シミュレータ</a>
         <a href="/ichimon/">分野別 一問一答</a>
         <a href="/courses/">宅建講座の選び方</a>
         <a href="/blog/">記事一覧をすべて見る</a>
@@ -1188,17 +1191,18 @@ const ROUTES={
   ichimon:{ic:"📚",q:"分野・論点で潰したい",t:"一問一答（分野別＋論点別）",d:"○×84問＋頻出6論点（報酬計算ほか）",href:"/ichimon/"},
   toukei:{ic:"📊",q:"直前に詰めれば取れる1点",t:"統計クイズ2026（問48）",d:"12問・毎年出る数字だけを1分で確認",href:"/toukei-quiz/"},
   toujitsu:{ic:"🧳",q:"当日の段取りを固めたい",t:"持ち物チェック＆当日タイムライン",d:"13:00開始から逆算・前日夜から使える",href:"/toujitsu-check/"},
+  jikan:{ic:"⏱️",q:"時間配分と解く順番を決めたい",t:"時間配分・解く順番シミュレータ",d:"13:00開始の実時刻に変換。5問免除にも対応",href:"/jikan-haibun/"},
   sokuhou:{ic:"📝",q:"試験が終わった・自己採点したい",t:"解答速報・自己採点（10月18日）",d:"自己採点ツール＋合格ラインの推移",href:"/kaitou-sokuhou/"},
   revenge:{ic:"🔁",q:"今年がだめでも、次がある",t:"落ちた人の再挑戦プラン",d:"再受講割引・学習経験者コースを6社で比較",href:"/blog/takken-ochita-revenge"},
   chinkan:{ic:"🏠",q:"賃管士も受ける・併願したい",t:"賃貸不動産経営管理士（11月15日）",d:"重複範囲の解説＋一問一答30問",href:"/chinkan/"}
 };
 // フェーズごとの並び。先頭5件を表示、残りは details 内。全idを必ず1回ずつ含める
 const ROUTE_ORDER={
-  pre:      ["chikaradameshi","mogi","ichimon","toukei","chinkan","toujitsu","sokuhou","revenge"],
-  pre_exp:  ["mogi","chikaradameshi","ichimon","toukei","chinkan","toujitsu","sokuhou","revenge"],
-  chokuzen: ["mogi","toukei","toujitsu","chikaradameshi","ichimon","chinkan","sokuhou","revenge"],
-  exam:     ["toujitsu","sokuhou","toukei","mogi","ichimon","chikaradameshi","chinkan","revenge"],
-  after:    ["sokuhou","revenge","chinkan","ichimon","mogi","chikaradameshi","toukei","toujitsu"]
+  pre:      ["chikaradameshi","mogi","ichimon","toukei","chinkan","toujitsu","jikan","sokuhou","revenge"],
+  pre_exp:  ["mogi","chikaradameshi","ichimon","toukei","chinkan","toujitsu","jikan","sokuhou","revenge"],
+  chokuzen: ["mogi","toukei","jikan","toujitsu","chikaradameshi","ichimon","chinkan","sokuhou","revenge"],
+  exam:     ["toujitsu","jikan","sokuhou","toukei","mogi","ichimon","chikaradameshi","chinkan","revenge"],
+  after:    ["sokuhou","revenge","chinkan","ichimon","mogi","chikaradameshi","toukei","toujitsu","jikan"]
 };
 const ROUTE_HEAD={
   pre:{title:"いまの状況から選ぶ"},chokuzen:{title:"直前期：残りでやること"},

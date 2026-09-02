@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>宅建 時間配分・解く順番シミュレータ【2026】13時開始の実時刻で出す | 宅建GYM</title>
+<meta name="description" content="宅建試験（2026年10月18日13時開始・2時間50問）の時間配分と解く順番を、あなたの条件で計算する無料ツール。受験区分・解く順番・権利関係の方針・見直し時間を選ぶと、各分野の持ち時間を「13:00〜13:05」のような実際の時刻に変換して表示します。5問免除（13時10分開始・110分45問）にも対応。当日は腕時計と見比べるだけ。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://takken.mainichi-lab.com/jikan-haibun/">
+<link rel="stylesheet" href="/legal.css">
+<meta name="theme-color" content="#6a1fc7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="宅建GYM">
+<meta property="og:title" content="宅建 時間配分・解く順番シミュレータ【2026】">
+<meta property="og:description" content="解く順番と見直し時間を選ぶと、各分野の持ち時間を13時開始の実時刻に変換。当日は腕時計と見比べるだけ。5問免除にも対応。無料・登録不要。">
+<meta property="og:url" content="https://takken.mainichi-lab.com/jikan-haibun/">
+<meta property="og:image" content="https://takken.mainichi-lab.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7K99MCR7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
+<script src="/oc.js" defer></script>
+<style>
+ article p,article li{font-size:15px;line-height:1.95}
+ .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
+ .bc a{color:var(--muted);text-decoration:none}
+ .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{border-collapse:collapse;width:100%;font-size:13.5px;margin:4px 0}
+ th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;line-height:1.7;vertical-align:top}
+ th{background:var(--bg);font-weight:800;white-space:nowrap}
+ /* 設問 */
+ .q{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 15px;margin:16px 0}
+ .q h2{font-size:15.5px;margin:0 0 4px;border-left:4px solid var(--brand);padding-left:11px;color:var(--brand)}
+ .q .note{font-size:12.5px;color:var(--muted);margin:0 0 12px;line-height:1.8;padding-left:15px}
+ .opts{display:flex;flex-wrap:wrap;gap:9px}
+ .opt{flex:1 1 140px;min-height:52px;padding:12px 12px;border:2px solid var(--line);border-radius:12px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:800;line-height:1.55;
+  cursor:pointer;text-align:left;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ .opt small{display:block;font-size:12px;font-weight:600;color:var(--muted);line-height:1.65;margin-top:3px}
+ .opt[aria-pressed="true"]{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand2)}
+ .opt[aria-pressed="true"] small{color:var(--brand2);opacity:.85}
+ /* 結果 */
+ .res{background:var(--surface);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:16px;
+  padding:18px 16px;margin:22px 0}
+ .res h2{font-size:16px;margin:0 0 6px;color:#2f9e6a;border:none;padding:0}
+ .res .lead{font-size:13.5px;color:var(--muted);line-height:1.85;margin:0 0 12px}
+ .res .big{font-size:13.5px;line-height:1.9;margin:12px 0 0}
+ td.tm{font-variant-numeric:tabular-nums;font-weight:800;color:var(--brand2);white-space:nowrap}
+ td.mi{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+ tr.rv td{background:rgba(47,158,106,.09);font-weight:800}
+ .cp{margin:14px 0 0;padding:0;list-style:none}
+ .cp li{font-size:13.5px;line-height:1.85;padding:9px 0;border-top:1px dashed var(--line)}
+ .cp li b{color:var(--brand2);font-variant-numeric:tabular-nums}
+ .reset{width:100%;min-height:50px;margin:16px 0 0;border:2px solid var(--line);border-radius:14px;
+  background:var(--surface);color:var(--muted);font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+ .savenote{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7;text-align:center}
+ .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #c0392b;border-radius:12px;padding:14px 16px;margin:18px 0}
+ .warn b{color:#c0392b}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:22px 0}
+ .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none;display:block;padding:9px 0;min-height:44px;line-height:1.7}
+ .src{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.85}
+ .src a{color:var(--muted)}
+ .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
+ .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:14px;min-height:44px;line-height:1.7}
+ .updated{font-size:12px;color:var(--muted);margin-top:10px}
+ @media print{
+  .top,.bc,.q,.reset,.savenote,.cta-box,.rel,.foot,.noprint{display:none!important}
+  body{background:#fff}
+  .res{border:1px solid #999;break-inside:avoid}
+ }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},
+{"@type":"ListItem","position":2,"name":"宅建 時間配分・解く順番シミュレータ","item":"https://takken.mainichi-lab.com/jikan-haibun/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 時間配分・解く順番シミュレータ【2026】","url":"https://takken.mainichi-lab.com/jikan-haibun/","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建試験の時間配分と解く順番を、受験区分・解く順番・権利関係の方針・見直し時間から計算し、13時開始の実際の時刻に変換して表示する無料ツール。","publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"}}
+</script>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="home" href="/">← 宅建GYM トップ</a>
+  <h1>宅建 時間配分・解く順番シミュレータ</h1>
+  <div class="sub">令和8年10月18日（日）13時開始・2時間50問に対応｜5問免除もOK</div>
+</div></div>
+<main>
+<article>
+  <p class="bc"><a href="/">宅建GYM</a> ＞ 時間配分・解く順番シミュレータ</p>
+
+  <p>宅建試験の時間配分は、「権利関係35分・業法35分」のように<b>持ち時間（分）</b>で語られることがほとんどです。ところが本番で腕時計に表示されているのは分数ではなく<b>時刻</b>です。「業法に35分」と決めていても、当日「今14時08分。これは間に合っているのか？」を暗算する余裕はまずありません。</p>
+  <p>このページは、あなたが選んだ条件から各分野の持ち時間を計算し、それを<b>13時00分開始の実際の時刻に変換して</b>表示します。当日やることは、腕時計と表を見比べるだけになります。</p>
+
+  <div class="q">
+    <h2>① 受験区分</h2>
+    <p class="note">登録講習（5問免除）の修了者は、開始が10分遅く、問46〜50が出題されません。</p>
+    <div class="opts" data-g="kubun">
+      <button type="button" class="opt" data-v="ippan" aria-pressed="true">一般の受験者<small>13:00〜15:00／120分・50問</small></button>
+      <button type="button" class="opt" data-v="menjo" aria-pressed="false">5問免除（登録講習修了）<small>13:10〜15:00／110分・45問</small></button>
+    </div>
+  </div>
+
+  <div class="q">
+    <h2>② 解く順番</h2>
+    <p class="note">問題冊子は問1から順に解く必要はありません。ここは公的なルールではなく戦略の選択です。</p>
+    <div class="opts" data-g="order">
+      <button type="button" class="opt" data-v="A" aria-pressed="true">業法ファースト<small>免除科目 → 宅建業法 → 法令・税 → 権利関係</small></button>
+      <button type="button" class="opt" data-v="B" aria-pressed="false">問1から順に<small>権利関係 → 法令・税 → 宅建業法 → 免除科目</small></button>
+      <button type="button" class="opt" data-v="C" aria-pressed="false">権利関係が得意な人<small>権利関係 → 宅建業法 → 法令・税 → 免除科目</small></button>
+    </div>
+  </div>
+
+  <div class="q">
+    <h2>③ 権利関係にどう向き合うか</h2>
+    <p class="note">14問ある権利関係は1問あたりの文章量が最も多く、ここの方針で全体の配分が決まります。</p>
+    <div class="opts" data-g="kenri">
+      <button type="button" class="opt" data-v="deep" aria-pressed="false">しっかり解く<small>民法が得点源。時間を厚めに取る</small></button>
+      <button type="button" class="opt" data-v="std" aria-pressed="true">標準<small>解けるものを確実に拾う</small></button>
+      <button type="button" class="opt" data-v="cut" aria-pressed="false">深追いしない<small>長文は早めに切り、業法・法令に回す</small></button>
+    </div>
+  </div>
+
+  <div class="q">
+    <h2>④ 最後に残す見直し時間</h2>
+    <p class="note">マークのズレ確認と、飛ばした問題を処理する時間です。ここを先に確保してから残りを配分します。</p>
+    <div class="opts" data-g="rev">
+      <button type="button" class="opt" data-v="15" aria-pressed="false">15分<small>解答量を優先</small></button>
+      <button type="button" class="opt" data-v="20" aria-pressed="false">20分</button>
+      <button type="button" class="opt" data-v="25" aria-pressed="true">25分<small>おすすめ</small></button>
+      <button type="button" class="opt" data-v="30" aria-pressed="false">30分<small>マークミスが不安な人</small></button>
+    </div>
+  </div>
+
+  <div class="res" id="res" aria-live="polite">
+    <h2 id="resTitle">あなたの時間割</h2>
+    <p class="lead" id="resLead"></p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>順</th><th>解く範囲</th><th>問数</th><th>時刻</th><th>持ち時間</th><th>1問</th></tr></thead>
+        <tbody id="resBody"></tbody>
+      </table>
+    </div>
+    <p class="lead" style="margin:8px 0 0">※ 表は横にスクロールできます。</p>
+    <p class="big"><b>本番中に見るチェックポイント</b>（この時刻に、この問題まで終わっていれば予定どおり）</p>
+    <ul class="cp" id="resCp"></ul>
+    <button type="button" class="reset" id="reset">選択をリセット</button>
+    <p class="savenote">選択内容はお使いの端末に保存されます。印刷・スクリーンショットにも対応しています。</p>
+  </div>
+
+  <div class="warn">
+    <p><b>この順番を、本番でいきなり試さないでください。</b>解く順番を変えると、マークシートの行が問題冊子の並びと一致しなくなります。9月〜10月の通し演習で<b>最低2回</b>は同じ順番・同じ時間割で解き、マークのズレが出ないことを確かめてから本番に持ち込んでください。</p>
+  </div>
+
+  <h2>なぜ「分」ではなく「時刻」で持つのか</h2>
+  <p>時間配分が崩れる原因は、配分そのものより<b>途中で現在地を見失うこと</b>にあります。「業法に35分」という決め方だと、業法を始めた時刻を覚えていなければ残りが分かりません。1つの分野を解き終えるたびに「開始が13時5分だったから、35分後は13時40分で……」と引き算する必要があり、その暗算は焦っているときほど失敗します。</p>
+  <p>一方、上の表のように<b>終了時刻</b>を持っておけば、腕時計を見た瞬間に判断が終わります。14時00分の時点で予定より遅れていると分かれば、その場で「権利関係の長文は飛ばす」と切り替えられます。試験終了間際に気づくのでは、もう取り返せません。</p>
+
+  <h2>遅れていたときの原則</h2>
+  <p>チェックポイントで遅れていた場合、<b>見直し時間を削ってはいけません</b>。削るのは解答時間のほうです。宅建は四肢択一のマークシートなので、空欄は0点ですが、当てずっぽうでも4分の1で当たります。「解けなかった問題を空欄で残す」より「仮マークして次に進む」ほうが、期待値の上でも明確に有利です。</p>
+  <p>飛ばすときは、問題冊子の設問番号に印をつけたうえで、<b>解答用紙の該当行は空けずに一旦どれかをマークしておく</b>のが安全です。空欄のまま先に進むと、そこから下の行が1つずつずれる事故が起きます。</p>
+
+  <h2>この配分の前提（出題構成）</h2>
+  <p>計算には、近年の本試験でおおむね固定されている次の出題構成を使っています。年度により細部は変動します。</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>問番号</th><th>分野</th><th>問数</th></tr></thead>
+      <tbody>
+        <tr><td>問1〜14</td><td>権利関係（民法・借地借家法・区分所有法・不動産登記法）</td><td>14問</td></tr>
+        <tr><td>問15〜22</td><td>法令上の制限</td><td>8問</td></tr>
+        <tr><td>問23〜25</td><td>税・価格の評定</td><td>3問</td></tr>
+        <tr><td>問26〜45</td><td>宅建業法</td><td>20問</td></tr>
+        <tr><td>問46〜50</td><td>免除科目（住宅金融支援機構・景品表示法・統計・土地・建物）</td><td>5問</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src">分野ごとの1問あたりの重みは、文章量と処理の重さの差を反映させた本サイトの設定値です（権利関係を最も重く、免除科目を最も軽く見積もっています）。<b>公的な指針ではありません。</b>試験時間・出題数・開始時刻のみが公式の情報です。</p>
+
+  <div class="cta-box">
+    <p style="margin:0 0 4px;font-weight:800">この時間割で解く練習をする</p>
+    <a href="/chikaradameshi/">▸ 力だめし（本番形式で通して解く）</a>
+    <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（問26〜45の得点源を固める）</a>
+    <a href="/ichimon/kenri">▸ 権利関係の一問一答（深追いを避ける判断を早くする）</a>
+  </div>
+
+  <h2>出典</h2>
+  <p class="src">
+    試験時間・開始時刻・出題数・5問免除の扱いは、一般財団法人 不動産適正取引推進機構が公表する令和8年度「宅地建物取引士資格試験」の試験案内の記載に基づいています（一般の受験者は13時00分〜15時00分の2時間・50問、登録講習修了者は13時10分〜15時00分の1時間50分・45問）。<br>
+    <a href="https://www.retio.or.jp/" rel="nofollow">一般財団法人 不動産適正取引推進機構</a><br>
+    ページ内の「解く順番」「1問あたりの重み」「チェックポイント」は本サイトの提案であり、公的な指針ではありません。
+  </p>
+  <p class="updated">最終更新：2026年9月2日</p>
+
+  <div class="rel">
+    <a href="/blog/takken-shiken-toujitsu">▸ 宅建試験当日の持ち物・腕時計・時間配分【2026年10月18日】</a>
+    <a href="/toujitsu-check/">▸ 宅建 持ち物チェックリスト＆当日タイムライン（タップでチェック）</a>
+    <a href="/blog/takken-chokuzenki-2kagetsu">▸ 宅建 直前期2か月の勉強法（10月18日に間に合わせる）</a>
+    <a href="/blog/takken-kosu-mondai">▸ 宅建の個数問題が解けない人へ（「いくつあるか」で失点しない解き方）</a>
+    <a href="/blog/takken-gyouhou-hikkake">▸ 宅建業法の「引っかけ肢」総まとめ｜数字・主語・期限の入れ替え6パターン</a>
+    <a href="/blog/takken-houreiseigen-suuji">▸ 法令上の制限「数字」総まとめ（開発許可・建蔽率・農地法・国土法）</a>
+    <a href="/blog/takken-mon46-50">▸ 宅建 問46〜50（5問免除科目）の攻略｜免除なしで4点取る手順</a>
+    <a href="/ichimon/">▸ 分野別の一問一答（無料・登録不要）</a>
+    <a href="/chikaradameshi/">▸ 力だめし（本番形式で通して解く）</a>
+    <a href="/kaitou-sokuhou/">▸ 宅建 解答速報・自己採点【2026年度】</a>
+    <a href="/blog/">▸ 記事一覧（宅建の勉強法・法改正・試験当日・賃管士まで）</a>
+    <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
+  </div>
+
+  <div class="foot">
+    <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+  </div>
+</article>
+</main>
+<script>
+(function(){
+ "use strict";
+ var KEY="takken_jikan_v1";
+ var DEF={kubun:"ippan",order:"A",kenri:"std",rev:"25"};
+ var st={};
+ try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){st={};}
+ for(var k in DEF){if(!st[k])st[k]=DEF[k];}
+
+ var BLOCKS={
+  kenri:{name:"権利関係",range:"問1〜14",n:14},
+  horei:{name:"法令上の制限",range:"問15〜22",n:8},
+  zei:{name:"税・価格の評定",range:"問23〜25",n:3},
+  gyoho:{name:"宅建業法",range:"問26〜45",n:20},
+  menjo:{name:"免除科目",range:"問46〜50",n:5}
+ };
+ var W={horei:1.15,zei:1.0,gyoho:1.0,menjo:0.7};
+ var KW={deep:2.1,std:1.75,cut:1.4};
+ var ORDERS={
+  A:["menjo","gyoho","horei","zei","kenri"],
+  B:["kenri","horei","zei","gyoho","menjo"],
+  C:["kenri","gyoho","horei","zei","menjo"]
+ };
+
+ function fmt(m){var h=Math.floor(m/60),mm=m%60;return h+":"+(mm<10?"0":"")+mm;}
+
+ function calc(){
+  var menjoUser=(st.kubun==="menjo");
+  var startMin=menjoUser?(13*60+10):(13*60);
+  var endMin=15*60;
+  var total=endMin-startMin;
+  var rev=parseInt(st.rev,10)||25;
+  if(rev>total-30)rev=total-30;
+  var avail=total-rev;
+  var seq=ORDERS[st.order].slice();
+  if(menjoUser)seq=seq.filter(function(b){return b!=="menjo";});
+  var w=function(b){return b==="kenri"?KW[st.kenri]:W[b];};
+  var units=0;
+  seq.forEach(function(b){units+=BLOCKS[b].n*w(b);});
+  var raw=seq.map(function(b){return BLOCKS[b].n*w(b)/units*avail;});
+  var mins=raw.map(function(x){return Math.floor(x);});
+  var used=mins.reduce(function(a,b){return a+b;},0);
+  var rest=avail-used;
+  var idx=raw.map(function(x,i){return [x-Math.floor(x),i];}).sort(function(a,b){return b[0]-a[0];});
+  for(var i=0;i<rest;i++){mins[idx[i%idx.length][1]]++;}
+  var rows=[],cps=[],t=startMin,qs=0;
+  seq.forEach(function(b,i){
+   var st2=t,en=t+mins[i];t=en;qs+=BLOCKS[b].n;
+   rows.push({no:i+1,b:b,mins:mins[i],s:st2,e:en,per:(mins[i]/BLOCKS[b].n)});
+   cps.push({time:en,text:BLOCKS[b].range+"（"+BLOCKS[b].name+"）まで終わっている"});
+  });
+  return {rows:rows,rev:rev,revStart:t,end:endMin,start:startMin,total:total,cps:cps,menjoUser:menjoUser,qs:qs};
+ }
+
+ function render(){
+  var r=calc();
+  var tb=document.getElementById("resBody");
+  var h="";
+  r.rows.forEach(function(x){
+   var B=BLOCKS[x.b];
+   h+="<tr><td>"+x.no+"</td><td><b>"+B.range+"</b><br>"+B.name+"</td><td>"+B.n+"問</td>"+
+      "<td class='tm'>"+fmt(x.s)+"<br>〜"+fmt(x.e)+"</td><td class='mi'>"+x.mins+"分</td>"+
+      "<td class='mi'>"+x.per.toFixed(1)+"分</td></tr>";
+  });
+  h+="<tr class='rv'><td>"+(r.rows.length+1)+"</td><td><b>マーク確認・見直し</b><br>飛ばした問題の処理</td><td>—</td>"+
+     "<td class='tm'>"+fmt(r.revStart)+"<br>〜"+fmt(r.end)+"</td><td class='mi'>"+r.rev+"分</td><td class='mi'>—</td></tr>";
+  tb.innerHTML=h;
+
+  document.getElementById("resLead").textContent=
+   (r.menjoUser?"5問免除（登録講習修了者）":"一般の受験者")+"／"+fmt(r.start)+"開始・"+r.total+"分・"+r.qs+"問。"+
+   "見直しに"+r.rev+"分を先に確保し、残り"+(r.total-r.rev)+"分を配分しました。";
+
+  var cp=document.getElementById("resCp");
+  var ch="";
+  r.cps.forEach(function(c,i){
+   if(i===r.cps.length-1)return;
+   ch+="<li><b>"+fmt(c.time)+"</b> … "+c.text+"</li>";
+  });
+  ch+="<li><b>"+fmt(r.revStart)+"</b> … 全問に何らかのマークが入っている（<b>空欄ゼロ</b>）。ここから見直しに入る</li>";
+  cp.innerHTML=ch;
+
+  try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}
+  try{window.dataLayer&&window.dataLayer.push({event:"jikan_result",kubun:st.kubun,order:st.order,kenri:st.kenri,rev:st.rev});}catch(e){}
+ }
+
+ function syncButtons(){
+  document.querySelectorAll(".opts").forEach(function(g){
+   var key=g.getAttribute("data-g");
+   g.querySelectorAll(".opt").forEach(function(b){
+    b.setAttribute("aria-pressed",String(b.getAttribute("data-v")===st[key]));
+   });
+  });
+ }
+
+ document.querySelectorAll(".opts").forEach(function(g){
+  var key=g.getAttribute("data-g");
+  g.addEventListener("click",function(ev){
+   var b=ev.target.closest(".opt");
+   if(!b||!g.contains(b))return;
+   st[key]=b.getAttribute("data-v");
+   syncButtons();render();
+  });
+ });
+
+ document.getElementById("reset").addEventListener("click",function(){
+  for(var k in DEF)st[k]=DEF[k];
+  syncButtons();render();
+ });
+
+ syncButtons();render();
+})();
+</script>
+</body>
+</html>
