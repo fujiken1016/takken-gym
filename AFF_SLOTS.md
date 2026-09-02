@@ -3,7 +3,7 @@
 全収益リンクは `data-aff="スロット名"` 属性で識別できる。リンク差し替え時はこの表を正とする。
 ※ A8の5社・楽天3枠・バリューコマース1枠は**提携済みの実リンクが既に挿入済み**（プレースホルダではない）。差し替えが必要になるのは「リンク切れ」「プログラム終了」「EPCの高い別案件への変更」時のみ。
 ※ リンクURLそのものの正本は `~/Desktop/claude/affiliate_links.md`。**このファイルは「どのスロットがどのページに実在するか」の正本**。
-※ 実態確認コマンド：`grep -rno 'data-aff="[^"]*"' --include='*.html' .`（最終確認 2026-08-14）
+※ 実態確認コマンド：`grep -rno 'data-aff="[^"]*"' --include='*.html' .`（最終確認 **2026-09-02**・本番HTMLを全42URLでcurl実測して照合）
 
 ## 現況サマリ（実測）
 
@@ -13,8 +13,10 @@
 | `/`（index.html） | 2（JSで動的生成） | A8_ONSUKU（ホーム）・A8_YOTSUYA（演習結果） |
 | `/kaitou-sokuhou/` | 1 | A8_YOTSUYA |
 | `/chinkan/`（ハブ index.html） | 1 | VC×1（VC_LEC_CHINKAN・§8「独学で走りきれないときの選択肢（講座）」） |
-| `/blog/` 全12記事・`/chinkan/` サブ5ページ | **0** | 記事本文に収益リンクは無い。`/courses/` および `/chinkan/#kouza` へのテキスト誘導のみ |
+| `/blog/takken-ochita-revenge` | **5** | VC_LEC・A8_YOTSUYA・A8_SQUARE・A8_SMART・A8_ONSUKU（**この記事だけ例外**。リベンジ層向けの「再受講割引6社比較」がページの主目的で、集約先へ送らずその場で比較させる設計。commit 0d9a688。PR表記・`rel="nofollow sponsored noopener"` とも設置済み） |
+| `/blog/` の他12記事・`/chinkan/` サブ5ページ | **0** | 記事本文に収益リンクは無い。`/courses/` および `/chinkan/#kouza` へのテキスト誘導のみ |
 | `/blog/`（記事一覧ページ） | 0 | AdSenseのみ。`/courses/` へのリンクあり |
+| `/ichimon/`＋論点別9本・`/toujitsu-check/`・`/toukei-quiz/`・`/chikaradameshi/`・`/chinkan/ichimon/`・`/chinkan/chikaradameshi/` | **0** | 2026-08-30以降に追加した無料ツール14ページ。収益リンク・自社教材リンクとも無し（=`/courses/` 集約設計のまま） |
 
 ## A8.net（講座5社）
 
