@@ -20,6 +20,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7K99MCR7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
+<script src="/jikan.js"></script>
 <style>
  article p,article li{font-size:15px;line-height:1.95}
  .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
@@ -149,7 +150,7 @@
   </div>
 
   <div class="warn">
-    <p><b>この順番を、本番でいきなり試さないでください。</b>解く順番を変えると、マークシートの行が問題冊子の並びと一致しなくなります。9月〜10月の通し演習で<b>最低2回</b>は同じ順番・同じ時間割で解き、マークのズレが出ないことを確かめてから本番に持ち込んでください。</p>
+    <p><b>この順番を、本番でいきなり試さないでください。</b>解く順番を変えると、マークシートの行が問題冊子の並びと一致しなくなります。9月〜10月の通し演習で<b>最低2回</b>は同じ順番・同じ時間割で解き、マークのズレが出ないことを確かめてから本番に持ち込んでください。<a href="/chikaradameshi/?mode=honban" style="color:var(--brand2);font-weight:800">この時間割のまま50問・120分で通し演習する →</a></p>
   </div>
 
   <h2>なぜ「分」ではなく「時刻」で持つのか</h2>
@@ -178,7 +179,9 @@
 
   <div class="cta-box">
     <p style="margin:0 0 4px;font-weight:800">この時間割で解く練習をする</p>
-    <a href="/chikaradameshi/">▸ 力だめし（本番形式で通して解く）</a>
+    <p style="margin:0 0 2px;font-size:13px;color:var(--muted);line-height:1.85">上の時間割はこの端末に保存されています。<b>本番モードの模試（50問・120分）は、この時間割を読み込んで同じ順番・同じ持ち時間で出題</b>できます。解いている間は「いま予定より何分早い／遅い」が表示され、終了後に<b>予定と実際の対比</b>が出ます。</p>
+    <a href="/chikaradameshi/?mode=honban">▸ この時間割で通し演習する（本番モード 50問・120分）</a>
+    <a href="/chikaradameshi/">▸ 力だめし（12問クイック診断）</a>
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（問26〜45の得点源を固める）</a>
     <a href="/ichimon/kenri">▸ 権利関係の一問一答（深追いを避ける判断を早くする）</a>
   </div>
@@ -215,56 +218,13 @@
 <script>
 (function(){
  "use strict";
- var KEY="takken_jikan_v1";
- var DEF={kubun:"ippan",order:"A",kenri:"std",rev:"25"};
- var st={};
- try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){st={};}
- for(var k in DEF){if(!st[k])st[k]=DEF[k];}
+ /* 計算は /jikan.js（正本）に集約。模試側 /chikaradameshi/ も同じ1本を読む */
+ var TJ=window.TakkenJikan;
+ if(!TJ)return; /* 万一 jikan.js が落ちても記事本文は読める（結果表だけ出ない） */
+ var DEF=TJ.DEF, BLOCKS=TJ.BLOCKS, fmt=TJ.fmt;
+ var st=TJ.read()||TJ.normalize(DEF);
 
- var BLOCKS={
-  kenri:{name:"権利関係",range:"問1〜14",n:14},
-  horei:{name:"法令上の制限",range:"問15〜22",n:8},
-  zei:{name:"税・価格の評定",range:"問23〜25",n:3},
-  gyoho:{name:"宅建業法",range:"問26〜45",n:20},
-  menjo:{name:"免除科目",range:"問46〜50",n:5}
- };
- var W={horei:1.15,zei:1.0,gyoho:1.0,menjo:0.7};
- var KW={deep:2.1,std:1.75,cut:1.4};
- var ORDERS={
-  A:["menjo","gyoho","horei","zei","kenri"],
-  B:["kenri","horei","zei","gyoho","menjo"],
-  C:["kenri","gyoho","horei","zei","menjo"]
- };
-
- function fmt(m){var h=Math.floor(m/60),mm=m%60;return h+":"+(mm<10?"0":"")+mm;}
-
- function calc(){
-  var menjoUser=(st.kubun==="menjo");
-  var startMin=menjoUser?(13*60+10):(13*60);
-  var endMin=15*60;
-  var total=endMin-startMin;
-  var rev=parseInt(st.rev,10)||25;
-  if(rev>total-30)rev=total-30;
-  var avail=total-rev;
-  var seq=ORDERS[st.order].slice();
-  if(menjoUser)seq=seq.filter(function(b){return b!=="menjo";});
-  var w=function(b){return b==="kenri"?KW[st.kenri]:W[b];};
-  var units=0;
-  seq.forEach(function(b){units+=BLOCKS[b].n*w(b);});
-  var raw=seq.map(function(b){return BLOCKS[b].n*w(b)/units*avail;});
-  var mins=raw.map(function(x){return Math.floor(x);});
-  var used=mins.reduce(function(a,b){return a+b;},0);
-  var rest=avail-used;
-  var idx=raw.map(function(x,i){return [x-Math.floor(x),i];}).sort(function(a,b){return b[0]-a[0];});
-  for(var i=0;i<rest;i++){mins[idx[i%idx.length][1]]++;}
-  var rows=[],cps=[],t=startMin,qs=0;
-  seq.forEach(function(b,i){
-   var st2=t,en=t+mins[i];t=en;qs+=BLOCKS[b].n;
-   rows.push({no:i+1,b:b,mins:mins[i],s:st2,e:en,per:(mins[i]/BLOCKS[b].n)});
-   cps.push({time:en,text:BLOCKS[b].range+"（"+BLOCKS[b].name+"）まで終わっている"});
-  });
-  return {rows:rows,rev:rev,revStart:t,end:endMin,start:startMin,total:total,cps:cps,menjoUser:menjoUser,qs:qs};
- }
+ function calc(){return TJ.calc(st);}
 
  function render(){
   var r=calc();
@@ -293,7 +253,7 @@
   ch+="<li><b>"+fmt(r.revStart)+"</b> … 全問に何らかのマークが入っている（<b>空欄ゼロ</b>）。ここから見直しに入る</li>";
   cp.innerHTML=ch;
 
-  try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}
+  TJ.save(st);
   try{window.dataLayer&&window.dataLayer.push({event:"jikan_result",kubun:st.kubun,order:st.order,kenri:st.kenri,rev:st.rev});}catch(e){}
  }
 
