@@ -75,6 +75,10 @@
  .steps{margin:12px 0 0;padding-left:1.35em}
  .steps li{font-size:14px;margin:10px 0;line-height:1.75}
  h3.sub3{font-size:15.5px;font-weight:900;margin:20px 0 4px;color:var(--ink)}
+ /* 文章量の多い表は375pxで折り返す（横スクロール量を減らす） */
+ .twrap table{min-width:0}
+ .twrap th,.twrap td{white-space:normal}
+ .twrap td:first-child{font-weight:700}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -128,7 +132,7 @@
 
   <h2 id="itsu">解答速報と合格点は「いつ」出るか</h2>
   <p>「解答速報はいつ出るのか」「合格点はいつわかるのか」は、この時期にいちばん多い疑問です。<b>各社の速報（予想）</b>と<b>正解番号・合否判定基準（実施機関の公式発表）</b>は、出るタイミングも意味もまったく別のものです。</p>
-  <div class="tw">
+  <div class="tw twrap">
     <table>
       <thead><tr><th>日時</th><th>何が出るか</th><th>出どころ</th></tr></thead>
       <tbody>
