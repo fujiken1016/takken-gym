@@ -18,37 +18,133 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- .pr-note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:14px}
- .pr-note b{color:var(--ink)}
- .lead{font-size:14.5px;color:var(--ink);margin:16px 0 4px}
- .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0}
- .toc a{display:block;font-size:13.5px;font-weight:700;color:var(--brand2);text-decoration:none;padding:4px 0}
- .course{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 1px 2px rgba(40,20,80,.05);position:relative}
- .course.pick{border-color:var(--brand);box-shadow:0 6px 22px rgba(120,50,220,.10)}
- .badge-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
- .rank{font-size:11px;font-weight:900;letter-spacing:.05em;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px}
- .tag{font-size:11px;font-weight:800;color:var(--brand2);background:rgba(139,63,240,.10);border-radius:6px;padding:2px 9px}
- .course h3{font-size:18px;font-weight:900;margin:2px 0 8px}
- .spec{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px;margin:8px 0 4px}
- .spec dt{font-weight:800;color:var(--muted);white-space:nowrap}
- .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;margin-top:12px}
- .related{background:var(--surface-2,#f4f1fa);border:1px dashed var(--line);border-radius:12px;padding:15px 17px;margin:14px 0;position:relative}
- .related h3{font-size:15px;font-weight:800;margin-bottom:4px}
- .related p{font-size:13px;color:var(--muted);margin:0 0 8px}
- .related a.mini,.book a.mini{font-size:13px;font-weight:800;color:var(--brand2);text-decoration:none}
- .soon{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 17px;margin:14px 0}
- .soon h3{font-size:15px;font-weight:800;margin-bottom:4px}
- .soon p{font-size:13px;color:var(--muted);margin:4px 0}
- .soon .chip{display:inline-block;font-size:12px;font-weight:700;color:var(--muted);background:var(--surface-2,#f4f1fa);border:1px solid var(--line);border-radius:20px;padding:3px 11px;margin:3px 5px 0 0}
- .book{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0;position:relative}
- .book h3{font-size:16px;font-weight:800;margin-bottom:8px}
+ /* デザイン正本＝ ~/Desktop/claude/memory/design_guidelines.md（2026-09-03 制定）。
+    ここの値はすべて同ファイルのトークン。この場で新しい色・サイズを発明しない。 */
+ :root{
+  /* §3-2 タイプスケール（rem。px 直書きしない＝WCAG 1.4.4 の200%拡大対応） */
+  --fs-sm:.9375rem;      /* 15px 補助・ラベル */
+  --fs-base:1.0625rem;   /* 17px 本文 */
+  --fs-lead:1.1875rem;   /* 19px リード・金額 */
+  --fs-h3:1.3125rem;     /* 21px */
+  --fs-h2:1.625rem;      /* 26px = 本文の1.53倍 */
+  --fs-h1:2.125rem;      /* 34px = 本文の2.00倍 */
+  --lh-body:1.85; --lh-tight:1.35; --lh-display:1.15; --lh-ui:1.4;
+  /* §4 余白（4px刻み・8段だけ） */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-8:48px;
+  /* §5-1 角丸。/courses/ は「読み物の面」なので 4px と 8px だけ使う */
+  --r-sm:4px; --r-md:8px;
+  --line-strong:#8b8b9f;   /* 3.15:1 押せる境界（WCAG 1.4.11） */
+  --surface-2:#f1f1f6;
+  --tint:rgba(106,31,199,.08);
+  --focus:#0b57d0;
+  --shadow-sm:0 1px 2px rgba(23,23,34,.06),0 1px 3px rgba(23,23,34,.10);
+ }
+ @media(prefers-color-scheme:dark){:root{--surface-2:#1f1830;--line-strong:#606076;--tint:rgba(168,112,247,.16);--focus:#8ab4f8}}
+
+ /* ---- 骨格 ------------------------------------------------------------- */
+ body{font-size:var(--fs-base);line-height:var(--lh-body)}
+ main{max-width:700px}                      /* §3-3 本文カラム 620〜700px */
+ .top .in{max-width:700px}
+ .top a.home{display:inline-flex;align-items:center;gap:var(--sp-2);min-height:48px;
+   font-size:var(--fs-sm);font-weight:600;opacity:1}
+ .top h1{font-size:var(--fs-h1);font-weight:700;line-height:var(--lh-display);margin-top:var(--sp-2)}
+ .top .sub{font-size:var(--fs-base);line-height:var(--lh-ui);opacity:.94;margin-top:var(--sp-3)}
+ h2{font-size:var(--fs-h2);font-weight:700;line-height:var(--lh-tight);color:var(--brand);
+   border-left:4px solid var(--brand);padding-left:var(--sp-3);
+   margin:var(--sp-6) 0 var(--sp-3);scroll-margin-top:var(--sp-4)}
+ h2:first-of-type{margin-top:var(--sp-5)}
+ main p,main li,main dd{font-size:var(--fs-base);line-height:var(--lh-body);color:var(--ink)}
+ main a{word-break:break-word}
+ main ul{margin:var(--sp-3) 0;padding-left:var(--sp-5)}
+ main li{margin:var(--sp-2) 0}
+ .note{font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted);margin:var(--sp-3) 0 0}
+
+ /* ---- ボタン（§5-2 最小高48px・角丸8px・fw700まで） -------------------- */
+ .cbtn,.backapp,.mini,.bbtn{display:inline-flex;align-items:center;justify-content:center;
+   gap:var(--sp-2);min-height:48px;padding:var(--sp-3) var(--sp-5);border-radius:var(--r-md);
+   font-size:var(--fs-base);font-weight:700;line-height:var(--lh-ui);text-decoration:none;
+   text-align:center;word-break:break-word}
+ .cbtn,.backapp{background:var(--brand);color:#fff}        /* 白文字 7.97:1 */
+ .mini,.bbtn{background:var(--surface);color:var(--brand);border:1px solid var(--line-strong)}
+ .cbtn{width:100%;margin-top:var(--sp-4)}
+ .backapp{margin-top:var(--sp-4)}
+ .mini{margin-top:var(--sp-2)}
+ a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+ /* ---- PR表記・リード --------------------------------------------------- */
+ .pr-note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:var(--sp-4);font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted);
+   display:flex;gap:var(--sp-3);align-items:flex-start;margin-top:var(--sp-4)}
+ .pr-note b{color:var(--ink);font-weight:700}
+ .pr-note>b{flex-shrink:0;color:var(--brand);background:var(--tint);
+   border-radius:var(--r-sm);padding:var(--sp-1) var(--sp-2);line-height:var(--lh-ui)}
+ .lead{font-size:var(--fs-lead);line-height:var(--lh-body);color:var(--ink);margin:var(--sp-5) 0 var(--sp-2)}
+
+ /* ---- 目次・関連リンク ------------------------------------------------- */
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:var(--sp-2) var(--sp-4);margin:var(--sp-4) 0}
+ .toc a{display:flex;align-items:center;min-height:48px;padding:var(--sp-2) 0;
+   border-top:1px solid var(--line);font-size:var(--fs-base);font-weight:600;
+   line-height:var(--lh-ui);color:var(--brand);text-decoration:none}
+ .toc a:first-child{border-top:none}
+
+ /* ---- 講座カード（§5-3） ---------------------------------------------- */
+ .course{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:var(--sp-4);margin:var(--sp-4) 0;box-shadow:var(--shadow-sm)}
+ .course.pick{border-color:var(--brand)}
+ .badge-row{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;margin-bottom:var(--sp-2)}
+ .rank,.tag{font-size:var(--fs-sm);font-weight:600;line-height:var(--lh-ui);
+   border-radius:var(--r-sm);padding:var(--sp-1) var(--sp-3)}
+ .rank{color:#fff;background:var(--brand)}
+ .tag{color:var(--brand);background:var(--tint)}
+ .course h3{font-size:var(--fs-h3);font-weight:700;line-height:var(--lh-tight);
+   margin:var(--sp-1) 0 var(--sp-3)}
+ .price{background:var(--surface-2);border-radius:var(--r-sm);
+   padding:var(--sp-3) var(--sp-4);margin:var(--sp-3) 0}
+ .price .lb{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--muted);
+   line-height:var(--lh-ui);margin-bottom:var(--sp-1)}
+ .price .vl{display:block;font-size:var(--fs-lead);font-weight:700;line-height:var(--lh-tight);
+   color:var(--ink);font-variant-numeric:tabular-nums}
+ .price .dt2{display:block;font-size:var(--fs-sm);line-height:var(--lh-body);
+   color:var(--muted);margin-top:var(--sp-2)}
+ .spec{display:block;margin:var(--sp-3) 0 0}
+ .spec dt{font-size:var(--fs-sm);font-weight:600;color:var(--muted);
+   line-height:var(--lh-ui);margin-top:var(--sp-3)}
+ .spec dt:first-of-type{margin-top:0}
+ .spec dd{margin:0}
+
+ /* ---- 補足枠・審査中 --------------------------------------------------- */
+ .related{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:var(--sp-4);margin:var(--sp-4) 0}
+ .soon,.book,.cta-box{background:var(--surface);border:1px solid var(--line);
+   border-radius:var(--r-md);padding:var(--sp-4);margin:var(--sp-4) 0}
+ .related h3,.soon h3,.book h3{font-size:var(--fs-h3);font-weight:700;
+   line-height:var(--lh-tight);margin-bottom:var(--sp-3)}
+ .related p,.soon p{font-size:var(--fs-base);line-height:var(--lh-body);color:var(--ink);margin:0 0 var(--sp-3)}
+ .soon .chip{display:inline-block;font-size:var(--fs-sm);font-weight:600;color:var(--muted);
+   background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);
+   padding:var(--sp-2) var(--sp-3);margin:var(--sp-1) var(--sp-2) 0 0;line-height:var(--lh-ui)}
+
+ /* ---- 書籍（楽天） ----------------------------------------------------- */
  .book ul{list-style:none;margin:0;padding:0}
- .book li{padding:9px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
- .book li:first-child{border-top:none}
- .book .bl{font-weight:700}
- .book a.bbtn{flex-shrink:0;font-size:13px;font-weight:800;color:#fff;background:#bf0000;border-radius:8px;padding:8px 14px;text-decoration:none}
+ .book li{display:flex;flex-direction:column;align-items:stretch;gap:var(--sp-3);
+   padding:var(--sp-4) 0;margin:0;border-top:1px solid var(--line)}
+ .book li:first-child{border-top:none;padding-top:0}
+ .book .bl{font-size:var(--fs-base);font-weight:600;line-height:var(--lh-body);color:var(--ink)}
+
+ /* ---- 自社商品枠 ------------------------------------------------------- */
+ .cta-box{font-size:var(--fs-base);line-height:var(--lh-body);color:var(--ink)}
+ .cta-box p{margin:0 0 var(--sp-3)}
+
+ /* ---- 日付・フッタ ----------------------------------------------------- */
+ .page-updated{font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted);
+   text-align:center;margin:var(--sp-5) 0 var(--sp-2)}
+ .foot{border-top:1px solid var(--line);margin-top:var(--sp-8);padding-top:var(--sp-5);
+   font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted);text-align:center}
+ .foot a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+   padding:0 var(--sp-3);margin:0;font-size:var(--fs-sm);word-break:break-word}
+
  .ppx{position:absolute;width:1px;height:1px;opacity:0}
- .backapp{display:inline-block;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;padding:12px 20px;border-radius:12px;font-size:14px}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
@@ -58,7 +154,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ItemList","name":"宅建講座の比較リスト","description":"宅建（宅地建物取引士）の通信・通学・オンライン講座5社を比較。四谷学院・LEC東京リーガルマインド・資格スクエア・SMART合格講座・オンスク.JPの料金帯・学習スタイル・向き不向きを事実ベースで整理しました。","url":"https://takken.mainichi-lab.com/courses/#hikaku","itemListOrder":"https://schema.org/ItemListUnordered","numberOfItems":5,"itemListElement":[{"@type":"ListItem","position":1,"name":"四谷学院 通信講座"},{"@type":"ListItem","position":2,"name":"LEC東京リーガルマインド"},{"@type":"ListItem","position":3,"name":"資格スクエア"},{"@type":"ListItem","position":4,"name":"SMART合格講座"},{"@type":"ListItem","position":5,"name":"オンスク.JP"}]}
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"宅建講座の選び方｜通信・通学・オンライン講座5社を比較【2026】 | 宅建GYM","url":"https://takken.mainichi-lab.com/courses/","inLanguage":"ja","datePublished":"2026-08-12","dateModified":"2026-09-02"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"宅建講座の選び方｜通信・通学・オンライン講座5社を比較【2026】 | 宅建GYM","url":"https://takken.mainichi-lab.com/courses/","inLanguage":"ja","datePublished":"2026-08-12","dateModified":"2026-09-03"}</script>
 </head>
 <body>
 <div class="top"><div class="in">
@@ -83,12 +179,16 @@
   <div class="course pick">
     <div class="badge-row"><span class="rank">はじめての通信講座に</span><span class="tag">資料請求無料</span></div>
     <h3>四谷学院 通信講座</h3>
+    <div class="price">
+      <span class="lb">料金の目安</span>
+      <span class="vl">講座により異なる</span>
+      <span class="dt2">まずは無料の資料請求で確認できます。</span>
+    </div>
     <dl class="spec">
       <dt>学習スタイル</dt><dd>通信講座（テキスト＋映像）。「55段階」の段階式カリキュラム</dd>
-      <dt>料金の目安</dt><dd>講座により異なる（まずは無料の資料請求で確認）</dd>
       <dt>向いている人</dt><dd>初心者で、段階を踏んで着実に進めたい人</dd>
     </dl>
-    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">宅建（宅地建物取引士）を含む幅広い資格に対応。無料の資料請求から始められるので、まず情報だけ取り寄せて比較したい人に向いています。</p>
+    <p class="note">宅建（宅地建物取引士）を含む幅広い資格に対応。無料の資料請求から始められるので、まず情報だけ取り寄せて比較したい人に向いています。</p>
     <a class="cbtn" data-aff="A8_YOTSUYA" href="https://px.a8.net/svt/ejp?a8mat=4B9XTF+CPUEIQ+5IEI+5ZMCH" target="_blank" rel="nofollow sponsored noopener">四谷学院の資料請求（無料）→</a>
     <img class="ppx" src="https://www10.a8.net/0.gif?a8mat=4B9XTF+CPUEIQ+5IEI+5ZMCH" width="1" height="1" alt="">
   </div>
@@ -96,21 +196,29 @@
   <div class="course">
     <div class="badge-row"><span class="rank">大手・通学もできる</span><span class="tag">通学＋Web通信</span></div>
     <h3>LEC東京リーガルマインド</h3>
+    <div class="price">
+      <span class="lb">料金の目安</span>
+      <span class="vl">137,500円〜176,000円</span>
+      <span class="dt2">初学者向けのフルコース（税込・一般価格）。Web完結の「スキマ時間で宅建合格Webコース」は78,000円、短期集中の「ウルトラ合格 大逆転」は55,000円〜。</span>
+    </div>
     <dl class="spec">
       <dt>学習スタイル</dt><dd>全国の本校での通学講義とWeb通信を選べる大手資格スクール</dd>
-      <dt>料金の目安</dt><dd>初学者向けのフルコースは137,500円〜176,000円（税込・一般価格）。Web完結の「スキマ時間で宅建合格Webコース」は78,000円、短期集中の「ウルトラ合格 大逆転」は55,000円〜</dd>
       <dt>向いている人</dt><dd>予算を確保でき、通学や体系的なカリキュラムでしっかり学びたい人</dd>
     </dl>
-    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">正直な位置づけとして、<b>このページで紹介している中では価格帯がいちばん高め</b>です。そのぶん通学・自習室・模試・直前対策までそろっており、独学が続かなかった人の受け皿になります。早期申込割引などの割引制度があるほか、「0円模試」（0円〜）や無料の資料請求で先に相性を試せます。料金・日程は改定されるため、申込前に必ず公式で確認してください。</p>
+    <p class="note">正直な位置づけとして、<b>このページで紹介している中では価格帯がいちばん高め</b>です。そのぶん通学・自習室・模試・直前対策までそろっており、独学が続かなかった人の受け皿になります。早期申込割引などの割引制度があるほか、「0円模試」（0円〜）や無料の資料請求で先に相性を試せます。料金・日程は改定されるため、申込前に必ず公式で確認してください。</p>
     <a class="cbtn" data-aff="VC_LEC" href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3777672&pid=892677873&vc_url=https%3A%2F%2Fwww.lec-jp.com%2Ftakken%2F" target="_blank" rel="nofollow sponsored noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3777672&pid=892677873" height="1" width="0" border="0" alt="">LEC東京リーガルマインド 宅建士講座</a>
   </div>
 
   <div class="course">
     <div class="badge-row"><span class="rank">オンラインでしっかり</span><span class="tag">資格スクール</span></div>
     <h3>資格スクエア</h3>
+    <div class="price">
+      <span class="lb">料金の目安</span>
+      <span class="vl">講座により異なる</span>
+      <span class="dt2">資料請求・無料体験あり。</span>
+    </div>
     <dl class="spec">
       <dt>学習スタイル</dt><dd>オンライン特化の資格スクール。過去問分析・オンライン学習ツール</dd>
-      <dt>料金の目安</dt><dd>講座により異なる（資料請求・無料体験あり）</dd>
       <dt>向いている人</dt><dd>体系立ったカリキュラムでしっかり合格を狙いたい人</dd>
     </dl>
     <a class="cbtn" data-aff="A8_SQUARE" href="https://px.a8.net/svt/ejp?a8mat=4B9XTF+CSTKJM+373C+7CX1E" target="_blank" rel="nofollow sponsored noopener">資格スクエアの公式サイト →</a>
@@ -120,9 +228,12 @@
   <div class="course">
     <div class="badge-row"><span class="rank">試験対策特化</span><span class="tag">国家資格対応</span></div>
     <h3>SMART合格講座</h3>
+    <div class="price">
+      <span class="lb">料金の目安</span>
+      <span class="vl">講座により異なる</span>
+    </div>
     <dl class="spec">
       <dt>学習スタイル</dt><dd>オンライン試験対策講座（（一財）全日本情報学習振興協会）</dd>
-      <dt>料金の目安</dt><dd>講座により異なる</dd>
       <dt>向いている人</dt><dd>宅建など国家資格の試験対策に絞って学びたい人</dd>
     </dl>
     <a class="cbtn" data-aff="A8_SMART" href="https://px.a8.net/svt/ejp?a8mat=4B9XTF+CTF05E+4LOQ+60OXE" target="_blank" rel="nofollow sponsored noopener">SMART合格講座の公式サイト →</a>
@@ -132,9 +243,13 @@
   <div class="course">
     <div class="badge-row"><span class="rank">まず試す</span><span class="tag">月額制・スマホ完結</span></div>
     <h3>オンスク.JP</h3>
+    <div class="price">
+      <span class="lb">料金の目安</span>
+      <span class="vl">月額 1,628円〜</span>
+      <span class="dt2">ウケホーダイ（月額定額プラン）。</span>
+    </div>
     <dl class="spec">
       <dt>学習スタイル</dt><dd>月額定額で多数の資格が学び放題。動画＋問題演習アプリ</dd>
-      <dt>料金の目安</dt><dd>月額1,628円〜（ウケホーダイ）</dd>
       <dt>向いている人</dt><dd>低コストで気軽に始めたい人、独学の補強に使いたい人</dd>
     </dl>
     <a class="cbtn" data-aff="A8_ONSUKU" href="https://px.a8.net/svt/ejp?a8mat=4B9XTF+CR19QA+408S+5YRHE" target="_blank" rel="nofollow sponsored noopener">オンスク.JPの公式サイト →</a>
@@ -142,7 +257,7 @@
   </div>
 
   <h2>補足：比較表に入れていない宅建講座</h2>
-  <p style="font-size:13px;color:var(--muted);margin:6px 0 0">宅建講座ではありますが、公式ページの料金・申込受付期間の記載が最新かどうかを確認できなかったため、上の5社比較には含めていません。</p>
+  <p class="note">宅建講座ではありますが、公式ページの料金・申込受付期間の記載が最新かどうかを確認できなかったため、上の5社比較には含めていません。</p>
   <div class="related">
     <h3>資格対策ドットコム（アーティスソリューションズ）の宅建士eラーニング講座</h3>
     <p>LECの『出る順宅建士 合格テキスト』と『同 ウォーク問過去問題集』をeラーニング化した講座です。冊子テキストが付くセットと、オンラインで完結するプランの2種類があり、講義動画・習熟レベルチェックテスト・模擬試験・質問メール受付サービスが含まれます。<b>料金と申込受付期間は、公式ページの記載が最新か当サイトで確認できなかったため掲載していません。申し込む前に必ず公式ページでご確認ください。</b></p>
@@ -157,14 +272,15 @@
       <span class="chip">スタディング</span>
       <span class="chip">フォーサイト</span>
     </div>
-    <p style="margin-top:8px">※ 上記は現在準備中のため、まだ紹介リンクはありません。</p>
+    <p class="note">※ 上記は現在準備中のため、まだ紹介リンクはありません。</p>
   </div>
 
   <h2 id="jisha">運営者が作った直前期教材（自社商品）</h2>
   <div class="cta-box">
-    講座ほどの投資はまだ…という人向けに、<b>運営者自身が作った教材</b>もあります。法令・数値はe-Gov法令検索の条文本文で確認し、確認できなかったものは載せない方針です。自社商品なので正直に書くと、講座の代わりにはなりません。<b>すでに一周した人が直前期に穴を潰す用途</b>です。<br><br>
-    → <a href="https://note.com/fujiken818/n/ne2376058ec7b" target="_blank" rel="noopener">宅建 直前 総点検ノート【令和8年度】（note・¥980）</a><br>
-    捨てどころの意思決定表・科目横断の数字シート・確認問題約90項目・最後の7日の逆算チェックリスト。改正区分所有法の部分は<a href="https://note.com/fujiken818/n/n50a7bb4bf933" target="_blank" rel="noopener">無料記事</a>で試し読みできます。
+    <p>講座ほどの投資はまだ…という人向けに、<b>運営者自身が作った教材</b>もあります。法令・数値はe-Gov法令検索の条文本文で確認し、確認できなかったものは載せない方針です。自社商品なので正直に書くと、講座の代わりにはなりません。<b>すでに一周した人が直前期に穴を潰す用途</b>です。</p>
+    <p>捨てどころの意思決定表・科目横断の数字シート・確認問題約90項目・最後の7日の逆算チェックリストが入っています。改正区分所有法の部分は無料記事で試し読みできます。</p>
+    <a class="mini" href="https://note.com/fujiken818/n/ne2376058ec7b" target="_blank" rel="noopener">宅建 直前 総点検ノート【令和8年度】（note・¥980）→</a>
+    <a class="mini" href="https://note.com/fujiken818/n/n50a7bb4bf933" target="_blank" rel="noopener">改正区分所有法の部分を無料記事で試し読み →</a>
   </div>
 
   <h2 id="books">宅建テキスト・過去問集（楽天）</h2>
@@ -175,7 +291,7 @@
       <li><span class="bl">2026年度版 みんなが欲しかった！ 宅建士の論点別過去問題集</span><a class="bbtn" data-aff="RAKUTEN_TEXT2" href="https://hb.afl.rakuten.co.jp/hgc/56850cef.fb24df26.56850cf0.369d6934/_RTLink143602?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18387273%2F&m=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18387273%2F" target="_blank" rel="nofollow sponsored noopener">楽天ブックスで見る</a></li>
       <li><span class="bl">2026年度版 みんなが欲しかった！ 宅建士の一問一答式過去問題集</span><a class="bbtn" data-aff="RAKUTEN_TEXT3" href="https://hb.afl.rakuten.co.jp/hgc/56850cef.fb24df26.56850cf0.369d6934/_RTLink143602?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18387272%2F&m=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18387272%2F" target="_blank" rel="nofollow sponsored noopener">楽天ブックスで見る</a></li>
     </ul>
-    <p style="font-size:12px;color:var(--muted);margin-top:10px">※ 楽天ブックスの商品ページに移動します（アフィリエイトリンク）。同じシリーズでも改訂で年度版が変わるため、購入時は最新年度版かご確認ください。</p>
+    <p class="note">※ 楽天ブックスの商品ページに移動します（アフィリエイトリンク）。同じシリーズでも改訂で年度版が変わるため、購入時は最新年度版かご確認ください。</p>
   </div>
 
   <h2 id="choose">迷ったときの選び方</h2>
@@ -189,7 +305,7 @@
   <a class="backapp" href="/">← 宅建GYMで学習を続ける</a>
 
   <h2>あわせて読みたい</h2>
-  <div class="toc" style="margin-top:6px">
+  <div class="toc">
     <a href="/ichimon/">▸ 宅建の一問一答（○×84問）分野別｜宅建業法・権利関係・法令上の制限・税その他</a>
     <a href="/blog/">▸ 記事一覧（宅建の勉強法・法改正・試験当日・賃管士まで）</a>
     <a href="/blog/takken-chokuzenki-2kagetsu">▸ 宅建 直前期2か月の勉強法（10月18日に間に合わせる）</a>
@@ -209,10 +325,10 @@
     <a href="/blog/takken-benkyo-jikan">▸ 宅建の勉強時間の目安（300〜400時間の内訳）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:13px;line-height:1.9;color:#53536b;text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-02">2026年9月2日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:13px;line-height:1.9;color:#53536b;text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
-    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+    <div>© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
   </div>
 </main>
 </body>
