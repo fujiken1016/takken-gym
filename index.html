@@ -538,11 +538,14 @@
           <a href="/ichimon/kenri">権利関係の一問一答<span class="n">26問 ›</span></a>
           <a href="/ichimon/horei">法令上の制限の一問一答<span class="n">18問 ›</span></a>
           <a href="/ichimon/zei">税・その他の一問一答<span class="n">16問 ›</span></a>
-          <a href="/chikaradameshi/">宅建 力試し（50点換算の判定つき）<span class="n">12問 ›</span></a>
+          <a href="/chikaradameshi/">宅建 力試し（50点換算の判定つき）／50問の本番モードは印刷・PDF保存もできます<span class="n">12問 ›</span></a>
           <a href="/toukei-quiz/">統計クイズ2026（問48の暗記チェック）<span class="n">12問 ›</span></a>
           <a href="/toujitsu-check/">試験当日の持ち物チェック＆タイムライン<span class="n">無料 ›</span></a>
-          <a href="/jikan-haibun/">時間配分・解く順番シミュレータ（13時開始の実時刻）<span class="n">無料 ›</span></a>
-          <a href="/ichimon/">論点別の問題（クーリング・オフ／報酬計算／意思表示／農地法／開発許可／建蔽率・容積率）<span class="n">6本 ›</span></a>
+          <a href="/jikan-haibun/">時間配分・解く順番シミュレータ（作った時間割は模試に持ち込めます）<span class="n">無料 ›</span></a>
+          <a href="/ichimon/dairi">代理の問題（無権代理・表見代理・代理権の消滅）<span class="n">24問 ›</span></a>
+          <a href="/ichimon/jikou">時効の問題（取得時効・消滅時効・完成猶予と更新）<span class="n">24問 ›</span></a>
+          <a href="/ichimon/teitouken">抵当権の問題（法定地上権・抵当権消滅請求・物上代位）<span class="n">24問 ›</span></a>
+          <a href="/ichimon/">論点別の問題（代理／時効／抵当権／意思表示／クーリング・オフ／報酬計算／農地法／開発許可／建蔽率・容積率）<span class="n">9本 ›</span></a>
           <a href="/ichimon/">分野別 一問一答の一覧を見る ›</a>
           <a href="/chinkan/ichimon/">賃貸不動産経営管理士の一問一答<span class="n">30問 ›</span></a>
         </div>
@@ -1188,11 +1191,11 @@ function routePhase(d){return d<0?"after":d===0?"exam":d<=21?"chokuzen":"pre";}
 // 入口の定義（id → 表示内容）。href は本番で200を実測済みのURLのみ
 const ROUTES={
   chikaradameshi:{ic:"🎯",q:"まず今の実力を知りたい",t:"宅建 力試し（12問）",d:"約2分・50点換算でS〜C判定。分野別の弱点も出ます",href:"/chikaradameshi/"},
-  mogi:{ic:"⏱",q:"本番形式で点を測りたい",t:"無料Web模試（50問・120分）",d:"本試験と同じ出題順・タイマー・登録不要",href:"/chikaradameshi/?mode=honban"},
-  ichimon:{ic:"📚",q:"分野・論点で潰したい",t:"一問一答（分野別＋論点別）",d:"○×84問＋頻出6論点（報酬計算ほか）",href:"/ichimon/"},
+  mogi:{ic:"⏱",q:"本番形式で点を測りたい",t:"無料Web模試（50問・120分）",d:"本試験と同じ出題順・タイマー・登録不要。印刷／PDF保存で紙でも解けます",href:"/chikaradameshi/?mode=honban"},
+  ichimon:{ic:"📚",q:"分野・論点で潰したい",t:"一問一答（分野別＋論点別）",d:"○×84問＋論点別9本（代理・時効・抵当権ほか）",href:"/ichimon/"},
   toukei:{ic:"📊",q:"直前に詰めれば取れる1点",t:"統計クイズ2026（問48）",d:"12問・毎年出る数字だけを1分で確認",href:"/toukei-quiz/"},
   toujitsu:{ic:"🧳",q:"当日の段取りを固めたい",t:"持ち物チェック＆当日タイムライン",d:"13:00開始から逆算・前日夜から使える",href:"/toujitsu-check/"},
-  jikan:{ic:"⏱️",q:"時間配分と解く順番を決めたい",t:"時間配分・解く順番シミュレータ",d:"13:00開始の実時刻に変換。5問免除にも対応",href:"/jikan-haibun/"},
+  jikan:{ic:"⏱️",q:"時間配分と解く順番を決めたい",t:"時間配分・解く順番シミュレータ",d:"13:00開始の実時刻に変換。作った時間割は模試にそのまま持ち込めます",href:"/jikan-haibun/"},
   sokuhou:{ic:"📝",q:"試験が終わった・自己採点したい",t:"解答速報・自己採点（10月18日）",d:"自己採点ツール＋合格ラインの推移",href:"/kaitou-sokuhou/"},
   revenge:{ic:"🔁",q:"今年がだめでも、次がある",t:"落ちた人の再挑戦プラン",d:"再受講割引・学習経験者コースを6社で比較",href:"/blog/takken-ochita-revenge"},
   chinkan:{ic:"🏠",q:"賃管士も受ける・併願したい",t:"賃貸不動産経営管理士（11月15日）",d:"重複範囲の解説＋一問一答30問",href:"/chinkan/"}
