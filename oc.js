@@ -21,6 +21,12 @@
  *              「## note流入の計測（2026-09-02確立）」§utm命名規則
  */
 (function () {
+  /* Kindle の ASIN → GA4 に送る book の名前。載っていない ASIN は ASIN のまま送る。 */
+  var BOOK_MAP = {
+    B0HFW15W4R: "chinkan_jobun", // 第1弾 賃管士 条文で確かめる要点ノート（¥700・KU対象）
+    B0HHMT59G2: "takken_houkaisei" // 第3弾 宅建 法改正ノート【令和8年度】（¥1,400・KDPセレクト非登録）
+  };
+
   var NOTE_MAP = {
     ne2376058ec7b: "note_takken_980", // 有料¥980 宅建 直前 総点検ノート（判定 9/27）
     n7f126d2e8522: "note_ai_980", // 有料¥980 AI会社化（判定 9/29）
@@ -50,8 +56,10 @@
         asin = asin ? asin[1] : "unknown";
         // B0HFW15W4R は 9/2 から chinkan 各面で "chinkan_jobun" として送っており、
         // 途中で値が変わると判定日に系列が割れるので名称を維持する。
+        // B0HHMT59G2（第3弾・宅建 法改正ノート）は 2026-09-03 の導線設置が初出＝
+        // 過去データが無いので、最初から読める名前で送る。
         send("kindle_click", {
-          book: asin === "B0HFW15W4R" ? "chinkan_jobun" : asin,
+          book: BOOK_MAP[asin] || asin,
           from_page: from
         });
         return;
