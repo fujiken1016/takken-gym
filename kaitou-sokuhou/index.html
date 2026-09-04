@@ -528,7 +528,7 @@
     // 1問も入力せずに「採点する」を押した場合、0点＝ゾーン3（不合格）と断定して
     // リベンジ講座を出してしまうため、採点せずに入力を促す（2026-09-04 事前検証で検出）。
     if(answered===0){
-      elResult.innerHTML='<div class="sresult"><div style="font-weight:900;font-size:15px;margin-bottom:6px">まだ1問も入力されていません</div>'
+      elResult.innerHTML='<div class="sresult"><div style="font-weight:700;font-size:16px;margin-bottom:6px">まだ1問も入力されていません</div>'
         +'<p style="font-size:14px;margin:6px 0">上の解答欄で、問1〜問50について自分がマークした選択肢（1〜4）を選んでから「採点する」を押してください。途中まででも採点できます（未入力の問は不正解として集計します）。</p>'
         +'<p style="font-size:14px;color:var(--muted);margin:6px 0">入力内容はこの端末に自動保存されるので、途中で閉じても続きから再開できます。</p></div>';
       try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
