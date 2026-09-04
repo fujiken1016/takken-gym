@@ -20,33 +20,67 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- .lead{margin:16px 0 4px}
- .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:16px 0}
- .toc a{display:block;font-size:15px;font-weight:700;color:var(--brand2);text-decoration:none;padding:4px 0}
- .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
- table.t{width:100%;border-collapse:collapse;min-width:440px;font-size:15px}
- table.t th,table.t td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
- table.t th{background:rgba(139,63,240,.08);font-weight:700;color:var(--muted);font-size:14px;white-space:nowrap}
- table.t tbody tr:last-child td{border-bottom:none}
+/* このページ内だけのスケール調整（共通CSSは触らない）。値は memory/design_guidelines.md のトークン */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85}
+ article p{margin:16px 0}
+ article li{margin:8px 0}
+ article b,article strong{font-weight:600}
+ .lead{margin:16px 0}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:24px 0}
+ .toc>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
+ .toc ol{margin:0;padding-left:20px}
+ .toc li{font-size:1rem;line-height:1.85;margin:0}
+ .toc a{color:var(--brand2);text-decoration:none;display:flex;align-items:center;min-height:48px}
+ .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+ table.t th,table.t td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;line-height:1.85}
+ table.t th{background:var(--surface);font-weight:600;color:var(--muted)}
  .num{font-variant-numeric:tabular-nums}
- .hl{color:var(--brand2);font-weight:700}
- .scroll-hint{font-size:14px;color:var(--muted);margin:-4px 0 10px}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none}
- .ng{background:var(--surface);border:1px solid var(--line);border-left:4px solid #c0392b;border-radius:12px;padding:14px 18px;margin:16px 0}
- .ng h3{margin-top:0;color:#c0392b}
- .src{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.85}
- .src a{color:var(--muted)}
- .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
- .updated{font-size:14px;color:var(--muted);margin-top:10px}
+ .hl{color:var(--brand2);font-weight:600}
+ .scroll-hint{font-size:0.9375rem;color:var(--muted);margin:8px 0 0;line-height:1.85}
+ figure.fig{margin:24px 0}
+ figure.fig figcaption p{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:8px 0 0}
+ /* 横棒グラフ：固定pxを使わず % と flex で組む（320px でも縮む） */
+ .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
+ .bars .row:last-child{margin-bottom:0}
+ .bars .lbl{font-size:1rem;font-weight:600;line-height:1.85;flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+ .bars .val{font-size:0.9375rem;line-height:1.85;color:var(--muted);flex:0 1 auto;min-width:0;overflow-wrap:anywhere}
+ .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
+ .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
+ .flow{margin:0;padding:0;list-style:none;counter-reset:st}
+ .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 48px;margin:0 0 8px;font-size:1.0625rem;line-height:1.85}
+ .flow li:last-child{margin-bottom:0}
+ .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:14px;width:26px;height:26px;border-radius:9999px;background:var(--brand);color:#fff;font-size:0.9375rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .ng{background:var(--surface);border:1px solid var(--line);border-left:4px solid #a8480f;border-radius:8px;padding:16px;margin:24px 0}
+ .ng h3{margin-top:0;color:#a8480f}
+ .ng p{margin:8px 0 0}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.85}
+ .src a{color:var(--brand2)}
+ .rel{border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .pr-line{font-size:0.9375rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:16px;line-height:1.85}
+ .ichimon-cta a{display:flex;align-items:center;min-height:48px}
+ .nextact{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .nextact a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .updated{font-size:0.9375rem;color:var(--muted);margin-top:16px;line-height:1.85}
+ .page-updated{font-size:0.9375rem;line-height:1.85;color:var(--muted);text-align:center;margin:24px 0 8px}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建 直前期2か月の勉強法｜今からで間に合う？10月18日までの週別プラン","description":"令和8年度（2026年）宅建試験まで残り約2か月。8月・9月から始めて10月18日に間に合わせるための週別スケジュール、直前期の優先順位、やってはいけない5つのこと、目標得点の作り方を具体的にまとめました。","inLanguage":"ja","datePublished":"2026-08-13T10:54:59+09:00","dateModified":"2026-09-03","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"},"url":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建 直前期2か月の勉強法｜今からで間に合う？10月18日までの週別プラン","description":"令和8年度（2026年）宅建試験まで残り約2か月。8月・9月から始めて10月18日に間に合わせるための週別スケジュール、直前期の優先順位、やってはいけない5つのこと、目標得点の作り方を具体的にまとめました。","inLanguage":"ja","datePublished":"2026-08-13T10:54:59+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"},"url":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},{"@type":"ListItem","position":2,"name":"宅建 直前期2か月の勉強法","item":"https://takken.mainichi-lab.com/blog/takken-chokuzenki-2kagetsu"}]}
 </script>
@@ -59,74 +93,142 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
+  <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
 
   <p class="lead">令和8年度の宅建試験は<b>2026年10月18日（日）</b>。8月中旬の時点で、残りは<b>約9週間・66日</b>です。「今から始めて間に合うか」と検索してこのページにたどり着いた人に、先に結論を書きます。</p>
-  <p><b>ゼロからでも、1日3時間を確保できるなら間に合う可能性はあります。</b>ただし条件があって、<b>やる範囲を絞ること</b>と、<b>インプットを最短で切り上げて過去問に移ること</b>の2つです。逆に、テキストを最初から丁寧に読み進める従来型のやり方では、9週間ではまず終わりません。</p>
+  <p><b>ゼロからでも、1日3時間を確保できるなら間に合う可能性はあります。</b>ただし条件があって、<b>やる範囲を絞ること</b>と、インプットを最短で切り上げて過去問に移ることの2つです。逆に、テキストを最初から丁寧に読み進める従来型のやり方では、9週間ではまず終わりません。</p>
   <p>この記事は「今から始める人」と「一通りやったが仕上がっていない人」の両方に向けて、直前期の優先順位と週別のスケジュールをまとめたものです。</p>
 
-  <div class="toc">
-    <a href="#maniau">▸ 今から2か月で間に合うのか（条件つきでYES）</a>
-    <a href="#target">▸ 何点を目指すか：目標配点の決め方</a>
-    <a href="#week">▸ 週別スケジュール（残り9週間）</a>
-    <a href="#ng">▸ 直前期にやってはいけない5つのこと</a>
-    <a href="#last2">▸ ラスト2週間の使い方</a>
-    <a href="#src">▸ 出典</a>
-  </div>
+  <nav class="toc">
+    <p>目次</p>
+    <ol>
+      <li><a href="#maniau">今から2か月で間に合うのか（条件つきでYES）</a></li>
+      <li><a href="#target">何点を目指すか：目標配点の決め方</a></li>
+      <li><a href="#week">週別スケジュール（残り9週間）</a></li>
+      <li><a href="#ng">直前期にやってはいけない5つのこと</a></li>
+      <li><a href="#last2">ラスト2週間の使い方</a></li>
+      <li><a href="#matome">まとめ：残り日数で決めることは3つ</a></li>
+      <li><a href="#src">出典</a></li>
+    </ol>
+  </nav>
 
   <h2 id="maniau">今から2か月で間に合うのか</h2>
   <p>宅建の合格に必要な勉強時間は一般に300〜400時間が目安とされます（内訳は<a href="/blog/takken-benkyo-jikan">勉強時間の記事</a>で詳しく整理しています）。残り66日で300時間を積むなら、単純計算で<b>1日あたり約4.5時間</b>。これはフルタイムで働きながらだと現実的ではありません。</p>
-  <p>ではどうするか。直前期に間に合わせる人は、<b>300時間の内訳を組み替えます</b>。具体的には、権利関係（民法等）を「満点を狙う分野」から「半分取れれば十分な分野」に降格させ、その分の時間を宅建業法と法令上の制限に回す。この組み替えで、必要な学習量は体感で2〜3割減ります。</p>
-  <div class="scroll">
-  <table class="t">
-    <tr><th>あなたの状況</th><th>1日の目安</th><th>方針</th></tr>
-    <tr><td class="hl">これから始める</td><td class="num">3〜4時間</td><td>テキスト通読は捨てる。宅建業法の過去問から始めて、解説を読む＝インプットにする</td></tr>
-    <tr><td>一通り終わったが点が伸びない</td><td class="num">2〜3時間</td><td>過去問の2周目以降。間違えた問題だけを反復し、正解した問題は捨てる</td></tr>
-    <tr><td>模試で30点前後</td><td class="num">2時間</td><td>宅建業法と法令上の制限の取りこぼしを潰す。権利関係は新規学習しない</td></tr>
-    <tr><td>模試で35点以上</td><td class="num">1.5〜2時間</td><td>維持が最優先。新教材に手を出さず、間違えた問題の再確認と統計・数字の暗記へ</td></tr>
-  </table>
-  </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。時間はあくまで目安です。</p>
-  <p>なお、確保できるのが1日1時間未満という状況なら、正直に言って今年の合格は厳しく、<b>今年は受けつつ来年に本命を置く</b>という組み立てのほうが健全です。受験そのものは経験値になるので、申込済みなら必ず受けてください。</p>
+  <p>ではどうするか。直前期に間に合わせる人は、300時間の内訳を組み替えます。具体的には、権利関係（民法等）を「満点を狙う分野」から「半分取れれば十分な分野」に降格させ、その分の時間を宅建業法と法令上の制限に回す。この組み替えで、必要な学習量は体感で2〜3割減ります。</p>
+
+  <figure class="fig">
+    <div class="scroll">
+    <table class="t">
+      <tr><th>あなたの状況</th><th>1日の目安</th><th>方針</th></tr>
+      <tr><td class="hl">これから始める</td><td class="num">3〜4時間</td><td>テキスト通読は捨てる。宅建業法の過去問から始めて、解説を読む＝インプットにする</td></tr>
+      <tr><td>一通り終わったが点が伸びない</td><td class="num">2〜3時間</td><td>過去問の2周目以降。間違えた問題だけを反復し、正解した問題は捨てる</td></tr>
+      <tr><td>模試で30点前後</td><td class="num">2時間</td><td>宅建業法と法令上の制限の取りこぼしを潰す。権利関係は新規学習しない</td></tr>
+      <tr><td>模試で35点以上</td><td class="num">1.5〜2時間</td><td>維持が最優先。新教材に手を出さず、間違えた問題の再確認と統計・数字の暗記へ</td></tr>
+    </table>
+    </div>
+    <figcaption><p>※ 図1：いまの仕上がり別・1日の目安と方針。時間はあくまで目安です。表は横にスクロールできます。</p></figcaption>
+  </figure>
+
+  <p>もう一つ、直前期に効くのは「時間をどこに置くか」です。残り9週間を分野ごとに割り振ると、次のような配分になります。</p>
+
+  <figure class="fig">
+    <div class="bars">
+      <div class="row"><span class="lbl">宅建業法</span><span class="val">約4週（44%）</span><span class="track"><span class="fill" style="width:44%"></span></span></div>
+      <div class="row"><span class="lbl">通し演習・総復習</span><span class="val">約2週（22%）</span><span class="track"><span class="fill" style="width:22%"></span></span></div>
+      <div class="row"><span class="lbl">法令上の制限</span><span class="val">約1.5週（17%）</span><span class="track"><span class="fill" style="width:17%"></span></span></div>
+      <div class="row"><span class="lbl">権利関係</span><span class="val">約1週（11%）</span><span class="track"><span class="fill" style="width:11%"></span></span></div>
+      <div class="row"><span class="lbl">税・その他</span><span class="val">約0.5週（6%）</span><span class="track"><span class="fill" style="width:6%"></span></span></div>
+    </div>
+    <figcaption><p>※ 図2：残り9週間の時間配分。9週を100%としたときの比率。宅建業法だけで4割強を使います。</p></figcaption>
+  </figure>
+
+  <p>この配分は、後述する週別スケジュールをそのまま分野ごとに足し上げたものです。権利関係に1週しか置いていない点が、直前期の設計の要になります。</p>
+  <p>始め方が決まらないうちに日が過ぎるのがいちばんもったいないので、最初の3日だけ手順を固定してしまうのがおすすめです。</p>
+
+  <figure class="fig">
+    <ol class="flow">
+      <li>過去問集の宅建業法のページを開く。テキストの1ページ目からは始めない。</li>
+      <li>初日は10問だけ解いて、正解した問題も含めて全部の解説を読む。解説を読む時間のほうを長く取る。</li>
+      <li>3日目までに「1日に何問回せるか」を実測する。残り日数と掛け算して、業法を3周できるかを確かめる。</li>
+    </ol>
+    <figcaption><p>※ 図3：最初の3日でやること。3日目に出た「1日あたりの処理量」が、以降の計画の土台になります。</p></figcaption>
+  </figure>
+
+  <p>なお、確保できるのが1日1時間未満という状況なら、正直に言って今年の合格は厳しく、今年は受けつつ来年に本命を置くという組み立てのほうが健全です。受験そのものは経験値になるので、申込済みなら必ず受けてください。</p>
 
   <h2 id="target">何点を目指すか：目標配点の決め方</h2>
   <p>宅建には<b>事前に公表された固定の合格点がありません</b>。合否判定基準は年度ごとに設定され、実施機関が公表している過去10年の実績は50問中33〜38点の幅にありました（年度別の実績は<a href="/kaitou-sokuhou/">解答速報・自己採点ページ</a>に一覧があります）。何点取れば安全という固定基準はないため、目標は<b>38点</b>に置くのが定石です。</p>
   <p>38点の内訳を、分野ごとに現実的な数字で置くとこうなります。</p>
-  <div class="scroll">
-  <table class="t">
-    <tr><th>分野</th><th>出題数</th><th>目標</th><th>直前期の扱い</th></tr>
-    <tr><td class="hl">宅建業法</td><td class="num">20問</td><td class="num hl">18点</td><td>最優先。ここが崩れると他で取り返せない</td></tr>
-    <tr><td>法令上の制限</td><td class="num">8問</td><td class="num">6点</td><td>数字の暗記だけで伸びる。費用対効果が高い</td></tr>
-    <tr><td>権利関係</td><td class="num">14問</td><td class="num">7点</td><td>頻出テーマのみ。判例の深追いはしない</td></tr>
-    <tr><td>税・その他</td><td class="num">8問</td><td class="num">7点</td><td>統計1点は直前暗記で確実に。税は頻出2〜3論点に絞る</td></tr>
-    <tr><td><b>合計</b></td><td class="num"><b>50問</b></td><td class="num hl"><b>38点</b></td><td>—</td></tr>
-  </table>
-  </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。目標配点は一例です。</p>
-  <p>ポイントは<b>権利関係を14問中7点に設定している</b>ことです。半分でいい、と決めた瞬間に学習範囲は大きく縮みます。逆に宅建業法は20問中18点。ここは条文と過去問の焼き直しが中心で、素直にやれば安定して取れる分野です。<b>「業法で稼いで、権利で守る」</b>が直前期の基本設計になります。</p>
+
+  <figure class="fig">
+    <div class="scroll">
+    <table class="t">
+      <tr><th>分野</th><th>出題数</th><th>目標</th><th>直前期の扱い</th></tr>
+      <tr><td class="hl">宅建業法</td><td class="num">20問</td><td class="num hl">18点</td><td>最優先。ここが崩れると他で取り返せない</td></tr>
+      <tr><td>法令上の制限</td><td class="num">8問</td><td class="num">6点</td><td>数字の暗記だけで伸びる。費用対効果が高い</td></tr>
+      <tr><td>権利関係</td><td class="num">14問</td><td class="num">7点</td><td>頻出テーマのみ。判例の深追いはしない</td></tr>
+      <tr><td>税・その他</td><td class="num">8問</td><td class="num">7点</td><td>統計1点は直前暗記で確実に。税は頻出2〜3論点に絞る</td></tr>
+      <tr><td><b>合計</b></td><td class="num"><b>50問</b></td><td class="num hl"><b>38点</b></td><td>—</td></tr>
+    </table>
+    </div>
+    <figcaption><p>※ 図4：38点の分野別内訳。目標配点は本サイトの提案で、公的な基準ではありません。表は横にスクロールできます。</p></figcaption>
+  </figure>
+
+  <p>同じ内訳を「その分野で何割取るか」に直すと、力の入れどころがはっきりします。</p>
+
+  <figure class="fig">
+    <div class="bars">
+      <div class="row"><span class="lbl">宅建業法</span><span class="val">18/20＝90%</span><span class="track"><span class="fill" style="width:90%"></span></span></div>
+      <div class="row"><span class="lbl">税・その他</span><span class="val">7/8＝88%</span><span class="track"><span class="fill" style="width:88%"></span></span></div>
+      <div class="row"><span class="lbl">法令上の制限</span><span class="val">6/8＝75%</span><span class="track"><span class="fill" style="width:75%"></span></span></div>
+      <div class="row"><span class="lbl">権利関係</span><span class="val">7/14＝50%</span><span class="track"><span class="fill" style="width:50%"></span></span></div>
+    </div>
+    <figcaption><p>※ 図5：分野別の目標得点率。権利関係だけが5割で、他は8〜9割を求められます。</p></figcaption>
+  </figure>
+
+  <p>ポイントは権利関係を14問中7点に設定していることです。半分でいい、と決めた瞬間に学習範囲は大きく縮みます。逆に宅建業法は20問中18点。ここは条文と過去問の焼き直しが中心で、素直にやれば安定して取れる分野です。<b>「業法で稼いで、権利で守る」</b>が直前期の基本設計になります。</p>
 
   <h2 id="week">週別スケジュール（残り9週間）</h2>
   <p>8月中旬から試験日までを9つの週に割ったモデルプランです。「これから始める人」向けに組んでありますが、すでに一通り終えている人は第1〜3週を圧縮して、第4週以降から入ってください。</p>
-  <div class="scroll">
-  <table class="t">
-    <tr><th>週</th><th>時期</th><th>やること</th></tr>
-    <tr><td class="hl">第1〜2週</td><td>8月中旬〜8月末</td><td><b>宅建業法を1周</b>。テキストは辞書として使い、過去問を解いて解説を読む形で進める。全体像より「解けるようになる」を優先</td></tr>
-    <tr><td class="hl">第3週</td><td>9月上旬</td><td><b>法令上の制限を1周</b>。用途地域・建蔽率・容積率・農地法・国土法の数字を一覧化して覚える</td></tr>
-    <tr><td>第4週</td><td>9月中旬</td><td><b>権利関係の頻出テーマだけ</b>。意思表示・代理・時効・抵当権・賃貸借・借地借家法・相続に絞る。それ以外は飛ばす</td></tr>
-    <tr><td>第5週</td><td>9月中旬〜下旬</td><td><b>税・その他</b>（不動産取得税・登録免許税・印紙税・所得税の頻出論点）＋<b>宅建業法2周目</b></td></tr>
-    <tr><td class="hl">第6週</td><td>9月下旬</td><td><b>本試験と同じ時間で通し演習（1回目）</b>。13時〜15時に過去問1年分を通しで解く。点数より時間配分の確認が目的</td></tr>
-    <tr><td>第7週</td><td>10月上旬</td><td>通し演習で落とした分野の復習。<b>宅建業法3周目</b>。間違えた問題だけを回す</td></tr>
-    <tr><td class="hl">第8週</td><td>10月上旬〜中旬</td><td><b>通し演習（2回目）</b>＋数字系の総復習（法令上の制限の数値・業法の期間や金額）</td></tr>
-    <tr><td class="hl">第9週</td><td>10月12日〜17日</td><td><b>統計問題の暗記</b>＋間違えた問題の最終確認。新しいことはやらない。前日は早く寝る</td></tr>
-  </table>
-  </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。</p>
+
+  <figure class="fig">
+    <div class="scroll">
+    <table class="t">
+      <tr><th>週</th><th>時期</th><th>やること</th></tr>
+      <tr><td class="hl">第1〜2週</td><td>8月中旬〜8月末</td><td><b>宅建業法を1周</b>。テキストは辞書として使い、過去問を解いて解説を読む形で進める。全体像より「解けるようになる」を優先</td></tr>
+      <tr><td class="hl">第3週</td><td>9月上旬</td><td><b>法令上の制限を1周</b>。用途地域・建蔽率・容積率・農地法・国土法の数字を一覧化して覚える</td></tr>
+      <tr><td>第4週</td><td>9月中旬</td><td>権利関係の頻出テーマだけ。意思表示・代理・時効・抵当権・賃貸借・借地借家法・相続に絞る。それ以外は飛ばす</td></tr>
+      <tr><td>第5週</td><td>9月中旬〜下旬</td><td>税・その他（不動産取得税・登録免許税・印紙税・所得税の頻出論点）＋<b>宅建業法2周目</b></td></tr>
+      <tr><td class="hl">第6週</td><td>9月下旬</td><td>本試験と同じ時間で通し演習（1回目）。13時〜15時に過去問1年分を通しで解く。点数より時間配分の確認が目的</td></tr>
+      <tr><td>第7週</td><td>10月上旬</td><td>通し演習で落とした分野の復習。<b>宅建業法3周目</b>。間違えた問題だけを回す</td></tr>
+      <tr><td class="hl">第8週</td><td>10月上旬〜中旬</td><td>通し演習（2回目）＋数字系の総復習（法令上の制限の数値・業法の期間や金額）</td></tr>
+      <tr><td class="hl">第9週</td><td>10月12日〜17日</td><td>統計問題の暗記＋間違えた問題の最終確認。新しいことはやらない。前日は早く寝る</td></tr>
+    </table>
+    </div>
+    <figcaption><p>※ 図6：残り9週間の週別プラン。宅建業法が第1〜2週・第5週・第7週の3回出てきます。表は横にスクロールできます。</p></figcaption>
+  </figure>
+
   <p>このプランの肝は、<b>宅建業法を3周する</b>ところにあります。20問という配点は他分野と比べて突出しており、1周で終わらせると必ず取りこぼします。逆に権利関係は1周しかしません。時間が余ったら業法をもう1周する、くらいの割り切りでちょうどいいバランスです。</p>
   <div class="cta-box">
-    <b>「間違えた問題だけを回す」を自動化する。</b> 宅建GYMは無料の一問一答・4択で、間違えた問題が自動で弱点として蓄積され、そこだけを繰り返し出題できます。通勤中や休憩中の数分でも回せるので、直前期の反復に向いています。 → <a href="/">宅建GYMで問題を解く（無料）</a>
+    「間違えた問題だけを回す」を自動化する。 宅建GYMは無料の一問一答・4択で、間違えた問題が自動で弱点として蓄積され、そこだけを繰り返し出題できます。通勤中や休憩中の数分でも回せるので、直前期の反復に向いています。 → <a href="/">宅建GYMで問題を解く（無料）</a>
   </div>
 
   <h2 id="ng">直前期にやってはいけない5つのこと</h2>
+  <p>やることを増やすより、やらないことを決めるほうが直前期は効きます。先に5つを一覧で示します。</p>
+
+  <figure class="fig">
+    <div class="scroll">
+    <table class="t">
+      <tr><th>やってはいけないこと</th><th>代わりにやること</th></tr>
+      <tr><td class="hl">① 新しいテキスト・問題集を買う</td><td>今ある過去問を、間違いがゼロになるまで回す</td></tr>
+      <tr><td class="hl">② 権利関係を深追いする</td><td>過去問で3回以上出たテーマだけに絞る</td></tr>
+      <tr><td class="hl">③ 模試の点数に一喜一憂する</td><td>時間配分と落とした分野の2つだけ見る</td></tr>
+      <tr><td class="hl">④ 統計を8月から覚え始める</td><td>10月に入ってから一気に詰める</td></tr>
+      <tr><td class="hl">⑤ インプットだけで一日を終える</td><td>1日の7割以上を問題を解く時間に充てる</td></tr>
+    </table>
+    </div>
+    <figcaption><p>※ 図7：直前期のNG5つと、その代わりにやること。以下でそれぞれの理由を説明します。表は横にスクロールできます。</p></figcaption>
+  </figure>
 
   <div class="ng">
     <h3>① 新しいテキスト・問題集を買う</h3>
@@ -165,11 +267,26 @@
     <li><b>数字の暗記</b>……法令上の制限の数値（用途地域・建蔽率・容積率・開発許可の面積要件など）、宅建業法の期間・金額、そして統計。数字系は最後に詰めるほど本番で残ります。</li>
     <li><b>本番のシミュレーション</b>……解く順番、マークのタイミング、持ち物。当日の動きを一度決めておくと、本番の判断コストが減ります。→ <a href="/blog/takken-shiken-toujitsu">試験当日の持ち物・時間配分・解く順番</a></li>
   </ul>
+  <p>この3つを残り日数に落とし込むと、次のような並びになります。</p>
+
+  <figure class="fig">
+    <div class="scroll">
+    <table class="t">
+      <tr><th>残り日数</th><th>主にやること</th><th>やらないこと</th></tr>
+      <tr><td class="hl">14〜8日前</td><td>間違えた問題の総ざらい（分野を絞らず全部）</td><td>新しい問題集に手を出す</td></tr>
+      <tr><td class="hl">7〜4日前</td><td>数字の暗記（法令上の制限の数値・業法の期間と金額）</td><td>権利関係の新規論点</td></tr>
+      <tr><td class="hl">3〜1日前</td><td>統計の数値＋当日の動き（順番・持ち物）の確認</td><td>通し演習。疲れが本番まで残る</td></tr>
+      <tr><td class="hl">前日</td><td>持ち物を並べて早く寝る</td><td>詰め込み。睡眠を削る</td></tr>
+    </table>
+    </div>
+    <figcaption><p>※ 図8：ラスト2週間の日別の使い方。「やらないこと」の列を先に決めるのがコツです。表は横にスクロールできます。</p></figcaption>
+  </figure>
+
   <p>この時期に伸びる人と伸びない人の差は、たいてい<b>「わかっているつもりの問題を、もう一度解いたかどうか」</b>です。読んで思い出せることと、4択の中から選べることは別の能力なので、最後まで手を動かし続けてください。</p>
 
   <div class="cta-box">
-    直前期の総点検用に、<b>自分で教材を作りました</b>。捨てどころの意思決定表・科目横断の数字シート・確認問題約90項目・最後の7日の逆算チェックリストをまとめたものです（<b>¥980・note</b>）。<br>
-    → <a href="https://note.com/fujiken818/n/ne2376058ec7b" target="_blank" rel="noopener">宅建 直前 総点検ノート【令和8年度】</a>
+    直前期の総点検用に、自分で教材を作りました。捨てどころの意思決定表・科目横断の数字シート・確認問題約90項目・最後の7日の逆算チェックリストをまとめたものです（<b>¥980・note</b>）。<br>
+    → <a href="https://note.com/fujiken818/n/ne2376058ec7b?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_chokuzenki-2kagetsu&amp;utm_content=note_soutenken" target="_blank" rel="noopener">宅建 直前 総点検ノート【令和8年度】</a>
   </div>
 
   <h2>独学のペースに不安があるなら</h2>
@@ -178,17 +295,28 @@
     → <a href="/courses/">宅建講座の選び方（通信・通学・オンライン5社比較）</a>
   </div>
 
+  <h2 id="matome">まとめ：残り日数で決めることは3つ</h2>
+  <ul>
+    <li><b>捨てる範囲を先に決める</b>……権利関係は14問中7点でよい。半分と決めた瞬間に、覚える量が大きく減る。</li>
+    <li><b>宅建業法に時間の4割を置く</b>……残り9週のうち約4週。3周まで回せば、20問の配点が得点源に変わる。</li>
+    <li><b>10月はインプットを止める</b>……新しい教材を買わず、間違えた問題と数字だけを繰り返す。統計は10月から。</li>
+  </ul>
+  <p>逆に言えば、直前期に迷うのはこの3点だけです。決めてしまえば、あとは残り日数を数えながら手を動かすだけになります。</p>
+
+  <div class="nextact">
+    <b>▶ 次の1アクション</b>：いま手元にある過去問集の宅建業法を開いて、10問だけ解いてみてください。解説まで読んで何分かかったかを測れば、残り日数で何周できるかが今日わかります。→ <a href="/ichimon/gyoho">宅建業法の一問一答（○×24問・無料）で試す</a>
+  </div>
+
   <h2 id="src">出典</h2>
   <p class="src">
     ・試験日程（令和8年10月18日〈日〉13時〜15時、合格発表 令和8年11月25日）は一般財団法人不動産適正取引推進機構「令和8年度宅地建物取引士資格試験 試験案内」による（<a href="https://www.retio.or.jp/exam/schedule/" target="_blank" rel="noopener">公式サイト</a>）。<br>
     ・分野別の出題数は宅地建物取引業法施行規則第8条に基づく出題内容および近年の本試験の構成による。<br>
     ・合格点の推移は<a href="/kaitou-sokuhou/">解答速報・自己採点ページ</a>に出典つきで掲載しています。<br>
-    ・目標配点および週別プランは本サイトの提案であり、公的な基準ではありません。
+    ・目標配点・週別プラン・時間配分の比率は本サイトの提案であり、公的な基準ではありません。
   </p>
-  <p class="updated">最終更新：2026年8月13日</p>
 
   <div class="cta-box ichimon-cta">
-    <p style="margin:0 0 4px;font-weight:700">直前期の2か月で回すもの</p>
+    <p style="margin:0 0 4px;font-weight:600">直前期の2か月で回すもの</p>
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（○×24問・無料）</a>
     <a href="/ichimon/horei">▸ 法令上の制限の一問一答（○×18問・無料）</a>
     <a href="/ichimon/kenri">▸ 権利関係の一問一答（○×26問・無料）</a>
@@ -217,10 +345,10 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
-    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_chokuzenki-2kagetsu&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
   </div>
 </article>
 </main>
