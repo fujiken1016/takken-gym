@@ -20,20 +20,55 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
- table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
- table.t th{background:var(--surface);font-weight:700;color:var(--muted)}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none}
- .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
+/* このページ内だけのスケール調整（共通CSSは触らない）。値は memory/design_guidelines.md のトークン */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85}
+ article p{margin:16px 0}
+ article li{margin:8px 0}
+ article b,article strong{font-weight:600}
+ table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+ table.t th,table.t td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;line-height:1.85}
+ table.t th{background:var(--surface);font-weight:600;color:var(--muted)}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
- .src{font-size:14px;color:var(--muted);line-height:1.8}
+ .note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0;font-size:1.0625rem;line-height:1.85}
+ .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #a8480f;border-radius:8px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.85}
  .src a{color:var(--brand2)}
- .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
+ .rel{border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .pr-line{font-size:0.9375rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:16px;line-height:1.85}
+ .page-updated{font-size:0.9375rem;line-height:1.85;color:var(--muted);text-align:center;margin:24px 0 8px}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:24px 0}
+ .toc>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
+ .toc ol{margin:0;padding-left:20px}
+ .toc li{font-size:1rem;line-height:1.85;margin:0}
+ .toc a{color:var(--brand2);text-decoration:none;display:flex;align-items:center;min-height:48px}
+ figure.fig{margin:24px 0}
+ figure.fig figcaption p{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:8px 0 0}
+ .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
+ .bars .row:last-child{margin-bottom:0}
+ .bars .lbl{font-size:1rem;font-weight:600;line-height:1.85;flex:1 1 auto;min-width:0}
+ .bars .val{font-size:0.9375rem;line-height:1.85;color:var(--muted);flex:0 0 auto}
+ .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
+ .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
+ .flow{margin:0;padding:0;list-style:none;counter-reset:st}
+ .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 48px;margin:0 0 8px;font-size:1.0625rem;line-height:1.85}
+ .flow li:last-child{margin-bottom:0}
+ .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:14px;width:26px;height:26px;border-radius:9999px;background:var(--brand);color:#fff;font-size:0.9375rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+ .nextact{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .nextact a{font-weight:600;color:var(--brand2);text-decoration:none}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建 法令上の制限の数字まとめ｜開発許可・建蔽率・農地法・国土法","description":"法令上の制限8問は、覚える数字が有限です。開発許可の面積（1000㎡・3000㎡・1ha）、道路4m・接道2m、建蔽率の緩和、容積率の道路幅員制限、農地法の許可権者、国土利用計画法の事後届出（2週間・2000㎡）、盛土規制法の規模までe-Gov法令検索の条文で確認して一覧にしました。","inLanguage":"ja","datePublished":"2026-08-13T17:33:03+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-houreiseigen-suuji"},"url":"https://takken.mainichi-lab.com/blog/takken-houreiseigen-suuji"}</script>
 <script type="application/ld+json">
@@ -50,12 +85,38 @@
 <article>
   <p class="pr-line" style="font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
 
-  <p>法令上の制限は8問。範囲が広いわりに配点が小さいので、後回しにされがちな科目です。ところが実際の出題を見ると、<b>結論が数字で決まる論点</b>がかなりの割合を占めます。1000㎡なのか3000㎡なのか、2週間なのか30日なのか、知事なのか市町村長なのか。理屈を理解していても数字が出てこなければ0点、逆に理屈があやふやでも数字を知っていれば当たる——そういう科目です。</p>
+  <p>法令上の制限は8問。範囲が広いわりに配点が小さいので、後回しにされがちな科目です。ところが実際の出題を見ると、<b>結論が数字で決まる論点</b>がかなりの割合を占めます。1000㎡なのか3000㎡なのか、2週間なのか30日なのか、知事なのか市町村長なのか。理屈を理解していても数字が出てこなければ0点、逆に理屈があやふやでも数字を知っていれば当たる——そういう科目です。※この記事の数字は、すべて2026年9月時点で施行中の条文本文で確認しています。</p>
   <p>そこでこの記事では、法令上の制限で<b>暗記が必要な数字と主体だけ</b>を、e-Gov法令検索で条文本文を確認したうえで一覧にしました。テキストの通読ではなく、直前期に「言えるか」を確かめる用途で使ってください。</p>
 
-  <h2>1. 都市計画法：開発許可が要る／要らない面積</h2>
+  <figure class="fig">
+  <div class="bars">
+    <div class="row"><span class="lbl">500㎡</span><span class="val">条例で引き下げられる下限／盛土規制法の面積</span><span class="track"><span class="fill" style="width:5%"></span></span></div>
+    <div class="row"><span class="lbl">1000㎡</span><span class="val">開発許可・市街化区域</span><span class="track"><span class="fill" style="width:10%"></span></span></div>
+    <div class="row"><span class="lbl">2000㎡</span><span class="val">国土法の事後届出・市街化区域</span><span class="track"><span class="fill" style="width:20%"></span></span></div>
+    <div class="row"><span class="lbl">3000㎡</span><span class="val">開発許可・非線引き／準都市</span><span class="track"><span class="fill" style="width:30%"></span></span></div>
+    <div class="row"><span class="lbl">5000㎡</span><span class="val">国土法・市街化区域以外の都市計画区域</span><span class="track"><span class="fill" style="width:50%"></span></span></div>
+    <div class="row"><span class="lbl">10000㎡（1ha）</span><span class="val">開発許可・国土法とも区域外</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
+  </div>
+  <figcaption><p>図1：この科目で覚える面積を、大きさの順に並べたものさしです。棒の長さは1haを100%とした比率で描いています。※出典＝e-Gov法令検索（都市計画法・同施行令／国土利用計画法／宅地造成及び特定盛土等規制法施行令。2026年9月時点で施行中の条文）。</p></figcaption>
+  </figure>
+
+  <div class="toc">
+    <p>この記事の内容</p>
+    <a href="#kaihatsu">▸ 1. 都市計画法：開発許可の面積</a>
+    <a href="#kenchiku">▸ 2. 建築基準法：道路・建蔽率・容積率・高さ</a>
+    <a href="#nochi">▸ 3. 農地法：3条・4条・5条は「誰の許可か」</a>
+    <a href="#kokudo">▸ 4. 国土利用計画法：2週間・2000㎡</a>
+    <a href="#morido">▸ 5. 盛土規制法</a>
+    <a href="#kukaku">▸ 6. 土地区画整理法</a>
+    <a href="#pair">▸ 入れ替えられやすい数字ペア</a>
+    <a href="#tokuten">▸ 何点取れば十分か</a>
+    <a href="#matome">▸ まとめ</a>
+  </div>
+
+  <h2 id="kaihatsu">1. 都市計画法：開発許可が要る／要らない面積</h2>
   <p>最頻出です。開発行為（建築物の建築等の目的で行う土地の区画形質の変更）をしようとする者は、原則として<b>都道府県知事</b>の許可を受けなければなりません。指定都市・中核市の区域内では<b>その市の長</b>が許可権者になります（都市計画法29条1項）。</p>
   <p>そのうえで、「規模が小さければ許可不要」という例外が区域ごとに定められています。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>区域</th><th>許可が不要になる規模</th><th>根拠</th></tr>
@@ -65,22 +126,42 @@
     <tr><td>都市計画区域・準都市計画区域<b>外</b></td><td><b>1ヘクタール（10000㎡）未満</b></td><td>法29条2項＋施行令22条の2</td></tr>
   </table>
   </div>
-  <p>さらに、上の1000㎡・3000㎡は<b>条例で300㎡以上の範囲まで引き下げられる</b>と施行令19条1項ただし書に書かれています。「条例で引き上げることができる」は✕、「500㎡まで引き下げられる」も範囲の下限を誤っています。</p>
-  <p>規模以外の許可不要は、<b>市街化調整区域・非線引き都市計画区域・準都市計画区域における農林漁業用の建築物等</b>（法29条1項2号。市街化区域にはこの例外がありません）、駅舎・図書館・公民館・変電所などの公益上必要な建築物（3号）、都市計画事業・土地区画整理事業・市街地再開発事業等の施行として行うもの（4〜8号）、非常災害の応急措置（10号）、通常の管理行為・軽易な行為（11号）です。</p>
+  <figcaption><p>図2：開発許可が不要になる規模を区域別に。市街化調整区域だけ規模の例外が置かれていません。※出典＝e-Gov法令検索（都市計画法29条・同施行令19条・22条の2。2026年9月時点）。</p></figcaption>
+  </figure>
+  <p>さらに、上の1000㎡・3000㎡は条例で300㎡以上の範囲まで引き下げられると施行令19条1項ただし書に書かれています。「条例で引き上げることができる」は✕、「500㎡まで引き下げられる」も範囲の下限を誤っています。</p>
+  <p>規模以外にも、目的で許可が不要になる類型が29条1項に並んでいます。</p>
+  <ul>
+    <li>市街化調整区域・非線引き都市計画区域・準都市計画区域における農林漁業用の建築物等（2号）。市街化区域にはこの例外がありません。</li>
+    <li>駅舎・図書館・公民館・変電所などの公益上必要な建築物（3号）。</li>
+    <li>都市計画事業・土地区画整理事業・市街地再開発事業等の施行として行うもの（4〜8号）。</li>
+    <li>非常災害の応急措置（10号）。</li>
+    <li>通常の管理行為・軽易な行為（11号）。</li>
+  </ul>
+  <figure class="fig">
+  <ol class="flow">
+    <li>その土地がどの区域にあるかを確定します。市街化調整区域なら、この時点で規模の例外は使えません。</li>
+    <li>規模を図2に当てます。ここで「未満」なら許可は不要です。</li>
+    <li>規模で切れなければ、目的を見ます。農林漁業用、公益上必要な建築物、都市計画事業等なら許可不要です。</li>
+    <li>3つとも通らなければ、都道府県知事（指定都市・中核市ではその市の長）の許可が要ります。</li>
+  </ol>
+  <figcaption><p>図3：開発許可の肢を読む順番です。※順番は筆者の整理で、条文が定めているものではありません。判定に使う数字と例外は図2および本文の条文番号を参照してください。</p></figcaption>
+  </figure>
   <div class="warn">
     <b>間違えやすい点</b>：農林漁業用建築物の例外は<b>市街化区域では使えません</b>。「市街化区域内で農業用倉庫を建てる目的の1500㎡の開発行為は許可不要」は✕になります。
   </div>
 
-  <h2>2. 建築基準法：道路・建蔽率・容積率・高さ</h2>
+  <h2 id="kenchiku">2. 建築基準法：道路・建蔽率・容積率・高さ</h2>
 
   <h3>道路と接道（42条・43条）</h3>
+  <p>まず、幅員の数字が3つ出てきます。</p>
   <ul>
-    <li>「道路」＝原則、幅員<b>4m以上</b>のもの（特定行政庁が都道府県都市計画審議会の議を経て指定する区域内では<b>6m以上</b>）</li>
-    <li>この章の規定が適用されるに至った際、現に建築物が立ち並んでいる幅員<b>4m未満</b>の道で特定行政庁が指定したものも道路とみなす（いわゆる<b>2項道路</b>）</li>
-    <li>建築物の敷地は、道路に<b>2m以上</b>接しなければならない（43条1項）</li>
+    <li>「道路」＝原則、幅員<b>4m以上</b>のもの（特定行政庁が都道府県都市計画審議会の議を経て指定する区域内では<b>6m以上</b>）。</li>
+    <li>この章の規定が適用されるに至った際、現に建築物が立ち並んでいる幅員<b>4m未満</b>の道で特定行政庁が指定したものも道路とみなす（いわゆる<b>2項道路</b>）。</li>
+    <li>建築物の敷地は、道路に<b>2m以上</b>接しなければならない（43条1項）。</li>
   </ul>
 
   <h3>建蔽率（53条）</h3>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>用途地域</th><th>都市計画で定められる数値</th></tr>
@@ -92,7 +173,10 @@
     <tr><td>用途地域の指定のない区域</td><td>3/10・4/10・5/10・6/10・7/10 のうち特定行政庁が定めるもの</td></tr>
   </table>
   </div>
+  <figcaption><p>図4：建蔽率として都市計画で定められる数値。商業地域だけが一択である点が問われます。※出典＝e-Gov法令検索「建築基準法」53条1項（2026年9月時点）。</p></figcaption>
+  </figure>
   <p>緩和は次のとおりです（53条3項・6項）。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>条件</th><th>効果</th></tr>
@@ -102,38 +186,45 @@
     <tr><td>建蔽率の限度が<b>8/10</b>とされている地域<b>かつ</b>防火地域内にある<b>耐火建築物等</b></td><td>建蔽率の<b>制限を受けない</b>（10/10）</td></tr>
   </table>
   </div>
+  <figcaption><p>図5：建蔽率の緩和。最下段だけが「加算」ではなく「制限が外れる」である点が、この表のいちばんの読みどころです。※出典＝e-Gov法令検索「建築基準法」53条3項・6項（2026年9月時点）。</p></figcaption>
+  </figure>
   <p>「防火地域内の耐火建築物ならいつでも+1/10」は✕です。8/10の地域では加算ではなく<b>制限そのものが外れる</b>ため、加算の対象から除かれています。ここは条文の括弧書きを読まないと出てこない差です。</p>
 
   <h3>容積率（52条）と高さ（55条）</h3>
+  <p>容積率は、都市計画の数値をそのまま使えないことがあります。</p>
   <ul>
-    <li>前面道路（2以上あるときは幅員が最大のもの）の幅員が<b>12m未満</b>の場合、容積率は「幅員のメートル数 × 一定の数値」以下でなければならない。数値は<b>低層住居専用・田園住居＝4/10、中高層住居専用・住居・準住居＝4/10、その他＝6/10</b>（特定行政庁が指定する区域では異なる数値になる場合がある）</li>
-    <li>この計算結果と、都市計画で定められた容積率の<b>いずれか小さいほう</b>が適用される</li>
-    <li>第一種・第二種低層住居専用地域、田園住居地域の建築物の高さは<b>10mまたは12m</b>のうち都市計画で定められた限度を超えてはならない（55条1項）</li>
+    <li>前面道路（2以上あるときは幅員が最大のもの）の幅員が<b>12m未満</b>の場合、容積率は「幅員のメートル数 × 一定の数値」以下でなければならない。数値は低層住居専用・田園住居＝4/10、中高層住居専用・住居・準住居＝4/10、その他＝6/10（特定行政庁が指定する区域では異なる数値になる場合がある）。</li>
+    <li>この計算結果と、都市計画で定められた容積率の<b>いずれか小さいほう</b>が適用される。</li>
+    <li>第一種・第二種低層住居専用地域、田園住居地域の建築物の高さは<b>10mまたは12m</b>のうち都市計画で定められた限度を超えてはならない（55条1項）。</li>
   </ul>
-  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/343AC0000000100" target="_blank" rel="noopener">e-Gov法令検索「都市計画法」</a>／<a href="https://laws.e-gov.go.jp/law/344CO0000000158" target="_blank" rel="noopener">同「都市計画法施行令」</a>／<a href="https://laws.e-gov.go.jp/law/325AC0000000201" target="_blank" rel="noopener">同「建築基準法」</a></p>
+  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/343AC0000000100" target="_blank" rel="noopener">e-Gov法令検索「都市計画法」</a>／<a href="https://laws.e-gov.go.jp/law/344CO0000000158" target="_blank" rel="noopener">同「都市計画法施行令」</a>／<a href="https://laws.e-gov.go.jp/law/325AC0000000201" target="_blank" rel="noopener">同「建築基準法」</a>（いずれも2026年9月時点）。</p>
 
-  <h2>3. 農地法：3条・4条・5条は「誰の許可か」で分かれる</h2>
+  <h2 id="nochi">3. 農地法：3条・4条・5条は「誰の許可か」で分かれる</h2>
   <p>農地法は数字より<b>主体</b>で問われます。ここだけは表で丸暗記してください。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>条文</th><th>対象</th><th>許可権者</th><th>市街化区域内の特例</th></tr>
     <tr><td><b>3条</b></td><td>農地・採草放牧地の<b>権利移動</b>（転用しない）</td><td><b>農業委員会</b></td><td><b>なし</b></td></tr>
     <tr><td><b>4条</b></td><td>農地の<b>転用</b>（権利移動を伴わない）</td><td><b>都道府県知事等</b>（＝都道府県知事または指定市町村の長）</td><td>あらかじめ<b>農業委員会に届出</b>で足りる</td></tr>
-    <tr><td><b>5条</b></td><td><b>転用目的の権利移動</b></td><td><b>都道府県知事等</b></td><td>あらかじめ<b>農業委員会に届出</b>で足りる</td></tr>
+    <tr><td><b>5条</b></td><td>転用目的の権利移動</td><td><b>都道府県知事等</b></td><td>あらかじめ<b>農業委員会に届出</b>で足りる</td></tr>
   </table>
   </div>
+  <figcaption><p>図6：農地法は数字ではなく主体で決まります。3条だけが農業委員会で、3条だけに市街化区域の特例がありません。※出典＝e-Gov法令検索「農地法」3条・4条・5条（2026年9月時点）。</p></figcaption>
+  </figure>
   <p>「3条にも市街化区域の届出特例がある」は✕です。特例は4条1項7号・5条1項6号にしかありません。また、届出は<b>あらかじめ</b>行うもので、「転用後遅滞なく届け出る」は✕です。</p>
   <div class="warn">
-    <b>古い教材に注意（ただし「4haが消えた」わけではありません）</b>：かつて「4ヘクタールを超える農地の転用は農林水産大臣の<b>許可</b>」というルールがありましたが、この<b>許可権限は平成27年法律第50号（第5次地方分権一括法）により2016年4月1日に廃止</b>され、知事等へ移譲されました。4条1項・5条1項は面積にかかわらず「都道府県知事等」の許可です。ただし<b>「4ヘクタール」という数字自体は残っています</b>——農地法<b>附則2項1号</b>により、知事等は<b>当分の間</b>、4haを超える農地の転用について4条1項の許可をしようとするときは、<b>あらかじめ農林水産大臣に協議</b>しなければなりません。<b>協議であって許可ではない</b>のがポイントです。試験では「大臣の<b>許可</b>」＝✕、「知事等の<b>許可</b>＋大臣<b>協議</b>」＝現行、と切り分けてください（e-Gov法令検索の条文本文で2026年8月に確認）。
+    古い教材に注意（ただし「4haが消えた」わけではありません）。かつて「4ヘクタールを超える農地の転用は農林水産大臣の<b>許可</b>」というルールがありました。この許可権限は平成27年法律第50号（第5次地方分権一括法）により2016年4月1日に廃止され、知事等へ移譲されています。4条1項・5条1項は面積にかかわらず「都道府県知事等」の許可です。ただし「4ヘクタール」という数字自体は残っています。農地法<b>附則2項1号</b>により、知事等は<b>当分の間</b>、4haを超える農地の転用について4条1項の許可をしようとするときは、あらかじめ農林水産大臣に協議しなければなりません。協議であって許可ではないのがポイントです。試験では「大臣の<b>許可</b>」＝✕、「知事等の<b>許可</b>＋大臣<b>協議</b>」＝現行、と切り分けてください（e-Gov法令検索の条文本文で2026年8月に確認）。
   </div>
 
   <div class="cta-box">
-    この4haの話は、僕が教材を作る過程で<b>自分の原稿の誤りに気づいた論点</b>です。条文で確かめた経緯をnoteに書きました（無料）。<br>
-    → <a href="https://note.com/fujiken818/n/n574a0c6a6056" target="_blank" rel="noopener">宅建「4ha超は農林水産大臣の許可」はもう誤り</a>
+    この4haの話は、僕が教材を作る過程で自分の原稿の誤りに気づいた論点です。条文で確かめた経緯をnoteに書きました（無料）。<br>
+    → <a href="https://note.com/fujiken818/n/n574a0c6a6056?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_houreiseigen-suuji&amp;utm_content=note_4ha" target="_blank" rel="noopener">宅建「4ha超は農林水産大臣の許可」はもう誤り</a>
   </div>
 
-  <h2>4. 国土利用計画法：事後届出は「2週間・2000㎡」から</h2>
-  <p>土地売買等の契約を締結した場合、<b>権利を取得することとなる者（権利取得者）</b>が、<b>契約を締結した日から起算して2週間以内</b>に、土地が所在する市町村長を経由して<b>都道府県知事</b>に届け出ます（23条1項）。</p>
+  <h2 id="kokudo">4. 国土利用計画法：事後届出は「2週間・2000㎡」から</h2>
+  <p>土地売買等の契約を締結した場合、権利を取得することとなる者（権利取得者）が、契約を締結した日から起算して2週間以内に、土地が所在する市町村長を経由して<b>都道府県知事</b>に届け出ます（23条1項）。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>区域</th><th>届出が必要になる面積</th></tr>
@@ -142,15 +233,18 @@
     <tr><td>都市計画区域外（準都市計画区域を含む）</td><td><b>10000㎡（1ha）以上</b></td></tr>
   </table>
   </div>
+  <figcaption><p>図7：国土法の事後届出が必要になる面積。図2の開発許可と、区域の区切り方も数字も違います。※出典＝e-Gov法令検索「国土利用計画法」23条2項1号（2026年9月時点）。</p></figcaption>
+  </figure>
   <p>条文は「その面積が◯㎡<b>未満</b>の土地について契約を締結した場合には適用しない」という書き方なので、上の面積は<b>以上</b>で届出が必要になります（23条2項1号）。また、一団の土地として権利を取得する場合は、合計で判定します。</p>
   <div class="warn">
     <b>混同しやすい数字</b>：開発許可の「市街化区域1000㎡」と、国土法の「市街化区域2000㎡」。どちらも市街化区域の話なので入れ替えられます。<b>開発＝1000、国土法＝2000</b>。国土法のほうが数字が大きい、と紐づけて覚えてください。
   </div>
-  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/327AC0000000229" target="_blank" rel="noopener">e-Gov法令検索「農地法」</a>／<a href="https://laws.e-gov.go.jp/law/349AC0000000092" target="_blank" rel="noopener">同「国土利用計画法」</a></p>
+  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/327AC0000000229" target="_blank" rel="noopener">e-Gov法令検索「農地法」</a>／<a href="https://laws.e-gov.go.jp/law/349AC0000000092" target="_blank" rel="noopener">同「国土利用計画法」</a>（いずれも2026年9月時点）。</p>
 
-  <h2>5. 盛土規制法（宅地造成及び特定盛土等規制法）</h2>
+  <h2 id="morido">5. 盛土規制法（宅地造成及び特定盛土等規制法）</h2>
   <p>旧「宅地造成等規制法」が改正・改称されたもので、法律名が変わっている点自体がひっかけになります。<b>宅地造成等工事規制区域内</b>で行われる宅地造成等に関する工事は、工事主が<b>工事に着手する前に都道府県知事の許可</b>を受けなければなりません（12条1項）。「工事完了後に届け出る」は✕です。</p>
   <p>許可の対象となる「宅地造成」等の規模は施行令3条に定められています。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>形質の変更</th><th>規模</th></tr>
@@ -161,16 +255,21 @@
     <tr><td>上のいずれにも当たらない盛土・切土</td><td>土地の面積が<b>500㎡を超える</b>もの</td></tr>
   </table>
   </div>
+  <figcaption><p>図8：許可が要る宅地造成等の規模。上の2行の非対称（盛土1m・切土2m）がこの表の核心です。※出典＝e-Gov法令検索「宅地造成及び特定盛土等規制法施行令」3条（2026年9月時点）。</p></figcaption>
+  </figure>
   <p><b>盛土は1m、切土は2m</b>。この非対称が問われます（盛土のほうが崩れやすいので厳しい、と理屈で覚えると忘れません）。</p>
 
-  <h2>6. 土地区画整理法：制限がかかる期間を押さえる</h2>
+  <h2 id="kukaku">6. 土地区画整理法：制限がかかる期間を押さえる</h2>
+  <p>この分野で問われるのは、制限が始まる時点と終わる時点です。</p>
   <ul>
-    <li>事業計画の決定等の<b>公告があった日後、換地処分の公告がある日まで</b>、施行地区内で事業の施行の障害となるおそれがある土地の形質の変更・建築物等の新築改築増築等をするには、<b>都道府県知事等</b>（国土交通大臣施行の場合は大臣）の許可が必要（76条1項）</li>
-    <li><b>仮換地</b>が指定されると、従前の宅地を使用収益できる者は、その効力発生日から換地処分の公告日まで<b>仮換地のほうを使用収益でき、従前の宅地は使用収益できなくなる</b>（99条1項）。所有権が移るわけではない点に注意</li>
+    <li>制限がかかるのは、事業計画の決定等の公告があった日後から、換地処分の公告がある日までです。</li>
+    <li>その間、施行地区内で事業の施行の障害となるおそれがある土地の形質の変更・建築物等の新築改築増築等をするには、<b>都道府県知事等</b>（国土交通大臣施行の場合は大臣）の許可が必要です（76条1項）。</li>
+    <li><b>仮換地</b>が指定されると、従前の宅地を使用収益できる者は、その効力発生日から換地処分の公告日まで仮換地のほうを使用収益でき、従前の宅地は使用収益できなくなる（99条1項）。所有権が移るわけではない点に注意してください。</li>
   </ul>
-  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/336AC0000000191" target="_blank" rel="noopener">e-Gov法令検索「宅地造成及び特定盛土等規制法」</a>／<a href="https://laws.e-gov.go.jp/law/337CO0000000016" target="_blank" rel="noopener">同「宅地造成及び特定盛土等規制法施行令」</a>／<a href="https://laws.e-gov.go.jp/law/329AC0000000119" target="_blank" rel="noopener">同「土地区画整理法」</a></p>
+  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/336AC0000000191" target="_blank" rel="noopener">e-Gov法令検索「宅地造成及び特定盛土等規制法」</a>／<a href="https://laws.e-gov.go.jp/law/337CO0000000016" target="_blank" rel="noopener">同「宅地造成及び特定盛土等規制法施行令」</a>／<a href="https://laws.e-gov.go.jp/law/329AC0000000119" target="_blank" rel="noopener">同「土地区画整理法」</a>（いずれも2026年9月時点）。</p>
 
-  <h2>まとめて確認：入れ替えられやすい数字ペア</h2>
+  <h2 id="pair">まとめて確認：入れ替えられやすい数字ペア</h2>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>混同しやすいペア</th><th>正しい対応</th></tr>
@@ -182,27 +281,34 @@
     <tr><td>2週間 / 30日</td><td>国土法の事後届出＝2週間（宅建業法の変更の届出・廃業等の届出が30日なので混ざる）</td></tr>
   </table>
   </div>
+  <figcaption><p>図9：入れ替えで作られやすい数字のペアだけを抜き出した表です。※各数字の根拠条文は本文の各節に記載しています（e-Gov法令検索・2026年9月時点）。</p></figcaption>
+  </figure>
   <p>最後の「2週間／30日」のように、<b>科目をまたいだ入れ替え</b>も出ます。宅建業法側の数字と語尾のパターンは<a href="/blog/takken-gyouhou-hikkake">宅建業法の「引っかけ肢」総まとめ</a>に整理してあるので、セットで確認すると取りこぼしが減ります。</p>
 
   <div class="cta-box">
-    <b>数字は「読んで覚える」より「聞かれて答える」ほうが定着します。</b> 宅建GYMは無料・登録不要の一問一答。法令上の制限も肢単位で回せるので、上の表を音読したあとの確認に使ってください。 → <a href="/">宅建GYMで一問一答を解く（無料）</a>
+    数字は「読んで覚える」より「聞かれて答える」ほうが定着します。 宅建GYMは無料・登録不要の一問一答。法令上の制限も肢単位で回せるので、上の表を音読したあとの確認に使ってください。 → <a href="/">宅建GYMで一問一答を解く（無料）</a>
   </div>
 
-  <h2>法令上の制限は「何点取れば十分か」</h2>
-  <p>法令上の制限は8問。合格ラインを35点前後と見ると、ここは<b>5〜6点</b>取れれば十分です。都市計画法の細かい地域地区や、建築基準法の集団規定の全体を完璧にするのは時間対効果が悪い。この記事の数字を確実にしたうえで、残りは「よく出る論点だけ」に絞るのが現実的です。</p>
-  <p>科目ごとの時間配分と、直前期に何を捨てるかは<a href="/blog/takken-chokuzenki-2kagetsu">直前期2か月の勉強法</a>にまとめています。独学で範囲の取捨選択が判断できないという人は、講座のカリキュラムに乗ってしまうほうが早い場合もあります。</p>
+  <h2 id="tokuten">法令上の制限は「何点取れば十分か」</h2>
+  <p>法令上の制限は8問です。※合格基準点は年度ごとに決まるもので、事前に公表されている数字ではありません（出典＝不動産適正取引推進機構の合格発表。2026年9月時点で令和8年度の基準点は未発表）。過去の水準である35点前後を仮に置くと、ここは<b>5〜6点</b>取れれば十分です。都市計画法の細かい地域地区や、建築基準法の集団規定の全体を完璧にするのは時間対効果が悪い。この記事の数字を確実にしたうえで、残りは「よく出る論点だけ」に絞るのが現実的です。</p>
+  <p>科目ごとの時間配分と、直前期に何を捨てるかは<a href="/blog/takken-chokuzenki-2kagetsu">直前期2か月の勉強法</a>にまとめています。※令和8年度の本試験日は2026年10月18日です（出典＝不動産適正取引推進機構の試験案内・2026年9月時点）。独学で範囲の取捨選択が判断できないという人は、講座のカリキュラムに乗ってしまうほうが早い場合もあります。</p>
   <div class="cta-box">
     → <a href="/courses/">宅建講座の選び方（通信・通学・オンライン5社比較）</a>
   </div>
 
-  <h2>まとめ</h2>
+  <h2 id="matome">まとめ</h2>
   <ul>
-    <li>開発許可：市街化区域<b>1000㎡</b>／非線引き・準都市<b>3000㎡</b>／区域外<b>1ha</b>／市街化調整区域は<b>規模の例外なし</b></li>
-    <li>建築基準法：道路<b>4m</b>・接道<b>2m</b>。建蔽率の緩和は+1/10と+2/10、<b>8/10の地域＋防火地域＋耐火建築物等は制限なし</b></li>
-    <li>農地法：<b>3条＝農業委員会／4条・5条＝都道府県知事等</b>。市街化区域の届出特例は<b>4条・5条だけ</b>。面積で許可権者は変わらない</li>
-    <li>国土利用計画法：<b>権利取得者</b>が契約日から<b>2週間以内</b>に事後届出。<b>2000／5000／10000㎡</b></li>
-    <li>盛土規制法：<b>盛土1m超の崖・切土2m超の崖・面積500㎡超</b>。工事着手<b>前</b>に都道府県知事の許可</li>
+    <li>開発許可：市街化区域<b>1000㎡</b>／非線引き・準都市<b>3000㎡</b>／区域外<b>1ha</b>／市街化調整区域は<b>規模の例外なし</b>。</li>
+    <li>建築基準法：道路<b>4m</b>・接道<b>2m</b>。建蔽率の緩和は+1/10と+2/10、8/10の地域＋防火地域＋耐火建築物等は制限なし。</li>
+    <li>農地法：3条＝農業委員会／4条・5条＝都道府県知事等。市街化区域の届出特例は<b>4条・5条だけ</b>。面積で許可権者は変わらない。</li>
+    <li>国土利用計画法：<b>権利取得者</b>が契約日から<b>2週間以内</b>に事後届出。<b>2000／5000／10000㎡</b>。</li>
+    <li>盛土規制法：盛土1m超の崖・切土2m超の崖・面積500㎡超。工事着手<b>前</b>に都道府県知事の許可。</li>
   </ul>
+
+  <div class="nextact">
+    <p style="margin:0 0 8px;font-weight:600">次の1アクション</p>
+    <p style="margin:0">今日は図1のものさしだけを声に出して言えるようにしてください。面積の順番が入っていれば、開発許可と国土法の入れ替え肢はその場で切れます。 → <a href="/ichimon/kaihatsu">開発許可の一問一答で確かめる（無料）</a></p>
+  </div>
 
   <div class="cta-box ichimon-cta">
     <p style="margin:0 0 4px;font-weight:700">覚えた数字は、その場で問題に当てて定着させる</p>
@@ -235,7 +341,7 @@
   <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
-    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_houreiseigen-suuji&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
   </div>
 </article>
 </main>
