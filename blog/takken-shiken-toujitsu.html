@@ -44,6 +44,19 @@
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
  .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
  .updated{font-size:14px;color:var(--muted);margin-top:10px}
+ figure.fig{margin:20px 0}
+ figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+ .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
+ .bars .row:last-child{margin-bottom:0}
+ .bars .lbl{font-size:14.5px;font-weight:700;line-height:1.9;flex:1 1 auto;min-width:0}
+ .bars .val{font-size:14px;line-height:1.9;color:var(--muted);flex:0 0 auto}
+ .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
+ .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
+ .flow{margin:0;padding:0;list-style:none;counter-reset:st}
+ .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 46px;margin:0 0 8px;font-size:14.5px;line-height:1.9}
+ .flow li:last-child{margin-bottom:0}
+ .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:13px;width:24px;height:24px;border-radius:9999px;background:var(--brand);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
@@ -73,10 +86,12 @@
     <a href="#junban">▸ 解く順番と時間配分</a>
     <a href="#mark">▸ マークシートのミスを防ぐ</a>
     <a href="#after">▸ 試験が終わったら</a>
+    <a href="#matome">▸ まとめ</a>
     <a href="#src">▸ 出典</a>
   </div>
 
   <h2 id="time">当日のタイムテーブル</h2>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>時刻</th><th>一般申込者</th><th>登録講習修了者（5問免除）</th></tr>
@@ -87,8 +102,9 @@
     <tr><td class="hl">遅刻</td><td colspan="2" class="hl">13時30分を過ぎた遅刻者は入室できません</td></tr>
   </table>
   </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。</p>
-  <p>見落としやすいのが<b>入室刻限（12時30分）</b>です。試験開始が13時なので12時50分ごろに着けばいいと思っていると、間に合いません。刻限を過ぎるとすぐ注意事項の説明が始まり、<b>説明開始後および試験時間中の途中退出は禁止</b>されます。トイレは入室刻限までに必ず済ませてください。</p>
+  <figcaption><p>表1：当日のタイムテーブル。出典＝不動産適正取引推進機構「令和8年度宅地建物取引士資格試験 試験案内」。※表は横にスクロールできます。</p></figcaption>
+  </figure>
+  <p>見落としやすいのが<b>入室刻限（12時30分）</b>です。試験開始が13時なので12時50分ごろに着けばいいと思っていると、間に合いません。刻限を過ぎるとすぐ注意事項の説明が始まり、説明開始後および試験時間中の途中退出は禁止されます。トイレは入室刻限までに必ず済ませてください。</p>
   <div class="warn">
     <p><b>会場の下見はできません。</b>試験案内には「試験会場への問合せ及び下見は固くお断りします」と明記されています。事前にできるのは、経路と所要時間を地図で確認しておくことまで。自家用車での送迎も、受験票で認められている場合以外は控えるよう案内されています。</p>
   </div>
@@ -112,6 +128,7 @@
 
   <h2 id="tokei">宅建試験の腕時計｜使える時計・使えない時計</h2>
   <p>試験案内では、時計機能のある物が3段階に分けられています。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>区分</th><th>該当する物</th><th>扱い</th></tr>
@@ -120,15 +137,16 @@
     <tr><td class="hl">可</td><td>上記以外の時計</td><td>動作音のないものに限る。アラームは解除。電波時計は可</td></tr>
   </table>
   </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。</p>
-  <p>無線通信機能をオフにしていてもスマートウォッチは使用厳禁です。また、試験時間中に監督員から<b>腕時計を机の上に置いて使うよう指示される場合がある</b>とも案内されています。「シンプルなアナログ腕時計を1本」が最も安全な答えです。</p>
+  <figcaption><p>表2：時計機能がある物の3区分。出典は表1と同じ試験案内（時計機能がある物の項）。※表は横にスクロールできます。</p></figcaption>
+  </figure>
+  <p>無線通信機能をオフにしていてもスマートウォッチは使用厳禁です。また、試験時間中に監督員から腕時計を机の上に置いて使うよう指示される場合があるとも案内されています。「シンプルなアナログ腕時計を1本」が最も安全な答えです。</p>
 
   <h3>腕時計についてよくある疑問（上の表の内容を質問の形に直したもの）</h3>
   <ul>
     <li><b>スマートウォッチは電源を切れば持ち込める？</b>　持ち込み自体は可能ですが<b>使用は厳禁</b>です。アラームを解除して電源を切り、配付された封筒に入れてのり付けし所定の場所へ置きます。試験中に所持していることが判明すると不正行為とみなされます。</li>
     <li><b>置時計やストップウォッチは？</b>　<b>不可</b>です。タイマー（試験用・調理用など）も同じ扱いで、動作音がする物があるため一律で認められていません。</li>
     <li><b>電波時計は使える？</b>　<b>可</b>です。ただし動作音のないものに限られ、アラームは解除しておく必要があります。</li>
-    <li><b>腕時計は腕に着けたままでいい？</b>　試験時間中に監督員から<b>机の上に置いて使うよう指示される場合がある</b>と案内されています。指示があれば従ってください。</li>
+    <li><b>腕時計は腕に着けたままでいい？</b>　試験時間中に監督員から机の上に置いて使うよう指示される場合があると案内されています。指示があれば従ってください。</li>
     <li><b>スマホを時計代わりにできる？</b>　できません。スマートフォン・携帯電話は使用厳禁の区分で、電源を切って封入します。</li>
   </ul>
   <p class="src">※ この5つの答えは、いずれも上の表と同じ出典（不動産適正取引推進機構「令和8年度宅地建物取引士資格試験 試験案内」の時計機能がある物に関する記載）に基づいています。新しい情報は足していません。</p>
@@ -153,10 +171,11 @@
     </ul>
   </div>
   <p>試験案内には「記載がない物は、使えません」とはっきり書かれています。迷ったら持ち込まない、が正解です。飲み物も、試験室内での飲食は原則禁止とされています（糖尿病・低血糖症等や妊娠の証明があり、申込時に許可を受けた人は例外）。</p>
-  <p>服装については、<b>会場によっては冷暖房が入らない場合がある</b>と案内されています。10月中旬は日によって寒暖差が大きいので、着脱しやすい上着があると安全です。座席の変更はできません。</p>
+  <p>服装については、会場によっては冷暖房が入らない場合があると案内されています。10月中旬は日によって寒暖差が大きいので、着脱しやすい上着があると安全です。座席の変更はできません。</p>
 
   <h2 id="junban">解く順番と時間配分</h2>
   <p>ここから先は公式ルールではなく、本サイトの提案です。近年の本試験は、おおむね次の並びで出題されています。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>問番号</th><th>分野</th><th>問数</th></tr>
@@ -167,8 +186,10 @@
     <tr><td class="num">問46〜50</td><td>免除科目（住宅金融支援機構・景品表示法・統計・土地・建物）</td><td class="num">5問</td></tr>
   </table>
   </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。年度により細部は変動します。</p>
+  <figcaption><p>表3：近年の本試験の出題の並び。年度により細部は変動します。出題内容の根拠は宅地建物取引業法施行規則第8条（試験案内「第3 試験の内容・方法」）。※表は横にスクロールできます。</p></figcaption>
+  </figure>
   <p>問題冊子は<b>問1から順に解く必要はありません</b>。問1から始めると、最も重く時間を食う権利関係で消耗した状態で、配点20問の宅建業法に入ることになります。これは配分として損です。おすすめは次の順番です。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>順</th><th>解く範囲</th><th>目安時間</th><th>ねらい</th></tr>
@@ -179,9 +200,20 @@
     <tr><td class="num">5</td><td>マーク確認・見直し</td><td class="num">25分</td><td>ズレの確認と、飛ばした問題の処理</td></tr>
   </table>
   </div>
-  <p class="scroll-hint">※ 表は横にスクロールできます。合計120分。</p>
+  <figcaption><p>表4：本サイトが提案する解く順番と時間配分（合計120分）。公式の指針ではありません。※表は横にスクロールできます。</p></figcaption>
+  </figure>
+  <figure class="fig">
+  <div class="bars">
+    <div class="row"><span class="lbl">① 問46〜50（免除科目）</span><span class="val">5分</span><span class="track"><span class="fill" style="width:14%"></span></span></div>
+    <div class="row"><span class="lbl">② 問26〜45（宅建業法）</span><span class="val">35分</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
+    <div class="row"><span class="lbl">③ 問15〜25（法令上の制限・税）</span><span class="val">20分</span><span class="track"><span class="fill" style="width:57%"></span></span></div>
+    <div class="row"><span class="lbl">④ 問1〜14（権利関係）</span><span class="val">35分</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
+    <div class="row"><span class="lbl">⑤ マーク確認・見直し</span><span class="val">25分</span><span class="track"><span class="fill" style="width:71%"></span></span></div>
+  </div>
+  <figcaption><p>図1：120分をどう割るか。バーの長さは最長ブロック（35分）を100としたときの比です。見直しの25分を先に確保するのがこの配分の要点です。</p></figcaption>
+  </figure>
   <p>この配分の要点は、<b>最後に25分を残す</b>ことです。50問すべてを解き切ってから見直そうとすると、たいてい時間が足りません。逆に、迷った問題を早めに飛ばして最後に戻る運用にすれば、時間切れで数問マークできないという最悪の事態を避けられます。</p>
-  <p>飛ばすときは、問題冊子の設問番号に印をつけておき、<b>解答用紙の該当行は空けずに一旦どれかをマークしておく</b>のが安全です。空欄のまま進むとマークのズレを誘発します。</p>
+  <p>飛ばすときは、問題冊子の設問番号に印をつけておき、解答用紙の該当行は空けずに一旦どれかをマークしておくのが安全です。空欄のまま進むとマークのズレを誘発します。</p>
   <p>なお、この順番は<b>本番でいきなり試さない</b>でください。9月〜10月の通し演習で最低2回は同じ順番で解いて、自分に合うか確かめておく必要があります（練習の組み立ては<a href="/blog/takken-chokuzenki-2kagetsu">直前期2か月の勉強法</a>を参照）。</p>
 
   <h2 id="mark">マークシートのミスを防ぐ</h2>
@@ -189,7 +221,7 @@
     <li><b>1問ごとではなく、ブロックごとにマークする</b>……5〜10問解いたらまとめて転記する。転記のたびに問番号を声に出さず指で確認する。</li>
     <li><b>飛ばした問題は空欄にしない</b>……仮のマークを入れて、冊子に「後で戻る」印をつける。</li>
     <li><b>残り10分で全問マーク済みかを確認する</b>……特に問46〜50を先に解いている場合、解答用紙の末尾が埋まっているかを見る。</li>
-    <li><b>解答用紙へのマークは鉛筆・シャープペンシルで</b>……蛍光ペン・色鉛筆・ボールペンは机上に置けますが、マークに使うと無効です。</li>
+    <li>解答用紙へのマークは鉛筆・シャープペンシルで……蛍光ペン・色鉛筆・ボールペンは机上に置けますが、マークに使うと無効です。</li>
     <li><b>自分が選んだ番号を問題冊子に控える</b>……当日夕方の自己採点は、この控えがすべてです。マークと同時に、問題冊子の設問番号の横にも数字を書いておいてください。</li>
   </ul>
   <p>宅建は1点で合否が分かれる試験です。実施機関が公表している過去10年の合格基準点は50問中33〜38点の幅に収まっており、マークのズレ1つで結果が変わります（年度別の実績は<a href="/kaitou-sokuhou/">解答速報・自己採点ページ</a>にまとめています）。その基準点が公式に確定するのは11月25日の合格発表日で、当日の流れは<a href="/goukaku-happyou/">宅建 合格発表【2026年度】</a>で整理しています。</p>
@@ -197,13 +229,23 @@
   <h2 id="after">試験が終わったら</h2>
   <p>15時に試験が終わったら、当日中に自己採点をしておくことをおすすめします。合格発表は<b>令和8年11月25日（水）</b>で、1か月以上先です。ボーダー付近だった場合、その1か月をどう過ごすかで翌年が変わります。</p>
   <p>また、<b>受験票は保管必須</b>です。合格発表まで捨てないでください。</p>
-  <p><b>問題冊子の扱いについて。</b>試験案内には、問題冊子を回収する規定も、持ち帰りを禁じる規定もありません。書かれているのは第17(9)の「<b>試験当日欠席した方には、試験問題をお渡ししません</b>」だけで、受験した人には試験問題が渡される前提の書き方になっています。実務上も、当日夕方に各社の解答速報が出て自己採点ができるのは、手元に問題と自分の解答の控えが残るからです。とはいえ最終的な扱いは<b>当日の試験監督員の指示と、お手元の受験票の記載に従ってください</b>。持ち帰った場合も、ゴミは必ず持ち帰るよう案内されています（第17(13)）。</p>
+  <p><b>問題冊子の扱いについて。</b>試験案内には、問題冊子を回収する規定も、持ち帰りを禁じる規定もありません。書かれているのは第17(9)の「試験当日欠席した方には、試験問題をお渡ししません」だけで、受験した人には試験問題が渡される前提の書き方になっています。実務上も、当日夕方に各社の解答速報が出て自己採点ができるのは、手元に問題と自分の解答の控えが残るからです。とはいえ最終的な扱いは当日の試験監督員の指示と、お手元の受験票の記載に従ってください。持ち帰った場合も、ゴミは必ず持ち帰るよう案内されています（第17(13)）。</p>
   <div class="cta-box">
     <b>試験当日、15時以降に公開します。</b> 自己採点の手順と各社の解答速報リンクをまとめたページを用意しています。今のうちにブックマークしておいてください。 → <a href="/kaitou-sokuhou/">宅建 解答速報・自己採点【2026年度】</a>
   </div>
   <div class="cta-box">
     直前の総仕上げに。 → <a href="/">宅建GYMで一問一答を回す（無料）</a>　／　来年に向けて講座を検討するなら → <a href="/courses/">宅建講座の選び方（5社比較）</a>
   </div>
+
+  <h2 id="matome">まとめ</h2>
+  <ul>
+    <li>入室は<b>12時30分</b>まで（5問免除は12時40分）。<b>13時30分を過ぎたら入室できない</b></li>
+    <li>公式指定の持ち物は受験票・BかHBの鉛筆かシャープペンシル・プラスチック製消しゴム・腕時計の4点。<b>スマートウォッチと置時計は不可</b></li>
+    <li>机に出せないものの筆頭は<b>筆箱</b>と鉛筆キャップ。「記載がない物は使えません」が原則</li>
+    <li>時間配分は、免除科目→宅建業法→法令・税→権利関係の順で、<b>最後に25分を残す</b></li>
+    <li>自分が選んだ番号を問題冊子に控える。当日夕方の自己採点はこの控えがすべて</li>
+  </ul>
+  <p>次の1アクションはこれだけです。<a href="/toujitsu-check/">持ち物チェックリスト＆当日タイムライン</a>を開いて、いま手元にある物にチェックを入れてください（チェック状態は端末に保存されます）。</p>
 
   <h2 id="src">出典</h2>
   <p class="src">
@@ -245,7 +287,7 @@
   <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
-    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_shiken-toujitsu&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
   </div>
 </article>
 </main>
