@@ -21,25 +21,40 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:800;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;min-width:640px}
- table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
- table.t th{background:var(--surface);font-weight:800;color:var(--muted)}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none}
- .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
+/* このページ内だけのスケール調整（共通CSSは触らない）。値は memory/design_guidelines.md のトークン */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85}
+ article p{margin:16px 0}
+ article li{margin:8px 0}
+ article b,article strong{font-weight:600}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
- .src{font-size:12.5px;color:var(--muted);line-height:1.8}
+ table.t th,table.t td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;line-height:1.85}
+ table.t th{background:var(--surface);font-weight:600;color:var(--muted)}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .ichimon-cta a{display:flex;align-items:center;min-height:48px}
+ .rel{border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.85}
  .src a{color:var(--brand2)}
- .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
- .course{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+ .pr-line{font-size:0.9375rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:16px;line-height:1.85}
+ .page-updated{font-size:0.9375rem;line-height:1.85;color:var(--muted);text-align:center;margin:24px 0 8px}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem;min-width:640px}
+ .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .course{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
  .course h3{margin-top:0}
- .course p{font-size:13.5px;color:var(--muted);margin:6px 0 0;line-height:1.85}
- .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;font-size:14.5px;padding:12px 20px;border-radius:12px;margin-top:12px;min-height:44px;box-sizing:border-box}
- .plainbtn{display:inline-flex;align-items:center;gap:7px;background:var(--surface);color:var(--brand2);border:1.5px solid var(--brand);text-decoration:none;font-weight:800;font-size:14.5px;padding:12px 20px;border-radius:12px;margin-top:12px;min-height:44px;box-sizing:border-box}
+ .course p{font-size:1rem;color:var(--muted);margin:8px 0 0;line-height:1.85}
+ .cbtn{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;padding:12px 20px;border-radius:8px;margin-top:12px;min-height:48px;box-sizing:border-box}
+ .plainbtn{display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--brand2);border:1.5px solid var(--brand);text-decoration:none;font-weight:600;font-size:1rem;padding:12px 20px;border-radius:8px;margin-top:12px;min-height:48px;box-sizing:border-box}
  .ppx{position:absolute;width:1px;height:1px;opacity:0}
 </style>
 <script type="application/ld+json">
@@ -57,7 +72,7 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。掲載している割引率・価格はすべて各社公式ページで確認した時点の実測値で、変更される場合があります。</p>
+  <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。掲載している割引率・価格はすべて各社公式ページで確認した時点の実測値で、変更される場合があります。</p>
 
   <p>自己採点の合計が合格ラインに届いていなかった日のことは、たぶんしばらく忘れられないと思います。半年とか1年、平日の夜と休日を差し出してきた結果が数字1つで返ってくるので、こたえ方も普通じゃない。SNSで合格報告を見るのがつらくて閉じた、という人もいるはずです。</p>
   <p>先に事実だけ置いておきます。宅建は<b>受験者のおよそ8割が落ちる試験</b>です。令和7年度は受験者245,462人に対して合格者45,821人、合格率18.7％でした（不動産適正取引推進機構の公表資料）。約20万人が同じ夜を過ごしています。合格者の平均年齢は36.2歳。働きながら、複数年かけて取る人が統計上も普通の試験です。落ちたことは、能力の判定ではありません。</p>
@@ -227,7 +242,7 @@
   <p class="src">※ 各社の割引率・価格・販売期間は2026年8月30日に上記公式ページで確認したものです。年度・時期により変更されるため、申込前に必ず公式サイトで最新情報を確認してください。本記事の掲載順・内容は当サイトの調査に基づくもので、全ての宅建講座を網羅するものではありません。</p>
 
   <div class="cta-box ichimon-cta">
-    <p style="margin:0 0 4px;font-weight:800">まず今の実力を分野別に測り直す</p>
+    <p style="margin:0 0 8px;font-weight:700">まず今の実力を分野別に測り直す</p>
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（○×24問・無料）</a>
     <a href="/ichimon/kenri">▸ 権利関係の一問一答（○×26問・無料）</a>
     <a href="/ichimon/horei">▸ 法令上の制限の一問一答（○×18問・無料）</a>
@@ -249,7 +264,7 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-30">2026年8月30日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
+  <p class="page-updated" data-page-updated>公開：<time datetime="2026-08-30">2026年8月30日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_ochita-revenge&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
