@@ -31,6 +31,8 @@
  article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
  article p,article li{font-size:1.0625rem;line-height:1.85;overflow-wrap:anywhere}
  article p{margin:16px 0}
+ /* 日本語の禁則で行末の約物が数pxぶら下がるぶんの逃げ（375/320px実測で確立） */
+ article p,article ul,article ol{padding-right:8px}
  article li{margin:8px 0}
  article b,article strong{font-weight:600}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
