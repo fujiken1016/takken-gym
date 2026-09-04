@@ -43,7 +43,7 @@
 9. `#menjo` 登録講習修了者（5問免除）の扱い
 10. `#after` 自己採点後の動き方（3ゾーン：38点以上／ボーダー±2点／30点以下）
 11. `#revenge` 来年リベンジ → /courses/ 内部リンク＋四谷学院A8リンク（`data-aff="A8_YOTSUYA"`）
-12. `#chinkan` 賃管士 → `#faq` FAQ（9問・FAQPage JSON-LD と**完全同期**）→ `#src` 出典
+12. `#chinkan` 賃管士 → `#faq` FAQ（9問・可視テキストのみ。**FAQPage JSON-LD は入れない（廃止済み）**）→ `#src` 出典
 13. BreadcrumbList JSON-LD
 
 🔴 **FAQ を触ったら JSON-LD も同じ文言に揃える。** 可視の `<dl class="faq">` から機械生成するのが確実（サイクル23で同期済み）。
@@ -52,7 +52,7 @@
 - title：`宅建 解答速報 2026｜自己採点と合格ライン｜令和8年度（10月18日）| 宅建GYM`
 - description：解答速報／自己採点／合格ライン／試験日・合格発表日を含む
 - canonical：`https://takken.mainichi-lab.com/kaitou-sokuhou/`
-- 構造化データ：FAQPage ＋ BreadcrumbList
+- 構造化データ：BreadcrumbList ＋ WebPage（**FAQPage は入れない（廃止済み）**＝Googleが2026-05-07にFAQリッチリザルトの表示を終了。HowToも2023年に終了）
 
 ### 広告表記
 - PRブロック（`.pr-note`）を「来年リベンジすると決めたら」セクション冒頭に配置
@@ -320,7 +320,7 @@ GitHub の **Actions → `takken-sokuhou-fallback` → Run workflow** から：
 - **収益導線**：直接のアフィリリンクは**置いていない**（情報面として中立に保つ）。合格→`/blog/takken-goukakugo`、不合格→`/blog/takken-saichousen`→`/blog/takken-ochita-revenge`（アフィリ5枠はこちら）の2段構え
 - **10/18→11/25の連続性**：`/kaitou-sokuhou/` の `<h2 id="after">` 直前に「11月25日（水）9:30／合否が確定するのは、合格発表の日です」カードを置き、自己採点した人が11/25に戻る理由（＝マイページで答え合わせできる）を明示した。**11/25の回でこのカードを発表後の文言に直すこと**
 - **相互リンク**：`index.html` フッター2箇所／`/kaitou-sokuhou/` 2箇所／`blog/index.html`・`takken-goukakugo`・`takken-saichousen`・`takken-ochita-revenge` の `.rel` 各1
-- ⚠️ **このページも FAQ の可視テキストと FAQPage JSON-LD が完全同期している**（8問）。片方だけ直さないこと
+- ⚠️ **このページの FAQ は可視テキストのみ。FAQPage JSON-LD は入れない（廃止済み）**（2026-09-04 撤去）。可視のFAQ本文は読者向けなので残す
 - ✅ 不変条件（notice×1／`試験当日に公開予定`×1／`<h2 id="saiten">`／borderBody 6行／`seitou.js?v=`×1）は本番curlで維持を実測確認済み（2026-09-03）
 
 ### E. 11月末〜1月の運用
