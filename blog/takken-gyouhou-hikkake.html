@@ -20,25 +20,40 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
- table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
- table.t th{background:var(--surface);font-weight:700;color:var(--muted)}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none}
- .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
+/* このページ内だけのスケール調整（共通CSSは触らない）。値は memory/design_guidelines.md のトークン */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85}
+ article p{margin:16px 0}
+ article li{margin:8px 0}
+ article b,article strong{font-weight:600}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
- .lawbox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:13px 15px;margin:12px 0}
- .lawh{font-size:14.5px;font-weight:700;color:var(--brand2);line-height:1.85}
- .lawq{font-size:14px;color:var(--muted);line-height:1.85;margin-top:6px}
- .lawr{font-size:14.5px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);line-height:1.8}
- .src{font-size:14px;color:var(--muted);line-height:1.8}
+ table.t th,table.t td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;line-height:1.85}
+ table.t th{background:var(--surface);font-weight:600;color:var(--muted)}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .ichimon-cta a{display:flex;align-items:center;min-height:48px}
+ .rel{border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.85}
  .src a{color:var(--brand2)}
+ .pr-line{font-size:0.9375rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:16px;line-height:1.85}
+ .page-updated{font-size:0.9375rem;line-height:1.85;color:var(--muted);text-align:center;margin:24px 0 8px}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+ .lawbox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:16px 0}
+ .lawh{font-size:1.0625rem;font-weight:600;color:var(--brand2);line-height:1.85}
+ .lawq{font-size:1rem;color:var(--muted);line-height:1.85;margin-top:8px}
+ .lawr{font-size:1.0625rem;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);line-height:1.85}
  ol.steps{padding-left:1.2em}
- ol.steps li{margin:10px 0}
+ ol.steps li{margin:8px 0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建業法の引っかけ問題6パターン｜数字・主語・期限の入れ替え","description":"宅建業法のひっかけ問題は、条文の1か所だけを入れ替えて作られています。数字・主語（許可権者）・期限・「できる／しなければならない」・例外の消去・似た制度の取り違えという6パターンに分解し、e-Gov法令検索で確認した条文とセットで一覧にしました。","inLanguage":"ja","datePublished":"2026-08-13T17:33:03+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"},"url":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"}</script>
 <script type="application/ld+json">
@@ -53,7 +68,7 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
+  <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
 
   <p>宅建業法は50問中20問。宅建試験で最大の配点であり、しかも「条文どおりに覚えれば取れる」科目です。にもかかわらず、模試で16点・17点から上がらない人が大量にいます。原因はほぼ一つで、<b>出題者が条文の1か所だけを入れ替えて✕肢を作っているのに、こちらが「だいたい合っている」レベルでしか覚えていない</b>からです。</p>
   <p>逆に言えば、入れ替えられる場所には型があります。この記事では、宅建業法のひっかけ肢を<b>6つのパターン</b>に分解し、それぞれについて e-Gov法令検索で確認した条文とセットで並べました。読み終えたときに「この表を口で言えるか」が、そのまま業法の得点になります。</p>
@@ -198,7 +213,7 @@
   </ul>
 
   <div class="cta-box ichimon-cta">
-    <p style="margin:0 0 4px;font-weight:700">引っかけ肢は、○×形式で数をこなすのが一番早く慣れます</p>
+    <p style="margin:0 0 8px;font-weight:700">引っかけ肢は、○×形式で数をこなすのが一番早く慣れます</p>
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（○×24問・無料）</a>
     <a href="/ichimon/hoshu">▸ 報酬計算の問題13問（速算式・消費税・空家特例）</a>
     <a href="/ichimon/cooling-off">▸ クーリング・オフの一問一答（○×17問）</a>
@@ -224,7 +239,7 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
+  <p class="page-updated" data-page-updated>公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_gyouhou-hikkake&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
