@@ -30,10 +30,28 @@
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
  .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
  .scroll{overflow-x:auto}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:18px 0}
+ .toc>p{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.9}
+ .toc ol{margin:0;padding-left:20px}
+ .toc li{font-size:14.5px;line-height:1.9;margin:2px 0}
+ .toc a{color:var(--brand2);text-decoration:none}
+ figure.fig{margin:20px 0}
+ figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ .keybox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 18px;margin:18px 0}
+ .keybox>p{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.9}
+ .keybox ul{margin:0;padding-left:20px}
+ .keybox li{font-size:14.5px;line-height:1.9}
+ .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+ .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
+ .bars .row:last-child{margin-bottom:0}
+ .bars .lbl{font-size:14.5px;font-weight:700;line-height:1.9;flex:1 1 auto}
+ .bars .val{font-size:14px;line-height:1.9;color:var(--muted)}
+ .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
+ .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の勉強時間の目安｜300〜400時間の内訳とスケジュール","description":"宅建（宅地建物取引士）合格に必要な勉強時間の目安は約300〜400時間。分野別の時間配分、半年・3か月など期間別のスケジュール例、スキマ時間の作り方を初心者向けに解説します。","inLanguage":"ja","datePublished":"2026-08-12T16:17:54+09:00","dateModified":"2026-09-03","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"},"url":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の勉強時間の目安｜300〜400時間の内訳とスケジュール","description":"宅建（宅地建物取引士）合格に必要な勉強時間の目安は約300〜400時間。分野別の時間配分、半年・3か月など期間別のスケジュール例、スキマ時間の作り方を初心者向けに解説します。","inLanguage":"ja","datePublished":"2026-08-12T16:17:54+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"},"url":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},{"@type":"ListItem","position":2,"name":"宅建の勉強時間の目安","item":"https://takken.mainichi-lab.com/blog/takken-benkyo-jikan"}]}
 </script>
@@ -49,10 +67,62 @@
   <p class="pr-line" style="font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
   <p>宅建（宅地建物取引士）の合格に必要な勉強時間は、一般に<b>約300〜400時間</b>が目安とされます。もちろん、法律の予備知識や集中度によって個人差はありますが、計画を立てるうえでの基準として使えます。この記事では、その内訳と期間別のスケジュール例を紹介します。</p>
 
-  <h2>なぜ300〜400時間なのか</h2>
+  <div class="keybox">
+    <p>この記事の要点</p>
+    <ul>
+      <li>目安は約300〜400時間。実施機関が公表した数値ではなく、計画を立てるための基準です</li>
+      <li>配点が最も高い宅建業法に、時間を厚く配分する</li>
+      <li>半年なら1日2時間前後、3か月なら1日3.5〜4時間が計算上のペースです</li>
+    </ul>
+  </div>
+
+  <div class="toc">
+    <p>目次</p>
+    <ol>
+      <li><a href="#kihon">まず押さえる試験の基本情報</a></li>
+      <li><a href="#why">なぜ300〜400時間なのか</a></li>
+      <li><a href="#haibun">分野別の時間配分（目安）</a></li>
+      <li><a href="#schedule">期間別のスケジュール例</a></li>
+      <li><a href="#sukima">スキマ時間を「積み上げる」</a></li>
+      <li><a href="#shortcut">時間を短縮したいなら</a></li>
+      <li><a href="#matome">まとめ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="kihon">まず押さえる試験の基本情報</h2>
+  <p>計画を立てる前に、ゴールの形を確認しておきます。次の表は実施機関である一般財団法人不動産適正取引推進機構の公表資料をそのまま整理したものです。</p>
+  <figure class="fig">
+  <div class="scroll">
+  <table class="t">
+    <tr><th>項目</th><th>内容</th></tr>
+    <tr><td>試験日</td><td>毎年1回・10月の第3日曜日／13時〜15時（2026年度は10月18日）</td></tr>
+    <tr><td>出題数</td><td>50問・四肢択一（登録講習修了者は45問）</td></tr>
+    <tr><td>受験手数料</td><td>8,200円</td></tr>
+    <tr><td>合格発表</td><td>原則として11月下旬</td></tr>
+    <tr><td>合格基準点（直近10年）</td><td>50問中33〜38点</td></tr>
+    <tr><td>合格率（直近10年）</td><td>13.1〜18.7%</td></tr>
+  </table>
+  </div>
+  <figcaption><p>表1：宅建試験の基本情報。合格基準点と合格率は令和7年度までの10年間の実績です。</p></figcaption>
+  </figure>
+  <p class="note">※出典＝一般財団法人不動産適正取引推進機構「<a href="https://www.retio.or.jp/exam/exam_detail/" target="_blank" rel="noopener">宅建試験の概要</a>」および「<a href="https://www.retio.or.jp/wp-content/uploads/2025/12/10years_result2025.pdf" target="_blank" rel="noopener">試験実施概況（令和7年度以前10年間）</a>」（PDF）。2026年9月4日確認。合格率の下限13.1%は令和2年度12月試験の値です。</p>
+  <p>合格基準点は毎年変わります。<b>満点は不要で、35点前後を安定して取れる状態がゴール</b>だと考えると、必要な時間も見積もりやすくなります。</p>
+
+  <h2 id="why">なぜ300〜400時間なのか</h2>
   <p>宅建は範囲こそ広いものの、過去問の焼き直しが多く、暗記でカバーできる部分も少なくありません。まったくの初学者でも、正しい順番で過去問中心に回せば、300〜400時間で合格ラインに届く人が多いというのが目安の根拠です。法律学習に慣れている人はより短く、逆に学習が久しぶりの人は多めに見積もると安全です。</p>
 
-  <h2>分野別の時間配分（目安）</h2>
+  <h2 id="haibun">分野別の時間配分（目安）</h2>
+  <figure class="fig">
+  <div class="bars">
+    <div class="row"><span class="lbl">宅建業法</span><span class="val">20問／全体の40%</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
+    <div class="row"><span class="lbl">権利関係（民法等）</span><span class="val">14問／全体の28%</span><span class="track"><span class="fill" style="width:70%"></span></span></div>
+    <div class="row"><span class="lbl">法令上の制限</span><span class="val">8問／全体の16%</span><span class="track"><span class="fill" style="width:40%"></span></span></div>
+    <div class="row"><span class="lbl">税・その他</span><span class="val">8問／全体の16%</span><span class="track"><span class="fill" style="width:40%"></span></span></div>
+  </div>
+  <figcaption><p>図1：4分野の出題数の比率。バーの長さは出題数そのものです。合計50問（登録講習修了者は問46〜50が免除で45問）。</p></figcaption>
+  </figure>
+  <p class="note">※出題数の区分は前掲の「宅建試験の概要」（2026年9月4日確認）にもとづきます。</p>
+  <figure class="fig">
   <div class="scroll">
   <table class="t">
     <tr><th>分野</th><th>出題数</th><th>時間の目安</th><th>方針</th></tr>
@@ -62,9 +132,24 @@
     <tr><td>税・その他</td><td>8問</td><td>約40〜60時間</td><td>頻出論点＋直前の統計対策</td></tr>
   </table>
   </div>
+  <figcaption><p>表2：分野別の時間配分の目安。時間は本記事が計画用に置いた目安で、公表値ではありません。</p></figcaption>
+  </figure>
   <p>配点が高く得点が安定しやすい宅建業法に時間を厚く配分するのがコツです。権利関係は範囲が広いわりに得点が伸びにくいため、満点ではなく7〜8割を目標にします。</p>
 
-  <h2>期間別のスケジュール例</h2>
+  <h2 id="schedule">期間別のスケジュール例</h2>
+  <figure class="fig">
+  <div class="scroll">
+  <table class="t">
+    <tr><th>期間</th><th>1日あたり</th><th>計算の内訳</th></tr>
+    <tr><td>6か月</td><td>約2時間</td><td>2時間×180日＝約360時間</td></tr>
+    <tr><td>3か月</td><td>約4時間</td><td>4時間×90日＝約360時間</td></tr>
+    <tr><td>直前1か月</td><td>復習中心</td><td>新しい教材を足さず、通し演習に充てる</td></tr>
+  </table>
+  </div>
+  <figcaption><p>表3：期間別のペース。いずれも総量を約360時間としたときの単純計算です。</p></figcaption>
+  </figure>
+  <p class="note">※360時間は300〜400時間の中央付近を取った計算用の値です（2026年9月時点の本記事の目安）。</p>
+
   <h3>半年（約6か月）で合格を目指す</h3>
   <p>1日あたり<b>2時間前後</b>が目安（2時間×約180日＝約360時間）。平日は1〜1.5時間、休日にまとめて、という配分でも到達できます。無理のないペースで習慣化しやすいのが半年プランです。</p>
   <h3>3か月で仕上げる</h3>
@@ -72,19 +157,33 @@
   <h3>直前期（ラスト1か月）の使い方</h3>
   <p>新しい教材に手を広げず、これまで解いた問題の復習と通し演習に集中します。法改正点の最終確認も忘れずに。</p>
 
-  <h2>スキマ時間を「積み上げる」</h2>
+  <h2 id="sukima">スキマ時間を「積み上げる」</h2>
   <p>まとまった学習時間が取りにくい人ほど、通勤・昼休み・寝る前の数分が効いてきます。1日20分でも、半年で約60時間。テキストを開くのが難しい移動中は、スマホで一問一答や4択を回すのが現実的です。</p>
+  <figure class="fig">
+  <div class="bars">
+    <div class="row"><span class="lbl">1日10分</span><span class="val">半年で約30時間</span><span class="track"><span class="fill" style="width:33%"></span></span></div>
+    <div class="row"><span class="lbl">1日20分</span><span class="val">半年で約60時間</span><span class="track"><span class="fill" style="width:67%"></span></span></div>
+    <div class="row"><span class="lbl">1日30分</span><span class="val">半年で約90時間</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
+  </div>
+  <figcaption><p>図2：スキマ時間の積み上がり方。180日で換算した単純計算です。</p></figcaption>
+  </figure>
+  <p class="note">※1日30分は、表2でいえば「法令上の制限」1分野をまるごと賄える量にあたります（2026年9月時点の本記事の目安）。</p>
+  <ul>
+    <li>通勤・移動中…一問一答を10問だけ回す</li>
+    <li>昼休み…前日に間違えた問題だけを解き直す</li>
+    <li>寝る前…その日に覚えた数字を声に出して確認する</li>
+  </ul>
   <div class="cta-box">
     <b>スキマ時間の反復に。</b> 宅建GYMなら数分で問題演習でき、間違えた問題は自動で復習に回ります。連続学習日数で習慣化もサポート。 → <a href="/">宅建GYMを使ってみる（無料）</a>
   </div>
 
-  <h2>時間を短縮したいなら</h2>
+  <h2 id="shortcut">時間を短縮したいなら</h2>
   <p>「効率よく最短で受かりたい」「独学だと時間の使い方に自信がない」という人は、通信・オンライン講座でカリキュラムに沿って進めると、迷う時間を減らせます。費用と学習スタイルで比較して選びましょう。</p>
   <div class="cta-box">
     → <a href="/courses/">宅建講座の選び方（通信・通学・オンライン5社比較）</a>
   </div>
 
-  <h2>まとめ</h2>
+  <h2 id="matome">まとめ</h2>
   <p>宅建の勉強時間の目安は約300〜400時間。宅建業法に厚く配分し、過去問中心で回すのが効率的です。半年なら1日2時間、3か月なら1日4時間が一つの基準。まずは毎日少しずつ、スキマ時間から積み上げていきましょう。</p>
 
   <div class="cta-box ichimon-cta">
@@ -113,10 +212,10 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
-    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
+    <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&utm_medium=article&utm_campaign=takken_blog_benkyo-jikan&utm_content=footer">フジケン（毎日ラボ）</a></div>
   </div>
 </article>
 </main>
