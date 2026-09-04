@@ -60,7 +60,7 @@
  .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
  .bars .row:last-child{margin-bottom:0}
  .bars .lbl{font-size:1rem;font-weight:600;line-height:1.85;flex:1 1 auto;min-width:0}
- .bars .val{font-size:0.9375rem;line-height:1.85;color:var(--muted);flex:0 0 auto}
+ .bars .val{font-size:0.9375rem;line-height:1.85;color:var(--muted);flex:0 1 auto;min-width:0;overflow-wrap:anywhere}
  .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
  .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
  .flow{margin:0;padding:0;list-style:none;counter-reset:st}
@@ -90,11 +90,11 @@
 
   <figure class="fig">
   <div class="bars">
-    <div class="row"><span class="lbl">500㎡</span><span class="val">条例で引き下げられる下限／盛土規制法の面積</span><span class="track"><span class="fill" style="width:5%"></span></span></div>
+    <div class="row"><span class="lbl">500㎡</span><span class="val">盛土規制法／条例の下限</span><span class="track"><span class="fill" style="width:5%"></span></span></div>
     <div class="row"><span class="lbl">1000㎡</span><span class="val">開発許可・市街化区域</span><span class="track"><span class="fill" style="width:10%"></span></span></div>
-    <div class="row"><span class="lbl">2000㎡</span><span class="val">国土法の事後届出・市街化区域</span><span class="track"><span class="fill" style="width:20%"></span></span></div>
+    <div class="row"><span class="lbl">2000㎡</span><span class="val">国土法・市街化区域</span><span class="track"><span class="fill" style="width:20%"></span></span></div>
     <div class="row"><span class="lbl">3000㎡</span><span class="val">開発許可・非線引き／準都市</span><span class="track"><span class="fill" style="width:30%"></span></span></div>
-    <div class="row"><span class="lbl">5000㎡</span><span class="val">国土法・市街化区域以外の都市計画区域</span><span class="track"><span class="fill" style="width:50%"></span></span></div>
+    <div class="row"><span class="lbl">5000㎡</span><span class="val">国土法・市街化区域以外</span><span class="track"><span class="fill" style="width:50%"></span></span></div>
     <div class="row"><span class="lbl">10000㎡（1ha）</span><span class="val">開発許可・国土法とも区域外</span><span class="track"><span class="fill" style="width:100%"></span></span></div>
   </div>
   <figcaption><p>図1：この科目で覚える面積を、大きさの順に並べたものさしです。棒の長さは1haを100%とした比率で描いています。※出典＝e-Gov法令検索（都市計画法・同施行令／国土利用計画法／宅地造成及び特定盛土等規制法施行令。2026年9月時点で施行中の条文）。</p></figcaption>
