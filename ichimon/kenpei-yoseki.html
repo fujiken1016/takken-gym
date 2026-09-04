@@ -20,76 +20,87 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article p,article li{font-size:15px;line-height:1.95}
- .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
+ article p,article li{font-size:1.0625rem;line-height:1.95}
+ .bc{font-size:0.9375rem;color:var(--muted);margin:0 0 16px;line-height:1.85}
  .bc a{color:var(--muted);text-decoration:none}
  .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:22px 0}
- .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none;display:block;padding:9px 0;min-height:44px;line-height:1.7}
+ .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none;display:block;padding:12px 0;min-height:48px;line-height:1.85}
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:14px;min-height:44px;line-height:1.7}
+ .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:12px 0;font-size:1.0625rem;min-height:48px;line-height:1.85}
  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px;padding:0;list-style:none}
- .tags li{font-size:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 11px;margin:0;color:var(--muted)}
+ .tags li{font-size:0.9375rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin:0;color:var(--muted);line-height:1.3}
  /* trainer */
  .tr{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin:16px 0}
- .tbar{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);font-weight:800}
- .tbar b{color:var(--brand2);font-size:15px}
+ .tbar{display:flex;justify-content:space-between;align-items:center;font-size:0.9375rem;color:var(--muted);font-weight:700;line-height:1.3}
+ .tbar b{color:var(--brand2);font-size:1.0625rem}
  .tmeter{height:6px;background:var(--line);border-radius:999px;margin:10px 0 4px;overflow:hidden}
  .tmeter i{display:block;height:100%;background:var(--brand);width:0;transition:width .25s}
- .tq{font-size:16px;font-weight:700;line-height:1.9;margin:16px 0 18px;min-height:6em}
+ .tq{font-size:1.1875rem;font-weight:700;line-height:1.9;margin:16px 0 18px;min-height:6em}
  .tbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
  .tbtns.one{grid-template-columns:1fr}
- .tbtns button{min-height:56px;border:2px solid var(--line);background:var(--bg);color:var(--ink);
-  border-radius:14px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;padding:10px 8px;line-height:1.5;
+ .tbtns button{min-height:60px;border:2px solid var(--line);background:var(--bg);color:var(--ink);
+  border-radius:12px;font-size:1.0625rem;font-weight:700;cursor:pointer;font-family:inherit;padding:10px 8px;line-height:1.3;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
- .tbtns.one button{text-align:left;padding:12px 14px;font-size:14.5px;font-weight:800}
+ .tbtns.one button{text-align:left;padding:12px 14px;font-size:1.0625rem;font-weight:700}
  .tbtns button:disabled{cursor:default;opacity:.55}
  .tbtns button.right{border-color:#2f9e6a;background:rgba(47,158,106,.14);color:var(--ink);opacity:1}
  .tbtns button.bad{border-color:#d33b53;background:rgba(211,59,83,.13);color:var(--ink);opacity:1}
  .tfb{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
- .tjudge{font-size:16px;font-weight:900;margin-bottom:8px}
+ .tjudge{font-size:1.1875rem;font-weight:700;margin-bottom:8px;line-height:1.35}
  .tjudge.ok{color:#2f9e6a}
  .tjudge.ng{color:#d33b53}
- .texp{font-size:14.5px;line-height:1.95;color:var(--ink);margin:0}
- .tnext{width:100%;min-height:54px;margin-top:16px;border:0;border-radius:14px;background:var(--brand);
-  color:#fff;font-size:15.5px;font-weight:900;cursor:pointer;font-family:inherit;
+ .texp{font-size:1.0625rem;line-height:1.95;color:var(--ink);margin:0}
+ .tnext{width:100%;min-height:56px;margin-top:16px;border:0;border-radius:12px;background:var(--brand);
+  color:#fff;font-size:1.0625rem;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.3;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
- .tsub{width:100%;min-height:50px;margin-top:10px;border:2px solid var(--line);border-radius:14px;
-  background:var(--bg);color:var(--ink);font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;
+ .tsub{width:100%;min-height:48px;margin-top:8px;border:2px solid var(--line);border-radius:12px;
+  background:var(--bg);color:var(--ink);font-size:1.0625rem;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.3;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
  .tres{text-align:center}
- .tres .big{font-size:36px;font-weight:900;color:var(--brand2);line-height:1.3;margin:6px 0}
+ .tres .big{font-size:2.875rem;font-weight:700;color:var(--brand2);line-height:1.3;margin:8px 0;font-variant-numeric:tabular-nums}
  .qlist{list-style:none;margin:14px 0 0;padding:0;counter-reset:qn}
  .qlist>li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px}
- .qlist .q{font-size:14.5px;font-weight:700;line-height:1.9;margin:0}
- .qlist .q::before{counter-increment:qn;content:"Q" counter(qn) ". ";color:var(--brand2);font-weight:900}
+ .qlist .q{font-size:1.0625rem;font-weight:700;line-height:1.9;margin:0}
+ .qlist .q::before{counter-increment:qn;content:"Q" counter(qn) ". ";color:var(--brand2);font-weight:700}
  .qlist .ch{list-style:none;margin:8px 0 0;padding:0}
- .qlist .ch li{font-size:13.5px;color:var(--muted);line-height:1.9;margin:0;padding:2px 0}
+ .qlist .ch li{font-size:0.9375rem;color:var(--muted);line-height:1.9;margin:0;padding:2px 0}
  .qlist details{margin-top:8px}
- .qlist summary{font-size:13px;font-weight:800;color:var(--brand2);cursor:pointer;min-height:44px;touch-action:manipulation;
+ .qlist summary{font-size:0.9375rem;font-weight:700;color:var(--brand2);cursor:pointer;min-height:48px;touch-action:manipulation;
   display:flex;align-items:center;list-style:none}
  .qlist summary::-webkit-details-marker{display:none}
  .qlist summary::before{content:"▸ ";margin-right:4px}
  .qlist details[open] summary::before{content:"▾ "}
- .qlist .exp{font-size:14px;line-height:1.9;color:var(--muted);margin:6px 0 0}
- .qlist .ans{display:inline-block;font-weight:900;color:var(--ink);margin-right:6px}
+ .qlist .exp{font-size:1.0625rem;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ .qlist .ans{display:inline-block;font-weight:700;color:var(--ink);margin-right:6px}
  .alist{list-style:none;margin:12px 0 0;padding:0}
  .alist li{margin:0 0 10px}
  .acard{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;
   padding:14px 16px;text-decoration:none;color:var(--ink);border-left:4px solid var(--brand)}
- .acard .at{font-size:15.5px;font-weight:800;color:var(--brand2);display:block;line-height:1.6}
- .acard .ad{font-size:13.5px;color:var(--muted);display:block;margin-top:5px;line-height:1.85}
- .ftable{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
- .ftable th,.ftable td{border:1px solid var(--line);padding:9px 10px;text-align:left;line-height:1.7}
- .ftable th{background:var(--surface);font-weight:800;white-space:nowrap}
+ .acard .at{font-size:1.0625rem;font-weight:700;color:var(--brand2);display:block;line-height:1.85}
+ .acard .ad{font-size:0.9375rem;color:var(--muted);display:block;margin-top:5px;line-height:1.85}
+ .ftable{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.9375rem}
+ .ftable th,.ftable td{border:1px solid var(--line);padding:9px 10px;text-align:left;line-height:1.85}
+ .ftable th{background:var(--surface);font-weight:700;white-space:nowrap}
  .twrap{overflow-x:auto}
  /* 次の一手（完了画面の回遊。2026-08-31 サイクル17） */
  .nx{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 15px;margin:16px 0 4px;text-align:left}
- .nx .nxh{font-size:14px;font-weight:900;color:var(--ink);line-height:1.75;margin:0}
- .nx .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:6px 0 2px}
- .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
- .nx a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .nx .nxh{font-size:1.0625rem;font-weight:700;color:var(--ink);line-height:1.85;margin:0}
+ .nx .nxs{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:8px 0 2px}
+ .nx a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:700;font-size:1.0625rem;line-height:1.85;border-top:1px solid var(--line);padding:12px 0;min-height:48px;margin-top:8px}
+ .nx a.nxa span{display:block;font-size:0.9375rem;color:var(--muted);font-weight:600;margin-top:4px;line-height:1.85}
  .nx.warm{border-left-color:#d33b53}
  .nx.done{border-left-color:#2f9e6a}
+ /* ここから: 共通CSS(legal.css)のスケールをこのページ内だけ上書きする。
+    legal.css は全面に波及するため触らない（AdSense再審査中）。
+    値は memory/design_guidelines.md のトークン（§3-2 タイプスケール／§3-3 見出し比率／§5-2 タップ標的） */
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center;line-height:1.3}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px;padding-left:12px}
+ h2:first-of-type{margin-top:24px}
+ .foot{font-size:0.9375rem;line-height:1.85}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -123,9 +134,9 @@
     </div>
   </div>
   <div class="tr tres" id="tres" hidden>
-    <div style="font-size:13px;font-weight:800;color:var(--muted)">建蔽率・容積率の結果</div>
+    <div style="font-size:0.9375rem;font-weight:700;color:var(--muted);line-height:1.85">建蔽率・容積率の結果</div>
     <div class="big" id="rBig">—</div>
-    <div id="rSub" style="font-size:14px;color:var(--muted)"></div>
+    <div id="rSub" style="font-size:0.9375rem;color:var(--muted);line-height:1.85"></div>
     <div class="nx" id="rNext" hidden></div>
     <button type="button" class="tnext" id="bAgain">もう一度、最初から</button>
     <button type="button" class="tsub" id="bWrong" hidden>間違えた問題だけもう一度</button>
@@ -159,7 +170,7 @@
     <tr><th>敷地が2以上の地域にわたる場合</th><td>各地域の限度×（その地域内の敷地部分の面積÷敷地面積）の合計以下（52条7項＝加重平均）</td></tr>
     <tr><th>延べ面積に算入しないもの</th><td>共同住宅・老人ホーム等の共用の廊下・階段（52条6項2号）、政令で定める昇降機の昇降路（同1号）ほか</td></tr>
   </table></div>
-  <p style="font-size:13.5px;color:var(--muted)">覚え方：<b>住居系は4、その他は6</b>。低層住専から準住居までが「住居系＝10分の4」、近隣商業から先は「10分の6」です（特定行政庁の指定がない場合）。</p>
+  <p style="font-size:0.9375rem;color:var(--muted);line-height:1.85">覚え方：<b>住居系は4、その他は6</b>。低層住専から準住居までが「住居系＝10分の4」、近隣商業から先は「10分の6」です（特定行政庁の指定がない場合）。</p>
 
   <h2>全13問リスト（答え・計算式つき）</h2>
   <p>上のトレーニングと同じ13問です。トレーニングでは選択肢の並び順をシャッフルしているので、番号ではなく数値で覚えてください。以下の問題では、特に断りのない限り特定行政庁の指定する区域ではないものとします。</p>
@@ -240,7 +251,7 @@
     <a href="/blog/">▸ 宅建GYM ブログ記事一覧</a>
     <a href="/">▸ 宅建GYM トップ（アプリで問題を解く）</a>
   </div>
-  <p style="font-size:12px;color:var(--muted);line-height:1.9;margin-top:18px">根拠：建築基準法52条（容積率）・53条（建蔽率）。条文は e-Gov 法令検索の令和8年4月1日時点施行版（法令ID 325AC0000000201）で確認しています。実際の敷地では都市計画で定められた数値・特定行政庁の指定・高さ制限など他の規定も併せて適用されます。</p>
+  <p style="font-size:0.9375rem;color:var(--muted);line-height:1.9;margin-top:24px">根拠：建築基準法52条（容積率）・53条（建蔽率）。条文は e-Gov 法令検索の令和8年4月1日時点施行版（法令ID 325AC0000000201）で確認しています。実際の敷地では都市計画で定められた数値・特定行政庁の指定・高さ制限など他の規定も併せて適用されます。</p>
   <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-30">2026年8月30日</time>　最終更新：<time datetime="2026-09-02">2026年9月2日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/ichimon/">一問一答</a><a href="/blog/">記事一覧</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
