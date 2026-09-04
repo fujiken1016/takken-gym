@@ -46,7 +46,7 @@
 12. `#chinkan` 賃管士 → `#faq` FAQ（9問・可視テキストのみ。**FAQPage JSON-LD は入れない（廃止済み）**）→ `#src` 出典
 13. BreadcrumbList JSON-LD
 
-🔴 **FAQ を触ったら JSON-LD も同じ文言に揃える。** 可視の `<dl class="faq">` から機械生成するのが確実（サイクル23で同期済み）。
+🔴 **FAQ の JSON-LD 同期は不要になった。** FAQPage は 2026-05-07 にリッチリザルトが廃止されたため 2026-09-04 に撤去済みで、いま `#faq` は**可視テキストだけ**。当日に FAQ を直しても JSON-LD 側を揃える作業は発生しない。**FAQPage を復活させないこと**（`goukaku-happyou/index.html` も同日に同じ理由で撤去済み）。
 
 ### SEO
 - title：`宅建 解答速報 2026｜自己採点と合格ライン｜令和8年度（10月18日）| 宅建GYM`
