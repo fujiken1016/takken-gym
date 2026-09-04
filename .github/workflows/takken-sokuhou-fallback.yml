@@ -1,0 +1,230 @@
+# 宅建 解答速報（10/18）クラウド冗長系
+# ------------------------------------------------------------------
+# なぜ存在するか：当日の3パス（15:30 / 18:30 / 21:00 JST）は
+# 「Macが起きていてClaudeアプリが開いていること」に全部ぶら下がっている。
+# このワークフローは GitHub のインフラで動くので、その前提に依存しない。
+#
+# 役割は2つだけ。ローカルの代わりに"考える"ことはしない。
+#   1) schedule … 10/18 19:15 JST に本番の status を見て、まだ "pre" なら Issue を立てて知らせる
+#   2) workflow_dispatch … スマホから正答を publish できる非常口（Macが無くても本番に出せる）
+#
+# ローカルが成功していれば status は "sokuhou"/"kakutei" になっているので、
+# schedule の回は何もせず終了する（＝二重更新・上書き合戦が起きない）。
+name: takken-sokuhou-fallback
+
+on:
+  schedule:
+    # 2026-10-18 10:15 UTC = 19:15 JST（ローカルの 18:30 JST パスより45分後）
+    - cron: '15 10 18 10 *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'check=現況を見るだけ / selftest=push疎通の自己診断 / publish=正答を公開'
+        required: true
+        default: 'check'
+        type: choice
+        options: [check, selftest, publish]
+      answers:
+        description: 'publish専用: 問1〜50の正答を50個（空白かカンマ区切り）。未確定の問は 0'
+        required: false
+        type: string
+      answer_status:
+        description: 'publish専用: sokuhou=各社速報ベース / kakutei=公式発表ベース'
+        required: false
+        default: 'sokuhou'
+        type: choice
+        options: [sokuhou, kakutei]
+      source:
+        description: 'publish専用: 出典（例: LEC・TAC・日建学院の速報で一致した番号）'
+        required: false
+        type: string
+      confirm:
+        description: 'publish専用: 本当に本番へ出すなら PUBLISH と入力'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: takken-sokuhou-fallback
+  cancel-in-progress: false
+
+jobs:
+  fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 本番の現況を実測する
+        id: probe
+        run: |
+          set -euo pipefail
+          curl -sfS "https://takken.mainichi-lab.com/kaitou-sokuhou/seitou.js?nc=$(date +%s)" -o /tmp/live_seitou.js
+          LIVE_STATUS="$(sed -n 's/.*status: *"\([a-z]*\)".*/\1/p' /tmp/live_seitou.js | head -1)"
+          LIVE_V="$(curl -sfS "https://takken.mainichi-lab.com/kaitou-sokuhou/?nc=$(date +%s)" | grep -o 'seitou\.js?v=[0-9]*' | head -1 | grep -o '[0-9]*$')"
+          echo "live_status=${LIVE_STATUS}" >> "$GITHUB_OUTPUT"
+          echo "live_v=${LIVE_V}" >> "$GITHUB_OUTPUT"
+          {
+            echo "## 本番の現況（実測）"
+            echo "- \`seitou.js\` status = \`${LIVE_STATUS}\`"
+            echo "- \`index.html\` の seitou.js?v= = \`${LIVE_V}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ---------- 1) schedule：ローカルが動かなかったときだけ鳴らす ----------
+      - name: ローカルが成功しているか判定（schedule）
+        if: github.event_name == 'schedule'
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.probe.outputs.live_status }}" != "pre" ]; then
+            echo "status=${{ steps.probe.outputs.live_status }} → ローカルの当日パスが成功している。クラウド側は何もしない。"
+            echo "SHOULD_ALERT=false" >> "$GITHUB_ENV"
+          else
+            echo "status=pre のまま → ローカルが動いていない可能性が高い。通知する。"
+            echo "SHOULD_ALERT=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: 未反映なら Issue を立てて知らせる（schedule）
+        if: github.event_name == 'schedule' && env.SHOULD_ALERT == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cat > /tmp/issue.md <<'BODY'
+          19:15 JST 時点で `kaitou-sokuhou/seitou.js` の `status` が `pre` のままです。
+          当日のローカル自動パス（18:30 JST）が動いていない可能性があります。
+
+          **Macが使えるなら**: 新しいセッションで
+          「`KAITOU_SOKUHOU_RUNBOOK.md` の §4-B2 を読んで当日差し替えを実行して」と指示する。
+
+          **Macが使えないなら**（スマホから本番へ出せます）:
+          1. このリポジトリの Actions → `takken-sokuhou-fallback` → Run workflow
+          2. `mode` = `publish`
+          3. `answers` = LEC・TAC・日建学院の3社が**一致した問だけ** 1〜4、一致しない問は `0`（50個）
+          4. `answer_status` = `sokuhou`、`source` に出典、`confirm` に `PUBLISH`
+          5. 実行後 `https://takken.mainichi-lab.com/kaitou-sokuhou/` を開いて採点できることを確認
+
+          ⚠️ 1社だけの速報で埋めないこと。割れている問は `0`（採点対象外＝判定保留）のほうが誤答より安全です。
+          訂正の手順は `KAITOU_SOKUHOU_RUNBOOK.md` §4-B3。
+          BODY
+          gh issue create \
+            --title "[自動通知] 10/18 19:15 時点で解答速報が未反映（status=pre）" \
+            --body-file /tmp/issue.md
+
+      # ---------- 2) selftest：push とデプロイの疎通を自分で証明する ----------
+      - name: push→Cloudflare反映の自己診断（selftest）
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'selftest'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          STAMP="ci-probe-$(date -u +%Y%m%dT%H%M%SZ)"
+          echo "$STAMP" > kaitou-sokuhou/_ci_probe.txt
+          git add kaitou-sokuhou/_ci_probe.txt
+          git commit -m "chore(ci): 疎通確認用の一時ファイルを追加（直後に削除する）"
+          git push
+          echo "push 完了。Cloudflare Pages のビルド＋伝播を待つ…"
+          OK=no
+          for i in $(seq 1 12); do
+            sleep 20
+            GOT="$(curl -s "https://takken.mainichi-lab.com/kaitou-sokuhou/_ci_probe.txt?nc=$(date +%s)" || true)"
+            if [ "$GOT" = "$STAMP" ]; then OK=yes; echo "反映を確認（${i}回目・約$((i*20))秒）"; break; fi
+          done
+          git rm kaitou-sokuhou/_ci_probe.txt
+          git commit -m "chore(ci): 疎通確認用の一時ファイルを削除"
+          git push
+          GONE=no
+          for i in $(seq 1 12); do
+            sleep 20
+            CODE="$(curl -s -o /dev/null -w '%{http_code}' "https://takken.mainichi-lab.com/kaitou-sokuhou/_ci_probe.txt?nc=$(date +%s)" || true)"
+            if [ "$CODE" = "404" ]; then GONE=yes; echo "削除の反映を確認（${i}回目）"; break; fi
+          done
+          {
+            echo "## selftest 結果"
+            echo "- Actions から push: 成功"
+            echo "- 本番へ反映（probe が配信された）: ${OK}"
+            echo "- 撤去後に404へ戻った: ${GONE}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$OK" = "yes" ] && [ "$GONE" = "yes" ]
+
+      # ---------- 3) publish：スマホからでも本番に正答を出せる非常口 ----------
+      - name: 入力を検証する（publish）
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'
+        env:
+          IN_ANSWERS: ${{ inputs.answers }}
+          IN_CONFIRM: ${{ inputs.confirm }}
+        run: |
+          set -euo pipefail
+          if [ "$IN_CONFIRM" != "PUBLISH" ]; then
+            echo "::error::confirm に PUBLISH と入力されていません。本番を書き換えずに中止します。"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import os, re, sys
+          raw = os.environ.get("IN_ANSWERS", "")
+          toks = [t for t in re.split(r"[\s,]+", raw.strip()) if t]
+          if len(toks) != 50:
+              sys.exit(f"answers が {len(toks)} 個です。ちょうど50個必要（未確定の問は 0）")
+          for i, t in enumerate(toks, 1):
+              if t not in {"0","1","2","3","4"}:
+                  sys.exit(f"問{i} の値 '{t}' が不正。0〜4 のみ")
+          print("answers OK:", len(toks), "問 / 未確定", toks.count("0"), "問")
+          PY
+
+      - name: seitou.js を書き換えて push（publish）
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'
+        env:
+          IN_ANSWERS: ${{ inputs.answers }}
+          IN_STATUS: ${{ inputs.answer_status }}
+          IN_SOURCE: ${{ inputs.source }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, re, datetime, pathlib
+          answers = [t for t in re.split(r"[\s,]+", os.environ["IN_ANSWERS"].strip()) if t]
+          status  = os.environ.get("IN_STATUS") or "sokuhou"
+          source  = (os.environ.get("IN_SOURCE") or "").replace('"', "'").strip()
+          jst = datetime.timezone(datetime.timedelta(hours=9))
+          now = datetime.datetime.now(jst).strftime("%Y年%m月%d日 %H:%M")
+
+          p = pathlib.Path("kaitou-sokuhou/seitou.js")
+          text = p.read_text(encoding="utf-8")
+          head = text.split("window.TAKKEN_SEITOU_2026")[0]   # 先頭の手順コメントは必ず残す
+          body = (
+              "window.TAKKEN_SEITOU_2026 = {\n"
+              f'  status: "{status}",\n'
+              f'  source: "{source}",\n'
+              f'  updated: "{now}",\n'
+              "  answers: [" + ",".join(answers) + "]\n"
+              "};\n"
+          )
+          p.write_text(head + body, encoding="utf-8")
+
+          # ?v= を必ず上げる（上げないと再訪者が古い正答をキャッシュから読む＝RUNBOOK §4-B3）
+          ip = pathlib.Path("kaitou-sokuhou/index.html")
+          html = ip.read_text(encoding="utf-8")
+          m = re.search(r"seitou\.js\?v=(\d+)", html)
+          assert m, "index.html に seitou.js?v=N が見つからない"
+          newv = int(m.group(1)) + 1
+          html = re.sub(r"seitou\.js\?v=\d+", f"seitou.js?v={newv}", html)
+          ip.write_text(html, encoding="utf-8")
+          print("wrote seitou.js / bumped ?v= ->", newv)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add kaitou-sokuhou/seitou.js kaitou-sokuhou/index.html
+          git commit -m "解答速報: 正答データを更新（クラウド冗長系からの緊急publish）"
+          git push
+          echo "push 完了。反映を待って実測する…"
+          OK=no
+          for i in $(seq 1 12); do
+            sleep 20
+            LIVE="$(sed -n 's/.*status: *"\([a-z]*\)".*/\1/p' <(curl -s "https://takken.mainichi-lab.com/kaitou-sokuhou/seitou.js?nc=$(date +%s)") | head -1 || true)"
+            if [ "$LIVE" != "pre" ] && [ -n "$LIVE" ]; then OK=yes; echo "本番 status=$LIVE を確認"; break; fi
+          done
+          {
+            echo "## publish 結果"
+            echo "- 本番へ反映: ${OK}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$OK" = "yes" ]
