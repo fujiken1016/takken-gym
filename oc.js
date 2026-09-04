@@ -52,6 +52,14 @@
       var from = location.pathname;
 
       if (href.indexOf("amazon.co.jp") > -1) {
+        /* 著者ページ（/stores/author/<ID> と旧形式 /<name>/e/<ID>）は商品ページではないので
+         * 別イベントで送る。2026-09-04 追加：著者ページ B0HHN73G2M の採番を実測し、
+         * /about から導線を張ったため。ここで先に返さないと下の /dp/ 抽出が外れて
+         * kindle_click{book:"unknown"} に落ち、Kindle本のクリック系列が汚れる。 */
+        if (href.indexOf("/stores/author/") > -1 || /\/e\/B0[A-Z0-9]{8}/.test(href)) {
+          send("author_click", { author: "fujikken", from_page: from });
+          return;
+        }
         var asin = href.match(/\/dp\/([A-Z0-9]{10})/);
         asin = asin ? asin[1] : "unknown";
         // B0HFW15W4R は 9/2 から chinkan 各面で "chinkan_jobun" として送っており、
