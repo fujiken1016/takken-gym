@@ -42,7 +42,7 @@
  .case.warn .tagline{background:#c0392b}
  .case.ok .tagline{background:#1a7a53}
  .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:13px 22px;border-radius:12px;margin-top:12px}
- .mini{font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;display:inline-block;margin-top:8px}
+ .mini{font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;display:inline-flex;align-items:center;min-height:48px;margin-top:8px}
  .ppx{position:absolute;width:1px;height:1px;opacity:0}
  .src{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.85}
  .src a{color:var(--muted)}
@@ -72,6 +72,7 @@
  .sresult .big{font-size:34px;font-weight:700;color:var(--brand2);font-variant-numeric:tabular-nums}
  .sresult .big small{font-size:16px;color:var(--muted);font-weight:700}
  .stale{background:rgba(192,57,43,.09);border:1px solid #c0392b;border-radius:12px;padding:9px 12px;font-size:14px;margin:0 0 12px}
+ .blankwarn{background:rgba(192,57,43,.09);border:1px solid #c0392b;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.8;margin:10px 0 0}
  /* 採点バーが position:sticky;bottom:0 で画面下80pxを覆うため、結果へスクロールしたときに
     結果の末尾がバーの下に潜る。scroll-margin-bottom で逃がす（2026-09-05 実測） */
  #stResult{scroll-margin-bottom:96px;scroll-margin-top:12px}
@@ -688,6 +689,18 @@
     // レンジで行う。当日夕方は各社の速報が割れて pending>0 が通常状態なので、
     // 確定分の素点だけで「33点未達＝不合格ゾーン」と断定すると、
     // 実際には合格しているかもしれない人にリベンジ講座を売る形になる（2026-08-31 リハで検出）。
+    // 未入力の問番号を集める（表示だけ。total/counted/pending/blank の算出には一切関与しない）。
+    // 目的＝同じ選択肢の再タップで1問が無言で解除されても、採点結果の側で気づけるようにする
+    // （2026-09-05 UX評価の未対応項目C）。合図が下部バーのカウンタだけだと、50問のうち1問が
+    // 消えたまま採点され、間違った点数が出る。
+    var blankQs=[];
+    for(var bq=1;bq<=NQ;bq++){ var ba=+d.answers[bq-1]; if(ba>=1&&ba<=4 && sel[bq]===0) blankQs.push(bq); }
+    var blankWarn="";
+    if(blank>0){
+      var listed = blankQs.length<=8 ? blankQs.map(function(n){return "問"+n;}).join("・")
+                                     : blankQs.slice(0,8).map(function(n){return "問"+n;}).join("・")+" ほか"+(blankQs.length-8)+"問";
+      blankWarn='<div class="blankwarn"><b>未入力が '+blank+' 問あります</b>（'+listed+'）。この'+blank+'問は<b>不正解として集計</b>しました。マークしたはずの問が入っていないときは、上の解答欄で選び直して「再採点」を押してください。</div>';
+    }
     var lo=total, hi=total+pending;
     var zone, zoneHtml;
     if(hi>lo && !(lo>=38) && !(hi<=32) && !(lo>=33&&hi<=37)){
@@ -724,6 +737,7 @@
     elResult.innerHTML='<div class="sresult"><div style="font-size:14px;color:var(--muted);font-weight:700">あなたの自己採点結果（'+label+'）</div>'
       +'<div class="big">'+total+'点<small> / '+counted+'問中</small></div>'
       +(pending>0?'<div style="font-size:14px;font-weight:700;color:var(--muted);margin-top:2px">未採点'+pending+'問を含めた最終レンジ：<b style="color:var(--brand2)">'+lo+'〜'+hi+'点</b></div>':'')
+      +blankWarn
       +'<div class="tw" style="margin:10px 0"><table class="catmini"><thead><tr><th>分野</th><th class="num">正解数</th></tr></thead><tbody>'+catRows+'</tbody></table></div>'
       +zoneHtml+notes
       +'<p style="font-size:14px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去10年の合格基準点の実績（33〜38点）に基づく目安です。令和8年度の合格基準点は11月25日9時30分の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
