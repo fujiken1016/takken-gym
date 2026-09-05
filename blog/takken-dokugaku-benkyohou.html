@@ -33,6 +33,11 @@
  .toc a{color:var(--brand2);text-decoration:none}
  figure.fig{margin:20px 0}
  figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ figure.fig .figbox{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ figure.fig .figbox svg{display:block;width:296px;height:auto}
+ svg .s-t{font-size:14px;fill:var(--ink);font-weight:700}
+ svg .s-m{font-size:14px;fill:var(--muted)}
+ svg .s-b{font-size:18px;fill:var(--ink);font-weight:700}
  .keybox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 18px;margin:18px 0}
  .keybox>p{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.9}
  .keybox ul{margin:0;padding-left:20px}
@@ -44,10 +49,6 @@
  .bars .val{font-size:14px;line-height:1.9;color:var(--muted)}
  .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
  .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
- .flow{margin:0;padding:0;list-style:none;counter-reset:st}
- .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 46px;margin:0 0 8px;font-size:14.5px;line-height:1.9}
- .flow li:last-child{margin-bottom:0}
- .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:13px;width:24px;height:24px;border-radius:9999px;background:var(--brand);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
  .scroll{overflow-x:auto}
  table.t{width:100%;border-collapse:collapse;margin:0;font-size:14px;line-height:1.9}
  table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
@@ -56,7 +57,7 @@
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の独学・勉強法｜合格するための進め方と順番","description":"宅建（宅地建物取引士）に独学で合格するための勉強法を初心者向けに解説。学習の順番、分野ごとの対策、過去問の使い方、スキマ時間の活用まで。無料アプリでの反復学習のコツも紹介します。","inLanguage":"ja","datePublished":"2026-08-12T16:17:54+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"},"url":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の独学・勉強法｜合格するための進め方と順番","description":"宅建（宅地建物取引士）に独学で合格するための勉強法を初心者向けに解説。学習の順番、分野ごとの対策、過去問の使い方、スキマ時間の活用まで。無料アプリでの反復学習のコツも紹介します。","inLanguage":"ja","datePublished":"2026-08-12T16:17:54+09:00","dateModified":"2026-09-05","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"},"url":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},{"@type":"ListItem","position":2,"name":"宅建の独学・勉強法","item":"https://takken.mainichi-lab.com/blog/takken-dokugaku-benkyohou"}]}
 </script>
@@ -94,25 +95,45 @@
   </div>
 
   <h2 id="zentai">まず試験の全体像を押さえる</h2>
-  <p>宅建試験は毎年1回、例年10月の第3日曜に実施されます。問題は<b>50問すべて4択のマークシート</b>。合格点（合否判定基準）は<b>事前に公表された固定の基準がなく</b>、年度ごとに設定されます。実施機関が公表している過去10年の実績は<b>50問中33〜38点</b>、合格率は<b>15.4〜18.7%</b>です（<a href="/kaitou-sokuhou/">年度別の実績はこちら</a>）。正しく対策すれば独学でも到達できる水準です。</p>
+  <p>宅建試験は毎年1回、例年10月の第3日曜に実施されます。問題は<strong>50問すべて4択のマークシート</strong>。合格点（合否判定基準）は<strong>事前に公表された固定の基準がなく</strong>、年度ごとに設定されます。実施機関が公表している過去10年の実績は<strong>50問中33〜38点</strong>、合格率は<strong>15.4〜18.7%</strong>です（<a href="/kaitou-sokuhou/">年度別の実績はこちら</a>）。正しく対策すれば独学でも到達できる水準です。</p>
   <p style="font-size:14px;color:var(--muted);margin:-4px 0 12px">出典：一般財団法人不動産適正取引推進機構「<a href="https://www.retio.or.jp/wp-content/uploads/2025/12/10years_result2025.pdf" target="_blank" rel="noopener">試験実施概況（令和7年度以前10年間）</a>」（PDF）・「<a href="https://www.retio.or.jp/exam/exam_detail/" target="_blank" rel="noopener">宅建試験の概要</a>」（2026年9月2日確認）。</p>
   <p>出題は大きく4分野に分かれます。</p>
   <ul>
-    <li><b>宅建業法（20問）</b>…最重要。得点源にしやすく、満点も狙える</li>
-    <li><b>権利関係（14問）</b>…民法中心。範囲が広く深追いは禁物</li>
-    <li><b>法令上の制限（8問）</b>…暗記中心。数字を正確に</li>
-    <li><b>税・その他（8問）</b>…税・価格・統計など。頻出論点にしぼる</li>
+    <li><strong>宅建業法（20問）</strong>…最重要。得点源にしやすく、満点も狙える</li>
+    <li><strong>権利関係（14問）</strong>…民法中心。範囲が広く深追いは禁物</li>
+    <li><strong>法令上の制限（8問）</strong>…暗記中心。数字を正確に</li>
+    <li><strong>税・その他（8問）</strong>…税・価格・統計など。頻出論点にしぼる</li>
   </ul>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 176" role="img" aria-labelledby="fg1t fg1d" xmlns="http://www.w3.org/2000/svg">
+    <title id="fg1t">分野別の出題数</title>
+    <desc id="fg1d">全50問の内訳。宅建業法20問、権利関係14問、法令上の制限8問、税・その他8問。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">宅建業法</text><text class="s-t" x="296" y="14" text-anchor="end">20問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">権利関係</text><text class="s-t" x="296" y="14" text-anchor="end">14問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="207" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,92)"><text class="s-t" x="0" y="14">法令上の制限</text><text class="s-t" x="296" y="14" text-anchor="end">8問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="118" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,138)"><text class="s-t" x="0" y="14">税・その他</text><text class="s-t" x="296" y="14" text-anchor="end">8問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="118" height="14" rx="7" fill="var(--brand)"/></g>
+  </svg>
+  </div>
+  <figcaption><p>図1：分野別の出題数（全50問）。帯の長さがそのまま配点の大きさです。宅建業法だけで全体の4割を占めます。</p></figcaption>
+  </figure>
 
   <h2 id="junban">学習の順番は「宅建業法 → 法令・税 → 権利関係」</h2>
   <p>独学でつまずく典型は、最初に民法（権利関係）から入って挫折するパターンです。おすすめの順番は次のとおり。</p>
   <figure class="fig">
-  <ol class="flow">
-    <li><b>宅建業法（20問）</b>…配点が最大。ここを固めると得点が安定します</li>
-    <li><b>法令上の制限（8問）・税その他（8問）</b>…暗記中心。数字を正確に</li>
-    <li><b>権利関係（14問）</b>…最後。頻出テーマだけに絞って回します</li>
-  </ol>
-  <figcaption><p>図1：学習を進める順番。数字は各分野の出題数です。</p></figcaption>
+  <div class="figbox">
+  <svg viewBox="0 0 296 204" role="img" aria-labelledby="fg2t fg2d" xmlns="http://www.w3.org/2000/svg">
+    <title id="fg2t">学習を進める順番</title>
+    <desc id="fg2d">①宅建業法20問、②法令上の制限・税その他 各8問、③権利関係14問の順に進める。</desc>
+    <g transform="translate(0,0)"><rect x="0" y="0" width="296" height="56" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="40" rx="2" fill="var(--brand)"/><text class="s-t" x="16" y="24">① 宅建業法（20問）</text><text class="s-m" x="16" y="44">配点が最大。まずここを固める</text></g>
+    <path d="M148 58 L148 68" stroke="var(--brand)" stroke-width="2" fill="none"/><path d="M143 66 L148 73 L153 66 Z" fill="var(--brand)"/>
+    <g transform="translate(0,74)"><rect x="0" y="0" width="296" height="56" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="40" rx="2" fill="var(--brand)"/><text class="s-t" x="16" y="24">② 法令上の制限・税その他</text><text class="s-m" x="16" y="44">各8問。暗記中心。数字を正確に</text></g>
+    <path d="M148 132 L148 142" stroke="var(--brand)" stroke-width="2" fill="none"/><path d="M143 140 L148 147 L153 140 Z" fill="var(--brand)"/>
+    <g transform="translate(0,148)"><rect x="0" y="0" width="296" height="56" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="40" rx="2" fill="var(--brand)"/><text class="s-t" x="16" y="24">③ 権利関係（14問）</text><text class="s-m" x="16" y="44">最後。頻出テーマだけに絞る</text></g>
+  </svg>
+  </div>
+  <figcaption><p>図2：学習を進める順番。カッコ内は各分野の出題数です。民法（権利関係）から始めないのがポイント。</p></figcaption>
   </figure>
   <p class="note">※順番を変えてよいのは、民法をすでに学んだ経験がある場合だけです。ゼロから始める人が権利関係から入ると、範囲の広さで手が止まりやすくなります。</p>
   <h3>① まず宅建業法から</h3>
@@ -138,7 +159,7 @@
   <p class="note">※目標点は本記事が置いた配分であって、公表値ではありません。実際の合格基準点は年度ごとに決まり、直近10年の実績は50問中33〜38点でした（出典＝前掲の試験実施概況・2026年9月4日確認）。この配分どおりなら基準点を上回る計算になります。</p>
 
   <h2 id="kakomon">過去問中心で回す</h2>
-  <p>宅建は過去問の焼き直しが多く、<b>過去問演習が最短ルート</b>です。テキストを1周したら、あとは「問題を解く→間違えた論点をテキストで確認→また解く」を繰り返します。</p>
+  <p>宅建は過去問の焼き直しが多く、<strong>過去問演習が最短ルート</strong>です。テキストを1周したら、あとは「問題を解く→間違えた論点をテキストで確認→また解く」を繰り返します。</p>
   <ul>
     <li>1周目は正答率より「論点を知る」ことが目的。間違えて当たり前</li>
     <li>2周目以降は、間違えた問題だけを重点的に</li>
@@ -159,16 +180,16 @@
   <p class="note">※本試験は50問・四肢択一で試験時間は2時間です（登録講習修了者は45問・1時間50分）。出典＝前掲の「宅建試験の概要」（2026年9月4日確認）。</p>
 
   <div class="cta-box">
-    <b>スキマ時間の反復には無料アプリが便利です。</b><br>
+    <strong>スキマ時間の反復には無料アプリが便利です。</strong><br>
     宅建GYMは4択100問＋○×80問を収録し、間違えた問題が自動で復習に回る間隔反復に対応。通勤中などの数分で回せます。 → <a href="/">宅建GYMで問題を解く</a>
   </div>
 
   <h2 id="pace">独学のペース配分（目安）</h2>
   <p>必要な総学習時間はおおむね300〜400時間が目安です（詳しくは <a href="/blog/takken-benkyo-jikan" style="color:var(--brand2);font-weight:700">宅建の勉強時間の目安</a> を参照）。半年で合格するなら1日2時間前後が一つの基準になります。</p>
   <ul>
-    <li><b>序盤</b>…テキスト＋基本問題でインプット</li>
-    <li><b>中盤</b>…分野別に過去問を周回、弱点を潰す</li>
-    <li><b>直前期</b>…模試・通し演習で仕上げ、法改正の最終確認</li>
+    <li><strong>序盤</strong>…テキスト＋基本問題でインプット</li>
+    <li><strong>中盤</strong>…分野別に過去問を周回、弱点を潰す</li>
+    <li><strong>直前期</strong>…模試・通し演習で仕上げ、法改正の最終確認</li>
   </ul>
 
   <h2 id="kouza">独学が不安なら講座も選択肢</h2>
@@ -192,7 +213,7 @@
   </div>
 
   <div class="rel">
-    <a href="/chinkan/">▸ 賃貸不動産経営管理士【2026年度】試験日・宅建との併願ガイド（<b>WEB申込は9月30日まで</b>）</a>
+    <a href="/chinkan/">▸ 賃貸不動産経営管理士【2026年度】試験日・宅建との併願ガイド（<strong>WEB申込は9月30日まで</strong>）</a>
     <a href="/blog/">▸ 記事一覧（宅建の勉強法・法改正・試験当日・賃管士まで）</a>
     <a href="/blog/takken-gyouhou-hikkake">▸ 宅建業法の「引っかけ肢」総まとめ｜数字・主語・期限の入れ替え6パターン</a>
     <a href="/blog/takken-houreiseigen-suuji">▸ 法令上の制限「数字」総まとめ（開発許可・建蔽率・農地法・国土法）</a>
@@ -210,7 +231,7 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-05">2026年9月5日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&utm_medium=article&utm_campaign=takken_blog_dokugaku-benkyohou&utm_content=footer">フジケン（毎日ラボ）</a></div>
