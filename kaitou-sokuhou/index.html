@@ -66,7 +66,10 @@
  .sresult{border:2px solid var(--brand);border-radius:16px;background:var(--surface);padding:16px 18px;margin:16px 0}
  .sresult .big{font-size:34px;font-weight:700;color:var(--brand2);font-variant-numeric:tabular-nums}
  .sresult .big small{font-size:16px;color:var(--muted);font-weight:700}
- .stale{background:rgba(192,57,43,.09);border:1px solid #c0392b;border-radius:12px;padding:9px 12px;font-size:14px;margin-top:10px}
+ .stale{background:rgba(192,57,43,.09);border:1px solid #c0392b;border-radius:12px;padding:9px 12px;font-size:14px;margin:0 0 12px}
+ /* 採点バーが position:sticky;bottom:0 で画面下80pxを覆うため、結果へスクロールしたときに
+    結果の末尾がバーの下に潜る。scroll-margin-bottom で逃がす（2026-09-05 実測） */
+ #stResult{scroll-margin-bottom:96px;scroll-margin-top:12px}
  .catmini{width:100%;font-size:14px;min-width:0}
  .catmini td,.catmini th{padding:7px 8px;white-space:normal}
  /* 関連リンク行：375pxでもタップ標的を44px以上に保つ */
@@ -598,6 +601,9 @@
   updateCount();
 
   var scored=false;
+  // 「表示中の結果が、いまの入力より古い」ことを、マークシートを触っている間ずっと見えている
+  // sticky の採点ボタン自身に出す。末尾のメッセージだけでは届かない（2026-09-05 実測）
+  function setStale(on){ btnScore.textContent = on ? "採点し直す" : "採点する"; }
   grid.addEventListener("click",function(ev){
     var b=ev.target;
     if(!b || !b.getAttribute || !b.getAttribute("data-q"))return;
@@ -612,9 +618,12 @@
       var st=document.getElementById("stStale");
       if(!st){
         st=document.createElement("div"); st.id="stStale"; st.className="stale";
-        st.textContent="入力を変更しました。もう一度「採点する」を押すと結果が更新されます。";
-        elResult.appendChild(st);
+        st.textContent="入力を変更しました。下に表示されている結果は変更前のものです。もう一度「採点し直す」を押すと更新されます。";
+        // 結果ブロックの「先頭」に置く。末尾だと 375px で約3,900px下＝約5画面ぶん下になり、
+        // マークを直している人の画面には絶対に入らない（2026-09-05 実測）
+        elResult.insertBefore(st, elResult.firstChild);
       }
+      setStale(true);
     }
   });
 
@@ -624,7 +633,7 @@
     save(); updateCount();
     var pressed=grid.querySelectorAll('.qbtn[aria-pressed="true"]');
     for(var k=0;k<pressed.length;k++)pressed[k].setAttribute("aria-pressed","false");
-    scored=false; elResult.innerHTML="";
+    scored=false; setStale(false); elResult.innerHTML="";
   });
 
   var busy=false;
@@ -637,6 +646,9 @@
       elResult.innerHTML='<div class="sresult"><div style="font-weight:700;font-size:15px;margin-bottom:6px">正答データはまだ公開されていません</div>'
         +'<p style="font-size:14px;margin:6px 0">採点は<b>試験当日（令和8年10月18日）の試験終了後</b>、正答データの反映と同時に有効になります。現在の入力（'+answered+'/50問）はこの端末に保存済みです。試験後にこのページを開き直して「採点する」を押してください。</p>'
         +'<p style="font-size:14px;color:var(--muted);margin:6px 0">※ このツールの動作を試すデモとして、いまマークの入力・保存・リセットを体験できます。</p></div>';
+      // このメッセージは採点バーより下に描画されるので、スクロールしないと画面外のままになり
+      // 「押しても何も起きない」ように見える（2026-09-05 実測：375px で96px下に描画）。
+      try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
       return;
     }
     // 1問も入力せずに「採点する」を押した場合、0点＝ゾーン3（不合格）と断定して
@@ -706,7 +718,7 @@
       +'<div class="tw" style="margin:10px 0"><table class="catmini"><thead><tr><th>分野</th><th class="num">正解数</th></tr></thead><tbody>'+catRows+'</tbody></table></div>'
       +zoneHtml+notes
       +'<p style="font-size:14px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去10年の合格基準点の実績（33〜38点）に基づく目安です。令和8年度の合格基準点は11月25日9時30分の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
-    scored=true;
+    scored=true; setStale(false);
     try{gtag('event','scoring_complete',{tool_name:'kaitou_sokuhou',score:total,answered:answered,zone:zone});}catch(e){}
     try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
   });
