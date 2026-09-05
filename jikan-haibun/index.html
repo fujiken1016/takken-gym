@@ -22,49 +22,58 @@
 <script src="/oc.js" defer></script>
 <script src="/jikan.js"></script>
 <style>
- article p,article li{font-size:15px;line-height:1.95}
- .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
+ article p,article li{font-size:1.0625rem;line-height:1.95}
+ .bc{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:0 0 14px}
  .bc a{color:var(--muted);text-decoration:none}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
- table{border-collapse:collapse;width:100%;font-size:13.5px;margin:4px 0}
+ table{border-collapse:collapse;width:100%;font-size:0.9375rem;margin:4px 0}
  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;line-height:1.7;vertical-align:top}
- th{background:var(--bg);font-weight:800;white-space:nowrap}
+ th{background:var(--bg);font-weight:700;white-space:nowrap}
  /* 設問 */
  .q{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 15px;margin:16px 0}
- .q h2{font-size:15.5px;margin:0 0 4px;border-left:4px solid var(--brand);padding-left:11px;color:var(--brand)}
- .q .note{font-size:12.5px;color:var(--muted);margin:0 0 12px;line-height:1.8;padding-left:15px}
+ .q h2{font-size:1.625rem;line-height:1.35;margin:0 0 4px;border-left:4px solid var(--brand);padding-left:11px;color:var(--brand)}
+ .q .note{font-size:0.9375rem;color:var(--muted);margin:0 0 12px;line-height:1.8;padding-left:15px}
  .opts{display:flex;flex-wrap:wrap;gap:9px}
  .opt{flex:1 1 140px;min-height:52px;padding:12px 12px;border:2px solid var(--line);border-radius:12px;
-  background:var(--bg);color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:800;line-height:1.55;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:1.0625rem;font-weight:700;line-height:1.55;
   cursor:pointer;text-align:left;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
- .opt small{display:block;font-size:12px;font-weight:600;color:var(--muted);line-height:1.65;margin-top:3px}
+ .opt small{display:block;font-size:0.9375rem;font-weight:600;color:var(--muted);line-height:1.65;margin-top:3px}
  .opt[aria-pressed="true"]{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand2)}
  .opt[aria-pressed="true"] small{color:var(--brand2);opacity:.85}
  /* 結果 */
  .res{background:var(--surface);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:16px;
   padding:18px 16px;margin:22px 0}
- .res h2{font-size:16px;margin:0 0 6px;color:#2f9e6a;border:none;padding:0}
- .res .lead{font-size:13.5px;color:var(--muted);line-height:1.85;margin:0 0 12px}
- .res .big{font-size:13.5px;line-height:1.9;margin:12px 0 0}
- td.tm{font-variant-numeric:tabular-nums;font-weight:800;color:var(--brand2);white-space:nowrap}
+ .res h2{font-size:1.625rem;line-height:1.35;margin:0 0 6px;color:#2f9e6a;border:none;padding:0}
+ .res .lead{font-size:1.0625rem;color:var(--muted);line-height:1.85;margin:0 0 12px}
+ .res .big{font-size:1.0625rem;line-height:1.9;margin:12px 0 0}
+ td.tm{font-variant-numeric:tabular-nums;font-weight:700;color:var(--brand2);white-space:nowrap}
  td.mi{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
- tr.rv td{background:rgba(47,158,106,.09);font-weight:800}
+ tr.rv td{background:rgba(47,158,106,.09);font-weight:700}
  .cp{margin:14px 0 0;padding:0;list-style:none}
- .cp li{font-size:13.5px;line-height:1.85;padding:9px 0;border-top:1px dashed var(--line)}
+ .cp li{font-size:1.0625rem;line-height:1.85;padding:9px 0;border-top:1px dashed var(--line)}
  .cp li b{color:var(--brand2);font-variant-numeric:tabular-nums}
- .reset{width:100%;min-height:50px;margin:16px 0 0;border:2px solid var(--line);border-radius:14px;
-  background:var(--surface);color:var(--muted);font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;
+ .reset{width:100%;min-height:48px;margin:16px 0 0;border:2px solid var(--line);border-radius:12px;
+  background:var(--surface);color:var(--muted);font-size:1.0625rem;font-weight:700;cursor:pointer;font-family:inherit;
   touch-action:manipulation;-webkit-tap-highlight-color:transparent}
- .savenote{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7;text-align:center}
+ .savenote{font-size:0.9375rem;color:var(--muted);margin:8px 0 0;line-height:1.7;text-align:center}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #c0392b;border-radius:12px;padding:14px 16px;margin:18px 0}
  .warn b{color:#c0392b}
  .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:22px 0}
- .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none;display:block;padding:9px 0;min-height:44px;line-height:1.7}
- .src{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.85}
+ .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none;display:flex;align-items:center;padding:9px 0;min-height:48px;line-height:1.7}
+ .src{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
  .src a{color:var(--muted)}
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:14px;min-height:44px;line-height:1.7}
- .updated{font-size:12px;color:var(--muted);margin-top:10px}
+ .rel a{display:flex;align-items:center;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:1.0625rem;min-height:48px;line-height:1.7}
+ .updated{font-size:0.9375rem;color:var(--muted);margin-top:10px}
+ /* ここから: 共通CSS(legal.css)のスケールをこのページ内だけ上書きする。
+    legal.css は全面に波及するため触らない。
+    値は memory/design_guidelines.md のトークン（§3-2 タイプスケール／§3-3 見出し比率／§5-2 タップ標的） */
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center;line-height:1.3}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ .foot{font-size:0.9375rem;line-height:1.85}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
  @media print{
   .top,.bc,.q,.reset,.savenote,.cta-box,.rel,.foot,.noprint{display:none!important}
   body{background:#fff}
@@ -148,7 +157,7 @@
   </div>
 
   <div class="warn">
-    <p><b>この順番を、本番でいきなり試さないでください。</b>解く順番を変えると、マークシートの行が問題冊子の並びと一致しなくなります。9月〜10月の通し演習で<b>最低2回</b>は同じ順番・同じ時間割で解き、マークのズレが出ないことを確かめてから本番に持ち込んでください。<a href="/chikaradameshi/?mode=honban" style="color:var(--brand2);font-weight:800">この時間割のまま50問・120分で通し演習する →</a></p>
+    <p><b>この順番を、本番でいきなり試さないでください。</b>解く順番を変えると、マークシートの行が問題冊子の並びと一致しなくなります。9月〜10月の通し演習で<b>最低2回</b>は同じ順番・同じ時間割で解き、マークのズレが出ないことを確かめてから本番に持ち込んでください。<a href="/chikaradameshi/?mode=honban" style="color:var(--brand2);font-weight:700">この時間割のまま50問・120分で通し演習する →</a></p>
   </div>
 
   <h2>なぜ「分」ではなく「時刻」で持つのか</h2>
@@ -176,8 +185,8 @@
   <p class="src">分野ごとの1問あたりの重みは、文章量と処理の重さの差を反映させた本サイトの設定値です（権利関係を最も重く、免除科目を最も軽く見積もっています）。<b>公的な指針ではありません。</b>試験時間・出題数・開始時刻のみが公式の情報です。</p>
 
   <div class="cta-box">
-    <p style="margin:0 0 4px;font-weight:800">この時間割で解く練習をする</p>
-    <p style="margin:0 0 2px;font-size:13px;color:var(--muted);line-height:1.85">上の時間割はこの端末に保存されています。<b>本番モードの模試（50問・120分）は、この時間割を読み込んで同じ順番・同じ持ち時間で出題</b>できます。解いている間は「いま予定より何分早い／遅い」が表示され、終了後に<b>予定と実際の対比</b>が出ます。</p>
+    <p style="margin:0 0 4px;font-weight:700">この時間割で解く練習をする</p>
+    <p style="margin:0 0 2px;font-size:1.0625rem;color:var(--muted);line-height:1.85">上の時間割はこの端末に保存されています。<b>本番モードの模試（50問・120分）は、この時間割を読み込んで同じ順番・同じ持ち時間で出題</b>できます。解いている間は「いま予定より何分早い／遅い」が表示され、終了後に<b>予定と実際の対比</b>が出ます。</p>
     <a href="/chikaradameshi/?mode=honban">▸ この時間割で通し演習する（本番モード 50問・120分）</a>
     <a href="/chikaradameshi/">▸ 力だめし（12問クイック診断）</a>
     <a href="/ichimon/gyoho">▸ 宅建業法の一問一答（問26〜45の得点源を固める）</a>
