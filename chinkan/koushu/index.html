@@ -20,51 +20,62 @@
 <script src="/oc.js" defer></script>
 <style>
  article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:800;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;min-width:560px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:22px 0 8px}
+ article p,article li{font-size:1.0625rem;line-height:1.95}
+ table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.9375rem;min-width:560px}
  table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
- table.t th{background:var(--surface);font-weight:800;color:var(--muted)}
+ table.t th{background:var(--surface);font-weight:700;color:var(--muted)}
  .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none}
+ .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none}
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:10px 0;font-size:14px;min-height:24px}
+ .rel a{display:flex;align-items:center;font-weight:700;color:var(--brand2);text-decoration:none;padding:10px 0;font-size:1.0625rem;min-height:48px}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
- .src{font-size:12.5px;color:var(--muted);line-height:1.8}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.8}
  .src a{color:var(--brand2)}
- .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
- .lede{background:var(--surface);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:12px;padding:15px 17px;margin:16px 0;font-size:15.5px;line-height:1.95;font-weight:700}
+ .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:1.0625rem;line-height:1.9}
+ .lede{background:var(--surface);border:1px solid var(--line);border-left:4px solid #2f9e6a;border-radius:12px;padding:15px 17px;margin:16px 0;font-size:1.1875rem;line-height:1.95;font-weight:700}
  .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0}
- .toc a{display:block;font-size:13.5px;font-weight:700;color:var(--brand2);text-decoration:none;padding:9px 0;min-height:24px}
+ .toc a{display:flex;align-items:center;font-size:1.0625rem;font-weight:700;color:var(--brand2);text-decoration:none;padding:9px 0;min-height:48px}
 
  /* ---- 判定ツール ---- */
- .qz{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:16px 0}
- .qz .step{font-size:12px;font-weight:900;color:var(--muted);letter-spacing:.04em}
- .qz .qh{font-size:16.5px;font-weight:900;line-height:1.7;margin:6px 0 2px}
- .qz .qn{font-size:13px;color:var(--muted);line-height:1.85;margin:4px 0 10px}
- .qz button.op{display:block;width:100%;box-sizing:border-box;text-align:left;min-height:56px;border:1px solid var(--line);background:var(--bg);border-radius:12px;font-size:15px;font-weight:800;color:inherit;cursor:pointer;padding:14px 15px;line-height:1.65;font-family:inherit;margin-bottom:10px}
- .qz button.op span{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.75}
+ .qz{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 17px;margin:16px 0}
+ .qz .step{font-size:0.9375rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+ .qz .qh{font-size:1.1875rem;font-weight:700;line-height:1.7;margin:6px 0 2px}
+ .qz .qn{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:4px 0 10px}
+ .qz button.op{display:block;width:100%;box-sizing:border-box;text-align:left;min-height:60px;border:1px solid var(--line);background:var(--bg);border-radius:12px;font-size:1.0625rem;font-weight:700;color:inherit;cursor:pointer;padding:14px 15px;line-height:1.65;font-family:inherit;margin-bottom:10px}
+ .qz button.op span{display:block;font-size:0.9375rem;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.75}
  .qz button.op[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
  .qz button.op[aria-pressed="true"] span{color:#f0e6ff}
- .qz .back{background:none;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:13px;font-weight:700;padding:12px 16px;min-height:44px;cursor:pointer;font-family:inherit;margin-top:4px}
- .ans{border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:14px;padding:17px 18px;margin:16px 0;background:var(--bg)}
- .ans .al{font-size:12px;font-weight:900;color:var(--muted);letter-spacing:.04em}
- .ans .at{font-size:19px;font-weight:900;line-height:1.6;margin:7px 0 0;color:var(--brand2)}
- .ans .ab{font-size:14.5px;line-height:1.95;margin:10px 0 0}
- .ans .ax{font-size:13.5px;line-height:1.9;color:var(--muted);margin:9px 0 0;border-top:1px solid var(--line);padding-top:10px}
- .ans a.ago{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:13px 0 12px;min-height:44px;margin-top:10px}
- .ans a.ago span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
+ .qz .back{background:none;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:1.0625rem;font-weight:700;padding:12px 16px;min-height:48px;cursor:pointer;font-family:inherit;margin-top:4px}
+ .ans{border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:16px;padding:17px 18px;margin:16px 0;background:var(--bg)}
+ .ans .al{font-size:0.9375rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+ .ans .at{font-size:1.625rem;font-weight:700;line-height:1.6;margin:7px 0 0;color:var(--brand2)}
+ .ans .ab{font-size:1.0625rem;line-height:1.95;margin:10px 0 0}
+ .ans .ax{font-size:0.9375rem;line-height:1.9;color:var(--muted);margin:9px 0 0;border-top:1px solid var(--line);padding-top:10px}
+ .ans a.ago{display:block;text-decoration:none;color:var(--brand2);font-weight:700;font-size:1.0625rem;line-height:1.6;border-top:1px solid var(--line);padding:13px 0 12px;min-height:48px;margin-top:10px}
+ .ans a.ago span{display:block;font-size:0.9375rem;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
  .ans.none{border-left-color:#8a8a8a}
  .ans.none .at{color:var(--muted)}
 
  /* ---- 締切カウンタ ---- */
- .cd{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:14px;padding:14px 16px;margin:16px 0}
- .cd .cd-lb{font-size:12.5px;font-weight:800;color:var(--muted);line-height:1.6;display:block}
- .cd .cd-num{font-size:30px;font-weight:900;line-height:1.2;margin:5px 0 0;color:var(--brand2);font-variant-numeric:tabular-nums}
- .cd .cd-num small{font-size:13px;font-weight:800;margin-left:2px}
- .cd .cd-date{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.7}
- .cd.over{opacity:.6}.cd.over .cd-num{font-size:19px;color:var(--muted)}
+ .cd{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:16px;padding:14px 16px;margin:16px 0}
+ .cd .cd-lb{font-size:0.9375rem;font-weight:700;color:var(--muted);line-height:1.6;display:block}
+ .cd .cd-num{font-size:2.125rem;font-weight:700;line-height:1.2;margin:5px 0 0;color:var(--brand2);font-variant-numeric:tabular-nums}
+ .cd .cd-num small{font-size:0.9375rem;font-weight:700;margin-left:2px}
+ .cd .cd-date{font-size:0.9375rem;color:var(--muted);margin-top:4px;line-height:1.7}
+ .cd.over{opacity:.6}.cd.over .cd-num{font-size:1.625rem;color:var(--muted)}
  .cd.soon .cd-num{color:#c8471b}
+ /* ここから: 共通CSS(legal.css)のスケールをこのページ内だけ上書きする。
+    legal.css は全面に波及するため触らない。
+    値は memory/design_guidelines.md のトークン（§3-2 タイプスケール／§3-3 見出し比率／§5-2 タップ標的） */
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center;line-height:1.3}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ h2{font-size:1.625rem;font-weight:700;line-height:1.35}
+ .bc{font-size:0.9375rem;line-height:1.85}
+ .foot{font-size:0.9375rem;line-height:1.85}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -82,7 +93,7 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（ページ内から講座の紹介ページへ移動できます）。宅建GYMは提携する各サービスへの申込・購入に応じて紹介料を受け取ることがあります。</p>
+  <p class="pr-line" style="font-size:0.9375rem;line-height:1.85;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（ページ内から講座の紹介ページへ移動できます）。宅建GYMは提携する各サービスへの申込・購入に応じて紹介料を受け取ることがあります。</p>
 
   <div class="lede">先に結論だけ。<b>宅地建物取引士だから、という理由で賃貸不動産経営管理士試験が免除されることはありません。</b>宅建士に用意されているのは「試験の免除」ではなく、<b>試験を受けずに業務管理者になる別ルート</b>です。この2つはまったく別の制度で、必要な講習も違います。</div>
 
