@@ -54,10 +54,22 @@
  .lawh{font-size:1.0625rem;font-weight:600;color:var(--brand2);line-height:1.85}
  .lawq{font-size:1rem;color:var(--muted);line-height:1.85;margin-top:8px}
  .lawr{font-size:1.0625rem;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);line-height:1.85}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:24px 0}
+ .toc>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
+ .toc ol{margin:0;padding-left:20px}
+ .toc li{font-size:1rem;line-height:1.85;margin:0}
+ .toc a{color:var(--brand2);text-decoration:none;display:flex;align-items:center;min-height:48px}
+ figure.fig{margin:24px 0}
+ figure.fig .figbox{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ figure.fig .figbox svg{display:block;width:296px;height:auto}
+ figure.fig figcaption{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin-top:8px}
+ svg .s-t{font-size:14px;fill:var(--ink);font-weight:700}
+ svg .s-m{font-size:14px;fill:var(--muted)}
+ svg .s-b{font-size:18px;fill:var(--ink);font-weight:700}
  ol.steps{padding-left:1.2em}
  ol.steps li{margin:8px 0}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建業法の引っかけ問題6パターン｜数字・主語・期限の入れ替え","description":"宅建業法のひっかけ問題は、条文の1か所だけを入れ替えて作られています。数字・主語（許可権者）・期限・「できる／しなければならない」・例外の消去・似た制度の取り違えという6パターンに分解し、e-Gov法令検索で確認した条文とセットで一覧にしました。","inLanguage":"ja","datePublished":"2026-08-13T17:33:03+09:00","dateModified":"2026-09-04","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"},"url":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建業法の引っかけ問題6パターン｜数字・主語・期限の入れ替え","description":"宅建業法のひっかけ問題は、条文の1か所だけを入れ替えて作られています。数字・主語（許可権者）・期限・「できる／しなければならない」・例外の消去・似た制度の取り違えという6パターンに分解し、e-Gov法令検索で確認した条文とセットで一覧にしました。","inLanguage":"ja","datePublished":"2026-08-13T17:33:03+09:00","dateModified":"2026-09-05","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"},"url":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},{"@type":"ListItem","position":2,"name":"宅建業法の引っかけ肢まとめ","item":"https://takken.mainichi-lab.com/blog/takken-gyouhou-hikkake"}]}
 </script>
@@ -72,146 +84,287 @@
 <article>
   <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
 
-  <p>宅建業法は50問中20問。宅建試験で最大の配点であり、しかも「条文どおりに覚えれば取れる」科目です。にもかかわらず、模試で16点・17点から上がらない人が大量にいます。原因はほぼ一つで、<b>出題者が条文の1か所だけを入れ替えて✕肢を作っているのに、こちらが「だいたい合っている」レベルでしか覚えていない</b>からです。</p>
-  <p>逆に言えば、入れ替えられる場所には型があります。この記事では、宅建業法のひっかけ肢を<b>6つのパターン</b>に分解し、それぞれについて e-Gov法令検索で確認した条文とセットで並べました。読み終えたときに「この表を口で言えるか」が、そのまま業法の得点になります。</p>
+  <p>宅建業法は50問中20問。宅建試験で最大の配点であり、しかも「条文どおりに覚えれば取れる」科目です。にもかかわらず、模試で16点・17点から上がらない人が大量にいます（※本記事の得点の目安は、宅建GYMが合格ラインから逆算した学習上の目標で、公表値ではありません）。原因はほぼ一つで、出題者が<strong>条文の1か所だけを入れ替えて✕肢を作っている</strong>のに、こちらが「だいたい合っている」レベルでしか覚えていないからです。</p>
+  <p>逆に言えば、入れ替えられる場所には型があります。この記事では、宅建業法のひっかけ肢を<strong>6つのパターン</strong>に分解し、それぞれについて e-Gov法令検索で確認した条文とセットで並べました。読み終えたときに「この表を口で言えるか」が、そのまま業法の得点になります。</p>
 
-  <h2>なぜ宅建業法は「ひっかけ」で作られるのか</h2>
+  <div class="toc">
+    <p>この記事の内容</p>
+    <ol>
+      <li><a href="#naze">なぜ宅建業法は「ひっかけ」で作られるのか</a></li>
+      <li><a href="#p1">パターン1：数字の入れ替え</a></li>
+      <li><a href="#p2">パターン2：主語（誰が・誰に）の入れ替え</a></li>
+      <li><a href="#p3">パターン3：時期・タイミングの入れ替え</a></li>
+      <li><a href="#p4">パターン4：「できる」と「しなければならない」の入れ替え</a></li>
+      <li><a href="#p5">パターン5：例外を消す／ないはずの例外を付け足す</a></li>
+      <li><a href="#p6">パターン6：似た制度の取り違え</a></li>
+      <li><a href="#yomikata">ひっかけに強くなる読み方（本番での手順）</a></li>
+      <li><a href="#todokanai">どうしても業法が18点に届かないとき</a></li>
+      <li><a href="#matome">まとめ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="naze">なぜ宅建業法は「ひっかけ」で作られるのか</h2>
   <p>権利関係（民法）は、条文だけでは答えが出ず判例の理解が要るので、問題文が長くなり事例形式になります。一方の宅建業法は、条文が短く、要件と効果がはっきりしています。「三十日以内に」「遅滞なく」「五年」「二週間」——数字と語尾が条文にそのまま書いてある。</p>
-  <p>出題者からすると、これは<b>正しい条文を書き写して、1語だけ差し替えれば✕肢が完成する</b>ということです。だから業法の誤り肢は、まるごとウソではなく「9割正しくて1か所だけ違う」形で出てきます。読んでいて違和感がないのは当然で、違和感を頼りにしている限り点は安定しません。</p>
-  <p>やるべきことは、<b>入れ替えられうる場所を先に知っておいて、そこだけを指で押さえて読む</b>ことです。以下の6パターンがその「場所」です。</p>
+  <p>出題者からすると、これは正しい条文を書き写して、<strong>1語だけ差し替えれば✕肢が完成する</strong>ということです。だから業法の誤り肢は、まるごとウソではなく「9割正しくて1か所だけ違う」形で出てきます。読んでいて違和感がないのは当然で、違和感を頼りにしている限り点は安定しません。</p>
+  <p>やるべきことは、入れ替えられうる場所を先に知っておいて、<strong>そこだけを指で押さえて読む</strong>ことです。以下の6パターンがその「場所」です。</p>
 
-  <h2>パターン1：数字の入れ替え</h2>
-  <p>最頻出です。とくに「5年／3か月／30日／2週間／10日／7日／5日」は、どれも業法の別の場面で使われているため、そのまま横流しされます。以下は条文で確認した数字の一覧です。</p>
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 240" role="img" aria-labelledby="f1t f1d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f1t">ひっかけ肢が作られる6か所</title>
+    <desc id="f1d">正しい条文の一部だけを、数字・主語・時期・語尾・例外・似た制度の6か所のいずれかで入れ替えて誤り肢が作られる。</desc>
+    <rect x="0" y="0" width="296" height="44" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+    <text class="s-t" x="148" y="27" text-anchor="middle">正しい条文（9割は正しい）</text>
+    <path d="M148 46 L148 58" stroke="var(--brand)" stroke-width="2" fill="none"/><path d="M143 56 L148 63 L153 56 Z" fill="var(--brand)"/>
+    <text class="s-m" x="0" y="82">入れ替えられるのは、この6か所だけ</text>
+    <g><rect x="0" y="94" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="14" y="120">① 数字</text></g>
+    <g><rect x="154" y="94" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="168" y="120">② 主語</text></g>
+    <g><rect x="0" y="144" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="14" y="170">③ 時期</text></g>
+    <g><rect x="154" y="144" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="168" y="170">④ 語尾</text></g>
+    <g><rect x="0" y="194" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="14" y="220">⑤ 例外</text></g>
+    <g><rect x="154" y="194" width="142" height="42" rx="12" fill="var(--bg)" stroke="var(--line)"/><text class="s-t" x="168" y="220">⑥ 似た制度</text></g>
+  </svg>
+  </div>
+  <figcaption>図1：ひっかけ肢の作られ方。正しい条文の①〜⑥のどこか1か所だけが差し替えられます。以下の6つの見出しが、そのまま①〜⑥に対応します。</figcaption>
+  </figure>
+
+  <h2 id="p1">パターン1：数字の入れ替え</h2>
+  <p>最頻出です。とくに「5年／3か月／30日／2週間／10日／7日／5日」は、どれも業法の別の場面で使われているため、そのまま横流しされます。以下は条文で確認した数字の一覧です。※数字はすべてe-Gov法令検索の条文本文で確認しています（2026年9月5日確認）。</p>
+  <h3>条文で確認した数字の一覧</h3>
   <div class="scroll">
   <table class="t">
     <tr><th>場面</th><th>正しい数字</th><th>根拠</th></tr>
-    <tr><td>免許の有効期間</td><td><b>5年</b></td><td>法3条2項</td></tr>
-    <tr><td>宅建士証の有効期間</td><td><b>5年</b></td><td>法22条の2第3項</td></tr>
-    <tr><td>宅建士証の交付前に受ける法定講習</td><td>交付の<b>申請前6月以内</b>に行われるもの（試験合格から1年以内の交付申請なら不要）</td><td>法22条の2第2項</td></tr>
-    <tr><td>業者の変更の届出</td><td><b>30日以内</b></td><td>法9条</td></tr>
-    <tr><td>廃業等の届出</td><td><b>30日以内</b>（死亡の場合は相続人が<b>その事実を知った日</b>から）</td><td>法11条1項</td></tr>
-    <tr><td>専任媒介契約の有効期間</td><td><b>3月</b>を超えられない。超える定めをしても<b>3月に短縮</b>される（契約全体が無効になるのではない）</td><td>法34条の2第3項</td></tr>
-    <tr><td>指定流通機構への登録</td><td>専任媒介＝<b>7日</b>以内、専属専任媒介＝<b>5日</b>以内（いずれも<b>休業日を算入しない</b>）</td><td>法34条の2第5項＋施行規則15条の10</td></tr>
-    <tr><td>依頼者への業務処理状況の報告</td><td>専任媒介＝<b>2週間に1回以上</b>、専属専任媒介＝<b>1週間に1回以上</b></td><td>法34条の2第9項</td></tr>
-    <tr><td>案内所等の届出</td><td>業務を開始する日の<b>10日前まで</b></td><td>法50条2項＋施行規則19条3項</td></tr>
-    <tr><td>専任の宅建士の設置</td><td>事務所＝業務に従事する者の数の<b>5分の1以上</b>、案内所等＝<b>1人以上</b></td><td>法31条の3第1項＋施行規則15条の5の3</td></tr>
-    <tr><td>専任宅建士が足りなくなったとき</td><td><b>2週間以内</b>に必要な措置を執る</td><td>法31条の3第3項</td></tr>
-    <tr><td>免許の欠格期間</td><td>拘禁刑以上の刑：執行を終わった日等から<b>5年</b>。罰金刑は<b>業法違反・暴力団対策法違反・傷害／暴行／脅迫／背任等の一定の罪</b>に限り5年</td><td>法5条1項5号・6号</td></tr>
+    <tr><td>免許の有効期間</td><td><strong>5年</strong></td><td>法3条2項</td></tr>
+    <tr><td>宅建士証の有効期間</td><td><strong>5年</strong></td><td>法22条の2第3項</td></tr>
+    <tr><td>宅建士証の交付前に受ける法定講習</td><td>交付の<strong>申請前6月以内</strong>に行われるもの（試験合格から1年以内の交付申請なら不要）</td><td>法22条の2第2項</td></tr>
+    <tr><td>業者の変更の届出</td><td><strong>30日以内</strong></td><td>法9条</td></tr>
+    <tr><td>廃業等の届出</td><td><strong>30日以内</strong>（死亡の場合は相続人が<strong>その事実を知った日</strong>から）</td><td>法11条1項</td></tr>
+    <tr><td>専任媒介契約の有効期間</td><td><strong>3月</strong>を超えられない。超える定めをしても<strong>3月に短縮</strong>される（契約全体が無効になるのではない）</td><td>法34条の2第3項</td></tr>
+    <tr><td>指定流通機構への登録</td><td>専任媒介＝<strong>7日</strong>以内、専属専任媒介＝<strong>5日</strong>以内（いずれも<strong>休業日を算入しない</strong>）</td><td>法34条の2第5項＋施行規則15条の10</td></tr>
+    <tr><td>依頼者への業務処理状況の報告</td><td>専任媒介＝<strong>2週間に1回以上</strong>、専属専任媒介＝<strong>1週間に1回以上</strong></td><td>法34条の2第9項</td></tr>
+    <tr><td>案内所等の届出</td><td>業務を開始する日の<strong>10日前まで</strong></td><td>法50条2項＋施行規則19条3項</td></tr>
+    <tr><td>専任の宅建士の設置</td><td>事務所＝業務に従事する者の数の<strong>5分の1以上</strong>、案内所等＝<strong>1人以上</strong></td><td>法31条の3第1項＋施行規則15条の5の3（※2026年9月5日確認）</td></tr>
+    <tr><td>専任宅建士が足りなくなったとき</td><td><strong>2週間以内</strong>に必要な措置を執る</td><td>法31条の3第3項</td></tr>
+    <tr><td>免許の欠格期間</td><td>拘禁刑以上の刑：執行を終わった日等から<strong>5年</strong>。罰金刑は業法違反・暴力団対策法違反・傷害／暴行／脅迫／背任等の一定の罪に限り5年</td><td>法5条1項5号・6号</td></tr>
   </table>
   </div>
-  <p>ここで一番よく作られる✕肢が「専任媒介契約の有効期間を6月と定めた場合、その媒介契約は無効である」の類です。正しくは<b>期間だけが3月に短縮</b>されます。契約自体は生きる。「無効になる」「取り消せる」と書いてあったら、効果の入れ替えを疑ってください。</p>
-  <p>もう一つ。指定流通機構への登録の「7日／5日」は<b>休業日を算入しない</b>と規則に明記されています。「契約日を含めて7日以内」「休業日も含めて」といった書き足しは✕です。</p>
 
-  <h2>パターン2：主語（誰が・誰に）の入れ替え</h2>
-  <p>数字の次に多いのがこれです。宅建業法には「国土交通大臣」「都道府県知事」「農業委員会（※こちらは法令上の制限）」など似た主体が並び、しかも<b>業者に対する規律</b>と<b>宅建士に対する規律</b>が並走しています。ここが混ざると総崩れになります。</p>
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 232" role="img" aria-labelledby="f2t f2d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f2t">よく入れ替えられる日数</title>
+    <desc id="f2d">専属専任媒介の登録5日、専任媒介の登録7日、案内所等の届出10日前、専任宅建士の補充2週間、業者の変更の届出30日。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">専属専任媒介の登録</text><text class="s-t" x="296" y="14" text-anchor="end">5日</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="49" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">専任媒介の登録</text><text class="s-t" x="296" y="14" text-anchor="end">7日</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="69" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,92)"><text class="s-t" x="0" y="14">案内所等の届出</text><text class="s-t" x="296" y="14" text-anchor="end">10日前まで</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="99" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,138)"><text class="s-t" x="0" y="14">専任宅建士の補充</text><text class="s-t" x="296" y="14" text-anchor="end">2週間</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="138" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,184)"><text class="s-t" x="0" y="14">業者の変更の届出</text><text class="s-t" x="296" y="14" text-anchor="end">30日以内</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--brand)"/></g>
+  </svg>
+  </div>
+  <figcaption>図2：上の表のうち「日数」だけを、長さで比べられるように並べたもの。5日と7日、10日と30日が横流しされます。指定流通機構への登録（5日・7日）は休業日を算入しません。</figcaption>
+  </figure>
+  <h3>定番の✕肢：期間だけが3月に短縮される</h3>
+  <p>ここで一番よく作られる✕肢が「専任媒介契約の有効期間を6月と定めた場合、その媒介契約は無効である」の類です。正しくは<strong>期間だけが3月に短縮</strong>されます。契約自体は生きる。「無効になる」「取り消せる」と書いてあったら、効果の入れ替えを疑ってください。</p>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 116" role="img" aria-labelledby="f3t f3d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f3t">専任媒介契約の期間は3月に短縮される</title>
+    <desc id="f3d">6月と定めても、契約自体は有効のまま期間だけが3月に短縮される。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">契約で定めた期間</text><text class="s-t" x="296" y="14" text-anchor="end">6月</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)" stroke="var(--brand)" stroke-dasharray="4 3"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">法律上の効力</text><text class="s-t" x="296" y="14" text-anchor="end">3月に短縮</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="148" height="14" rx="7" fill="var(--brand)"/></g>
+    <text class="s-m" x="0" y="104">契約は無効にならない。期間だけが縮む</text>
+  </svg>
+  </div>
+  <figcaption>図3：破線＝当事者が定めた6月、塗り＝法律上効力を持つ3月（法34条の2第3項）。「契約が無効になる」と書いてあれば、効果の入れ替えです。</figcaption>
+  </figure>
+  <p>もう一つ。指定流通機構への登録の「7日／5日」は<strong>休業日を算入しない</strong>と規則に明記されています。「契約日を含めて7日以内」「休業日も含めて」といった書き足しは✕です。</p>
+
+  <h2 id="p2">パターン2：主語（誰が・誰に）の入れ替え</h2>
+  <p>数字の次に多いのがこれです。宅建業法には「国土交通大臣」「都道府県知事」「農業委員会（※こちらは法令上の制限）」など似た主体が並び、しかも<strong>業者に対する規律</strong>と<strong>宅建士に対する規律</strong>が並走しています。ここが混ざると総崩れになります。</p>
+  <h3>主体を取り違えやすい7場面</h3>
   <div class="scroll">
   <table class="t">
     <tr><th>誰の話か</th><th>正しい相手方・主体</th><th>根拠</th></tr>
-    <tr><td>免許</td><td>2以上の都道府県に事務所＝<b>国土交通大臣</b>／1の都道府県のみ＝<b>都道府県知事</b>。※本店・支店の場所ではなく<b>事務所の所在の広がり</b>で決まる</td><td>法3条1項</td></tr>
-    <tr><td>免許換え</td><td>新たな免許を受けたときに<b>従前の免許が効力を失う</b>（先に廃業届を出すのではない）</td><td>法7条1項</td></tr>
-    <tr><td>宅建士の登録</td><td><b>試験を受けた（合格した）都道府県の知事</b>の登録。勤務地の知事ではない</td><td>法18条1項</td></tr>
-    <tr><td>登録の移転</td><td>移転先の知事に対し、<b>現に登録している知事を経由して</b>申請</td><td>法19条の2</td></tr>
-    <tr><td>案内所等の届出</td><td><b>免許権者（大臣または知事）と、所在地を管轄する都道府県知事の両方</b>に届け出る</td><td>法50条2項</td></tr>
-    <tr><td>報酬額の掲示</td><td><b>事務所ごとに</b>、公衆の見やすい場所に掲示（主たる事務所だけではない）</td><td>法46条4項</td></tr>
-    <tr><td>従業者名簿・帳簿</td><td>いずれも<b>事務所ごと</b>に備える。名簿は請求があれば閲覧させるが、<b>帳簿に閲覧義務の定めはない</b></td><td>法48条3・4項、法49条</td></tr>
+    <tr><td>免許</td><td>2以上の都道府県に事務所＝<strong>国土交通大臣</strong>／1の都道府県のみ＝<strong>都道府県知事</strong>。※本店・支店の場所ではなく<strong>事務所の所在の広がり</strong>で決まる</td><td>法3条1項</td></tr>
+    <tr><td>免許換え</td><td>新たな免許を受けたときに従前の免許が<strong>効力を失う</strong>（先に廃業届を出すのではない）</td><td>法7条1項</td></tr>
+    <tr><td>宅建士の登録</td><td>試験を受けた（合格した）<strong>都道府県の知事</strong>の登録。勤務地の知事ではない</td><td>法18条1項</td></tr>
+    <tr><td>登録の移転</td><td>移転先の知事に対し、現に登録している知事を<strong>経由して</strong>申請</td><td>法19条の2</td></tr>
+    <tr><td>案内所等の届出</td><td>免許権者（大臣または知事）と、所在地を管轄する都道府県知事の<strong>両方</strong>に届け出る</td><td>法50条2項</td></tr>
+    <tr><td>報酬額の掲示</td><td><strong>事務所ごとに</strong>、公衆の見やすい場所に掲示（主たる事務所だけではない）</td><td>法46条4項</td></tr>
+    <tr><td>従業者名簿・帳簿</td><td>いずれも<strong>事務所ごと</strong>に備える。名簿は請求があれば閲覧させるが、<strong>帳簿に閲覧義務の定めはない</strong></td><td>法48条3・4項、法49条</td></tr>
   </table>
   </div>
-  <p>「宅建士の登録は、勤務先の事務所がある都道府県の知事に対して行う」——これは典型的な✕肢です。登録は合格した試験地の知事。勤務先が他県になったときに使うのが<b>登録の移転</b>で、しかも「しなければならない」ではなく「<b>できる</b>」（次のパターン4につながります）。</p>
+  <h3>定番の✕肢：登録先の知事</h3>
+  <p>「宅建士の登録は、勤務先の事務所がある都道府県の知事に対して行う」——これは典型的な✕肢です。登録は合格した試験地の知事。勤務先が他県になったときに使うのが<strong>登録の移転</strong>で、しかも「しなければならない」ではなく「<strong>できる</strong>」（次のパターン4につながります）。</p>
 
-  <h2>パターン3：時期・タイミングの入れ替え</h2>
+  <h2 id="p3">パターン3：時期・タイミングの入れ替え</h2>
   <p>業法の時期表現は、実質「あらかじめ／契約が成立するまでの間／遅滞なく／その日から○日以内」の4種類しかありません。だからこそ入れ替えやすい。</p>
+  <h3>時期の一覧</h3>
   <div class="scroll">
   <table class="t">
     <tr><th>場面</th><th>正しい時期</th><th>根拠</th></tr>
-    <tr><td>35条書面（重要事項説明）</td><td>契約が<b>成立するまでの間</b></td><td>法35条1項</td></tr>
-    <tr><td>37条書面</td><td>契約成立後、<b>遅滞なく</b></td><td>法37条1項</td></tr>
-    <tr><td>広告の開始時期</td><td>工事完了前は、開発許可・建築確認等の<b>処分があった後</b>でなければ広告できない</td><td>法33条</td></tr>
-    <tr><td>取引態様の明示</td><td>広告をするとき＝<b>広告に明示</b>／注文を受けたとき＝<b>遅滞なく</b>明らかにする（2回必要）</td><td>法34条1・2項</td></tr>
-    <tr><td>変更の登録（宅建士）</td><td><b>遅滞なく</b>申請</td><td>法20条</td></tr>
-    <tr><td>営業保証金と開業</td><td>供託して<b>届け出た後でなければ</b>事業を開始できない</td><td>法25条5項</td></tr>
-    <tr><td>案内所等の届出</td><td><b>あらかじめ</b>（業務開始日の10日前まで）</td><td>法50条2項＋施行規則19条3項</td></tr>
+    <tr><td>35条書面（重要事項説明）</td><td>契約が成立するまでの間</td><td>法35条1項</td></tr>
+    <tr><td>37条書面</td><td>契約成立後、遅滞なく</td><td>法37条1項</td></tr>
+    <tr><td>広告の開始時期</td><td>工事完了前は、開発許可・建築確認等の処分があった後でなければ広告できない</td><td>法33条</td></tr>
+    <tr><td>取引態様の明示</td><td>広告をするとき＝広告に明示／注文を受けたとき＝遅滞なく明らかにする（2回必要）</td><td>法34条1・2項</td></tr>
+    <tr><td>変更の登録（宅建士）</td><td>遅滞なく申請</td><td>法20条</td></tr>
+    <tr><td>営業保証金と開業</td><td>供託して届け出た後でなければ事業を開始できない</td><td>法25条5項</td></tr>
+    <tr><td>案内所等の届出</td><td>あらかじめ（業務開始日の10日前まで）</td><td>法50条2項＋施行規則19条3項</td></tr>
   </table>
   </div>
-  <p>広告の開始時期は「契約はできないが広告はできる」と混同させる肢がよく出ます。正しくは、工事完了前に許可等がまだなら<b>広告そのものができない</b>（法33条）。そのうえで、<b>33条と36条は適用範囲が違います</b>。ここが最頻出の引っかけです。</p>
+  <p>広告の開始時期は「契約はできないが広告はできる」と混同させる肢がよく出ます。正しくは、工事完了前に許可等がまだなら<strong>広告そのものができない</strong>（法33条）。そのうえで、33条と36条は適用範囲が違います。ここが最頻出の引っかけです。</p>
+  <h3>最頻出：33条（広告）と36条（契約）は範囲が違う</h3>
   <div class="lawbox">
-    <div class="lawh">法33条（広告の開始時期の制限）＝<b>広告</b></div>
-    <div class="lawq">「宅地又は建物の<b>売買その他の業務</b>に関する広告をしてはならない」</div>
-    <div class="lawr">売買 <b>◯</b>　交換 <b>◯</b>　貸借 <b>◯</b>　→ <b>3つとも対象</b></div>
+    <div class="lawh">法33条（広告の開始時期の制限）＝<strong>広告</strong></div>
+    <div class="lawq">「宅地又は建物の<strong>売買その他の業務</strong>に関する広告をしてはならない」</div>
+    <div class="lawr">売買 <strong>◯</strong>　交換 <strong>◯</strong>　貸借 <strong>◯</strong>　→ <strong>3つとも対象</strong></div>
   </div>
   <div class="lawbox">
-    <div class="lawh">法36条（契約締結等の時期の制限）＝<b>契約の締結・代理・媒介</b></div>
-    <div class="lawq">「<b>その売買若しくは交換</b>の契約を締結し、又は<b>その売買若しくは交換</b>の媒介をしてはならない」</div>
-    <div class="lawr">売買 <b>◯</b>　交換 <b>◯</b>　貸借 <b>×</b>　→ <b>貸借は対象外</b></div>
+    <div class="lawh">法36条（契約締結等の時期の制限）＝<strong>契約の締結・代理・媒介</strong></div>
+    <div class="lawq">「<strong>その売買若しくは交換</strong>の契約を締結し、又はその売買若しくは交換の媒介をしてはならない」</div>
+    <div class="lawr">売買 <strong>◯</strong>　交換 <strong>◯</strong>　貸借 <strong>×</strong>　→ <strong>貸借は対象外</strong></div>
   </div>
-  <p>33条は「売買<b>その他の業務</b>に関する広告」と広く書かれているので、<b>貸借の広告も対象</b>です。これに対し36条は「<b>売買若しくは交換</b>」としか書いておらず、<b>貸借は入りません</b>。つまり<b>貸借は、工事完了前でも契約は締結できるが、広告はできない</b>という非対称になります。「貸借だから両方セーフ」「貸借だから両方アウト」と揃えて覚えていると、ここで必ず落とします。</p>
-  <p><b>広告＝33条（売買・交換・貸借の<u>すべて</u>）／契約＝36条（売買・交換<u>だけ</u>）</b>——条文番号と適用範囲をセットで覚えると混ざりません。</p>
+  <p>33条は「売買その他の業務に関する広告」と広く書かれているので、<strong>貸借の広告も対象</strong>です。これに対し36条は「売買若しくは交換」としか書いておらず、<strong>貸借は入りません</strong>。つまり貸借は、工事完了前でも<strong>契約は締結できるが、広告はできない</strong>という非対称になります。「貸借だから両方セーフ」「貸借だから両方アウト」と揃えて覚えていると、ここで必ず落とします。</p>
 
-  <h2>パターン4：「できる」と「しなければならない」の入れ替え</h2>
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 176" role="img" aria-labelledby="f4t f4d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f4t">33条（広告）と36条（契約）の適用範囲</title>
+    <desc id="f4d">広告の制限は売買・交換・貸借の3つすべてに及ぶが、契約の制限は売買と交換だけで、貸借は対象外。</desc>
+    <rect x="236" y="76" width="60" height="46" fill="var(--line)"/>
+    <text class="s-t" x="146" y="20" text-anchor="middle">売買</text>
+    <text class="s-t" x="206" y="20" text-anchor="middle">交換</text>
+    <text class="s-t" x="266" y="20" text-anchor="middle">貸借</text>
+    <text class="s-t" x="0" y="58">広告（33条）</text>
+    <text class="s-b" x="146" y="60" text-anchor="middle">◯</text>
+    <text class="s-b" x="206" y="60" text-anchor="middle">◯</text>
+    <text class="s-b" x="266" y="60" text-anchor="middle">◯</text>
+    <text class="s-t" x="0" y="104">契約（36条）</text>
+    <text class="s-b" x="146" y="106" text-anchor="middle">◯</text>
+    <text class="s-b" x="206" y="106" text-anchor="middle">◯</text>
+    <text class="s-b" x="266" y="106" text-anchor="middle">✕</text>
+    <g stroke="var(--line)" stroke-width="1">
+      <path d="M0 30 H296"/><path d="M0 76 H296"/><path d="M0 122 H296"/>
+      <path d="M116 0 V122"/><path d="M176 0 V122"/><path d="M236 0 V122"/>
+    </g>
+    <text class="s-m" x="0" y="144">◯＝制限あり　✕＝制限なし（対象外）</text>
+    <text class="s-m" x="0" y="166">貸借は「広告だけ」できない、が正解</text>
+  </svg>
+  </div>
+  <figcaption>図4：工事完了前の制限が及ぶ範囲。貸借は33条（広告）の対象だが36条（契約）の対象外という非対称が、ここでいちばん狙われます。</figcaption>
+  </figure>
+  <p>広告＝33条（売買・交換・貸借の<u>すべて</u>）／契約＝36条（売買・交換<u>だけ</u>）——条文番号と適用範囲をセットで覚えると混ざりません。</p>
+
+  <h2 id="p4">パターン4：「できる」と「しなければならない」の入れ替え</h2>
   <p>語尾だけの差なので、読み飛ばすと100％やられます。しかも、この差は「義務か任意か」という試験的にいちばん大事な区別です。</p>
+  <h3>語尾の一覧</h3>
   <div class="scroll">
   <table class="t">
     <tr><th>場面</th><th>正しい語尾</th><th>根拠</th></tr>
-    <tr><td>登録の移転</td><td>申請することが<b>できる</b>（義務ではない）。ただし事務禁止処分の期間中は<b>できない</b></td><td>法19条の2</td></tr>
-    <tr><td>宅建士証の交付申請</td><td>申請することが<b>できる</b></td><td>法22条の2第1項</td></tr>
-    <tr><td>変更の登録</td><td>申請し<b>なければならない</b>（遅滞なく）</td><td>法20条</td></tr>
-    <tr><td>営業保証金の届出がない場合の免許取消し</td><td>催告到達から1月以内になお届出がなければ、免許を<b>取り消すことができる</b></td><td>法25条7項</td></tr>
-    <tr><td>宅建士証の返納</td><td>登録が消除された・宅建士証が失効した→速やかに<b>返納しなければならない</b></td><td>法22条の2第6項</td></tr>
-    <tr><td>事務禁止処分を受けたとき</td><td>速やかに宅建士証を<b>提出しなければならない</b>（返納ではなく「提出」。期間満了後、請求があれば返還される）</td><td>法22条の2第7・8項</td></tr>
+    <tr><td>登録の移転</td><td>申請することが<strong>できる</strong>（義務ではない）。ただし事務禁止処分の期間中は<strong>できない</strong></td><td>法19条の2</td></tr>
+    <tr><td>宅建士証の交付申請</td><td>申請することが<strong>できる</strong></td><td>法22条の2第1項</td></tr>
+    <tr><td>変更の登録</td><td>申請し<strong>なければならない</strong>（遅滞なく）</td><td>法20条</td></tr>
+    <tr><td>営業保証金の届出がない場合の免許取消し</td><td>催告到達から1月以内になお届出がなければ、免許を<strong>取り消すことができる</strong></td><td>法25条7項</td></tr>
+    <tr><td>宅建士証の返納</td><td>登録が消除された・宅建士証が失効した→速やかに返納しなければならない</td><td>法22条の2第6項</td></tr>
+    <tr><td>事務禁止処分を受けたとき</td><td>速やかに宅建士証を<strong>提出</strong>しなければならない（返納ではなく「提出」。期間満了後、請求があれば返還される）</td><td>法22条の2第7・8項</td></tr>
   </table>
   </div>
-  <p>「登録の移転をしなければならない」と「免許を取り消さなければならない」。この2つは定番の✕肢です。前者は任意、後者は「できる」（任意的取消し）。逆に、法5条1項の欠格事由に該当したことによる取消しは必要的なので、<b>個々の条文で語尾を確認する</b>以外に近道はありません。</p>
 
-  <h2>パターン5：例外を消す／ないはずの例外を付け足す</h2>
-  <p>「常に」「必ず」「一切」「いかなる場合も」という強い副詞が出てきたら、まず疑ってください。逆に、「〜の場合を除き」と<b>本当は存在しない例外</b>を差し込んでくる肢もあります。</p>
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 232" role="img" aria-labelledby="f5t f5d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f5t">できる（任意）と、しなければならない（義務）</title>
+    <desc id="f5d">任意は登録の移転・宅建士証の交付申請・営業保証金未届出による免許取消し。義務は変更の登録・宅建士証の返納・事務禁止処分時の提出。</desc>
+    <g><rect x="0" y="0" width="296" height="106" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="90" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="26">できる（任意・しなくてよい）</text>
+      <text class="s-m" x="16" y="52">・登録の移転（法19条の2）</text>
+      <text class="s-m" x="16" y="74">・宅建士証の交付申請（22条の2）</text>
+      <text class="s-m" x="16" y="96">・営業保証金の未届出による取消し</text></g>
+    <g transform="translate(0,126)"><rect x="0" y="0" width="296" height="106" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="90" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="26">しなければならない（義務）</text>
+      <text class="s-m" x="16" y="52">・変更の登録（法20条・遅滞なく）</text>
+      <text class="s-m" x="16" y="74">・宅建士証の返納（22条の2第6項）</text>
+      <text class="s-m" x="16" y="96">・事務禁止処分のときの提出</text></g>
+  </svg>
+  </div>
+  <figcaption>図5：上の表の語尾を、任意と義務の2つに振り分けたもの。「登録の移転をしなければならない」は任意を義務にすり替えた✕肢です。</figcaption>
+  </figure>
+  <h3>定番の✕肢：登録の移転は義務ではない</h3>
+  <p>「登録の移転をしなければならない」と「免許を取り消さなければならない」。この2つは定番の✕肢です。前者は任意、後者は「できる」（任意的取消し）。逆に、法5条1項の欠格事由に該当したことによる取消しは必要的なので、個々の条文で語尾を確認する以外に近道はありません。</p>
+
+  <h2 id="p5">パターン5：例外を消す／ないはずの例外を付け足す</h2>
+  <p>「常に」「必ず」「一切」「いかなる場合も」という強い副詞が出てきたら、まず疑ってください。逆に、「〜の場合を除き」と本当は存在しない例外を差し込んでくる肢もあります。</p>
   <ul>
-    <li><b>8種制限は業者間取引には適用されない</b>（法78条2項）。「業者間でもクーリング・オフはできる」は✕。ここを見落とすと、その肢は運任せになります</li>
-    <li><b>35条書面は、相手方が宅建業者なら説明が不要になるだけで、交付は必要</b>（法35条6項）。「業者間なら交付も不要」は✕</li>
-    <li><b>37条書面に説明義務の定めはない</b>が、宅建士の<b>記名は必要</b>。「37条書面も宅建士が説明しなければならない」は✕</li>
-    <li><b>手付金等の保全は、額が一定以下なら不要</b>（未完成物件＝代金の5％以下かつ1000万円以下／完成物件＝10分の1以下かつ1000万円以下。法41条・41条の2＋施行令3条の5）。「常に保全措置が必要」は✕</li>
-    <li><b>誇大広告等の禁止は、実際に取引が成立したか・損害が出たかを問わない</b>（法32条は表示そのものを禁じている）。「誰も申し込まなかったので違反にならない」は✕</li>
+    <li>8種制限は<strong>業者間取引には適用されない</strong>（法78条2項）。「業者間でもクーリング・オフはできる」は✕。ここを見落とすと、その肢は運任せになります</li>
+    <li>35条書面は、相手方が宅建業者なら説明が不要になるだけで、<strong>交付は必要</strong>（法35条6項）。「業者間なら交付も不要」は✕</li>
+    <li>37条書面に<strong>説明義務の定めはない</strong>が、宅建士の記名は必要。「37条書面も宅建士が説明しなければならない」は✕</li>
+    <li>手付金等の保全は、<strong>額が一定以下なら不要</strong>（未完成物件＝代金の5％以下かつ1000万円以下／完成物件＝10分の1以下かつ1000万円以下。法41条・41条の2＋施行令3条の5。※金額と割合は2026年9月5日にe-Gov法令検索の条文本文で確認）。「常に保全措置が必要」は✕</li>
+    <li>誇大広告等の禁止は、実際に取引が成立したか・損害が出たかを<strong>問わない</strong>（法32条は表示そのものを禁じている）。「誰も申し込まなかったので違反にならない」は✕</li>
   </ul>
-  <p>受験生は迷ったとき「もっと厳しい規制があった気がする」に流れます。出題者はその癖を知っていて、<b>存在しない義務を足した肢</b>を用意します。記憶にない義務は、勝手に作らないでください。</p>
+  <p>受験生は迷ったとき「もっと厳しい規制があった気がする」に流れます。出題者はその癖を知っていて、存在しない義務を足した肢を用意します。記憶にない義務は、勝手に作らないでください。</p>
 
-  <h2>パターン6：似た制度の取り違え</h2>
+  <h2 id="p6">パターン6：似た制度の取り違え</h2>
   <p>最後は、名前が似ている制度をすり替えるタイプです。ここは「どっちの話か」を一言で言えるかがすべてです。</p>
   <div class="scroll">
   <table class="t">
     <tr><th>混同されるペア</th><th>切り分け</th></tr>
-    <tr><td>変更の届出／変更の登録</td><td><b>届出＝業者</b>（30日以内・法9条）、<b>登録＝宅建士個人</b>（遅滞なく・法20条）</td></tr>
-    <tr><td>免許換え／登録の移転</td><td><b>免許換え＝業者</b>の事務所の配置が変わったとき（法7条）、<b>登録の移転＝宅建士</b>が他県の事務所に従事するとき（法19条の2・任意）</td></tr>
-    <tr><td>営業保証金／弁済業務保証金分担金</td><td>供託所に自ら供託するのが<b>営業保証金</b>（主たる事務所1000万円・その他500万円）、保証協会に納付するのが<b>分担金</b>（60万円・30万円。事務所新設は2週間以内）</td></tr>
-    <tr><td>標識の掲示／案内所等の届出</td><td><b>標識</b>は業務を行う場所ごとに必ず掲示（法50条1項）。<b>届出</b>が必要なのは契約締結等を行う案内所等に限られる（法50条2項）</td></tr>
-    <tr><td>従業者証明書／宅建士証</td><td><b>従業者証明書</b>は取引の関係者の請求があれば提示（法48条2項）、<b>宅建士証</b>は重要事項説明のときは請求がなくても提示（法35条4項）</td></tr>
+    <tr><td>変更の届出／変更の登録</td><td><strong>届出＝業者</strong>（30日以内・法9条）、<strong>登録＝宅建士個人</strong>（遅滞なく・法20条）</td></tr>
+    <tr><td>免許換え／登録の移転</td><td><strong>免許換え＝業者</strong>の事務所の配置が変わったとき（法7条）、<strong>登録の移転＝宅建士</strong>が他県の事務所に従事するとき（法19条の2・任意）</td></tr>
+    <tr><td>営業保証金／弁済業務保証金分担金</td><td>供託所に自ら供託するのが<strong>営業保証金</strong>（主たる事務所1000万円・その他500万円）、保証協会に納付するのが<strong>分担金</strong>（60万円・30万円。事務所新設は2週間以内）※法25条2項・64条の9ほか（2026年9月5日確認）</td></tr>
+    <tr><td>標識の掲示／案内所等の届出</td><td><strong>標識</strong>は業務を行う場所ごとに必ず掲示（法50条1項）。<strong>届出</strong>が必要なのは契約締結等を行う案内所等に限られる（法50条2項）</td></tr>
+    <tr><td>従業者証明書／宅建士証</td><td><strong>従業者証明書</strong>は取引の関係者の請求があれば提示（法48条2項）、<strong>宅建士証</strong>は重要事項説明のときは請求がなくても提示（法35条4項）</td></tr>
   </table>
   </div>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 232" role="img" aria-labelledby="f6t f6d" xmlns="http://www.w3.org/2000/svg">
+    <title id="f6t">業者の手続と宅建士の手続</title>
+    <desc id="f6d">業者側は変更の届出30日以内と免許換え。宅建士側は変更の登録を遅滞なくと、任意の登録の移転。</desc>
+    <g><rect x="0" y="0" width="296" height="106" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="90" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="26">業者（会社）の手続</text>
+      <text class="s-m" x="16" y="52">・変更の届出＝30日以内（法9条）</text>
+      <text class="s-m" x="16" y="74">・免許換え（法7条）</text>
+      <text class="s-m" x="16" y="96">・営業保証金／分担金</text></g>
+    <g transform="translate(0,126)"><rect x="0" y="0" width="296" height="106" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="90" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="26">宅建士（個人）の手続</text>
+      <text class="s-m" x="16" y="52">・変更の登録＝遅滞なく（法20条）</text>
+      <text class="s-m" x="16" y="74">・登録の移転＝任意（19条の2）</text>
+      <text class="s-m" x="16" y="96">・宅建士証の交付・返納・提出</text></g>
+  </svg>
+  </div>
+  <figcaption>図6：似た名前の制度は「会社の話か、人の話か」でまず分けます。届出と免許換えは業者、登録と移転は宅建士。表の5ペアはすべてこの線で切れます。</figcaption>
+  </figure>
   <p class="src">根拠条文の出典：<a href="https://laws.e-gov.go.jp/law/327AC0000000176" target="_blank" rel="noopener">e-Gov法令検索「宅地建物取引業法」</a>／<a href="https://laws.e-gov.go.jp/law/339CO0000000383" target="_blank" rel="noopener">同「宅地建物取引業法施行令」</a>／<a href="https://laws.e-gov.go.jp/law/332M50000800012" target="_blank" rel="noopener">同「宅地建物取引業法施行規則」</a>（本記事の数字・語尾はすべて条文本文で確認しています。とくに33条「売買その他の業務に関する広告」・36条「売買若しくは交換」の文言は、2026年8月にe-Gov法令検索の条文本文で再確認しました）</p>
 
-  <h2>ひっかけに強くなる読み方（本番での手順）</h2>
+  <h2 id="yomikata">ひっかけに強くなる読み方（本番での手順）</h2>
   <ol class="steps">
-    <li><b>肢を読む前に、業法の肢だと分かった時点で「6パターンのどれか」を探しに行く</b>。漠然と読むと違和感に頼ることになります。</li>
-    <li><b>数字・主語・語尾に指を置く</b>。「30日」「知事」「しなければならない」の3点を物理的に押さえながら読むと、入れ替え箇所が浮きます。</li>
-    <li><b>強い副詞（常に・必ず・一切）を丸で囲む</b>。囲んだ肢は、例外があるかどうかだけを検討すれば答えが出ることが多いです。</li>
-    <li><b>迷ったら「原則どおり」に倒す</b>。存在しない厳しい義務を作らない。これだけで正答率が数％上がります。</li>
+    <li>肢を読む前に、業法の肢だと分かった時点で<strong>「6パターンのどれか」を探しに行く</strong>。漠然と読むと違和感に頼ることになります。</li>
+    <li>数字・主語・語尾に指を置く。「30日」「知事」「しなければならない」の3点を物理的に押さえながら読むと、入れ替え箇所が浮きます。</li>
+    <li>強い副詞（常に・必ず・一切）を<strong>丸で囲む</strong>。囲んだ肢は、例外があるかどうかだけを検討すれば答えが出ることが多いです。</li>
+    <li>迷ったら「原則どおり」に倒す。存在しない厳しい義務を作らない。これだけで正答率が数％上がります。</li>
   </ol>
   <p>個数問題（「正しいものはいくつあるか」）は、このひっかけ肢を4本まとめて出しているだけです。形式面の対処は<a href="/blog/takken-kosu-mondai">個数問題の解き方</a>にまとめているので、あわせて読むと効きます。</p>
 
   <div class="cta-box">
-    <b>◯×の一問一答で、入れ替えに気づく回路を作る。</b> 宅建GYMは無料・登録不要。肢単位で判定する練習は、ひっかけ対策とまったく同じ訓練です。間違えた問題は自動で復習に回ります。 → <a href="/">宅建GYMで一問一答を解く（無料）</a>
+    ◯×の一問一答で、<strong>入れ替えに気づく回路を作る</strong>。 宅建GYMは無料・登録不要。肢単位で判定する練習は、ひっかけ対策とまったく同じ訓練です。間違えた問題は自動で復習に回ります。 → <a href="/">宅建GYMで一問一答を解く（無料）</a>
   </div>
 
-  <h2>どうしても業法が18点に届かないとき</h2>
-  <p>業法20問は、合格者なら17〜18点を取ってくる科目です。ここが14点前後で止まっているなら、原因は「知識の量」ではなく「条文の要件まで戻る習慣がない」ことにあります。テキストを読み直すより、上の表を音読して<b>言えないところだけ条文に戻る</b>ほうが速い。</p>
+  <h2 id="todokanai">どうしても業法が18点に届かないとき</h2>
+  <p>業法20問は、合格者なら17〜18点を取ってくる科目です。ここが14点前後で止まっているなら、原因は「知識の量」ではなく「条文の要件まで戻る習慣がない」ことにあります。テキストを読み直すより、上の表を音読して言えないところだけ条文に戻るほうが速い。</p>
+  <p class="src">※ここでの「17〜18点」「14点」も、宅建GYMが合格ラインから逆算した学習上の目安です。科目ごとの合格基準（足切り）は公表されていません。</p>
   <p>それでも独学で詰めきれない、去年あと数点で落ちた、という人は、講義で要件の切り分けを一度通しで浴びると早いことがあります。費用と学習スタイルで比べてみてください。</p>
   <div class="cta-box">
     → <a href="/courses/">宅建講座の選び方（通信・通学・オンライン5社比較）</a>
   </div>
 
-  <h2>まとめ</h2>
+  <h2 id="matome">まとめ</h2>
   <ul>
-    <li>宅建業法のひっかけ肢は、条文の<b>1か所だけを入れ替えて</b>作られる。だから「9割正しい」ように見える</li>
-    <li>入れ替えられる場所は6つ——<b>数字／主語／時期／語尾（できる・しなければならない）／例外／似た制度</b></li>
+    <li>宅建業法のひっかけ肢は、条文の<strong>1か所だけを入れ替えて</strong>作られる。だから「9割正しい」ように見える</li>
+    <li>入れ替えられる場所は6つ——数字／主語／時期／語尾（できる・しなければならない）／例外／似た制度</li>
     <li>とくに落としやすいのは、専任媒介の「期間だけが3月に短縮」、指定流通機構の「7日・5日は休業日を算入しない」、案内所等の届出先が「免許権者＋所在地の知事の両方」、登録の移転は「できる」</li>
-    <li>迷ったら原則に倒す。<b>記憶にない義務を勝手に作らない</b></li>
+    <li>迷ったら原則に倒す。<strong>記憶にない義務を勝手に作らない</strong></li>
   </ul>
 
   <div class="cta-box ichimon-cta">
@@ -222,7 +375,7 @@
   </div>
 
   <div class="rel">
-    <a href="/chinkan/">▸ 賃貸不動産経営管理士【2026年度】試験日・宅建との併願ガイド（<b>WEB申込は9月30日まで</b>）</a>
+    <a href="/chinkan/">▸ 賃貸不動産経営管理士【2026年度】試験日・宅建との併願ガイド（<strong>WEB申込は9月30日まで</strong>）</a>
     <a href="/blog/">▸ 記事一覧（宅建の勉強法・法改正・試験当日・賃管士まで）</a>
     <a href="/blog/takken-8shu-seigen">▸ 宅建の8種制限とは｜自ら売主のときだけ効く8つの規制を条文で確認</a>
     <a href="/blog/takken-houreiseigen-suuji">▸ 法令上の制限「数字」総まとめ（開発許可・建蔽率・農地法・国土法）</a>
@@ -241,7 +394,7 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated>公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-05">2026年9月5日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_gyouhou-hikkake&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>

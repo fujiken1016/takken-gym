@@ -50,6 +50,17 @@
  .foot{font-size:0.9375rem}
  .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
  table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:24px 0}
+ .toc>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
+ .toc ol{margin:0;padding-left:20px}
+ .toc li{font-size:1rem;line-height:1.85;margin:0}
+ .toc a{color:var(--brand2);text-decoration:none;display:flex;align-items:center;min-height:48px}
+ figure.fig{margin:24px 0}
+ figure.fig .figbox{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+ figure.fig .figbox svg{display:block;width:296px;height:auto}
+ figure.fig figcaption{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin-top:8px}
+ svg .s-t{font-size:14px;fill:var(--ink);font-weight:700}
+ svg .s-m{font-size:14px;fill:var(--muted)}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
 </style>
 <script type="application/ld+json">
@@ -57,7 +68,7 @@
 {"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},
 {"@type":"ListItem","position":2,"name":"宅建に落ちた後の再挑戦戦略","item":"https://takken.mainichi-lab.com/blog/takken-saichousen"}]}
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建に落ちた後の再挑戦戦略｜あと何点足りなかったかで来年の勉強法を決める","description":"宅建に不合格だった人が来年に向けて最初にやることをまとめました。あと1〜3点／5〜10点／それ以上で打ち手は違います。科目別の失点を4種類に分解する振り返り方、独学を続けるか講座に切り替えるかの判断基準、11月から始める年間スケジュール、5問免除（登録講習）まで。","inLanguage":"ja","datePublished":"2026-08-13T17:50:34+09:00","dateModified":"2026-09-03","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-saichousen"},"url":"https://takken.mainichi-lab.com/blog/takken-saichousen"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建に落ちた後の再挑戦戦略｜あと何点足りなかったかで来年の勉強法を決める","description":"宅建に不合格だった人が来年に向けて最初にやることをまとめました。あと1〜3点／5〜10点／それ以上で打ち手は違います。科目別の失点を4種類に分解する振り返り方、独学を続けるか講座に切り替えるかの判断基準、11月から始める年間スケジュール、5問免除（登録講習）まで。","inLanguage":"ja","datePublished":"2026-08-13T17:50:34+09:00","dateModified":"2026-09-05","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about"},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-saichousen"},"url":"https://takken.mainichi-lab.com/blog/takken-saichousen"}</script>
 </head>
 <body>
 <div class="top"><div class="in">
@@ -69,36 +80,86 @@
 <article>
   <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
 
-  <p>宅建は、受験者のおよそ8割が落ちる試験です。令和7年度は受験者245,462人に対して合格者45,821人、<b>合格率18.7％</b>でした（不動産適正取引推進機構の公表資料）。つまり不合格は珍しいことではまったくなく、合格者の中にも再受験組が相当数いる、という前提で話を始めます。</p>
-  <p>ただし「来年また頑張ろう」だけで済ませると、たいてい同じ結果になります。<b>去年と同じやり方を1年続けたら、去年と同じ点数が出る</b>からです。この記事では、不合格の直後にやるべき「診断」と、点数帯ごとに変わる打ち手を整理します。講座をすすめる記事ではありません。<b>独学で足りる人には独学を、そうでない人には切り替えを</b>、判断できる材料を並べます。</p>
+  <p>宅建は、受験者のおよそ8割が落ちる試験です。令和7年度は受験者245,462人に対して合格者45,821人、<strong>合格率18.7％</strong>でした（不動産適正取引推進機構の公表資料）。つまり不合格は珍しいことではまったくなく、合格者の中にも再受験組が相当数いる、という前提で話を始めます。</p>
+  <p>ただし「来年また頑張ろう」だけで済ませると、たいてい同じ結果になります。<strong>去年と同じやり方を1年続けたら、去年と同じ点数が出る</strong>からです。この記事では、不合格の直後にやるべき「診断」と、点数帯ごとに変わる打ち手を整理します。講座をすすめる記事ではありません。<strong>独学で足りる人には独学を、そうでない人には切り替えを</strong>、判断できる材料を並べます。</p>
 
-  <h2>1. 最初にやること：正確な点数を確定させる</h2>
-  <p>「たぶん30点くらい」では立て直せません。<b>科目別に何問取れたか</b>まで出して初めて次が決まります。まだ自己採点をしていない、あるいは合計点しか出していないなら、問題用紙と解答を並べて、次の5区分で正答数を数えてください。</p>
+  <div class="toc">
+    <p>この記事の内容</p>
+    <ol>
+      <li><a href="#step1">最初にやること：正確な点数を確定させる</a></li>
+      <li><a href="#step2">点数別・来年の打ち手</a></li>
+      <li><a href="#step3">「何が足りなかったか」を4つに分解する</a></li>
+      <li><a href="#step4">独学を続けるか、講座に切り替えるか</a></li>
+      <li><a href="#step5">見落とされがちな選択肢：5問免除（登録講習）</a></li>
+      <li><a href="#step6">来年の年間スケジュール</a></li>
+      <li><a href="#step7">再挑戦を決めた人が最初に捨てるべき思い込み</a></li>
+      <li><a href="#step8">まとめ</a></li>
+      <li><a href="#src">この記事で参照した一次情報</a></li>
+    </ol>
+  </div>
+
+  <h2 id="step1">1. 最初にやること：正確な点数を確定させる</h2>
+  <p>「たぶん30点くらい」では立て直せません。<strong>科目別に何問取れたか</strong>まで出して初めて次が決まります。まだ自己採点をしていない、あるいは合計点しか出していないなら、問題用紙と解答を並べて、次の5区分で正答数を数えてください。</p>
   <div class="scroll">
   <table class="t">
     <tr><th>区分</th><th>問番号</th><th>出題数</th><th>合格者の目安</th></tr>
     <tr><td>権利関係（民法等）</td><td>問1〜14</td><td>14問</td><td>7〜9問</td></tr>
     <tr><td>法令上の制限</td><td>問15〜22</td><td>8問</td><td>5〜6問</td></tr>
     <tr><td>税・その他</td><td>問23〜25</td><td>3問</td><td>2問</td></tr>
-    <tr><td><b>宅建業法</b></td><td>問26〜45</td><td><b>20問</b></td><td><b>17〜18問</b></td></tr>
+    <tr><td><strong>宅建業法</strong></td><td>問26〜45</td><td><strong>20問</strong></td><td><strong>17〜18問</strong></td></tr>
     <tr><td>5問免除科目</td><td>問46〜50</td><td>5問</td><td>3〜4問</td></tr>
   </table>
   </div>
-  <p>※ 目安の数値は宅建GYMが合格ラインから逆算した学習上の目標であり、公式に定められたものではありません。合格判定は<b>合計点のみ</b>で行われ、科目ごとの足切りはありません。</p>
-  <p>合格ラインは年度によって動きます。過去の推移は<a href="/kaitou-sokuhou/">解答速報・自己採点ページ</a>の一覧にまとめてあります。「今年は◯点だったから来年も◯点」とは考えないでください。<b>ボーダーは毎年変わる</b>ので、狙うべきは「ボーダー＋3点」です。</p>
 
-  <h2>2. 点数別・来年の打ち手</h2>
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 254" role="img" aria-labelledby="s1t s1d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s1t">科目別の出題数と、合格者の正答数の目安</title>
+    <desc id="s1d">権利関係14問中7から9問、法令上の制限8問中5から6問、税その他3問中2問、宅建業法20問中17から18問、5問免除科目5問中3から4問。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">宅建業法</text><text class="s-t" x="296" y="14" text-anchor="end">20問中 17〜18問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="252" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">権利関係</text><text class="s-t" x="296" y="14" text-anchor="end">14問中 7〜9問</text><rect x="0" y="22" width="207" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="104" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,92)"><text class="s-t" x="0" y="14">法令上の制限</text><text class="s-t" x="296" y="14" text-anchor="end">8問中 5〜6問</text><rect x="0" y="22" width="118" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="74" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,138)"><text class="s-t" x="0" y="14">税・その他</text><text class="s-t" x="296" y="14" text-anchor="end">3問中 2問</text><rect x="0" y="22" width="44" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="30" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,184)"><text class="s-t" x="0" y="14">5問免除科目</text><text class="s-t" x="296" y="14" text-anchor="end">5問中 3〜4問</text><rect x="0" y="22" width="74" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="44" height="14" rx="7" fill="var(--brand)"/></g>
+    <text class="s-m" x="0" y="240">細い薄帯＝出題数　濃い帯＝合格者の目安</text>
+  </svg>
+  </div>
+  <figcaption>図1：上の表を、長さで比べられるように並べたもの。宅建業法だけが「ほぼ全問取る」科目で、権利関係は半分強で足ります。目安は宅建GYMが合格ラインから逆算した値で、公表値ではありません。</figcaption>
+  </figure>
+  <p>※ 目安の数値は宅建GYMが合格ラインから逆算した学習上の目標であり、公式に定められたものではありません。合格判定は<strong>合計点のみ</strong>で行われ、科目ごとの足切りはありません。</p>
+  <p>合格ラインは年度によって動きます。過去の推移は<a href="/kaitou-sokuhou/">解答速報・自己採点ページ</a>の一覧にまとめてあります。「今年は◯点だったから来年も◯点」とは考えないでください。<strong>ボーダーは毎年変わる</strong>ので、狙うべきは「ボーダー＋3点」です。</p>
+
+  <h2 id="step2">2. 点数別・来年の打ち手</h2>
   <p>ここがこの記事の本題です。同じ「不合格」でも、必要なことは3つに分かれます。</p>
   <div class="scroll">
   <table class="t">
     <tr><th></th><th>A：あと1〜3点</th><th>B：あと5〜10点</th><th>C：それ以上（25点以下）</th></tr>
-    <tr><td>状態の見立て</td><td>知識はほぼ足りている。<b>取りこぼし</b>で落ちた</td><td>穴のある科目が1〜2つある。<b>範囲の抜け</b></td><td>1周目が終わっていない。<b>学習量そのものが不足</b></td></tr>
-    <tr><td>最優先でやること</td><td>失点の<b>原因分類</b>（次章）。特に個数問題・ひっかけ肢の取りこぼしを潰す</td><td>失点が集中した科目を<b>1科目だけ</b>作り直す。全科目を薄く回さない</td><td>教材を絞り、<b>宅建業法から</b>順に土台を作り直す</td></tr>
+    <tr><td>状態の見立て</td><td>知識はほぼ足りている。<strong>取りこぼし</strong>で落ちた</td><td>穴のある科目が1〜2つある。<strong>範囲の抜け</strong></td><td>1周目が終わっていない。<strong>学習量そのものが不足</strong></td></tr>
+    <tr><td>最優先でやること</td><td>失点の<strong>原因分類</strong>（次章）。特に個数問題・ひっかけ肢の取りこぼしを潰す</td><td>失点が集中した科目を<strong>1科目だけ</strong>作り直す。全科目を薄く回さない</td><td>教材を絞り、<strong>宅建業法から</strong>順に土台を作り直す</td></tr>
     <tr><td>やらなくていいこと</td><td>テキストの買い替え。全範囲の再学習</td><td>権利関係の深追い（費用対効果が最も悪い）</td><td>過去問12年分などの大量周回（先に理解が要る）</td></tr>
-    <tr><td>再開の時期</td><td>年明け〜3月でよい。いま走り出すと10月まで持たない</td><td>1〜2月</td><td><b>11〜12月</b>から。量が要るので早く始める</td></tr>
-    <tr><td>独学 or 講座</td><td><b>独学で十分</b>。方法を変えるだけで届く</td><td>独学でも可。ただし2年連続同じ点なら切り替えを検討</td><td>3回目以降なら<b>切り替えを強く検討</b></td></tr>
+    <tr><td>再開の時期</td><td>年明け〜3月でよい。いま走り出すと10月まで持たない</td><td>1〜2月</td><td><strong>11〜12月</strong>から。量が要るので早く始める</td></tr>
+    <tr><td>独学 or 講座</td><td><strong>独学で十分</strong>。方法を変えるだけで届く</td><td>独学でも可。ただし2年連続同じ点なら切り替えを検討</td><td>3回目以降なら<strong>切り替えを強く検討</strong></td></tr>
   </table>
   </div>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 216" role="img" aria-labelledby="s2t s2d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s2t">点数帯別の打ち手</title>
+    <desc id="s2d">あと1から3点は取りこぼし、あと5から10点は範囲の抜け、25点以下は学習量の不足。</desc>
+    <g><rect x="0" y="0" width="296" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="48" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="28">A：あと1〜3点</text>
+      <text class="s-m" x="16" y="50">取りこぼし。解き方だけ変える</text></g>
+    <g transform="translate(0,76)"><rect x="0" y="0" width="296" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="48" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="28">B：あと5〜10点</text>
+      <text class="s-m" x="16" y="50">範囲の抜け。1科目だけ作り直す</text></g>
+    <g transform="translate(0,152)"><rect x="0" y="0" width="296" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/><rect x="0" y="8" width="4" height="48" rx="2" fill="var(--brand)"/>
+      <text class="s-t" x="16" y="28">C：25点以下</text>
+      <text class="s-m" x="16" y="50">学習量が不足。11〜12月に開始</text></g>
+  </svg>
+  </div>
+  <figcaption>図2：同じ「不合格」でも、あと何点だったかで次にやることが変わります。Aの人が全範囲をやり直すのは、いちばん多い失敗です。</figcaption>
+  </figure>
   <div class="warn">
     Aの人へ：いちばんやりがちな失敗が「テキストを買い替えて最初から読み直す」です。 あと2点の人に足りないのは知識ではなく、肢の読み方と処理の精度です。同じテキストで、解き方だけ変えてください。買い替えは、法改正対応のため試験年度に合ったものを使うという意味では必要ですが、「別の出版社に変える」ことに意味はありません。
   </div>
@@ -108,18 +169,37 @@
     → <a href="https://www.amazon.co.jp/dp/B0HHMT59G2" target="_blank" rel="noopener">宅建 法改正ノート【令和8年度】（Kindle・¥1,400／運営者作成）</a>
   </div>
 
-  <h2>3. 「何が足りなかったか」を4つに分解する</h2>
+  <h2 id="step3">3. 「何が足りなかったか」を4つに分解する</h2>
   <p>失点は、原因によって対処法がまったく違います。答案を見ながら、間違えた問題を次の4つに振り分けてください。ここを飛ばして「勉強時間を増やす」に行くと、また同じところで落ちます。</p>
   <div class="scroll">
   <table class="t">
     <tr><th>種類</th><th>見分け方</th><th>対処</th></tr>
-    <tr><td><b>①知識がない</b></td><td>解説を読んで「初めて見た」と思う</td><td>純粋な学習不足。該当分野をテキストに戻って埋める</td></tr>
-    <tr><td><b>②知識はあったのに落とした</b></td><td>解説を読んで「知ってたのに」と思う</td><td><b>いちばん改善効率が高い</b>。個数問題・ひっかけ肢の処理を訓練する</td></tr>
-    <tr><td><b>③時間切れ</b></td><td>後半の問題で解答が雑、または空欄があった</td><td>解く順番と時間配分の設計。知識の問題ではない</td></tr>
-    <tr><td><b>④マークミス・見直し不足</b></td><td>選んだつもりの番号と違う／指示（誤っているものを選べ等）の読み違い</td><td>本番の手順を固定する。訓練で直る</td></tr>
+    <tr><td><strong>①知識がない</strong></td><td>解説を読んで「初めて見た」と思う</td><td>純粋な学習不足。該当分野をテキストに戻って埋める</td></tr>
+    <tr><td><strong>②知識はあったのに落とした</strong></td><td>解説を読んで「知ってたのに」と思う</td><td><strong>いちばん改善効率が高い</strong>。個数問題・ひっかけ肢の処理を訓練する</td></tr>
+    <tr><td><strong>③時間切れ</strong></td><td>後半の問題で解答が雑、または空欄があった</td><td>解く順番と時間配分の設計。知識の問題ではない</td></tr>
+    <tr><td><strong>④マークミス・見直し不足</strong></td><td>選んだつもりの番号と違う／指示（誤っているものを選べ等）の読み違い</td><td>本番の手順を固定する。訓練で直る</td></tr>
   </table>
   </div>
-  <p>再挑戦組でとくに多いのが<b>②</b>です。宅建は「AとBの2つが正しい、いくつあるか」という<b>個数問題</b>や、数字・主語・期限を1語だけ入れ替えた<b>ひっかけ肢</b>が得点差を作ります。ここは知識を増やすのではなく、読み方を変えることで直ります。</p>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 178" role="img" aria-labelledby="s3t s3d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s3t">失点の4分解</title>
+    <desc id="s3d">①知識がない、②知識はあったのに落とした、③時間切れ、④マークミス。再挑戦組に多いのは②。</desc>
+    <g><rect x="0" y="0" width="142" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <text class="s-t" x="14" y="26">① 知識がない</text><text class="s-m" x="14" y="48">テキストに戻る</text></g>
+    <g><rect x="154" y="0" width="142" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <text class="s-t" x="168" y="26">② 知ってたのに</text><text class="s-m" x="168" y="48">読み方を訓練</text></g>
+    <g><rect x="0" y="76" width="142" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <text class="s-t" x="14" y="102">③ 時間切れ</text><text class="s-m" x="14" y="124">配分を設計</text></g>
+    <g><rect x="154" y="76" width="142" height="64" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <text class="s-t" x="168" y="102">④ マークミス</text><text class="s-m" x="168" y="124">手順を固定</text></g>
+    <text class="s-m" x="0" y="168">再挑戦組にいちばん多く、いちばん直るのは②</text>
+  </svg>
+  </div>
+  <figcaption>図3：間違えた問題を4つに振り分けます。①だけが「勉強量」の問題で、②③④は解き方と手順で直ります。</figcaption>
+  </figure>
+  <p>再挑戦組でとくに多いのが<strong>②</strong>です。宅建は「AとBの2つが正しい、いくつあるか」という<strong>個数問題</strong>や、数字・主語・期限を1語だけ入れ替えた<strong>ひっかけ肢</strong>が得点差を作ります。ここは知識を増やすのではなく、読み方を変えることで直ります。</p>
   <ul>
     <li>②が多かった → <a href="/blog/takken-kosu-mondai">個数問題の解き方</a>と<a href="/blog/takken-gyouhou-hikkake">宅建業法の「引っかけ肢」総まとめ</a></li>
     <li>法令上の制限で①が多かった → <a href="/blog/takken-houreiseigen-suuji">法令上の制限「数字」総まとめ</a>（覚える数字は有限です）</li>
@@ -130,83 +210,126 @@
     ②の取りこぼしは、肢単位の反復でしか直りません。 宅建GYMは登録不要・無料の一問一答です。「読んで分かる」と「聞かれて答えられる」の差を埋める用途で作ってあります。 → <a href="/">宅建GYMで一問一答を解く（無料）</a>
   </div>
 
-  <h2>4. 独学を続けるか、講座に切り替えるか</h2>
+  <h2 id="step4">4. 独学を続けるか、講座に切り替えるか</h2>
   <p>「落ちたから講座に申し込むべき」とは考えていません。宅建は独学での合格者が多い試験ですし、Aゾーン（あと1〜3点）の人が講座に申し込んでも、支払うのは主に「もともと持っていた知識をもう一度聞く時間」の代金になりがちです。</p>
 
   <h3>独学を続けてよい人（3つとも当てはまるなら継続を勧めます）</h3>
   <ul>
     <li>今年、学習計画をおおむね予定どおり消化できた（挫折して止まった期間が長くない）</li>
-    <li>不合格の原因を、上の①〜④で<b>自分で説明できる</b></li>
-    <li>点数が<b>ボーダーの5点以内</b>だった</li>
+    <li>不合格の原因を、上の①〜④で<strong>自分で説明できる</strong></li>
+    <li>点数が<strong>ボーダーの5点以内</strong>だった</li>
   </ul>
   <p>この3つが揃っている人に足りないのは、お金ではなく方法の微調整です。同じ教材で、②の潰し込みと過去問の解き直しに集中すれば届きます。</p>
 
   <h3>講座を検討したほうがよい人</h3>
   <ul>
     <li>2年連続で同じような点数だった（＝自力での改善サイクルが回っていない）</li>
-    <li>今年、<b>教材の途中で止まった</b>／計画を立て直せないまま本番を迎えた</li>
+    <li>今年、<strong>教材の途中で止まった</strong>／計画を立て直せないまま本番を迎えた</li>
     <li>何を捨てて何を取るかの判断ができない（全範囲を均等にやろうとして時間が尽きた）</li>
     <li>法改正の反映を自分で追う自信がない</li>
   </ul>
   <p>講座の本当の価値は「教えてくれること」より、範囲の取捨選択と進度管理を外注できることにあります。上のどれかに当てはまるなら、そこは自力でいちばん埋めにくい部分なので、費用に見合う可能性が高いです。</p>
-  <p>費用の考え方も冷静に。受験手数料は<b>8,200円</b>（地方公共団体の手数料の標準に関する政令の標準額）で、1年延びればこれと1年分の勉強時間が追加でかかります。数万円の講座で1年短縮できるなら合理的ですし、逆に独学で来年届くと踏めるなら払う必要はありません。数十万円のコースが唯一の選択肢ではなく、Web完結で数万円台のものもあります。</p>
+  <p>費用の考え方も冷静に。受験手数料は<strong>8,200円</strong>（地方公共団体の手数料の標準に関する政令の標準額。※2026年9月5日にe-Gov法令検索で確認）で、1年延びればこれと1年分の勉強時間が追加でかかります。数万円の講座で1年短縮できるなら合理的ですし、逆に独学で来年届くと踏めるなら払う必要はありません。数十万円のコースが唯一の選択肢ではなく、Web完結で数万円台のものもあります。</p>
   <div class="cta-box">
     価格帯と学習スタイルで比べたい人へ。 通信・通学・オンラインの主要サービスを、料金の目安と向いている人ごとに事実ベースで並べています。誇張せず、分かっている範囲の情報だけを載せた比較ページです。 → <a href="/courses/">宅建講座の選び方（通信・通学・オンライン5社比較）</a>
   </div>
   <p>また、講座を検討する場合、受験経験者・再受講者だけが使える割引を持つ会社があります（実測ではLECの再受講割引40％OFF、アガルートの再受講割引20％OFFなど）。基礎講義を省いて演習に振った学習経験者向けコースも含め、<a href="/blog/takken-ochita-revenge">再受講割引・学習経験者向けコースの6社比較</a>に公式ページの実測値だけでまとめました。</p>
   <p>なお、資料請求や無料体験は無料でできるものが多いので、迷っている段階では申し込まずに資料だけ取り寄せるのが安全です。年内は情報収集にとどめ、学習を再開する1〜3月に決める、という順番で十分間に合います。</p>
 
-  <h2>5. 見落とされがちな選択肢：5問免除（登録講習）</h2>
-  <p>宅建業に従事している人には、点数を直接底上げする制度があります。<b>登録講習</b>です。業法16条3項は、国土交通大臣の登録を受けた登録講習機関の課程を修了した者について「試験の一部を免除する」と定めています。</p>
+  <h2 id="step5">5. 見落とされがちな選択肢：5問免除（登録講習）</h2>
+  <p>宅建業に従事している人には、点数を直接底上げする制度があります。<strong>登録講習</strong>です。業法16条3項は、国土交通大臣の登録を受けた登録講習機関の課程を修了した者について「試験の一部を免除する」と定めています。</p>
   <ul>
-    <li>免除されるのは施行規則8条1号・5号に掲げる事項＝<b>問46〜50の5問</b>（規則10条の14）</li>
+    <li>免除されるのは施行規則8条1号・5号に掲げる事項＝<strong>問46〜50の5問</strong>（規則10条の14）</li>
     <li>有効なのは修了試験に合格した日から3年以内に行われる試験（同条）</li>
     <li>対象は宅地建物取引業に従事する者（規則10条の5第1号）。申込みには従業者証明書などが必要になるため、業界外の人は使えません</li>
-    <li>講義時間の合計は<b>おおむね50時間</b>（規則10条の5第3号。一部を通信の方法で行える）</li>
+    <li>講義時間の合計は<strong>おおむね50時間</strong>（規則10条の5第3号。一部を通信の方法で行える。※2026年9月5日確認）</li>
   </ul>
-  <p>効果は数字にも出ています。令和7年度の合格率は全体で18.7％でしたが、<b>登録講習修了者は24.2％</b>でした（機構の結果概要）。5問免除は「45問中28問以上」といった基準に置き換わるだけで楽になるわけではありませんが、範囲が5問分狭くなること自体が大きい。あと1〜3点で落ちた宅建業従事者にとっては、最も費用対効果の高い一手になり得ます。</p>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 122" role="img" aria-labelledby="s6t s6d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s6t">5問免除で解く問題数が変わる</title>
+    <desc id="s6d">通常は50問すべてを解くが、登録講習の修了者は問46から50の5問が免除され45問になる。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">通常の受験</text><text class="s-t" x="296" y="14" text-anchor="end">50問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">5問免除（登録講習）</text><text class="s-t" x="296" y="14" text-anchor="end">45問</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="266" height="14" rx="7" fill="var(--brand)"/><rect x="266" y="22" width="30" height="14" rx="7" fill="var(--line)" stroke="var(--brand)" stroke-dasharray="3 2"/></g>
+    <text class="s-m" x="0" y="112">破線の部分＝免除される問46〜50の5問</text>
+  </svg>
+  </div>
+  <figcaption>図6：登録講習を修了すると、問46〜50の5問が免除され、45問での勝負になります。合格基準も45問ベースに置き換わるので「5問もらえる」わけではありませんが、対策範囲は確実に狭くなります。</figcaption>
+  </figure>
+  <p>効果は数字にも出ています。令和7年度の合格率は全体で18.7％でしたが、<strong>登録講習修了者は24.2％</strong>でした（出典＝不動産適正取引推進機構「令和7年度宅地建物取引士資格試験結果の概要」・2026年9月5日確認）。5問免除は「45問中28問以上」といった基準に置き換わるだけで楽になるわけではありませんが、範囲が5問分狭くなること自体が大きい。あと1〜3点で落ちた宅建業従事者にとっては、最も費用対効果の高い一手になり得ます。</p>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 122" role="img" aria-labelledby="s4t s4d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s4t">令和7年度の合格率</title>
+    <desc id="s4d">全体の合格率は18.7パーセント、登録講習修了者は24.2パーセント。</desc>
+    <g transform="translate(0,0)"><text class="s-t" x="0" y="14">全体</text><text class="s-t" x="296" y="14" text-anchor="end">18.7％</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="185" height="14" rx="7" fill="var(--brand)"/></g>
+    <g transform="translate(0,46)"><text class="s-t" x="0" y="14">登録講習の修了者</text><text class="s-t" x="296" y="14" text-anchor="end">24.2％</text><rect x="0" y="22" width="296" height="14" rx="7" fill="var(--line)"/><rect x="0" y="22" width="239" height="14" rx="7" fill="var(--brand)"/></g>
+    <text class="s-m" x="0" y="112">帯の全長＝30％。令和7年度の実績値</text>
+  </svg>
+  </div>
+  <figcaption>図4：令和7年度の合格率。出典＝不動産適正取引推進機構「令和7年度宅地建物取引士資格試験結果の概要」（2026年9月5日確認）。5問免除そのものが合格を保証するわけではありませんが、範囲が5問分狭くなる効果はこの差に表れています。</figcaption>
+  </figure>
   <div class="warn">
     「登録講習」と「登録実務講習」は別物です。 登録講習＝試験の5問が免除される制度（業法16条3項）。登録実務講習＝合格後、実務経験2年の代わりに資格登録を受けるための制度（規則13条の16第1号）。名前が似ているだけで、対象も効果もまったく違います。合格後の手続きは<a href="/blog/takken-goukakugo">合格後の手続きガイド</a>にまとめました。
   </div>
   <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/327AC0000000176" target="_blank" rel="noopener">e-Gov法令検索「宅地建物取引業法」</a>16条3項／<a href="https://laws.e-gov.go.jp/law/332M50000800012" target="_blank" rel="noopener">同「宅地建物取引業法施行規則」</a>8条・10条の5・10条の14／<a href="https://www.mlit.go.jp/totikensangyo/const/sosei_const_tk3_000074.html" target="_blank" rel="noopener">国土交通省「登録講習の登録講習機関一覧」</a></p>
 
-  <h2>6. 来年の年間スケジュール</h2>
-  <p>宅建は毎年ほぼ同じ暦で動きます。試験は原則として<b>10月の第3日曜</b>、合格発表は<b>11月下旬</b>。令和8年度は試験が2026年10月18日（日）、合格発表が2026年11月25日（水）です。この形を前提に、11月スタートで逆算します。</p>
+  <h2 id="step6">6. 来年の年間スケジュール</h2>
+  <p>宅建は毎年ほぼ同じ暦で動きます。試験は原則として<strong>10月の第3日曜</strong>、合格発表は<strong>11月下旬</strong>。令和8年度は試験が2026年10月18日（日）、合格発表が2026年11月25日（水）です。この形を前提に、11月スタートで逆算します。</p>
   <div class="scroll">
   <table class="t">
     <tr><th>時期</th><th>やること</th><th>Aゾーン（あと1〜3点）</th><th>Cゾーン（大きく足りない）</th></tr>
-    <tr><td>11〜12月</td><td>失点の分解と方針決定。教材・講座の情報収集</td><td>休んでよい。分析だけ</td><td><b>ここから開始</b>。宅建業法から土台作り</td></tr>
+    <tr><td>11〜12月</td><td>失点の分解と方針決定。教材・講座の情報収集</td><td>休んでよい。分析だけ</td><td><strong>ここから開始</strong>。宅建業法から土台作り</td></tr>
     <tr><td>1〜3月</td><td>学習の再開。基礎の再構築</td><td>2〜3月に再開。②の潰し込み中心</td><td>権利関係と法令上の制限を1周</td></tr>
     <tr><td>4〜6月</td><td>過去問中心に切り替え。6月上旬に官報公告</td><td>過去問を年度別で回す</td><td>科目別過去問を2周</td></tr>
-    <tr><td><b>7月</b></td><td><b>受験申込み</b>（例年7月1日〜。ネット申込は7月末まで、郵送はより早く締切）</td><td colspan="2">ここを逃すと1年待ちです。申込月だけはカレンダーに入れておく</td></tr>
+    <tr><td><strong>7月</strong></td><td><strong>受験申込み</strong>（例年7月1日〜。ネット申込は7月末まで、郵送はより早く締切）</td><td colspan="2">ここを逃すと1年待ちです。申込月だけはカレンダーに入れておく</td></tr>
     <tr><td>8〜9月</td><td>模試・弱点の埋め戻し。統計対策の資料が出そろう</td><td>年度別過去問＋時間配分の訓練</td><td>宅建業法を17点以上に固める</td></tr>
     <tr><td>10月</td><td>直前期。法改正・統計・数字の最終確認 → 第3日曜に本番</td><td colspan="2"><a href="/blog/takken-chokuzenki-2kagetsu">直前期2か月の勉強法</a>を参照</td></tr>
   </table>
   </div>
+
+  <figure class="fig">
+  <div class="figbox">
+  <svg viewBox="0 0 296 268" role="img" aria-labelledby="s5t s5d" xmlns="http://www.w3.org/2000/svg">
+    <title id="s5t">11月から始める年間スケジュール</title>
+    <desc id="s5d">11から12月に分析、1から3月に再開、4から6月に過去問、7月に申込み、8から9月に模試、10月に本番。</desc>
+    <path d="M8 20 V240" stroke="var(--line)" stroke-width="2" fill="none"/>
+    <g><circle cx="8" cy="20" r="5" fill="var(--brand)"/><text class="s-t" x="28" y="16">11〜12月</text><text class="s-m" x="28" y="36">失点の分解と方針決定</text></g>
+    <g><circle cx="8" cy="64" r="5" fill="var(--brand)"/><text class="s-t" x="28" y="60">1〜3月</text><text class="s-m" x="28" y="80">学習の再開・基礎の再構築</text></g>
+    <g><circle cx="8" cy="108" r="5" fill="var(--brand)"/><text class="s-t" x="28" y="104">4〜6月</text><text class="s-m" x="28" y="124">過去問中心に切り替え</text></g>
+    <g><circle cx="8" cy="152" r="7" fill="var(--brand)"/><text class="s-t" x="28" y="148">7月　受験申込み</text><text class="s-m" x="28" y="168">逃すと1年待ち。最優先</text></g>
+    <g><circle cx="8" cy="196" r="5" fill="var(--brand)"/><text class="s-t" x="28" y="192">8〜9月</text><text class="s-m" x="28" y="212">模試・弱点の埋め戻し</text></g>
+    <g><circle cx="8" cy="240" r="5" fill="var(--brand)"/><text class="s-t" x="28" y="236">10月</text><text class="s-m" x="28" y="256">直前期 → 第3日曜に本番</text></g>
+  </svg>
+  </div>
+  <figcaption>図5：上の表を時間軸1本に並べたもの。丸が大きい7月だけは動かせません（申込みを逃すと受験そのものができません）。</figcaption>
+  </figure>
   <p>「いつから始めるか」は、必要な総学習時間から逆算するのが確実です。宅建GYMでは<a href="/blog/takken-benkyo-jikan">300〜400時間の内訳</a>を記事にしています。仮に350時間必要で1日1時間しか取れないなら約12か月、1日2時間なら約6か月。Aゾーンの人が11月から毎日やる必要はまったくありませんし、燃え尽きるほうが危険です。逆にCゾーンの人が「5月から始めれば間に合う」と考えるのは、去年と同じ判断です。</p>
   <div class="warn">
     申込期間は毎年変わり得ます。 令和8年度はインターネット申込が7月1日〜7月31日、郵送申込が7月1日〜7月15日でした。郵送のほうが締切が早い点に注意してください。実際の日程は必ず試験実施機関の公式ページで確認を。
   </div>
 
-  <h2>7. 再挑戦を決めた人が最初に捨てるべき思い込み</h2>
+  <h2 id="step7">7. 再挑戦を決めた人が最初に捨てるべき思い込み</h2>
   <ul>
-    <li><b>「今年は運が悪かった」</b>→ 合格ラインの変動は全員に平等にかかります。ボーダー±2点で落ちたなら、運ではなく<b>マージン設計の不足</b>です。来年は「合格点ちょうど」ではなく「+3点」を目標に置いてください</li>
+    <li><strong>「今年は運が悪かった」</strong>→ 合格ラインの変動は全員に平等にかかります。ボーダー±2点で落ちたなら、運ではなく<strong>マージン設計の不足</strong>です。来年は「合格点ちょうど」ではなく「+3点」を目標に置いてください</li>
     <li>「もっと難しい問題集をやるべき」→ 逆です。宅建の失点の大半は基本論点の取りこぼしで、難問は合否を分けません。過去問を確実にすることが最短です</li>
     <li>「権利関係を得意にしないと受からない」→ 14問中7〜9問で十分。満点を狙う科目ではありません。同じ時間を宅建業法20問に投じるほうが、点数への変換効率がはるかに高い</li>
-    <li>「自分だけ何度も落ちている」→ 令和7年度の合格者の平均年齢は36.2歳、職業別では不動産業33.2％のほかに他業種27.9％・学生10.9％と幅があります（機構の結果概要）。働きながら数年かけて取る人は、統計上も普通です</li>
+    <li>「自分だけ何度も落ちている」→ 令和7年度の合格者の平均年齢は36.2歳、職業別では不動産業33.2％のほかに他業種27.9％・学生10.9％と幅があります（出典＝前掲の令和7年度試験結果の概要・2026年9月5日確認）。働きながら数年かけて取る人は、統計上も普通です</li>
   </ul>
 
-  <h2>8. まとめ</h2>
+  <h2 id="step8">8. まとめ</h2>
   <ul>
-    <li>まず<b>科目別の正答数</b>を確定させる。合計点だけでは打ち手が決まらない</li>
+    <li>まず<strong>科目別の正答数</strong>を確定させる。合計点だけでは打ち手が決まらない</li>
     <li>失点を①知識不足／②取りこぼし／③時間切れ／④ミスに分解する。再挑戦組でいちばん多く、いちばん直しやすいのは②</li>
-    <li><b>あと1〜3点なら独学継続で十分</b>。テキストを買い替えるのではなく、解き方を変える</li>
+    <li><strong>あと1〜3点なら独学継続で十分</strong>。テキストを買い替えるのではなく、解き方を変える</li>
     <li>2年連続で同じ点／途中で計画が止まったなら、範囲の取捨選択と進度管理を外注する価値がある → <a href="/courses/">講座の比較ページ</a></li>
-    <li>宅建業に従事しているなら<b>登録講習（5問免除）</b>を検討する。令和7年度の合格率は全体18.7％に対し修了者24.2％</li>
-    <li>再開は焦らなくてよいが、<b>7月の申込みだけは絶対に逃さない</b></li>
+    <li>宅建業に従事しているなら<strong>登録講習（5問免除）</strong>を検討する。令和7年度の合格率は全体18.7％に対し修了者24.2％</li>
+    <li>再開は焦らなくてよいが、<strong>7月の申込みだけは絶対に逃さない</strong></li>
   </ul>
 
-  <h2>この記事で参照した一次情報</h2>
+  <h2 id="src">この記事で参照した一次情報</h2>
   <p class="src">
     <a href="https://laws.e-gov.go.jp/law/327AC0000000176" target="_blank" rel="noopener">e-Gov法令検索「宅地建物取引業法」</a>（16条）／
     <a href="https://laws.e-gov.go.jp/law/332M50000800012" target="_blank" rel="noopener">同「宅地建物取引業法施行規則」</a>（8条・10条・10条の5・10条の14）／
@@ -245,7 +368,7 @@
     <a href="/">▸ 宅建GYMで問題を解く（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated>公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-03">2026年9月3日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-09-05">2026年9月5日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_saichousen&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
