@@ -646,6 +646,18 @@
     scored=false; setStale(false); elResult.innerHTML="";
   });
 
+  // 結果まで確実に着地させる。遠いときは smooth を使わない。
+  // 🔴 理由（2026-09-06 実測）＝結果ブロックは 375px でページ先頭から約9,500px下にある。
+  //    その距離を behavior:"smooth" で送ると、指が画面に触れた・別のスクロールが起きた・
+  //    rAFが絞られた、のいずれかで**途中で中断して着地しない**（＝押しても何も起きないように見える）。
+  //    近い距離（未公開メッセージ等）は従来どおり smooth のままにする。
+  function toResult(){
+    try{
+      var t=elResult.getBoundingClientRect().top;
+      if(Math.abs(t)>window.innerHeight){ elResult.scrollIntoView({block:"start"}); }
+      else { elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }
+    }catch(e){}
+  }
   var busy=false;
   btnScore.addEventListener("click",function(){
     if(busy)return; busy=true;
@@ -658,7 +670,7 @@
         +'<p style="font-size:14px;color:var(--muted);margin:6px 0">※ このツールの動作を試すデモとして、いまマークの入力・保存・リセットを体験できます。</p></div>';
       // このメッセージは採点バーより下に描画されるので、スクロールしないと画面外のままになり
       // 「押しても何も起きない」ように見える（2026-09-05 実測：375px で96px下に描画）。
-      try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
+      toResult();
       return;
     }
     // 1問も入力せずに「採点する」を押した場合、0点＝ゾーン3（不合格）と断定して
@@ -667,7 +679,7 @@
       elResult.innerHTML='<div class="sresult"><div style="font-weight:700;font-size:16px;margin-bottom:6px">まだ1問も入力されていません</div>'
         +'<p style="font-size:14px;margin:6px 0">上の解答欄で、問1〜問50について自分がマークした選択肢（1〜4）を選んでから「採点する」を押してください。途中まででも採点できます（未入力の問は不正解として集計します）。</p>'
         +'<p style="font-size:14px;color:var(--muted);margin:6px 0">入力内容はこの端末に自動保存されるので、途中で閉じても続きから再開できます。</p></div>';
-      try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
+      toResult();
       return;
     }
     // 採点
@@ -743,7 +755,7 @@
       +'<p style="font-size:14px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去10年の合格基準点の実績（33〜38点）に基づく目安です。令和8年度の合格基準点は11月25日9時30分の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
     scored=true; setStale(false);
     try{gtag('event','scoring_complete',{tool_name:'kaitou_sokuhou',score:total,answered:answered,zone:zone});}catch(e){}
-    try{ elResult.scrollIntoView({behavior:"smooth",block:"nearest"}); }catch(e){}
+    toResult();
   });
 })();
 </script>
