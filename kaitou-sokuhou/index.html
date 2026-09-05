@@ -49,6 +49,11 @@
  .backapp{display:inline-block;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:12px;font-size:14px;min-height:48px}
  .faq dt{font-weight:700;margin-top:14px;font-size:15px}
  .faq dd{margin:6px 0 0;font-size:14px;color:var(--ink)}
+ /* ファーストビュー→自己採点ツールの1タップ導線（2026-09-05 追加）。
+    ツール本体（id=saiten の見出し）はページ先頭から約5,200px（375pxで6.4画面）下にあり、
+    10/18に「すぐ採点したい」で来た受験者が到達できなかったため。既存要素は一切変更していない。 */
+ .jumpcta{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0 0 4px;padding:12px 16px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:16px;line-height:1.85;text-align:center;border-radius:12px}
+ h2#saiten{scroll-margin-top:16px}
  /* ===== 自己採点ツール ===== */
  .st-status{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:14px;margin:12px 0}
  .st-status b{color:var(--brand2)}
@@ -116,7 +121,7 @@
 </script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"宅建 解答速報 2026｜自己採点のやり方と合格ライン｜令和8年度（10月18日）| 宅建GYM","url":"https://takken.mainichi-lab.com/kaitou-sokuhou/","inLanguage":"ja","datePublished":"2026-08-12","dateModified":"2026-09-04"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"宅建 解答速報 2026｜自己採点のやり方と合格ライン｜令和8年度（10月18日）| 宅建GYM","url":"https://takken.mainichi-lab.com/kaitou-sokuhou/","inLanguage":"ja","datePublished":"2026-08-12","dateModified":"2026-09-05"}</script>
 </head>
 <body>
 <div class="top"><div class="in">
@@ -125,6 +130,8 @@
   <div class="sub">令和8年度（2026年）宅地建物取引士資格試験｜10月18日（日）実施</div>
 </div></div>
 <main>
+
+  <a class="jumpcta" href="#saiten">▼ 自己採点ツールへ（登録不要・無料）</a>
 
   <div class="notice">
     <div class="nh">解答速報は試験当日に公開予定です</div>
@@ -499,7 +506,7 @@
     <a href="/blog/takken-benkyo-jikan">▸ 宅建の勉強時間の目安（300〜400時間の内訳）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-04">2026年9月4日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-12">2026年8月12日</time>　最終更新：<time datetime="2026-09-05">2026年9月5日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&utm_medium=site&utm_campaign=takken_kaitou_sokuhou&utm_content=footer">フジケン（毎日ラボ）</a></div>
