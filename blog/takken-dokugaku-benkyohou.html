@@ -19,41 +19,53 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none}
- .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
- .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:18px 0}
- .toc>p{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.9}
+/* このページ内だけのスケール調整（共通CSSは触らない）。値は memory/design_guidelines.md のトークン */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main{max-width:700px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85;overflow-wrap:anywhere}
+ article p{margin:16px 0}
+ /* 日本語の禁則で行末の約物が数pxぶら下がるぶんの逃げ（375/320px実測で確立） */
+ article p,article ul,article ol{padding-right:8px}
+ article li{margin:8px 0}
+ article b,article strong{font-weight:600}
+ .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+ table.t th,table.t td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top;line-height:1.85}
+ table.t th{background:var(--surface);font-weight:600;color:var(--muted)}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none}
+ .ichimon-cta a{display:flex;align-items:center;min-height:48px}
+ .rel{border-top:1px solid var(--line);margin-top:48px;padding-top:16px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .src{font-size:0.9375rem;color:var(--muted);line-height:1.85;overflow-wrap:anywhere}
+ .src a{color:var(--brand2)}
+ .pr-line{font-size:0.9375rem;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:16px;line-height:1.85}
+ .page-updated{font-size:0.9375rem;line-height:1.85;color:var(--muted);text-align:center;margin:24px 0 8px}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:24px 0}
+ .toc>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
  .toc ol{margin:0;padding-left:20px}
- .toc li{font-size:14.5px;line-height:1.9;margin:2px 0}
- .toc a{color:var(--brand2);text-decoration:none}
- figure.fig{margin:20px 0}
- figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ .toc li{font-size:1rem;line-height:1.85;margin:0}
+ .toc a{color:var(--brand2);text-decoration:none;display:flex;align-items:center;min-height:48px}
+ .keybox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px;margin:24px 0}
+ .keybox>p{font-size:1rem;font-weight:700;margin:0 0 8px;line-height:1.85}
+ .keybox ul{margin:0;padding-left:20px}
+ .keybox li{font-size:1.0625rem;line-height:1.85;margin:8px 0}
+ .note{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:8px 0 16px}
+ figure.fig{margin:24px 0}
  figure.fig .figbox{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
  figure.fig .figbox svg{display:block;width:296px;height:auto}
+ figure.fig figcaption p{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:8px 0 0}
  svg .s-t{font-size:14px;fill:var(--ink);font-weight:700}
  svg .s-m{font-size:14px;fill:var(--muted)}
  svg .s-b{font-size:18px;fill:var(--ink);font-weight:700}
- .keybox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px 18px;margin:18px 0}
- .keybox>p{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.9}
- .keybox ul{margin:0;padding-left:20px}
- .keybox li{font-size:14.5px;line-height:1.9}
- .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
- .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
- .bars .row:last-child{margin-bottom:0}
- .bars .lbl{font-size:14.5px;font-weight:700;line-height:1.9;flex:1 1 auto}
- .bars .val{font-size:14px;line-height:1.9;color:var(--muted)}
- .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
- .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
- .scroll{overflow-x:auto}
- table.t{width:100%;border-collapse:collapse;margin:0;font-size:14px;line-height:1.9}
- table.t th,table.t td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
- table.t th{background:var(--surface);font-weight:700;color:var(--muted)}
- .note{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 14px}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
@@ -70,7 +82,7 @@
 </div></div>
 <main>
 <article>
-  <p class="pr-line" style="font-size:14px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:14px"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
+  <p class="pr-line"><b>PR</b>　本ページはプロモーションが含まれています（記事内から講座・教材の紹介ページへ移動できます）。</p>
   <p>宅建（宅地建物取引士）は、法律系の国家資格のなかでは独学でも十分に合格を狙える試験です。とはいえ、やみくもに進めると時間を浪費しがち。この記事では、初めて宅建に挑戦する人向けに「何から・どの順番で・どう進めるか」を整理します。</p>
 
   <div class="keybox">
@@ -96,7 +108,7 @@
 
   <h2 id="zentai">まず試験の全体像を押さえる</h2>
   <p>宅建試験は毎年1回、例年10月の第3日曜に実施されます。問題は<strong>50問すべて4択のマークシート</strong>。合格点（合否判定基準）は<strong>事前に公表された固定の基準がなく</strong>、年度ごとに設定されます。実施機関が公表している過去10年の実績は<strong>50問中33〜38点</strong>、合格率は<strong>15.4〜18.7%</strong>です（<a href="/kaitou-sokuhou/">年度別の実績はこちら</a>）。正しく対策すれば独学でも到達できる水準です。</p>
-  <p style="font-size:14px;color:var(--muted);margin:-4px 0 12px">出典：一般財団法人不動産適正取引推進機構「<a href="https://www.retio.or.jp/wp-content/uploads/2025/12/10years_result2025.pdf" target="_blank" rel="noopener">試験実施概況（令和7年度以前10年間）</a>」（PDF）・「<a href="https://www.retio.or.jp/exam/exam_detail/" target="_blank" rel="noopener">宅建試験の概要</a>」（2026年9月2日確認）。</p>
+  <p class="src" style="margin:-4px 0 16px">出典：一般財団法人不動産適正取引推進機構「<a href="https://www.retio.or.jp/wp-content/uploads/2025/12/10years_result2025.pdf" target="_blank" rel="noopener">試験実施概況（令和7年度以前10年間）</a>」（PDF）・「<a href="https://www.retio.or.jp/exam/exam_detail/" target="_blank" rel="noopener">宅建試験の概要</a>」（2026年9月2日確認）。</p>
   <p>出題は大きく4分野に分かれます。</p>
   <ul>
     <li><strong>宅建業法（20問）</strong>…最重要。得点源にしやすく、満点も狙える</li>
