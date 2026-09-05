@@ -1039,5 +1039,55 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
  window.__CD.refreshPlan=function(){if(H.phase==='intro'){refreshPlan();buildRun();}};
 })();
 </script>
+<script>
+/* ===== 画面遷移の着地補正（2026-09-05・UX通し評価で実測した事故の是正） =====
+   このツールは 12問クイック／50問本番の2モードがあり、状態が切り替わるたびに
+   「消える要素」と「出る要素」で本文の高さが数千px変わる。ところが遷移時のスクロールが
+   一切なかったため、押した本人の画面外に結果や次の問題が描画される分岐があった。
+
+   実測（375×812・本番URL）：
+   ・クイックの「もう一度」→ 問題カードが画面の 917px 上（320pxでは 1,371px 上）
+   ・本番モードの「もう一度」→ 問題カードが 3,512px 上。**120分の時計は動き出しているのに
+     利用者は記事本文を見ており、模試が始まったことに気づけない**
+   ・回答直後の判定・解説・「次の問題へ」が、ページ先頭のまま押すと 155px 下（画面外）
+
+   方針：**すでに見えているときは何もしない**（＝正常時の挙動は一切変えない）。
+   既存のハンドラは書き換えず、同じボタンにリスナーを「追加」するだけなので、
+   採点ロジック・出題順・タイマー・id・class・見出し順には触れていない。
+   ⚠ スクロールは behavior 既定（瞬間移動）。アニメは環境によって進まないことがあるため使わない。 */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  function vh(){return window.innerHeight||document.documentElement.clientHeight;}
+  /* 要素の上端を画面内に置く。上端が画面の上55%以内に既にあるなら何もしない */
+  function ensureTop(el){
+    if(!el||el.hidden)return;
+    var r=el.getBoundingClientRect(),H=vh();
+    if(r.top>=0&&r.top<=H*0.55)return;
+    window.scrollTo(0,Math.max(0,Math.round(window.scrollY+r.top-12)));
+  }
+  /* 要素の下端まで画面に入れる（判定＋解説＋「次の問題へ」を一緒に見せる） */
+  function ensureBottom(el){
+    if(!el||el.hidden)return;
+    var r=el.getBoundingClientRect(),H=vh();
+    if(r.bottom<=H&&r.top>=0)return;
+    if(r.height>=H){ensureTop(el);return;}
+    window.scrollTo(0,Math.max(0,Math.round(window.scrollY+r.bottom-H+16)));
+  }
+  function on(id,fn){var e=$(id);if(e)e.addEventListener('click',fn);}
+
+  /* --- クイック12問 --- */
+  on('bO',function(){ensureBottom($('tfb'));});
+  on('bX',function(){ensureBottom($('tfb'));});
+  on('bNext',function(){var r=$('tres');if(r&&!r.hidden)ensureTop(r);});
+  on('bAgain',function(){ensureTop($('tr'));});          /* やり直し＝いちばん飛ばされていた分岐 */
+
+  /* --- 本番モード50問 --- */
+  on('hStart',function(){ensureTop($('htr'));});
+  on('hbAgain',function(){ensureTop($('htr'));});        /* もう一度＝時計が動き出す分岐 */
+  on('hbO',function(){var r=$('hres');if(r&&!r.hidden)ensureTop(r);});
+  on('hbX',function(){var r=$('hres');if(r&&!r.hidden)ensureTop(r);});
+  on('hbResume',function(){ensureTop($('htr'));});
+})();
+</script>
 </body>
 </html>
