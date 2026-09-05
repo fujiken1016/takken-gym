@@ -603,7 +603,9 @@
   var scored=false;
   // 「表示中の結果が、いまの入力より古い」ことを、マークシートを触っている間ずっと見えている
   // sticky の採点ボタン自身に出す。末尾のメッセージだけでは届かない（2026-09-05 実測）
-  function setStale(on){ btnScore.textContent = on ? "採点し直す" : "採点する"; }
+  // ⚠️ ラベルは「採点する」より長くしない。320px幅では採点バーの文字が折り返して
+  //    バーの高さが 80px→133px に膨らむ（2026-09-05 実測）。「再採点」は1文字短い
+  function setStale(on){ btnScore.textContent = on ? "再採点" : "採点する"; }
   grid.addEventListener("click",function(ev){
     var b=ev.target;
     if(!b || !b.getAttribute || !b.getAttribute("data-q"))return;
@@ -618,7 +620,7 @@
       var st=document.getElementById("stStale");
       if(!st){
         st=document.createElement("div"); st.id="stStale"; st.className="stale";
-        st.textContent="入力を変更しました。下に表示されている結果は変更前のものです。もう一度「採点し直す」を押すと更新されます。";
+        st.textContent="入力を変更しました。下に表示されている結果は変更前のものです。もう一度「再採点」を押すと更新されます。";
         // 結果ブロックの「先頭」に置く。末尾だと 375px で約3,900px下＝約5画面ぶん下になり、
         // マークを直している人の画面には絶対に入らない（2026-09-05 実測）
         elResult.insertBefore(st, elResult.firstChild);
