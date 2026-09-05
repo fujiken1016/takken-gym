@@ -23,139 +23,144 @@
 <script src="/oc.js" defer></script>
 <script src="/jikan.js"></script>
 <style>
- article p,article li{font-size:15px;line-height:1.95}
- .bc{font-size:12px;color:var(--muted);margin:0 0 14px}
+ /* タイポグラフィは memory/design_guidelines.md §3-2 のトークン（rem／本文17px・行間1.85以上）に合わせている。
+    legal.css は全48面に波及するので触らず、このページ内だけで上書きする（2026-09-04 の裁定）。
+    ヘッダー(.top)・フッター(.foot)は「全面に出る部品」なので1面だけ直さない（2026-09-05 の裁定）。 */
+ article p,article li{font-size:1.0625rem;line-height:1.95}
+ h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:40px 0 12px}
+ .bc{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:0 0 14px}
  .bc a{color:var(--muted);text-decoration:none}
  .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:22px 0}
- .cta-box a{font-weight:800;color:var(--brand2);text-decoration:none;display:block;padding:9px 0;min-height:44px;line-height:1.7}
+ .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none;display:block;padding:12px 0;min-height:48px;line-height:1.85}
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:11px 0;font-size:14px;min-height:44px;line-height:1.7}
+ .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:12px 0;font-size:1.0625rem;min-height:48px;line-height:1.85}
  .tr{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin:16px 0}
- .tbar{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);font-weight:800}
- .tbar b{color:var(--brand2);font-size:15px}
- .tcat{display:inline-block;font-size:12px;font-weight:900;color:var(--brand2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-top:12px}
+ .tbar{display:flex;justify-content:space-between;align-items:center;font-size:0.9375rem;line-height:1.3;color:var(--muted);font-weight:700}
+ .tbar b{color:var(--brand2);font-size:1.0625rem}
+ .tcat{display:inline-block;font-size:0.9375rem;line-height:1.3;font-weight:700;color:var(--brand2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin-top:12px}
  .tmeter{height:6px;background:var(--line);border-radius:999px;margin:10px 0 4px;overflow:hidden}
  .tmeter i{display:block;height:100%;background:var(--brand);width:0;transition:width .25s}
- .tq{font-size:16.5px;font-weight:700;line-height:1.9;margin:14px 0 18px;min-height:5.2em}
+ .tq{font-size:1.1875rem;font-weight:700;line-height:1.9;margin:14px 0 18px;min-height:5.2em}
  .tbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
  .tbtns button{min-height:60px;border:2px solid var(--line);background:var(--bg);color:var(--ink);
-  border-radius:14px;font-size:17px;font-weight:900;cursor:pointer;font-family:inherit;padding:10px 6px;
+  border-radius:12px;font-size:1.0625rem;font-weight:700;line-height:1.3;cursor:pointer;font-family:inherit;padding:10px 6px;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
  .tbtns button:disabled{cursor:default;opacity:.55}
  .tbtns button.right{border-color:#2f9e6a;background:rgba(47,158,106,.14);color:var(--ink);opacity:1}
  .tbtns button.bad{border-color:#d33b53;background:rgba(211,59,83,.13);color:var(--ink);opacity:1}
  .tfb{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
- .tjudge{font-size:16px;font-weight:900;margin-bottom:8px}
+ .tjudge{font-size:1.1875rem;font-weight:700;line-height:1.35;margin-bottom:8px}
  .tjudge.ok{color:#2f9e6a}
  .tjudge.ng{color:#d33b53}
- .texp{font-size:14.5px;line-height:1.95;color:var(--ink);margin:0}
- .tnext{width:100%;min-height:54px;margin-top:16px;border:0;border-radius:14px;background:var(--brand);
-  color:#fff;font-size:15.5px;font-weight:900;cursor:pointer;font-family:inherit;
+ .texp{font-size:1.0625rem;line-height:1.95;color:var(--ink);margin:0}
+ .tnext{width:100%;min-height:56px;margin-top:16px;border:0;border-radius:12px;background:var(--brand);
+  color:#fff;font-size:1.0625rem;font-weight:700;line-height:1.3;cursor:pointer;font-family:inherit;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
- .tsub{width:100%;min-height:50px;margin-top:10px;border:2px solid var(--line);border-radius:14px;
-  background:var(--bg);color:var(--ink);font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit;
+ .tsub{width:100%;min-height:50px;margin-top:10px;border:2px solid var(--line);border-radius:12px;
+  background:var(--bg);color:var(--ink);font-size:1.0625rem;font-weight:700;line-height:1.3;cursor:pointer;font-family:inherit;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
  /* result */
  .rhead{text-align:center;padding:4px 0 2px}
- .rscore{font-size:44px;font-weight:900;color:var(--brand2);line-height:1.2}
- .rscore small{font-size:18px;color:var(--muted);font-weight:800}
- .rrank{display:inline-block;margin:10px 0 4px;padding:8px 18px;border-radius:999px;font-size:16px;font-weight:900;border:2px solid}
+ .rscore{font-size:2.875rem;font-weight:700;color:var(--brand2);line-height:1.15;font-variant-numeric:tabular-nums}
+ .rscore small{font-size:1.1875rem;color:var(--muted);font-weight:700}
+ .rrank{display:inline-block;margin:10px 0 4px;padding:8px 18px;border-radius:999px;font-size:1.0625rem;line-height:1.3;font-weight:700;border:2px solid}
  .rrank.rS{color:#2f9e6a;border-color:#2f9e6a;background:rgba(47,158,106,.12)}
  .rrank.rA{color:#1d7fd6;border-color:#1d7fd6;background:rgba(29,127,214,.10)}
  .rrank.rB{color:#c77f0a;border-color:#c77f0a;background:rgba(199,127,10,.10)}
  .rrank.rC{color:#d33b53;border-color:#d33b53;background:rgba(211,59,83,.10)}
- .rline{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.9}
+ .rline{font-size:0.9375rem;color:var(--muted);margin:8px 0 0;line-height:1.9}
  .rtable{width:100%;border-collapse:collapse;margin:14px 0 4px}
- .rtable th,.rtable td{font-size:13.5px;padding:10px 6px;border-bottom:1px solid var(--line);text-align:left;line-height:1.6}
- .rtable th{color:var(--muted);font-size:12px;font-weight:800}
- .rtable td.num{text-align:right;font-weight:900;white-space:nowrap}
+ .rtable th,.rtable td{font-size:0.9375rem;padding:10px 5px;border-bottom:1px solid var(--line);text-align:left;line-height:1.85}
+ .rtable th{color:var(--muted);font-weight:700}
+ .rtable td.num{text-align:right;font-weight:700;white-space:nowrap}
  .rtable td.g{white-space:nowrap;letter-spacing:1px}
- .rtable a{color:var(--brand2);font-weight:800;text-decoration:none;display:inline-flex;align-items:center;min-height:40px;padding:2px 0}
- .weak{background:var(--bg);border:1px solid var(--line);border-left:4px solid #d33b53;border-radius:12px;padding:12px 14px;margin:14px 0;font-size:14px;line-height:1.9}
- .weak a{color:var(--brand2);font-weight:900;text-decoration:none}
+ .rtable a{color:var(--brand2);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;padding:2px 0}
+ .weak{background:var(--bg);border:1px solid var(--line);border-left:4px solid #d33b53;border-radius:12px;padding:12px 14px;margin:14px 0;font-size:1.0625rem;line-height:1.9}
+ .weak a{color:var(--brand2);font-weight:700;text-decoration:none}
  .share{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:14px;margin:16px 0 0}
- .share pre{margin:0 0 10px;font-family:inherit;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-all}
- .share .note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+ .share pre{margin:0 0 10px;font-family:inherit;font-size:1.0625rem;line-height:1.85;white-space:pre-wrap;word-break:break-all}
+ .share .note{font-size:0.9375rem;color:var(--muted);margin:8px 0 0;line-height:1.85}
  /* mode tabs */
  .mtabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0}
  .mtabs button{min-height:56px;border:2px solid var(--line);background:var(--surface);color:var(--ink);
-  border-radius:14px;font-size:14.5px;font-weight:900;cursor:pointer;font-family:inherit;padding:8px 6px;line-height:1.4;
+  border-radius:12px;font-size:1.0625rem;font-weight:700;cursor:pointer;font-family:inherit;padding:10px 6px;line-height:1.3;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
- .mtabs button small{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-top:3px}
- .mtabs button.on{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand2)}
+ .mtabs button small{display:block;font-size:0.9375rem;font-weight:700;line-height:1.3;color:var(--muted);margin-top:5px}
+ .mtabs button.on{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand)}
+ .mtabs button.on small{color:var(--brand)}
  /* honban */
- .hclock{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:800}
- .hclock b{font-size:19px;color:var(--brand2);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+ .hclock{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:0.9375rem;line-height:1.3;color:var(--muted);font-weight:700}
+ .hclock b{font-size:1.1875rem;color:var(--brand2);font-variant-numeric:tabular-nums;letter-spacing:.5px}
  .hclock b.warn{color:#d33b53}
- .hpausebtn{min-height:44px;min-width:88px;border:2px solid var(--line);border-radius:12px;background:var(--bg);
-  color:var(--ink);font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;padding:6px 10px;
+ .hpausebtn{min-height:48px;min-width:96px;border:2px solid var(--line);border-radius:12px;background:var(--bg);
+  color:var(--ink);font-size:0.9375rem;font-weight:700;line-height:1.3;cursor:pointer;font-family:inherit;padding:6px 10px;
   touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
- .hpace{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.7;font-weight:700}
- .hpace .ahead{color:#2f9e6a;font-weight:900}
- .hpace .behind{color:#d33b53;font-weight:900}
- .hnotice{background:rgba(211,59,83,.10);border:1px solid #d33b53;border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:14px;font-weight:800;color:#d33b53;line-height:1.8}
+ .hpace{font-size:0.9375rem;color:var(--muted);margin:8px 0 0;line-height:1.85;font-weight:700}
+ .hpace .ahead{color:#2f9e6a;font-weight:700}
+ .hpace .behind{color:#d33b53;font-weight:700}
+ .hnotice{background:rgba(211,59,83,.10);border:1px solid #d33b53;border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:1.0625rem;font-weight:700;color:#d33b53;line-height:1.85}
  .hintro li{margin:6px 0}
  .rev{border-top:1px solid var(--line);margin-top:16px;padding-top:6px}
- .rev h3{font-size:15px;margin:10px 0 4px}
- .rev-item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14px;line-height:1.9}
+ .rev h3{font-size:1.3125rem;line-height:1.35;margin:14px 0 6px}
+ .rev-item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;font-size:1.0625rem;line-height:1.9}
  .rev-item .rq{font-weight:700;margin:0 0 6px}
  .rev-item .ra{margin:0;color:var(--ink)}
- .rev-item .rn{display:inline-block;font-size:11.5px;font-weight:900;color:var(--brand2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin:0 6px 6px 0}
+ .rev-item .rn{display:inline-block;font-size:0.9375rem;line-height:1.3;font-weight:700;color:var(--brand2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin:0 6px 6px 0}
  .rev-item .rna{color:#d33b53;border-color:#d33b53;background:rgba(211,59,83,.08)}
- .rtime{font-size:13px;color:var(--muted);text-align:center;margin:6px 0 0;font-weight:700}
+ .rtime{font-size:0.9375rem;color:var(--muted);text-align:center;margin:6px 0 0;font-weight:700;line-height:1.85}
  .paceT{width:100%;border-collapse:collapse;margin:12px 0}
- .paceT th,.paceT td{font-size:13.5px;padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;line-height:1.6}
- .paceT th{color:var(--muted);font-size:12px;font-weight:800}
- .paceT td.num{text-align:right;white-space:nowrap;font-weight:800}
+ .paceT th,.paceT td{font-size:0.9375rem;padding:9px 5px;border-bottom:1px solid var(--line);text-align:left;line-height:1.85}
+ .paceT th{color:var(--muted);font-weight:700}
+ .paceT td.num{text-align:right;white-space:nowrap;font-weight:700}
  /* 時間割の接続（サイクル22・2026-09-02）＝/jikan-haibun/ で作った時間割を模試に持ち込む */
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
  .planbox{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:14px;margin:0 0 14px}
- .planbox .ph{display:block;font-size:14.5px;line-height:1.7;margin:0 0 4px}
- .planbox .ps{font-size:12.5px;color:var(--muted);line-height:1.85;margin:4px 0 0}
+ .planbox .ph{display:block;font-size:1.0625rem;line-height:1.85;margin:0 0 4px}
+ .planbox .ps{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:4px 0 0}
  .planbox .ps b{color:var(--brand2)}
  .planopts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0 0}
  .popt{min-height:62px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);
-  font-family:inherit;font-size:13.5px;font-weight:900;line-height:1.5;cursor:pointer;padding:9px 8px;text-align:left;
+  font-family:inherit;font-size:1.0625rem;font-weight:700;line-height:1.35;cursor:pointer;padding:10px 8px;text-align:left;
   touch-action:manipulation;-webkit-tap-highlight-color:transparent}
- .popt small{display:block;font-size:11px;font-weight:700;color:var(--muted);line-height:1.6;margin-top:3px}
- .popt[aria-pressed="true"]{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand2)}
- .popt[aria-pressed="true"] small{color:var(--brand2);opacity:.85}
- .planmiss{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:13px 14px;margin:0 0 14px;font-size:13px;line-height:1.9;color:var(--muted)}
- .planmiss a{display:inline-block;color:var(--brand2);font-weight:900;text-decoration:none;min-height:44px;line-height:44px}
- .hblk{font-size:12.5px;margin:6px 0 0;line-height:1.75;font-weight:700;color:var(--ink);
+ .popt small{display:block;font-size:0.9375rem;font-weight:700;color:var(--muted);line-height:1.35;margin-top:4px}
+ .popt[aria-pressed="true"]{border-color:var(--brand);background:rgba(106,31,199,.10);color:var(--brand)}
+ .popt[aria-pressed="true"] small{color:var(--brand);opacity:.9}
+ .planmiss{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:13px 14px;margin:0 0 14px;font-size:0.9375rem;line-height:1.9;color:var(--muted)}
+ .planmiss a{display:inline-block;color:var(--brand2);font-weight:700;text-decoration:none;min-height:48px;line-height:48px}
+ .hblk{font-size:0.9375rem;margin:6px 0 0;line-height:1.85;font-weight:700;color:var(--ink);
   border-top:1px dashed var(--line);padding-top:7px}
- .hblk .bk{color:var(--brand2);font-weight:900}
- .hblk .over{color:#d33b53;font-weight:900}
- .hblk .fine{color:#2f9e6a;font-weight:900}
- .vsT td.d0{text-align:right;white-space:nowrap;font-weight:900;color:var(--muted)}
- .vsT td.dplus{text-align:right;white-space:nowrap;font-weight:900;color:#d33b53}
- .vsT td.dminus{text-align:right;white-space:nowrap;font-weight:900;color:#2f9e6a}
- .vsHead{font-size:15px;margin:20px 0 2px}
- .vsLead{font-size:13px;color:var(--muted);line-height:1.9;margin:2px 0 0}
+ .hblk .bk{color:var(--brand2);font-weight:700}
+ .hblk .over{color:#d33b53;font-weight:700}
+ .hblk .fine{color:#2f9e6a;font-weight:700}
+ .vsT td.d0{text-align:right;white-space:nowrap;font-weight:700;color:var(--muted)}
+ .vsT td.dplus{text-align:right;white-space:nowrap;font-weight:700;color:#d33b53}
+ .vsT td.dminus{text-align:right;white-space:nowrap;font-weight:700;color:#2f9e6a}
+ .vsHead{font-size:1.3125rem;line-height:1.35;margin:20px 0 4px}
+ .vsLead{font-size:0.9375rem;color:var(--muted);line-height:1.9;margin:2px 0 0}
  .vsLead b{color:var(--ink)}
  /* 次の一手（弱点→論点別ページの名指し推薦。サイクル17・2026-08-31） */
- .weak b.nxh{display:block;font-size:14.5px;margin:0 0 4px}
- .weak .nxs{font-size:12.5px;color:var(--muted);line-height:1.85;margin:4px 0 2px}
- .weak a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:900;font-size:14.5px;line-height:1.6;border-top:1px solid var(--line);padding:12px 0 11px;min-height:44px;margin-top:8px}
- .weak a.nxa span{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.8}
- .weak .nxp{font-size:12px;color:var(--muted);line-height:1.8;margin:10px 0 0;border-top:1px dashed var(--line);padding-top:9px}
- .weak .nxp a{color:var(--brand2);font-weight:800}
+ .weak b.nxh{display:block;font-size:1.0625rem;line-height:1.85;margin:0 0 4px}
+ .weak .nxs{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:4px 0 2px}
+ .weak a.nxa{display:block;text-decoration:none;color:var(--brand2);font-weight:700;font-size:1.0625rem;line-height:1.85;border-top:1px solid var(--line);padding:12px 0 11px;min-height:48px;margin-top:8px}
+ .weak a.nxa span{display:block;font-size:0.9375rem;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.85}
+ .weak .nxp{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:10px 0 0;border-top:1px dashed var(--line);padding-top:9px}
+ .weak .nxp a{color:var(--brand2);font-weight:700}
 
  /* ===== 印刷／PDF保存（サイクル23・2026-09-02） =====
     新規URLは作らず、この模試ページに「紙に落とす」出口を足す。
     画面用の入口＝#psec ／ 実際に紙へ出す本体＝#printSheet（body直下に動的生成・画面では非表示） */
- .psec{border:2px solid var(--brand2);border-radius:14px;padding:16px 15px 15px;margin:26px 0 6px;background:#fbf8ff}
- .psec h2{margin:0 0 8px;font-size:17px;line-height:1.6;border:0;padding:0}
- .psec p{font-size:14px;line-height:1.95;margin:0 0 10px}
+ .psec{border:2px solid var(--brand2);border-radius:16px;padding:16px 15px 15px;margin:26px 0 6px;background:#fbf8ff}
+ .psec h2{margin:0 0 8px;font-size:1.625rem;line-height:1.35;border:0;padding:0}
+ .psec p{font-size:1.0625rem;line-height:1.95;margin:0 0 10px}
  .psec .pbtn{display:block;width:100%;min-height:56px;border:0;border-radius:12px;background:var(--brand2);color:#fff;
-   font-size:16px;font-weight:900;line-height:1.5;padding:14px 12px;cursor:pointer;margin:12px 0 4px}
+   font-size:1.0625rem;font-weight:700;line-height:1.3;padding:14px 12px;cursor:pointer;margin:12px 0 4px}
  .psec .pbtn:active{opacity:.85}
- .psec .pmini{font-size:12.5px;color:var(--muted);line-height:1.85;margin:8px 0 0}
+ .psec .pmini{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:8px 0 0}
  .psec .phow{margin:12px 0 0;border-top:1px dashed var(--line);padding-top:11px}
- .psec .phow b{font-size:13.5px}
- .psec .phow ul{margin:6px 0 0;padding-left:19px;font-size:13px;line-height:1.95;color:var(--muted)}
+ .psec .phow b{font-size:1.0625rem;line-height:1.85}
+ .psec .phow ul{margin:6px 0 0;padding-left:19px;font-size:0.9375rem;line-height:1.95;color:var(--muted)}
  .hprint{display:block;width:100%;min-height:52px;border:2px solid var(--brand2);border-radius:12px;background:#fff;
-   color:var(--brand2);font-size:15px;font-weight:900;padding:13px 12px;cursor:pointer;margin:10px 0 0}
+   color:var(--brand2);font-size:1.0625rem;font-weight:700;line-height:1.3;padding:13px 12px;cursor:pointer;margin:10px 0 0}
  #printSheet{display:none}
 
  @media print{
@@ -165,26 +170,26 @@
   @page{size:A4 portrait;margin:14mm 12mm}
   html,body{background:#fff !important;color:#000 !important}
   #printSheet{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
-    font-size:10pt;line-height:1.62;color:#000}
-  #printSheet .ph1{font-size:15pt;font-weight:800;margin:0 0 4pt;letter-spacing:.02em}
-  #printSheet .pmeta{font-size:8.5pt;line-height:1.6;margin:0 0 5pt;color:#000}
-  #printSheet .pnote{font-size:8.5pt;line-height:1.6;margin:0 0 8pt;padding:4pt 6pt;border:1px solid #000}
-  #printSheet .ph2{font-size:11pt;font-weight:800;margin:9pt 0 4pt;padding:2pt 0 2pt 5pt;border-left:3pt solid #000;
-    break-after:avoid;page-break-after:avoid}
+    font-size:10pt;line-height:1.8;color:#000}
+  #printSheet .ph1{font-size:15pt;font-weight:700;margin:0 0 4pt;letter-spacing:.02em;line-height:1.3}
+  #printSheet .pmeta{font-size:8.5pt;line-height:1.8;margin:0 0 5pt;color:#000}
+  #printSheet .pnote{font-size:8.5pt;line-height:1.8;margin:0 0 8pt;padding:4pt 6pt;border:1px solid #000}
+  #printSheet .ph2{font-size:11pt;font-weight:700;margin:9pt 0 4pt;padding:2pt 0 2pt 5pt;border-left:3pt solid #000;
+    line-height:1.3;break-after:avoid;page-break-after:avoid}
   #printSheet .pq{display:flex;gap:5pt;align-items:flex-start;margin:0 0 4.5pt;
     break-inside:avoid;page-break-inside:avoid}
-  #printSheet .pn{flex:0 0 auto;font-weight:800;font-size:9.5pt;min-width:30pt}
+  #printSheet .pn{flex:0 0 auto;font-weight:700;font-size:9.5pt;min-width:30pt}
   #printSheet .pt{flex:1 1 auto}
   #printSheet .pc{flex:0 0 auto;font-size:9.5pt;letter-spacing:.06em;white-space:nowrap;padding-left:4pt}
   #printSheet .pbreak{break-before:page;page-break-before:always}
   #printSheet .pscore{margin:10pt 0 0;padding:6pt;border:1.5pt solid #000;font-size:9.5pt;line-height:1.9}
   #printSheet table.pa{width:100%;border-collapse:collapse;font-size:9pt;margin:5pt 0 0}
   #printSheet table.pa th,#printSheet table.pa td{border:.6pt solid #444;padding:3pt 4pt;vertical-align:top;text-align:left}
-  #printSheet table.pa th{background:#eee;font-weight:800}
-  #printSheet table.pa td.n{white-space:nowrap;font-weight:800;width:34pt}
-  #printSheet table.pa td.k{white-space:nowrap;text-align:center;width:26pt;font-weight:800}
+  #printSheet table.pa th{background:#eee;font-weight:700}
+  #printSheet table.pa td.n{white-space:nowrap;font-weight:700;width:34pt}
+  #printSheet table.pa td.k{white-space:nowrap;text-align:center;width:26pt;font-weight:700}
   #printSheet table.pa tr{break-inside:avoid;page-break-inside:avoid}
-  #printSheet .pfoot{margin:9pt 0 0;padding-top:5pt;border-top:.6pt solid #666;font-size:8pt;line-height:1.7;color:#222}
+  #printSheet .pfoot{margin:9pt 0 0;padding-top:5pt;border-top:.6pt solid #666;font-size:8pt;line-height:1.8;color:#222}
  }
 </style>
 <script type="application/ld+json">
@@ -225,7 +230,7 @@
 
   <div class="tr" id="tres" hidden>
     <div class="rhead">
-      <div style="font-size:13px;font-weight:800;color:var(--muted)">あなたの力試し結果（50点換算）</div>
+      <div style="font-size:0.9375rem;line-height:1.85;font-weight:700;color:var(--muted)">あなたの力試し結果（50点換算）</div>
       <div class="rscore"><span id="rPts">—</span><small> / 50点</small></div>
       <div class="rrank" id="rRank">—</div>
       <p class="rline">直近の本試験の合格ラインは33〜37点で推移。安全圏の目安は38点です。<br>（○×形式のため、あくまで知識の網羅度の目安です）</p>
@@ -236,7 +241,7 @@
     </table>
     <div class="weak" id="rWeak" hidden></div>
     <div class="share">
-      <b style="font-size:13px">結果をコピーして貼る（ネタバレなし）</b>
+      <b style="font-size:1.0625rem;line-height:1.85">結果をコピーして貼る（ネタバレなし）</b>
       <pre id="shareText"></pre>
       <button type="button" class="tsub" id="bCopy" style="margin-top:0">結果をコピーする</button>
       <p class="note">X・LINE・勉強仲間のグループにそのまま貼れます。</p>
@@ -248,7 +253,7 @@
   <div id="hsec" hidden>
     <!-- 本番モード：開始前 -->
     <div class="tr hintro" id="hIntro">
-      <b style="font-size:16px">本番モード（無料Web模試）</b>
+      <b style="font-size:1.1875rem;line-height:1.85">本番モード（無料Web模試）</b>
 
       <!-- /jikan-haibun/ で作った時間割を読み込む（サイクル22） -->
       <div class="planbox" id="hPlan" hidden>
@@ -272,21 +277,21 @@
         <a href="/jikan-haibun/">▸ 時間配分・解く順番シミュレータで時間割を作る（1分）</a>
       </p>
 
-      <ul style="margin:12px 0;padding-left:20px;font-size:14.5px;line-height:2">
+      <ul style="margin:12px 0;padding-left:20px;font-size:1.0625rem;line-height:2">
         <li id="hLiCount"><b>50問・制限時間120分</b>（本試験と同じ分量・時間）</li>
         <li id="hLiOrder">出題順も本試験どおり：<b>権利14問 → 法令8問 → 税・その他3問 → 業法20問 → 免除科目5問</b>（問46〜50は機構・景表法・統計・土地・建物の専用問題）</li>
         <li>本試験のつもりで解けるよう、<b>途中の正誤表示はありません</b>（終了後に全問の解き直しつき）</li>
         <li>画面上部に<b>時間配分のペース目安</b>を常時表示（貯金/ビハインドが分かる）</li>
         <li>○×形式のため実際の4択より正答しやすい点はご了承ください</li>
       </ul>
-      <p style="font-size:12.5px;color:var(--muted);margin:0 0 4px;line-height:1.8">途中で「一時停止」できます。ページを閉じると記録は消えます。</p>
+      <p style="font-size:0.9375rem;color:var(--muted);margin:0 0 4px;line-height:1.85">途中で「一時停止」できます。ページを閉じると記録は消えます。</p>
       <button type="button" class="tnext" id="hStart">模試を開始する（120分）</button>
     </div>
 
     <!-- 本番モード：出題 -->
     <div class="tr" id="htr" hidden>
       <div class="hclock">
-        <span><b id="hno" style="font-size:15px">1</b><span style="font-weight:800" id="hnoMax"> / 50問</span></span>
+        <span><b id="hno" style="font-size:1.1875rem">1</b><span style="font-weight:700" id="hnoMax"> / 50問</span></span>
         <span>残り <b id="hclock">2:00:00</b></span>
         <button type="button" class="hpausebtn" id="hbPause">一時停止</button>
       </div>
@@ -300,8 +305,8 @@
 
     <!-- 本番モード：一時停止中 -->
     <div class="tr" id="hPauseBox" hidden>
-      <b style="font-size:16px">一時停止中</b>
-      <p style="font-size:14px;color:var(--muted);margin:10px 0;line-height:1.9">タイマーは止まっています。残り時間：<b id="hPauseRemain" style="color:var(--brand2)">—</b></p>
+      <b style="font-size:1.1875rem;line-height:1.85">一時停止中</b>
+      <p style="font-size:1.0625rem;color:var(--muted);margin:10px 0;line-height:1.9">タイマーは止まっています。残り時間：<b id="hPauseRemain" style="color:var(--brand2)">—</b></p>
       <button type="button" class="tnext" id="hbResume">再開する</button>
       <button type="button" class="tsub" id="hbQuit">模試を中止する（記録は残りません）</button>
     </div>
@@ -310,7 +315,7 @@
     <div class="tr" id="hres" hidden>
       <div class="hnotice" id="hTimeup" hidden>⏰ 時間切れで終了しました。未回答の問題は不正解として集計しています。</div>
       <div class="rhead">
-        <div style="font-size:13px;font-weight:800;color:var(--muted)" id="hResHead">本番モードの結果（50問・1問1点）</div>
+        <div style="font-size:0.9375rem;line-height:1.85;font-weight:700;color:var(--muted)" id="hResHead">本番モードの結果（50問・1問1点）</div>
         <div class="rscore"><span id="hPts">—</span><small id="hPtsMax"> / 50点</small></div>
         <div class="rrank" id="hRank">—</div>
         <p class="rtime" id="hTime">—</p>
@@ -334,7 +339,7 @@
       </div>
       <div class="weak" id="hWeak" hidden></div>
       <div class="share">
-        <b style="font-size:13px">結果をコピーして貼る（ネタバレなし）</b>
+        <b style="font-size:1.0625rem;line-height:1.85">結果をコピーして貼る（ネタバレなし）</b>
         <pre id="hShareText"></pre>
         <button type="button" class="tsub" id="hbCopy" style="margin-top:0">結果をコピーする</button>
         <p class="note">X・LINE・勉強仲間のグループにそのまま貼れます。</p>
@@ -450,7 +455,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
        var t2=c2.topics[0]||c2.field;
        html+='<p class="nxs nxn" style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">'+
              '次に弱いのは「'+c2.name+'」（'+second.ok+'／'+second.total+'問・'+Math.round(second.rate*100)+'%）。時間が残ったら → '+
-             '<a href="'+t2.u+'" style="color:var(--brand2);font-weight:900;text-decoration:none">'+t2.t+'</a></p>';
+             '<a href="'+t2.u+'" style="color:var(--brand2);font-weight:700;text-decoration:none">'+t2.t+'</a></p>';
      }
    }
    if(c.note)html+='<p class="nxp">'+c.note+'</p>';
@@ -529,7 +534,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      var rate=okN/c.take;
      var grid=arr.map(function(h){return h?'🟩':'🟥';}).join('');
      gridLines.push(c.short+' '+grid);
-     rows+='<tr><td><a href="'+c.url+'">'+c.name+'</a><span style="color:var(--muted);font-size:12px">（'+c.honban+'）</span></td>'+
+     rows+='<tr><td><a href="'+c.url+'">'+c.name+'</a><span style="color:var(--muted);font-size:0.9375rem">（'+c.honban+'）</span></td>'+
            '<td class="num">'+okN+' / '+c.take+'</td><td class="g">'+grid+'</td></tr>';
      ranked.push({key:c.k,name:c.name,ok:okN,total:c.take,rate:rate});
    });
@@ -674,7 +679,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      var rows='';
      PLAN.rows.forEach(function(r){
        var s2=SECTS[SIDX[r.b]];
-       rows+='<tr><td>'+r.no+'</td><td>'+s2.name+'<span style="color:var(--muted);font-size:12px">（'+s2.range+'）</span></td>'+
+       rows+='<tr><td>'+r.no+'</td><td>'+s2.name+'<span style="color:var(--muted);font-size:0.9375rem">（'+s2.range+'）</span></td>'+
              '<td class="num">'+r.mins+'分</td></tr>';
      });
      rows+='<tr><td>'+(PLAN.rows.length+1)+'</td><td>マーク確認・見直し</td><td class="num">'+PLAN.rev+'分</td></tr>';
@@ -683,7 +688,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
        ? '5問免除の設定なので、この模試も<b>45問・110分</b>で行います（問46〜50は出題しません）。'
        : 'この模試は<b>50問・120分</b>で行います。')+
        '出題の順番は上のとおりですが、<b>問番号は本試験のまま</b>です（解答用紙のズレを練習できます）。 '+
-       '<a href="/jikan-haibun/" style="color:var(--brand2);font-weight:800">時間割を作り直す</a>';
+       '<a href="/jikan-haibun/" style="color:var(--brand2);font-weight:700">時間割を作り直す</a>';
      hPlanOn.setAttribute('aria-pressed',String(USE));
      hPlanOff.setAttribute('aria-pressed',String(!USE));
    }
@@ -816,13 +821,13 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      if(d!=null&&(worst===null||d>worst.d))worst={name:b.name,d:d};
      var cls=(d==null)?'d0':(d>=0.5?'dplus':(d<=-0.5?'dminus':'d0'));
      var dtxt=(d==null)?'—':(d>=0.5?'＋'+m1(d)+'分':(d<=-0.5?'−'+m1(-d)+'分':'ほぼ予定どおり'));
-     rows+='<tr><td>'+b.name+'<span style="color:var(--muted);font-size:12px">（'+b.range+'）</span></td>'+
+     rows+='<tr><td>'+b.name+'<span style="color:var(--muted);font-size:0.9375rem">（'+b.range+'）</span></td>'+
            '<td class="num">'+b.mins+'分</td>'+
            '<td class="num">'+(actual==null?'—':m1(actual)+'分')+'</td>'+
            '<td class="'+cls+'">'+dtxt+'</td></tr>';
    });
    var revAct=Math.max(0,(RUN.limitMs-used)/60000),revD=revAct-RUN.revMins;
-   rows+='<tr><td><b>マーク確認・見直し</b><span style="color:var(--muted);font-size:12px">（残った時間）</span></td>'+
+   rows+='<tr><td><b>マーク確認・見直し</b><span style="color:var(--muted);font-size:0.9375rem">（残った時間）</span></td>'+
          '<td class="num">'+RUN.revMins+'分</td><td class="num">'+m1(revAct)+'分</td>'+
          '<td class="'+(revD<=-0.5?'dplus':(revD>=0.5?'dminus':'d0'))+'">'+
          (revD<=-0.5?'−'+m1(-revD)+'分':(revD>=0.5?'＋'+m1(revD)+'分':'ほぼ予定どおり'))+'</td></tr>';
@@ -836,7 +841,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      lead='どのブロックも予定の中に収まりました。この配分は本番で使えます。';
    }
    if(unreached)lead+='（到達しなかったブロックは「—」）';
-   if(!RUN.plan)lead+=' 自分の順番と持ち時間で通し演習するなら → <a href="/jikan-haibun/" style="color:var(--brand2);font-weight:800">時間配分・解く順番シミュレータ</a>';
+   if(!RUN.plan)lead+=' 自分の順番と持ち時間で通し演習するなら → <a href="/jikan-haibun/" style="color:var(--brand2);font-weight:700">時間配分・解く順番シミュレータ</a>';
    hVsLead.innerHTML=lead;
    hVs.hidden=false;
  }
@@ -866,7 +871,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
      var r=agg[a.k];
      if(!r.cnt)return;                       /* 5問免除の回は免除科目の行を出さない */
      var rate=r.ok/r.cnt;
-     rows+='<tr><td><a href="'+a.url+'">'+a.name+'</a><span style="color:var(--muted);font-size:12px">（'+a.honban+'）</span></td>'+
+     rows+='<tr><td><a href="'+a.url+'">'+a.name+'</a><span style="color:var(--muted);font-size:0.9375rem">（'+a.honban+'）</span></td>'+
            '<td class="num">'+r.ok+' / '+r.cnt+'</td><td class="num">'+Math.round(rate*100)+'%</td></tr>';
      ranked.push({key:a.k,name:a.name,ok:r.ok,total:r.cnt,rate:rate});
    });
@@ -895,7 +900,7 @@ window.__NXT={"gyoho": {"name": "宅建業法", "field": {"u": "/ichimon/gyoho",
             '<p class="ra">正解は「'+(r.a?'○ 正しい':'× 誤り')+'」。'+esc(r.e)+'</p></div>';
      });
    }else{
-     rev='<h3>解き直し</h3><p style="font-size:14px">不正解・未回答はありません。全問正解です！</p>';
+     rev='<h3>解き直し</h3><p style="font-size:1.0625rem;line-height:1.95">不正解・未回答はありません。全問正解です！</p>';
    }
    hRev.innerHTML=rev;
    showOnly(hres);
