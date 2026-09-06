@@ -20,42 +20,53 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- article h2{margin-top:34px}
- article h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
- article p,article li{font-size:15px;line-height:1.95}
+ /* タイポグラフィの底上げ（2026-09-07）。値は memory/design_guidelines.md §3-2 の実体値。
+    共通CSS legal.css は AdSense 決着まで保留中（memory/deferred_until_adsense.md）なので触らず、
+    takken-hokaisei-2026 と同じ「ページ内だけの上書き」で型を揃える。 */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ article h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ article h2:first-of-type{margin-top:24px}
+ article h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ article p,article li{font-size:1.0625rem;line-height:1.85}
+ article b,article strong{font-weight:600}
  .lead{margin:16px 0 4px}
  .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:16px 0}
- .toc a{display:block;font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;padding:4px 0}
+ .toc a{display:flex;align-items:center;min-height:48px;font-size:1rem;font-weight:600;color:var(--brand2);text-decoration:none;line-height:1.85}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
- table.t{width:100%;border-collapse:collapse;min-width:430px;font-size:14px}
+ table.t{width:100%;border-collapse:collapse;min-width:430px;font-size:1rem}
  table.t th,table.t td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
- table.t th{background:rgba(139,63,240,.08);font-weight:700;color:var(--muted);font-size:14px;white-space:nowrap}
+ table.t th{background:rgba(139,63,240,.08);font-weight:600;color:var(--muted);font-size:1rem;white-space:nowrap}
  table.t tbody tr:last-child td{border-bottom:none}
  .num{font-variant-numeric:tabular-nums}
- .hl{color:var(--brand2);font-weight:700}
- .scroll-hint{font-size:14px;color:var(--muted);margin:-4px 0 10px}
- .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0}
- .cta-box a{font-weight:700;color:var(--brand2);text-decoration:none;padding-block:4px}
+ .hl{color:var(--brand2);font-weight:600}
+ .scroll-hint{font-size:0.9375rem;color:var(--muted);margin:-4px 0 10px;line-height:1.85}
+ .cta-box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:20px 0;font-size:1.0625rem;line-height:1.85}
+ .cta-box a{font-weight:600;color:var(--brand2);text-decoration:none;padding-block:4px}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #c0392b;border-radius:12px;padding:14px 18px;margin:18px 0}
  .warn b{color:#c0392b}
- .src{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.8}
+ .src{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
  .src a{color:var(--muted)}
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
- .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;font-size:14px}
- .updated{font-size:14px;color:var(--muted);margin-top:10px}
+ .rel a{display:flex;align-items:center;min-height:48px;font-weight:600;color:var(--brand2);text-decoration:none;font-size:1.0625rem;line-height:1.85}
+ .updated{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
  figure.fig{margin:20px 0}
- figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
+ figure.fig figcaption p{font-size:0.9375rem;line-height:1.85;color:var(--muted);margin:8px 0 0}
  .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
  .bars .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin:0 0 12px}
  .bars .row:last-child{margin-bottom:0}
- .bars .lbl{font-size:14.5px;font-weight:700;line-height:1.9;flex:1 1 auto;min-width:0}
- .bars .val{font-size:14px;line-height:1.9;color:var(--muted);flex:0 0 auto}
+ .bars .lbl{font-size:1rem;font-weight:600;line-height:1.85;flex:1 1 auto;min-width:0}
+ .bars .val{font-size:0.9375rem;line-height:1.85;color:var(--muted);flex:0 0 auto}
  .bars .track{flex:0 0 100%;height:14px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:2px}
  .bars .fill{display:block;height:100%;background:var(--brand);border-radius:8px}
  .flow{margin:0;padding:0;list-style:none;counter-reset:st}
- .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 46px;margin:0 0 8px;font-size:14.5px;line-height:1.9}
+ .flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 14px 12px 46px;margin:0 0 8px;font-size:1.0625rem;line-height:1.85}
  .flow li:last-child{margin-bottom:0}
- .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:13px;width:24px;height:24px;border-radius:9999px;background:var(--brand);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+ .flow li::before{counter-increment:st;content:counter(st);position:absolute;left:12px;top:13px;width:24px;height:24px;border-radius:9999px;background:var(--brand);color:#fff;font-size:0.9375rem;font-weight:700;display:flex;align-items:center;justify-content:center}
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>

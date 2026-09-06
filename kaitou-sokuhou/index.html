@@ -20,39 +20,55 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G7K99MCR7');</script>
 <script src="/oc.js" defer></script>
 <style>
- .pr-note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 13px;font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:14px}
+ /* タイポグラフィの底上げ（2026-09-07）。値は memory/design_guidelines.md §3-2 の実体値。
+    共通CSS legal.css は AdSense 決着まで保留中（memory/deferred_until_adsense.md）なので触らず、
+    takken-hokaisei-2026 と同じ「ページ内だけの上書き」で型を揃える。
+    🔴 自己採点ツールの操作UI（.qrow/.qno/.qbtn/.sbar/.btn-*/.st-status/.sresult/#stResult）と
+       seitou.js の採点ロジックには一切触れていない。 */
+ body{line-height:1.85}
+ .top a.home{font-size:0.9375rem;font-weight:700;min-height:48px;display:inline-flex;align-items:center}
+ .top h1{font-size:2.125rem;font-weight:700;line-height:1.15;margin-top:8px;letter-spacing:0}
+ .top .sub{font-size:1rem;opacity:.92;margin-top:12px;line-height:1.85}
+ main h2{font-size:1.625rem;font-weight:700;line-height:1.35;margin:48px 0 12px}
+ main h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:32px 0 12px}
+ main p,main li{font-size:1.0625rem;line-height:1.85}
+ main b,main strong{font-weight:600}
+ .foot{font-size:0.9375rem}
+ .foot a{min-height:48px;display:inline-flex;align-items:center;padding:0 8px}
+ .updated{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
+ .pr-note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 13px;font-size:0.9375rem;line-height:1.85;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:14px}
  .pr-note b{color:var(--ink)}
- .lead{font-size:14.5px;color:var(--ink);margin:16px 0 4px}
+ .lead{font-size:1.0625rem;line-height:1.85;color:var(--ink);margin:16px 0 4px}
  .notice{background:linear-gradient(135deg,rgba(106,31,199,.10),rgba(139,63,240,.05));border:1px solid var(--brand);border-radius:16px;padding:16px 18px;margin:16px 0}
- .notice .nh{font-size:16px;font-weight:700;color:var(--brand2);margin-bottom:4px}
- .notice p{font-size:14px;margin:6px 0}
+ .notice .nh{font-size:1.1875rem;font-weight:700;line-height:1.35;color:var(--brand2);margin-bottom:4px}
+ .notice p{font-size:1.0625rem;line-height:1.85;margin:6px 0}
  .toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0}
- .toc a{display:flex;align-items:center;min-height:48px;font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;padding:7px 0}
+ .toc a{display:flex;align-items:center;min-height:48px;font-size:1rem;font-weight:600;line-height:1.85;color:var(--brand2);text-decoration:none;padding:7px 0}
  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
- table{border-collapse:collapse;width:100%;min-width:460px;font-size:14px}
+ table{border-collapse:collapse;width:100%;min-width:460px;font-size:1rem}
  th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
- th{background:rgba(139,63,240,.08);font-weight:700;color:var(--muted);font-size:14px}
+ th{background:rgba(139,63,240,.08);font-weight:600;color:var(--muted);font-size:1rem}
  tbody tr:last-child td{border-bottom:none}
  td.num{text-align:right;font-variant-numeric:tabular-nums}
- .hl{color:var(--brand2);font-weight:700}
- .scroll-hint{font-size:14px;color:var(--muted);margin:-4px 0 10px}
+ .hl{color:var(--brand2);font-weight:600}
+ .scroll-hint{font-size:0.9375rem;color:var(--muted);margin:-4px 0 10px;line-height:1.85}
  .case{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:14px 0}
- .case h3{font-size:17px;font-weight:700;margin-bottom:6px}
- .case .tagline{display:inline-block;font-size:14px;font-weight:700;color:#fff;background:var(--brand);border-radius:8px;padding:4px 12px;margin-bottom:8px}
+ .case h3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:0 0 6px}
+ .case .tagline{display:inline-block;font-size:0.9375rem;font-weight:700;color:#fff;background:var(--brand);border-radius:8px;padding:4px 12px;margin-bottom:8px}
  .case.warn .tagline{background:#c0392b}
  .case.ok .tagline{background:#1a7a53}
- .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:13px 22px;border-radius:12px;margin-top:12px}
- .mini{font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;display:inline-flex;align-items:center;min-height:48px;margin-top:8px}
+ .cbtn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:13px 22px;border-radius:12px;margin-top:12px}
+ .mini{font-size:1rem;font-weight:600;line-height:1.85;color:var(--brand2);text-decoration:none;display:inline-flex;align-items:center;min-height:48px;margin-top:8px}
  .ppx{position:absolute;width:1px;height:1px;opacity:0}
- .src{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.85}
+ .src{font-size:0.9375rem;color:var(--muted);margin-top:8px;line-height:1.85}
  .src a{color:var(--muted)}
- .backapp{display:inline-block;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:12px;font-size:14px;min-height:48px}
- .faq dt{font-weight:700;margin-top:14px;font-size:15px}
- .faq dd{margin:6px 0 0;font-size:14px;color:var(--ink)}
+ .backapp{display:inline-flex;align-items:center;margin-top:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:12px;font-size:1rem;min-height:48px}
+ .faq dt{font-weight:600;margin-top:14px;font-size:1.0625rem;line-height:1.85}
+ .faq dd{margin:6px 0 0;font-size:1.0625rem;line-height:1.85;color:var(--ink)}
  /* ファーストビュー→自己採点ツールの1タップ導線（2026-09-05 追加）。
     ツール本体（id=saiten の見出し）はページ先頭から約5,200px（375pxで6.4画面）下にあり、
     10/18に「すぐ採点したい」で来た受験者が到達できなかったため。既存要素は一切変更していない。 */
- .jumpcta{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0 0 4px;padding:12px 16px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:16px;line-height:1.85;text-align:center;border-radius:12px}
+ .jumpcta{display:flex;align-items:center;justify-content:center;min-height:56px;margin:0 0 4px;padding:12px 16px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;line-height:1.85;text-align:center;border-radius:12px}
  h2#saiten{scroll-margin-top:16px}
  /* ===== 自己採点ツール ===== */
  .st-status{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:14px;margin:12px 0}
@@ -76,42 +92,42 @@
  /* 採点バーが position:sticky;bottom:0 で画面下80pxを覆うため、結果へスクロールしたときに
     結果の末尾がバーの下に潜る。scroll-margin-bottom で逃がす（2026-09-05 実測） */
  #stResult{scroll-margin-bottom:96px;scroll-margin-top:12px}
- .catmini{width:100%;font-size:14px;min-width:0}
+ .catmini{width:100%;font-size:1rem;min-width:0}
  .catmini td,.catmini th{padding:7px 8px;white-space:normal}
  /* 関連リンク行：375pxでもタップ標的を44px以上に保つ */
- .linkrow{display:flex;align-items:center;min-height:48px;font-size:14px;font-weight:700;color:var(--brand2);text-decoration:none;padding:6px 0;border-bottom:1px dashed var(--line)}
+ .linkrow{display:flex;align-items:center;min-height:48px;font-size:1rem;font-weight:600;line-height:1.85;color:var(--brand2);text-decoration:none;padding:6px 0;border-bottom:1px dashed var(--line)}
  .linkrow:last-child{border-bottom:none}
  .steps{margin:12px 0 0;padding-left:1.35em}
- .steps li{font-size:14px;margin:10px 0;line-height:1.85}
- h3.sub3{font-size:17px;font-weight:700;margin:20px 0 4px;color:var(--ink)}
+ .steps li{font-size:1.0625rem;margin:10px 0;line-height:1.85}
+ h3.sub3{font-size:1.3125rem;font-weight:700;line-height:1.35;margin:20px 0 4px;color:var(--ink)}
  /* 文章量の多い表は375pxで折り返す（横スクロール量を減らす） */
  .twrap table{min-width:0}
  .twrap th,.twrap td{white-space:normal}
  .twrap td:first-child{font-weight:700}
 
  figure.fig{margin:16px 0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
- figure.fig figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.85}
+ figure.fig figcaption{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
  .flow{display:flex;flex-direction:column;gap:8px}
  .flow .node{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:10px 12px;background:#fff}
- .flow .node .when{font-size:14px;font-weight:700;color:var(--brand2);line-height:1.85}
- .flow .node .what{font-size:14px;color:var(--ink);line-height:1.85}
+ .flow .node .when{font-size:1rem;font-weight:600;color:var(--brand2);line-height:1.85}
+ .flow .node .what{font-size:1.0625rem;color:var(--ink);line-height:1.85}
  .flow .node.key{border-left-color:var(--brand2);background:rgba(139,63,240,.06)}
- .flow .arw{font-size:14px;color:var(--muted);text-align:center;line-height:1.35}
+ .flow .arw{font-size:0.9375rem;color:var(--muted);text-align:center;line-height:1.35}
  .split{display:flex;flex-wrap:wrap;gap:10px}
  .split .col{flex:1 1 200px;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
- .split .col .ch{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:6px;line-height:1.85}
+ .split .col .ch{font-size:1rem;font-weight:600;color:var(--muted);margin-bottom:6px;line-height:1.85}
  .split .col ul{margin:0;padding-left:1.2em}
- .split .col li{font-size:14px;line-height:1.85;margin:4px 0}
+ .split .col li{font-size:1.0625rem;line-height:1.85;margin:4px 0}
  .split .col.now{border-color:var(--brand);background:rgba(139,63,240,.06)}
  .bars{display:flex;flex-direction:column;gap:6px}
  .bars .row{display:flex;align-items:center;gap:8px}
- .bars .yr{font-size:14px;color:var(--muted);width:6.5em;flex:none;line-height:1.85}
+ .bars .yr{font-size:0.9375rem;color:var(--muted);width:6.5em;flex:none;line-height:1.85}
  .bars .bar{height:18px;border-radius:8px;background:var(--brand);flex:none}
- .bars .vl{font-size:14px;color:var(--ink);line-height:1.85}
+ .bars .vl{font-size:1rem;color:var(--ink);line-height:1.85}
  .zones{display:flex;flex-direction:column;gap:8px}
  .zones .z{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;display:flex;gap:10px;align-items:flex-start}
- .zones .z .pt{font-size:16px;font-weight:700;color:var(--brand2);flex:0 0 6.5em;line-height:1.85}
- .zones .z .dc{font-size:14px;color:var(--ink);line-height:1.85}
+ .zones .z .pt{font-size:1.0625rem;font-weight:600;color:var(--brand2);flex:0 0 6.5em;line-height:1.85}
+ .zones .z .dc{font-size:1.0625rem;color:var(--ink);line-height:1.85}
  .zones .z.mid{border-color:var(--brand);background:rgba(139,63,240,.06)}
 </style>
 <!-- 構造化データ: FAQPage は 2026-05-07 に検索での表示が廃止されたため使わない（memory/article_quality_playbook.md §2-2）。現役の BreadcrumbList / WebPage のみ。可視のFAQ本文(#faq)は読者向けに残す。 -->
