@@ -25,3 +25,29 @@ a{color:var(--brand2);word-break:break-all}
 .foot a{margin:0 8px;display:inline-block;padding:4px 0}
 .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;
  padding:13px 22px;border-radius:12px;font-size:15px;margin-top:6px}
+
+/* 学習の進捗（登録不要・localStorage）。2026-09-07 新設。
+ * ロールモデル調査（宅建試験ドットコム／スタディング／オンスク／TAC）で
+ * 4/8 が「学習履歴・達成度」を持ち、うちは0だったため入れた要素。
+ * 4社とも会員登録が要る＝そこを「登録不要」で改善する。実装は oc.js の §3。
+ * 値は既存トークン（--surface/--line/--brand/--brand2/--muted）だけを使う。 */
+.sn{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin:16px 0}
+/* font-size は指定しない＝各面の h2（26px）をそのまま継ぐ。
+ * 20px を当てていたら、同じ面の他の h2 だけ26pxで階層が壊れた（2026-09-07 375px実測で発見） */
+.sn h2.sn-t{line-height:1.35;margin:0 0 4px;font-weight:700}
+.sn .sn-lead{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:0 0 14px}
+.sn-row{display:block;text-decoration:none;color:inherit;border-top:1px solid var(--line);
+ padding:12px 0;min-height:48px;box-sizing:border-box}
+.sn-row:first-of-type{border-top:0}
+.sn-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sn-name{font-size:1.0625rem;font-weight:700;color:var(--brand2);line-height:1.35;min-width:0}
+.sn-val{font-size:0.9375rem;color:var(--muted);font-weight:700;white-space:nowrap;line-height:1.35}
+.sn-sub{display:block;font-size:0.9375rem;color:var(--muted);line-height:1.85;margin-top:4px}
+.sn-meter{display:block;height:6px;background:var(--line);border-radius:999px;margin:8px 0 0;overflow:hidden}
+.sn-meter i{display:block;height:100%;background:var(--brand);border-radius:999px}
+.sn-yet .sn-name{color:var(--muted);font-weight:400}
+.sn-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;
+ border-top:1px solid var(--line);margin-top:6px;padding-top:8px;flex-wrap:wrap}
+.sn-note{font-size:0.9375rem;color:var(--muted);line-height:1.85;margin:0}
+.sn-clear{background:none;border:0;color:var(--muted);font-size:0.9375rem;text-decoration:underline;
+ cursor:pointer;min-height:48px;padding:12px 4px;line-height:1.85;font-family:inherit}
