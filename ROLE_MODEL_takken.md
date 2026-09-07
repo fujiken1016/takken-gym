@@ -170,18 +170,48 @@
 
 ---
 
-## 7. 本番反映（curl 実測）
+## 7. 本番反映（2026-09-07・全部 実測）
+
+commit `399a496` → `git push origin main` → Cloudflare Pages が **push だけで反映**
+（`lessons_learned.md` 1737行）。**push 後45秒以内**に本番へ出たことをポーリングで確認。
 
 | 確認 | 結果 |
 |---|---|
-| commit / push | §8 に記載（Cloudflare Pages は **push だけで本番反映**＝`lessons_learned.md` 1737行） |
-| `curl -I /oc.js` | §8 |
-| `curl -I /legal.css` | §8 |
-| `curl -I /ichimon/` | §8 |
-| `curl /ROLE_MODEL_takken.md` | **404 であること**（`_routes.json` に追加済み。他の運用mdと同じ扱い） |
+| `curl /oc.js` | **200**（17,049 bytes）・`tg_ichimon_v1` を含む・`cf-cache-status: REVALIDATED` |
+| `curl /legal.css` | **200**（4,141 bytes）・`.sn-row` を含む |
+| `curl /ichimon/` | **200**（21,451 bytes） |
+| `curl /ichimon/gyoho` | **200**（28,958 bytes） |
+| `curl /chikaradameshi/` | **200**（95,133 bytes） |
+| `curl /ROLE_MODEL_takken.md` | 🔴 **404**（9 bytes）＝**公開されていない**。`_routes.json` に追加済み |
+| 本番での実描画 | パネルが**出ることを実測**（本番HTML＋本番CSS＋本番JSの組合せで検証） |
 
-⚠️ **本番 curl は Cloudflare のエッジキャッシュに騙される**（`lessons_learned.md` §2-9）。
-**必ずキャッシュバスター（`?cb=<乱数>`）を付けて確認する。**
+### 本番 375px / 320px 実測（`design_probe.js` と同じiframe固定方式）
+
+| 幅 | 横スクロール | 14px未満 | タップ標的48px未満 | h1/h2 | 進捗の行の高さ | 「記録を消す」 |
+|---|---|---|---|---|---|---|
+| **375px** | **0px** | **0件** | **0件**（全35個） | 34/26px | 93・94・71px | **52px** |
+| **320px** | **0px** | **0件** | **0件**（全36個） | 34/26px | 120・121・71px | **52px** |
+
+**ローカル実測と完全一致。**
+
+### ⚠️ この回で踏んだキャッシュの罠（次に同じ所で止まらないため）
+
+1. **`lessons_learned.md` §2-9 は「エッジキャッシュ」の話だが、今回詰まったのは*ブラウザ*のキャッシュだった。**
+   `_headers` に無い静的ファイルは `cache-control: public, max-age=14400, must-revalidate` ＝ **4時間**。
+   **`must-revalidate` は "期限切れ後" にしか効かない**ので、4時間以内に一度でも開いた端末は
+   **再訪しても古い `oc.js` / `legal.css` を使う**。
+   → **本番で「出ない」と見えても、それが即バグとは限らない。** 先に
+   `fetch(url,{cache:'no-store'})` で**配信物そのもの**を確かめる。
+2. **iframeで測るときは、JSだけでなくCSSもキャッシュされる。**
+   JSだけ差し替えて測ったら `.sn-row` が `display:inline`・タップ標的24px という
+   **実在しない不合格**が出た（危うくそれを直しに行くところだった）。
+   → **測る前に、その面が使っている資産が全部新しいかを確認する。**
+3. **CSSを丸ごと注入して測らない。** `legal.css` 全文を `<style>` で後ろに足したら
+   ページ側のインライン指定に勝ってしまい、**h1 34→23px・h2 26→17px・12px級の文字11件**という
+   **測定器が作った不合格**が出た。→ **足すのは自分が追加した節だけ**にする。
+
+**＝新規ユーザーは即時に見える。4時間以内に来ていた再訪ユーザーは、最大4時間ずれて見え始める。**
+（自己修復するので追加対応はしない）
 
 ---
 
