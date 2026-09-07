@@ -16,7 +16,7 @@
 | `/blog/takken-ochita-revenge` | **5** | VC_LEC・A8_YOTSUYA・A8_SQUARE・A8_SMART・A8_ONSUKU（**この記事だけ例外**。リベンジ層向けの「再受講割引6社比較」がページの主目的で、集約先へ送らずその場で比較させる設計。commit 0d9a688。PR表記・`rel="nofollow sponsored noopener"` とも設置済み） |
 | `/blog/` の他12記事・`/chinkan/` サブ5ページ | **0** | 記事本文に収益リンクは無い。`/courses/` および `/chinkan/#kouza` へのテキスト誘導のみ |
 | `/blog/`（記事一覧ページ） | 0 | AdSenseのみ。`/courses/` へのリンクあり |
-| `/ichimon/`＋論点別9本・`/toujitsu-check/`・`/toukei-quiz/`・`/chikaradameshi/`・`/chinkan/ichimon/`・`/chinkan/chikaradameshi/` | **0** | 2026-08-30以降に追加した無料ツール14ページ。収益リンク・自社教材リンクとも無し（=`/courses/` 集約設計のまま） |
+| `/ichimon/`＋論点別13本・`/toujitsu-check/`・`/toukei-quiz/`・`/chikaradameshi/`・`/chinkan/ichimon/`・`/chinkan/chikaradameshi/`・`/kaitou-sokuhou/` | **ASP 0**（`/kaitou-sokuhou/` のみ A8_YOTSUYA 1本） | 無料ツール群。**ASPリンクは足さない**（集約先＝`/courses/`・`/chinkan/#kouza` に送る設計を維持）。⚠️ **自社教材リンクは別扱い＝2026-09-07 に全20面へ設置完了**。この行は 2026-09-02 時点で「自社教材リンクとも無し」と書いていたが実態と違っていた（9/3〜9/5 のデザイン是正コミットで18面には既に入っていた）。9/7 に本番20URLをcurl実測して欠けていた2面（`/ichimon/` ハブ・`/kaitou-sokuhou/`）へ設置（commit 2f7e162）。内訳＝宅建面は note ¥980「直前 総点検ノート」`ne2376058ec7b`／`/ichimon/zei` と `/chikaradameshi/` は加えて note ¥300 `ne087a09b24d4`／賃管士面（`/chinkan/*`）は資格が違うので宅建教材を送らず Kindle `B0HFW15W4R`。`/kaitou-sokuhou/` だけは試験前後で読者が入れ替わるため、1枠の中で「試験前の人＝note ¥980／採点後で11/15賃管士に申込済みの人＝Kindle `B0HFW15W4R`」と状態ラベルで分けた |
 
 ## A8.net（講座5社）
 
@@ -91,3 +91,49 @@ https://hb.afl.rakuten.co.jp/ichiba/{アフィリID}/_RTLink143602?pc={URLエン
 - `/hgc/` 形式でも同じ位置に入れれば有効（302 で `/ichiba/` へ引き継がれる。2026-09-03 実測）
 - **これが無いと楽天のサイト別レポートに載らず、どのサイトの成果か永久に分からなくなる**
 - 全サイトのID対応表と発行手順＝`~/Desktop/claude/affiliate_links.md` の「楽天 計測ID（site_pointback_id）」節
+
+---
+
+## 自社教材の導線（2026-09-07 設置・判定日 10/19）
+
+**ASPアフィリリンクとは別枠。** 76行目の「集約先に送る設計」は A8／バリューコマース＝ASPリンクについての決定であり、
+自社教材（note・Kindle）はその対象ではない（2026-09-07 司令塔の裁定）。**ASPリンクは1本も足していない。**
+
+### 設置の原則（次に増やす人はここを読む）
+- **置き場所＝演習の完了画面／結果表示より後。** ページ冒頭・本文の途中には入れない（無料ツールを使いに来た人の導線を塞がない）
+- **1ページ1枠まで。** 新しいコンポーネントを作らず、各面に既にある `.cta-box`（一問一答系）／`.case` + `.mini`（`/kaitou-sokuhou/`）を再利用する
+- **温度を上げない。**「必要な人だけどうぞ」程度。断定的なベネフィット訴求を書かない
+- 🔴 **賃管士面（`/chinkan/*`）から宅建教材へ送らない**（資格が違う）。受け皿は Kindle `B0HFW15W4R`（賃管士）
+- **note リンクに utm をハードコードしない**＝`oc.js` の `decorateNoteLinks()` が自動付与する（`utm_source=takkengym` 固定・`utm_campaign` は `NOTE_MAP`・`utm_content` はページスラッグ）。手で付けると `utm_source=` 検出で二重付与が抑止され、系列名が割れる
+- 計測は `oc.js` が自動で拾う＝note は `note_click{note_id, product, from_page}`／Amazon は `kindle_click{book, from_page}`。**追加のタグ実装は不要**
+
+### 2026-09-07 の実測（本番URLを curl）
+| URL | HTTP | 自社教材リンク | ASPリンク |
+|---|---|---|---|
+| `/ichimon/` | 200 | note ¥980 ×1（**9/7 新設**） | 0（変更なし） |
+| `/kaitou-sokuhou/` | 200 | note ¥980 ×1・Kindle `B0HFW15W4R` ×1（**9/7 新設**） | 2（A8_YOTSUYA＋0.gif。**変更前後とも2＝増やしていない**） |
+| `/ichimon/` 論点別13本・`/toujitsu-check/`・`/toukei-quiz/`・`/chikaradameshi/`・`/chinkan/ichimon/`・`/chinkan/chikaradameshi/` | 200 | 既に設置済み（9/3〜9/5） | 0 |
+
+リンク先の生存確認（2026-09-07 curl・すべて 200）：
+- `https://note.com/fujiken818/n/ne2376058ec7b`（宅建 直前 総点検ノート ¥980）
+- `https://www.amazon.co.jp/dp/B0HFW15W4R`（賃管士 条文で確かめる要点ノート）
+- `https://www.amazon.co.jp/dp/B0HHMT59G2`（宅建 法改正・¥1,400。**今回は使っていない**＝`/kaitou-sokuhou/` の読者は採点後で令和8年度の法改正教材が用途に合わないため。既に blog 5面に設置済み）
+
+### 検査の結果（2026-09-07）
+`bash tools/ship_check.sh <file> --profile web --baseline <同ディレクトリのコピー> --base-url https://takken.mainichi-lab.com/ --repo .`
+- `/ichimon/`：**NG 0件**（design_audit 0／記事監査は既存NG 7件が 7→7 で不変／個人情報 0／未リリース名 0／コミット著者クリーン）
+- `/kaitou-sokuhou/`：**NG 0件**（design_audit 0／article_audit 0／個人情報 0／未リリース名 0）
+
+375px 実描画（`design_probe.js` を本番オリジンの iframe で実行）：
+
+| URL | 横スクロール | 本文14px未満 | タップ標的48px未満 | 新設リンクの実測 |
+|---|---|---|---|---|
+| `/ichimon/` | **0px** | **0件**（本文16px／行間30.4px） | **0/31件** | 高さ113px・幅294px・右端336px（枠の右端355pxの内側） |
+| `/kaitou-sokuhou/` | **0px** | **0件** | 2/269件（**いずれも本文中の既存インラインリンク**＝「下の『登録講習修了者の扱い』」43px・「公式サイト」43px。今回の変更とは無関係・未是正） | note枠 高さ89px／Kindle枠 高さ118px・ともに幅297px・右端336px（枠の右端355pxの内側） |
+
+- コントラスト警告 3件は両面とも**ヘッダの白文字**で、`design_probe.js` が `background-image`（グラデーション）を読めないことによる既知の誤検出（スクリプト冒頭に明記あり）。今回の変更箇所ではない
+- 320px は未計測（レイアウトは既存コンポーネントの再利用で新しい寸法を作っていないため）
+
+### 判定日
+**2026-10-19**（10/18 本試験の翌日）。GA4 の `note_click` / `kindle_click` を `from_page` 別に見る。
+`/kaitou-sokuhou/` は 10/18 15:00 以降がピークなので、**当日1日だけの数字で判定する**（月次平均に埋もれる）。
