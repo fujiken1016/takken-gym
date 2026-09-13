@@ -6,24 +6,24 @@ body{background:var(--bg);color:var(--ink);line-height:1.9;
  -webkit-text-size-adjust:100%}
 .top{background:linear-gradient(135deg,#4d1596,#7a2fe0);color:#fff;padding:calc(20px + env(safe-area-inset-top)) 20px 22px}
 .top .in{max-width:720px;margin:0 auto}
-.top a.home{color:#fff;text-decoration:none;font-weight:800;font-size:13px;opacity:.9;display:inline-flex;gap:6px;align-items:center}
-.top h1{font-size:23px;font-weight:900;margin-top:12px;letter-spacing:.01em}
-.top .sub{font-size:12px;opacity:.85;margin-top:4px}
+.top a.home{color:#fff;text-decoration:none;font-weight:700;font-size:15px;opacity:.9;display:inline-flex;gap:6px;align-items:center;min-height:48px;line-height:1.6}
+.top h1{font-size:30px;font-weight:700;line-height:1.35;margin-top:12px;letter-spacing:.01em}
+.top .sub{font-size:14px;line-height:1.6;opacity:.85;margin-top:4px}
 main{max-width:720px;margin:0 auto;padding:26px 20px 60px}
-h2{font-size:17px;font-weight:800;margin:30px 0 10px;color:var(--brand);border-left:4px solid var(--brand);padding-left:11px}
+h2{font-size:23px;font-weight:700;line-height:1.4;margin:30px 0 10px;color:var(--brand);border-left:4px solid var(--brand);padding-left:11px}
 h2:first-of-type{margin-top:6px}
 p,li{font-size:14.5px;color:var(--ink)}
 p{margin:10px 0}
 ul{margin:10px 0 10px 4px;padding-left:20px}
 li{margin:6px 0}
 a{color:var(--brand2);word-break:break-all}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:14px 0}
 .dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:14.5px}
-.dl dt{font-weight:800;color:var(--muted);white-space:nowrap}
-.updated{font-size:12px;color:var(--muted);margin-top:8px}
-.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-size:12.5px;color:var(--muted);text-align:center}
-.foot a{margin:0 8px;display:inline-block;padding:4px 0}
-.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:800;
+.dl dt{font-weight:700;color:var(--muted);white-space:nowrap}
+.updated{font-size:14px;line-height:1.6;color:var(--muted);margin-top:8px}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-size:14px;line-height:1.6;color:var(--muted);text-align:center}
+.foot a{margin:0 8px;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:4px 0}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;
  padding:13px 22px;border-radius:12px;font-size:15px;margin-top:6px}
 
 /* 学習の進捗（登録不要・localStorage）。2026-09-07 新設。
