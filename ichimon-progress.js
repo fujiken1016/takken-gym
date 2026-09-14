@@ -134,7 +134,7 @@
     if (keyOf() !== "/ichimon") return;
     var art = document.querySelector("article");
     if (!art) return;
-    var anchor = art.querySelector("h2");
+    var anchor = art.querySelector(":scope > h2"); /* 直下の h2 だけ。今日の10問（ichimon-daily.js）の見出しに差し込まないため 2026-09-14 */
     if (!anchor) return;
 
     var all = load();
