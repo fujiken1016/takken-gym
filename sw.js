@@ -1,4 +1,4 @@
-const CACHE = 'takken-gym-v15'; // oc.js にバリューコマース(ck.jp.ap.valuecommerce.com)のクリック計測を追加（2026-09-02）。oc.js / jikan.js を編集したら必ずこの版数を上げる（fetchはキャッシュ優先のため古い版が残る）
+const CACHE = 'takken-gym-v16'; // 2026-09-14 oc.js を全社共通版に統一＋達成度を /ichimon-progress.js に分離。oc.js / jikan.js / ichimon-progress.js を編集したら必ずこの版数を上げる（fetchはキャッシュ優先のため古い版が残る）
 // URLは必ず200を返す正規形（.html なし）で並べる。.html を書くと308リダイレクトを踏む。
 const ASSETS = ['/', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-180.png', '/legal.css', '/jikan.js', '/about', '/privacy', '/disclaimer', '/contact', '/og.png', '/courses/', '/ichimon/', '/ichimon/gyoho', '/ichimon/kenri', '/ichimon/horei', '/ichimon/zei', '/blog/takken-dokugaku-benkyohou', '/blog/takken-benkyo-jikan'];
 
