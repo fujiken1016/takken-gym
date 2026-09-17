@@ -149,3 +149,9 @@ https://hb.afl.rakuten.co.jp/ichiba/{アフィリID}/_RTLink143602?pc={URLエン
 - 検査＝`grep -rn "utm_" --include="_redirects" .` が **0行** ／ `curl -sI <短縮URL>` の `location` に `utm_` が無い
 - 実害＝2026-09-07、宅建GYMの最多クリック面 `/note`（自然検索 5クリック/41表示）が着地で utm を着せ、
   **自然検索の流入がGA4上で「note経由」に化けていた**（2026-09-13 時点で**未修正**）
+
+## 点検ログ（週次・SHIP-03）
+
+> 書式＝`YYYY-MM-DD｜実数 n／表 n｜差分`。**書かない週＝SHIP-03 が止まった週**として人事が数える。
+
+- 2026-09-16｜実数 18／表 18｜差分なし（`data-aff` の grep は34件出るが、うち17件は `.claude/worktrees/` の旧コピー＝git未追跡・本番404で無関係。本体は courses9＋revenge5＋kaitou1＋chinkan1＋index静的1、これに index.html のJS動的2枠のうち1枠が加わって18）
