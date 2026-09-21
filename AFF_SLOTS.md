@@ -155,3 +155,4 @@ https://hb.afl.rakuten.co.jp/ichiba/{アフィリID}/_RTLink143602?pc={URLエン
 > 書式＝`YYYY-MM-DD｜実数 n／表 n｜差分`。**書かない週＝SHIP-03 が止まった週**として人事が数える。
 
 - 2026-09-16｜実数 18／表 18｜差分なし（`data-aff` の grep は34件出るが、うち17件は `.claude/worktrees/` の旧コピー＝git未追跡・本番404で無関係。本体は courses9＋revenge5＋kaitou1＋chinkan1＋index静的1、これに index.html のJS動的2枠のうち1枠が加わって18）
+- 2026-09-20｜実数 18／表 18｜差分なし（`data-aff` の grep は**17行**。内訳＝courses9・revenge5・kaitou1・chinkan1＝静的16 ＋ `index.html` の `adCard()` テンプレート1本。テンプレートは `promoHome`（onsuku）と `promoResult`（yotsuya）の**2か所から呼ばれる＝2枠**なので 16+2=18。🔑 **今週 `.claude/worktrees/sharp-dirac-369472` を `git worktree remove` したので、前回まで grep を34件に膨らませていた旧コピーは消えた**（`.claude/` を .gitignore に追加ずみ）。来週からは「grep 17行＝18枠」で数える）
