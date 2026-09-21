@@ -5,3 +5,6 @@
 # 日本語ファイル名は _routes.json の include に載せても middleware に拾われないため、git管理から外して防ぐ）
 /検算結果_一問一答_*.md
 /横断整合チェック_*.md
+
+# 別セッションが作った作業worktreeの残骸。git未追跡でも収益スロットのgrepを2倍に膨らませる
+.claude/
