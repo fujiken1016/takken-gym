@@ -5,7 +5,13 @@
 // 対象パスは _routes.json の include で限定しているため、通常ページはFunctionsを経由しない。
 export const onRequest = async (context) => {
   const { pathname } = new URL(context.request.url);
-  if (/\.md$/i.test(pathname) || pathname === "/vercel.json" || pathname.startsWith("/.github/")) {
+  if (
+    /\.md$/i.test(pathname) ||
+    pathname === "/vercel.json" ||
+    pathname === "/.gitignore" ||
+    pathname === "/.DS_Store" ||
+    pathname.startsWith("/.github/")
+  ) {
     return new Response("Not Found", {
       status: 404,
       headers: { "content-type": "text/plain; charset=utf-8", "x-robots-tag": "noindex" },
