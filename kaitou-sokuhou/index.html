@@ -107,6 +107,8 @@
 
  figure.fig{margin:16px 0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
  figure.fig figcaption{font-size:0.9375rem;color:var(--muted);margin-top:10px;line-height:1.85}
+ @keyframes kaitouPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.87;transform:scale(1.01)}}
+ .jumpcta.active{animation:kaitouPulse 1.4s ease-in-out 3}
  .flow{display:flex;flex-direction:column;gap:8px}
  .flow .node{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:10px 12px;background:#fff}
  .flow .node .when{font-size:1rem;font-weight:600;color:var(--brand2);line-height:1.85}
@@ -790,6 +792,50 @@
     try{gtag('event','scoring_complete',{tool_name:'kaitou_sokuhou',score:total,answered:answered,zone:zone});}catch(e){}
     toResult();
   });
+})();
+</script>
+<!-- 試験フェーズ自動切替（2026-10-14追加）: 試験前カウントダウン→試験中→採点誘導→合格発表後 -->
+<script>
+(function(){
+  var JST_OFFSET = 9*60*60*1000;
+  function jstNow(){return new Date(Date.now()+JST_OFFSET-(new Date().getTimezoneOffset()*60000));}
+  var TEST_START = new Date('2026-10-18T04:00:00Z'); /* 13:00 JST */
+  var TEST_END   = new Date('2026-10-18T06:00:00Z'); /* 15:00 JST */
+  var RESULT_DAY = new Date('2026-11-25T00:30:00Z'); /* 09:30 JST */
+  var noticeEl = document.querySelector('.notice');
+  var jumpEl   = document.querySelector('.jumpcta');
+  if(!noticeEl) return;
+  var now = new Date();
+  if(now < TEST_START){
+    /* 試験前：カウントダウン */
+    var tid;
+    function renderCd(){
+      var diff = TEST_START - new Date();
+      if(diff<=0){clearInterval(tid);location.reload();return;}
+      var d=Math.floor(diff/86400000);
+      var h=Math.floor((diff%86400000)/3600000);
+      var m=Math.floor((diff%3600000)/60000);
+      var s=Math.floor((diff%60000)/1000);
+      var el=document.getElementById('kdCountdown');
+      if(el) el.textContent=(d>0?d+'日 ':'')+h+'時間 '+('0'+m).slice(-2)+'分 '+('0'+s).slice(-2)+'秒';
+    }
+    noticeEl.innerHTML='<div class="nh">試験まであと <span id="kdCountdown" style="color:var(--brand)">計算中...</span></div><p>令和8年10月18日（日）13時スタート。試験後にこのページで自己採点できます。今のうちにブックマークを。</p><p style="font-size:14px;color:var(--muted)">※ 採点ツールは試験終了後（15時以降）も使えます。解答速報が出たらすぐ集計できます。</p>';
+    renderCd();
+    tid=setInterval(renderCd,1000);
+  } else if(now>=TEST_START && now<TEST_END){
+    /* 試験中 */
+    noticeEl.innerHTML='<div class="nh">🔴 現在試験中です（13:00〜15:00）</div><p>試験終了（15時）後にこのページへ戻ると、各社の解答速報へのリンクと自己採点ツールがすぐに使えます。</p>';
+  } else if(now>=TEST_END && now<RESULT_DAY){
+    /* 試験後〜合格発表前：採点を促す */
+    noticeEl.innerHTML='<div class="nh">✅ 試験終了！自己採点を始めましょう</div><p>下の採点ツールに答えを入れるだけで点数とゾーン判定が出ます（登録不要・無料）。</p>';
+    if(jumpEl){
+      jumpEl.textContent='▼ 今すぐ自己採点する（登録不要・無料）';
+      jumpEl.classList.add('active');
+    }
+  } else {
+    /* 合格発表後 */
+    noticeEl.innerHTML='<div class="nh">📢 合格発表（11/25）を過ぎました</div><p>令和8年度宅建試験の合格者受験番号・合否判定基準・正解番号は<a href="https://www.retio.or.jp/" target="_blank" rel="noopener">不動産適正取引推進機構</a>のホームページで確認できます。</p>';
+  }
 })();
 </script>
 </body>
