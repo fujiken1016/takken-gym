@@ -94,7 +94,7 @@
 {"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},
 {"@type":"ListItem","position":2,"name":"宅建 持ち物チェックリスト＆当日タイムライン","item":"https://takken.mainichi-lab.com/toujitsu-check/"}]}
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 持ち物チェックリスト＆当日タイムライン【2026】","url":"https://takken.mainichi-lab.com/toujitsu-check/","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建試験の持ち物と前日・当日にやることをタップでチェックできる無料ツール。公式指定の持ち物4点と当日タイムライン付き。","publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"},"datePublished":"2026-08-30","dateModified":"2026-10-08"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"宅建 持ち物チェックリスト＆当日タイムライン【2026】","url":"https://takken.mainichi-lab.com/toujitsu-check/","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"宅建試験の持ち物と前日・当日にやることをタップでチェックできる無料ツール。公式指定の持ち物4点と当日タイムライン付き。","publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/"},"datePublished":"2026-08-30","dateModified":"2026-10-17"}</script>
 </head>
 <body>
 <div class="top"><div class="in">
@@ -104,6 +104,13 @@
 </div></div>
 <main>
 <article>
+  <!-- 試験後切替（2026-10-17・台帳L769）：10/18 15:00 JST 以降だけ表示。?mode=after で確認可 -->
+  <div class="nx noprint" id="afterExam" hidden>
+    <p class="nxh">試験おつかれさまでした。次にやることは1つだけです。</p>
+    <p class="nxs">記憶が新しいうちに、問題用紙に控えた答えを入力しておきましょう。正答が出しだい自動で採点されます（合格発表は11月25日）。</p>
+    <a class="nxa" href="/kaitou-sokuhou/#saiten">▸ 自己採点（登録不要・50問タップ入力）<span>入力は端末に保存。正答の公開前でも入れておけます</span></a>
+    <a class="nxa" href="/kaitou-sokuhou/#line">▸ 合格ラインの推移（過去10年）<span>自己採点の点数が合格圏かどうかの目安に</span></a>
+  </div>
   <p class="bc"><a href="/">宅建GYM</a> ＞ 持ち物チェックリスト＆当日タイムライン</p>
   <p>宅建試験<b>前日の夜〜当日</b>に、このページを開いてタップしていくだけで準備が終わるチェックリストです。持ち物は機構の試験案内で指定されている物を基に整理しました（末尾に出典）。チェック状態はお使いの端末に保存されるので、前日夜にチェックした続きを当日朝に再開できます。印刷やスクリーンショットにも対応しています。</p>
   <p class="noprint" style="font-size:14px;color:var(--muted)">ルールの背景や「なぜ筆箱が出せないのか」等の解説は、別ページ<a href="/blog/takken-shiken-toujitsu" style="color:var(--brand2);font-weight:700">試験当日ガイド（持ち物・時間配分・解く順番）</a>にまとめています。読むのは記事、当日使うのはこのページ、という分担です。</p>
@@ -213,7 +220,7 @@
     <a href="/">▸ 宅建GYMで一問一答を回す（無料）</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-30">2026年8月30日</time>　最終更新：<time datetime="2026-10-08">2026年10月8日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-30">2026年8月30日</time>　最終更新：<time datetime="2026-10-17">2026年10月17日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/">フジケン（毎日ラボ）</a></div>
@@ -244,6 +251,19 @@
     }
   }
   var state=load();
+
+  /* ---- 試験後切替：10/18 15:00 JST（06:00Z）以降はチェックリストより先に採点へ案内 ---- */
+  (function(){
+    var box=document.getElementById('afterExam'); if(!box)return;
+    var forced=/[?&]mode=after\b/.test(location.search);
+    if(!forced && Date.now()<Date.parse('2026-10-18T06:00:00Z'))return;
+    box.hidden=false;
+    try{gtag('event','next_step_shown',{tool_name:'toujitsu_check_after'});}catch(e){}
+    box.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a.nxa'):null; if(!a)return;
+      try{gtag('event','next_step_click',{tool_name:'toujitsu_check_after',to_page:a.getAttribute('href')});}catch(err){}
+    });
+  })();
 
   var NX_HTML='<p class="nxh">準備はこれで完了です。あとは当日の3つだけ。</p>'+'<p class="nxs">今夜は新しい問題に手を出さないのが正解。当日朝と試験後にやることだけ置いておきます。</p>'+'<a class="nxa" href="/toukei-quiz/">▸ 統計クイズ2026（暗記チェック12問）<span>当日朝の最終確認に。問48は直前に見た数字がそのまま1点になります</span></a>'+'<a class="nxa" href="/blog/takken-shiken-toujitsu#junban">▸ 当日ガイド：時間配分と解く順番<span>どの分野から解くかは今日のうちに決めておく。本番で迷わないために</span></a>'+'<a class="nxa" href="/kaitou-sokuhou/">▸ 解答速報・自己採点【2026年度】<span>試験当日15時以降に公開。50問を入力すると自動採点されます</span></a>';
 
