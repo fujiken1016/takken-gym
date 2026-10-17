@@ -1207,7 +1207,12 @@ function examDaysLeft(now){
   const b=new Date(EXAM_Y,EXAM_M,EXAM_D);
   return Math.round((b-a)/86400000);
 }
-function routePhase(d){return d<0?"after":d===0?"exam":d<=21?"chokuzen":"pre";}
+// 当日15:00 JST（06:00Z）の試験終了後は after（自己採点が先頭）。toujitsu-check と同じ判定
+const EXAM_END_UTC=Date.parse("2026-10-18T06:00:00Z");
+function routePhase(d){
+  if(d===0&&Date.now()>=EXAM_END_UTC)return"after";
+  return d<0?"after":d===0?"exam":d<=21?"chokuzen":"pre";
+}
 // 入口の定義（id → 表示内容）。href は本番で200を実測済みのURLのみ
 const ROUTES={
   chikaradameshi:{ic:"🎯",q:"まず今の実力を知りたい",t:"宅建 力試し（12問）",d:"約2分・50点換算でS〜C判定。分野別の弱点も出ます",href:"/chikaradameshi/"},
