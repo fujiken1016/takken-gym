@@ -159,3 +159,5 @@ https://hb.afl.rakuten.co.jp/ichiba/{アフィリID}/_RTLink143602?pc={URLエン
 - 2026-09-23｜実数 18／表 18｜差分なし（`data-aff` の grep は**17行**＝静的16（courses9・revenge5・kaitou1・chinkan1）＋ `index.html` の `adCard()` テンプレ1本が `promoHome`/`promoResult` の2枠を生成。前回の予告どおり「grep 17行＝18枠」で数えられた＝worktree 除去の効果が持続している）
 - 2026-09-30｜実数 18／表 18｜差分なし（`data-aff` の grep は**17行**＝静的16（courses9・revenge5・kaitou1・chinkan1）＋ `index.html` の `adCard()` テンプレ1本が `promoHome`/`promoResult` の2枠を生成。3週連続で「grep 17行＝18枠」で安定）
 - 2026-10-08｜実数 18／表 18｜差分なし（`data-aff` の grep は**17行**＝静的16（courses9・revenge5・kaitou1・chinkan1）＋ `index.html` の `adCard()` テンプレ1本が `promoHome`/`promoResult` の2枠を生成。4週連続で「grep 17行＝18枠」で安定）
+
+- 2026-10-15｜実数 17grep=18枠／表 18｜差分なし（前週と同一）
