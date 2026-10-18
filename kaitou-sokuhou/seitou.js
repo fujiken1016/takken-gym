@@ -9,8 +9,8 @@
 //   5) index.html 内の <script src="/kaitou-sokuhou/seitou.js?v=1"> の v= を上げてキャッシュを飛ばす
 // 詳細手順：KAITOU_SOKUHOU_RUNBOOK.md §4-B2
 window.TAKKEN_SEITOU_2026 = {
-  status: "pre",   // "pre"=試験前（採点無効）/ "sokuhou"=各社速報ベース / "kakutei"=公式発表ベース
-  source: "",
-  updated: "",
-  answers: []      // 例：[3,1,4,2, ...] 50要素。未確定は 0
+  status: "sokuhou",   // "pre"=試験前（採点無効）/ "sokuhou"=各社速報ベース / "kakutei"=公式発表ベース
+  source: "LEC・TAC・日建学院の解答速報で3社一致した番号（2026/10/18 LEC 18:00時点・日建学院 17:40時点・TAC Web掲載を19:24時点で照合）",
+  updated: "2026年10月18日 19:24",
+  answers: [3,2,3,3,4,1,4,4,1,3,1,4,4,1,2,4,4,3,1,2,4,2,2,3,2,1,3,3,2,2,1,4,4,2,3,2,1,2,1,2,2,3,2,4,2,2,1,1,3,3]      // 例：[3,1,4,2, ...] 50要素。未確定は 0
 };
