@@ -779,7 +779,8 @@
       zoneHtml='<div class="case" style="margin:12px 0 0"><span class="tagline" style="background:var(--brand)">ゾーン2：過去10年の合格基準点レンジ（33〜37点）の中</span>'
         +'<h3>ボーダーゾーン。合否どちらでも損しない準備を</h3>'
         +'<p>合格発表まで結果は確定しません。1日10〜15分の問題演習で習慣を切らさず、翌年度講座の早期割引の締切だけ調べておくのが現実的です。下の「自己採点したあと、何をするか」も読んでください。</p>'
-        +'<a class="backapp" href="/">無料の一問一答で習慣を切らさない →</a></div>';
+        +'<a class="backapp" href="/">無料の一問一答で習慣を切らさない →</a>'
+        +'<div style="margin-top:10px"><a class="mini" href="/blog/takken-saichousen">▸ 万一のときの来年の計画（点数別の立て直し方）を見る</a></div></div>';
     }else{
       zone="ゾーン3";
       zoneHtml='<div class="case warn" style="margin:12px 0 0"><span class="tagline">ゾーン3：過去10年の最低合格基準点（33点）に未達</span>'
@@ -801,6 +802,8 @@
       +zoneHtml+notes
       +'<p style="font-size:14px;color:var(--muted);margin:12px 0 0">※ ゾーン判定は過去10年の合格基準点の実績（33〜38点）に基づく目安です。令和8年度の合格基準点は11月25日9時30分の合格発表まで確定しません。マークミスの可能性もあるため、自己採点は目安として扱ってください。</p></div>';
     scored=true; setStale(false);
+    var zoneNow=zone;
+    try{ if(!elResult._nsBound){ elResult._nsBound=true; elResult.addEventListener('click',function(ev){ var a=ev.target.closest&&ev.target.closest('a[href^="/"]'); if(a){ try{gtag('event','next_step_click',{tool_name:'kaitou_sokuhou',zone:zoneNow,href:a.getAttribute('href')});}catch(e){} } }); } }catch(e){}
     try{gtag('event','scoring_complete',{tool_name:'kaitou_sokuhou',score:total,answered:answered,zone:zone});}catch(e){}
     toResult();
   });
