@@ -44,7 +44,7 @@
     --line:#e7e2f0; --line-strong:#d6cfe6;
     --brand:#6a1fc7; --brand-2:#8b3ff0; --brand-strong:#4d1596; --brand-soft:#f0e7fc; --on-brand:#ffffff;
     --hero-a:#4d1596; --hero-b:#7a2fe0; --hero-c:#9d4edd;
-    --gold:#c98a12; --gold-soft:#f8eecf;
+    --gold:#c98a12; --gold-soft:#f8eecf; --gold-ink:#845c00;
     --good:#177245; --good-soft:#e2f4ea; --good-ink:#0f6e3c;
     --bad:#d02a48; --bad-soft:#fce4ea; --bad-ink:#af1f3c;
     --shadow:0 1px 2px rgba(40,20,80,.06),0 10px 30px rgba(60,30,110,.07);
@@ -72,7 +72,7 @@
       --line:#2a2140; --line-strong:#3a2f57;
       --brand:#a870f7; --brand-2:#c193ff; --brand-strong:#b98bff; --brand-soft:#241a3a; --on-brand:#0c0912;
       --hero-a:#3a0f7a; --hero-b:#6a24c8; --hero-c:#9d4edd;
-      --gold:#e0b24e; --gold-soft:#2c2413;
+      --gold:#e0b24e; --gold-soft:#2c2413; --gold-ink:#e0b24e;
       --good:#3fca7d; --good-soft:#12281d; --good-ink:#69dd9c;
       --bad:#f0607f; --bad-soft:#2c1521; --bad-ink:#ff8ba1;
       --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.32);
@@ -85,7 +85,7 @@
     --line:#e7e2f0; --line-strong:#d6cfe6;
     --brand:#6a1fc7; --brand-2:#8b3ff0; --brand-strong:#4d1596; --brand-soft:#f0e7fc; --on-brand:#ffffff;
     --hero-a:#4d1596; --hero-b:#7a2fe0; --hero-c:#9d4edd;
-    --gold:#c98a12; --gold-soft:#f8eecf;
+    --gold:#c98a12; --gold-soft:#f8eecf; --gold-ink:#845c00;
     --good:#177245; --good-soft:#e2f4ea; --good-ink:#0f6e3c;
     --bad:#d02a48; --bad-soft:#fce4ea; --bad-ink:#af1f3c;
     --shadow:0 1px 2px rgba(40,20,80,.06),0 10px 30px rgba(60,30,110,.07);
@@ -97,7 +97,7 @@
     --line:#2a2140; --line-strong:#3a2f57;
     --brand:#a870f7; --brand-2:#c193ff; --brand-strong:#b98bff; --brand-soft:#241a3a; --on-brand:#0c0912;
     --hero-a:#3a0f7a; --hero-b:#6a24c8; --hero-c:#9d4edd;
-    --gold:#e0b24e; --gold-soft:#2c2413;
+    --gold:#e0b24e; --gold-soft:#2c2413; --gold-ink:#e0b24e;
     --good:#3fca7d; --good-soft:#12281d; --good-ink:#69dd9c;
     --bad:#f0607f; --bad-soft:#2c1521; --bad-ink:#ff8ba1;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.32);
@@ -172,7 +172,7 @@
     box-shadow:0 8px 22px rgba(0,0,0,.22);transition:transform .12s;line-height:var(--lh-ui)}
   .cta:active{transform:scale(.98)}
   .cta .hint{font-weight:600;font-size:var(--fs-sm);opacity:.7}
-  .cta.resume{background:rgba(15,8,30,.32);color:#fff;backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,.55);box-shadow:none;margin-top:12px;font-size:var(--fs-base);padding:12px 16px}
+  .cta.resume{background:rgba(15,8,30,.6);color:#fff;backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,.55);box-shadow:none;margin-top:12px;font-size:var(--fs-base);padding:12px 16px}
 
   /* WEAK POINT */
   .weak{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);
@@ -340,7 +340,7 @@
   .btn-primary{background:linear-gradient(135deg,#6a1fc7,#7a2fe0);color:#fff;box-shadow:0 8px 20px rgba(120,50,220,.32)}
   .btn-ghost{background:var(--surface);border:1px solid var(--line-strong);color:var(--ink)}
   .btn-icon{flex:0 0 auto;width:56px;padding:14px 0;font-size:var(--fs-lead)}
-  .btn-icon.marked{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+  .btn-icon.marked{background:var(--gold-soft);border-color:var(--gold);color:var(--gold-ink)}
 
   /* RESULT */
   .result-hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 16px;
@@ -407,7 +407,7 @@
   .note-star{flex:0 0 48px;min-height:48px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);
     font-size:var(--fs-lead);color:var(--muted);box-shadow:var(--shadow);transition:transform .1s}
   .note-star:active{transform:scale(.95)}
-  .note-star.on{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+  .note-star.on{background:var(--gold-soft);border-color:var(--gold);color:var(--gold-ink)}
 
   .empty{text-align:center;color:var(--muted);padding:40px 20px;font-size:var(--fs-base);line-height:var(--lh-body)}
   .empty .ic{font-size:var(--fs-display);display:block;margin-bottom:10px}
