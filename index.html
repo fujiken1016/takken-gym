@@ -1235,7 +1235,7 @@ const ROUTE_ORDER={
 };
 const ROUTE_HEAD={
   pre:{title:"いまの状況から選ぶ"},chokuzen:{title:"直前期：残りでやること"},
-  exam:{title:"試験当日"},after:{title:"試験おつかれさまでした"}
+  exam:{title:"試験当日"},after:{title:"令和8年度試験おつかれさまでした"}
 };
 const ROUTE_VISIBLE=5;
 // 表示すべき状態を1か所で計算する（DOMはこの戻り値だけから作る）
@@ -1263,7 +1263,7 @@ function renderRoutes(){
   const head=ROUTE_HEAD[st.phase];
   document.getElementById("routeTitle").textContent=head.title;
   const dd=document.getElementById("routeDday");
-  dd.textContent = st.phase==="after" ? "自己採点と、次の一手"
+  dd.textContent = st.phase==="after" ? "自己採点と、令和9年度に向けた次の一手"
     : st.phase==="exam" ? "10月18日（日）13:00開始"
     : "本試験まであと"+st.days+"日（10/18）";
   document.getElementById("homeRoutes").innerHTML=
