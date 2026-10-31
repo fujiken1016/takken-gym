@@ -60,6 +60,18 @@
 - **検索結果ページ（`search.rakuten.co.jp`）へのリンクは新規に作らない**（CVRが低い）。2026-08-12に商品ページ直リンクへ差し替え済み。
 - 宅建の3冊は**毎年10月前後に翌年度版が出る**ので、年1回の貼り替えが必要。
 
+## もしもアフィリエイト（宅建Jobエージェント）
+
+| スロット名 | 掲載箇所 | リンク種別 | 現在のリンク |
+|---|---|---|---|
+| MOSHIMO_TAKKENJOB | `/blog/takken-goukakugo`（§11 まとめ後・「参照した一次情報」の直前。`<!-- AFF-SLOT:MOSHIMO_TAKKENJOB begin/end -->` で囲み済み） | もしも promotion_id=2380 登録フォーム完了 5,769円（審査なし・即時提携・**広告出稿NG**） | `//af.moshimo.com/af/c/click?a_id=5867092&p_id=2380&pc_id=5164&pl_id=31115`（宅建GYM＝shop_site_id 683802 用の a_id。`<img>` impression とセット） |
+
+- 2026-10-31 設置（J108）。**`/goukaku-happyou/` には置かない**（不合格者も来る面。予約タスク `goukakugo-douzen-1120` の原則）。PR表記はページ冒頭の `pr-line` ＋ブロック先頭の「PR」＋`rel="nofollow sponsored noopener"`。
+- 計測：`oc.js` は `af.moshimo.com` を拾わないため、ブロック直後の小スクリプトが `aff_click{network:"moshimo", item_id:"2380", from_page, slot:"MOSHIMO_TAKKENJOB"}` を送る。AdSense保留明けに `oc.js` へ moshimo 分岐を足せば、この小スクリプトは撤去してよい（二重計測に注意）。
+- utm：もしもの出口URLは ASP のリダイレクトなので utm は付けない（自社サイト内リンクではないため）。
+- 🔴 11/20 `goukakugo-douzen-1120` と 11/25 `takken-goukaku-happyou-20261125` は、このブロック（begin〜end）を消さない・文言を変えない。**2026-10-31時点では両SKILL.mdは未改訂**。
+- 広告出稿NG＝リスティング広告・SNS広告に出さない。リンクの鮮度：広告主が終了したら外す。
+
 ## 審査中（通過したら `/courses/` の「審査中」セクションをカードに昇格）
 
 | 予定スロット名 | リンク種別 |
