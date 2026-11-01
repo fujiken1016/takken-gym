@@ -31,6 +31,9 @@
  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
  .rel a{display:block;font-weight:700;color:var(--brand2);text-decoration:none;padding:12px 0;font-size:1.0625rem;min-height:48px;line-height:1.85}
  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table.t{min-width:520px}
+ .scroll::before{content:"表は横にスクロールできます →";display:block;font-size:13px;line-height:1.8;color:var(--muted)}
+ @media(min-width:640px){.scroll::before{display:none}}
  .src{font-size:14px;color:var(--muted);line-height:1.8}
  .src a{color:var(--brand2)}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
