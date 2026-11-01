@@ -37,6 +37,16 @@
  article p,article li,table.t td,table.t th{text-wrap:pretty;word-break:auto-phrase}
  .scroll::before{content:"表は横にスクロールできます →";display:block;font-size:13px;line-height:1.8;color:var(--muted)}
  @media(min-width:640px){.scroll::before{display:none}}
+ @media(max-width:639px){
+  .scroll::before{display:none}
+  table.t{min-width:0}
+  table.t,table.t tbody,table.t tr,table.t td,table.t th{display:block;width:auto}
+  table.t tr:first-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.t tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 0}
+  table.t td{border:0;padding:5px 12px;white-space:normal}
+  table.t td:first-child{font-weight:700;white-space:normal}
+  table.t td:not(:first-child)::before{content:attr(data-label);display:block;font-size:13px;line-height:1.7;color:var(--muted)}
+ }
  .src{font-size:14px;color:var(--muted);line-height:1.8}
  .src a{color:var(--brand2)}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
@@ -120,9 +130,9 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">講習を修了した年度</th><th scope="col">免除が使える試験年度</th><th scope="col">令和8年度（今年の11月15日）</th><th scope="col">令和9年度（来年）</th></tr>
-    <tr><td>令和6年度</td><td>令和6年度・令和7年度</td><td>使えない（50問）</td><td>使えない</td></tr>
-    <tr><td>令和7年度</td><td>令和7年度・令和8年度</td><td>使える（45問）</td><td>使えない</td></tr>
-    <tr><td>令和8年度</td><td>令和8年度・令和9年度</td><td>使える（45問）</td><td>使える（当てはめ）</td></tr>
+    <tr><td data-label="講習を修了した年度">令和6年度</td><td data-label="免除が使える試験年度">令和6年度・令和7年度</td><td data-label="令和8年度（今年の11月15日）">使えない（50問）</td><td data-label="令和9年度（来年）">使えない</td></tr>
+    <tr><td data-label="講習を修了した年度">令和7年度</td><td data-label="免除が使える試験年度">令和7年度・令和8年度</td><td data-label="令和8年度（今年の11月15日）">使える（45問）</td><td data-label="令和9年度（来年）">使えない</td></tr>
+    <tr><td data-label="講習を修了した年度">令和8年度</td><td data-label="免除が使える試験年度">令和8年度・令和9年度</td><td data-label="令和8年度（今年の11月15日）">使える（45問）</td><td data-label="令和9年度（来年）">使える（当てはめ）</td></tr>
   </table>
   </div>
   <figcaption><p>表1：5問免除の有効期間を年度に当てはめた表（2026年11月1日時点）。令和9年度の列は、協議会の文言からの私の当てはめで、令和9年度の試験概要が出たら必ず突き合わせてください。</p></figcaption>
@@ -141,9 +151,9 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">区分</th><th scope="col">受験者数</th><th scope="col">合格者数</th><th scope="col">合格率</th><th scope="col">合格基準点</th></tr>
-    <tr><td>一般（50問）</td><td>18,395</td><td>4,472</td><td>24.3%</td><td>38問以上（76%）</td></tr>
-    <tr><td>免除（45問）</td><td>13,397</td><td>4,898</td><td>36.6%</td><td>33問以上（73.3%）</td></tr>
-    <tr><td>全体</td><td>31,792</td><td>9,370</td><td>29.5%</td><td>—</td></tr>
+    <tr><td data-label="区分">一般（50問）</td><td data-label="受験者数">18,395</td><td data-label="合格者数">4,472</td><td data-label="合格率">24.3%</td><td data-label="合格基準点">38問以上（76%）</td></tr>
+    <tr><td data-label="区分">免除（45問）</td><td data-label="受験者数">13,397</td><td data-label="合格者数">4,898</td><td data-label="合格率">36.6%</td><td data-label="合格基準点">33問以上（73.3%）</td></tr>
+    <tr><td data-label="区分">全体</td><td data-label="受験者数">31,792</td><td data-label="合格者数">9,370</td><td data-label="合格率">29.5%</td><td data-label="合格基準点">—</td></tr>
   </table>
   </div>
   <figcaption><p>表2：令和7年度の一般と免除の比較。出典：協議会の令和7年度統計PDF。得点率は私の計算（38÷50＝76.0%、33÷45＝73.3%）。前年度（令和6年度）の全体の合格率は24.1%でした。</p></figcaption>
@@ -162,11 +172,11 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">項目</th><th scope="col">令和8年度（今年・公表済み）</th><th scope="col">令和9年度（来年）</th></tr>
-    <tr><td>試験日</td><td>2026年11月15日（日）13:00〜15:00</td><td>未発表</td></tr>
-    <tr><td>WEB申込</td><td>8月3日（月）〜9月30日（水）</td><td>未発表</td></tr>
-    <tr><td>免除講習</td><td>7月15日（水）〜9月25日（金）</td><td>未発表</td></tr>
-    <tr><td>受験手数料</td><td>12,000円</td><td>未発表（変わる可能性あり）</td></tr>
-    <tr><td>合格発表</td><td>12月24日（木）（予定）</td><td>未発表</td></tr>
+    <tr><td data-label="項目">試験日</td><td data-label="令和8年度（今年・公表済み）">2026年11月15日（日）13:00〜15:00</td><td data-label="令和9年度（来年）">未発表</td></tr>
+    <tr><td data-label="項目">WEB申込</td><td data-label="令和8年度（今年・公表済み）">8月3日（月）〜9月30日（水）</td><td data-label="令和9年度（来年）">未発表</td></tr>
+    <tr><td data-label="項目">免除講習</td><td data-label="令和8年度（今年・公表済み）">7月15日（水）〜9月25日（金）</td><td data-label="令和9年度（来年）">未発表</td></tr>
+    <tr><td data-label="項目">受験手数料</td><td data-label="令和8年度（今年・公表済み）">12,000円</td><td data-label="令和9年度（来年）">未発表（変わる可能性あり）</td></tr>
+    <tr><td data-label="項目">合格発表</td><td data-label="令和8年度（今年・公表済み）">12月24日（木）（予定）</td><td data-label="令和9年度（来年）">未発表</td></tr>
   </table>
   </div>
   <figcaption><p>表3：令和8年度と令和9年度の比較（協議会の公表・2026年11月1日時点）。令和9年度の欄は、協議会の公式ページに記載が見つからなかった（2026年11月1日確認）ものを「未発表」としています。</p></figcaption>
@@ -179,12 +189,12 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">時期（仮置き）</th><th scope="col">やること</th><th scope="col">根拠</th></tr>
-    <tr><td>2026年11月〜12月</td><td>自己採点を残す。落ちた分野を書き出す。12月24日（予定）に結果を確認</td><td>令和8年度の発表予定</td></tr>
-    <tr><td>2027年1月〜5月</td><td>法令の改正点を確認しながら、落とした分野を中心に学習する</td><td>試験は施行中の法令が基準（令和8年度は4月1日現在）</td></tr>
-    <tr><td>2027年6月ごろ</td><td>協議会の発表を週1回見る。実施要領が出たら日付を差し替える</td><td>令和8年度の申込開始は8月3日</td></tr>
-    <tr><td>2027年7月〜9月</td><td>免除講習を取る場合は、令和8年度の実績（7/15〜9/25）を目安に枠を確保</td><td>令和8年度の講習日程</td></tr>
-    <tr><td>2027年8月〜9月</td><td>WEB申込（令和8年度は8/3〜9/30）</td><td>令和8年度の申込期間</td></tr>
-    <tr><td>2027年11月ごろ</td><td>本試験（仮置き：11月の第3日曜なら2027年11月21日。未発表）</td><td>協議会の流れ図（毎年11月第3日曜）</td></tr>
+    <tr><td data-label="時期（仮置き）">2026年11月〜12月</td><td data-label="やること">自己採点を残す。落ちた分野を書き出す。12月24日（予定）に結果を確認</td><td data-label="根拠">令和8年度の発表予定</td></tr>
+    <tr><td data-label="時期（仮置き）">2027年1月〜5月</td><td data-label="やること">法令の改正点を確認しながら、落とした分野を中心に学習する</td><td data-label="根拠">試験は施行中の法令が基準（令和8年度は4月1日現在）</td></tr>
+    <tr><td data-label="時期（仮置き）">2027年6月ごろ</td><td data-label="やること">協議会の発表を週1回見る。実施要領が出たら日付を差し替える</td><td data-label="根拠">令和8年度の申込開始は8月3日</td></tr>
+    <tr><td data-label="時期（仮置き）">2027年7月〜9月</td><td data-label="やること">免除講習を取る場合は、令和8年度の実績（7/15〜9/25）を目安に枠を確保</td><td data-label="根拠">令和8年度の講習日程</td></tr>
+    <tr><td data-label="時期（仮置き）">2027年8月〜9月</td><td data-label="やること">WEB申込（令和8年度は8/3〜9/30）</td><td data-label="根拠">令和8年度の申込期間</td></tr>
+    <tr><td data-label="時期（仮置き）">2027年11月ごろ</td><td data-label="やること">本試験（仮置き：11月の第3日曜なら2027年11月21日。未発表）</td><td data-label="根拠">協議会の流れ図（毎年11月第3日曜）</td></tr>
   </table>
   </div>
   <figcaption><p>表4：公式発表前の逆算カレンダー。令和9年度の日付は、すべて仮置きです。</p></figcaption>

@@ -37,6 +37,16 @@
  article p,article li,table.t td,table.t th{text-wrap:pretty;word-break:auto-phrase}
  .scroll::before{content:"表は横にスクロールできます →";display:block;font-size:13px;line-height:1.8;color:var(--muted)}
  @media(min-width:640px){.scroll::before{display:none}}
+ @media(max-width:639px){
+  .scroll::before{display:none}
+  table.t{min-width:0}
+  table.t,table.t tbody,table.t tr,table.t td,table.t th{display:block;width:auto}
+  table.t tr:first-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.t tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 0}
+  table.t td{border:0;padding:5px 12px;white-space:normal}
+  table.t td:first-child{font-weight:700;white-space:normal}
+  table.t td:not(:first-child)::before{content:attr(data-label);display:block;font-size:13px;line-height:1.7;color:var(--muted)}
+ }
  .src{font-size:14px;color:var(--muted);line-height:1.8}
  .src a{color:var(--brand2)}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
@@ -121,12 +131,12 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">項目</th><th scope="col">窓口（持参）</th><th scope="col">郵送</th><th scope="col">電子申請（eMLIT）</th></tr>
-    <tr><td>手数料の払い方</td><td>現金を持参（収入証紙は不可）</td><td>書類が届いたあとの電話連絡で納付方法を案内</td><td>書類に不備がないと確認されたあと、支払い用リンクが通知される</td></tr>
-    <tr><td>使える決済</td><td>現金</td><td>電話で案内（ページに記載なし）</td><td>クレジットカード（VISA・Mastercard・JCB・American Express・Diners Club）、ペイジー、PayPay</td></tr>
-    <tr><td>領収書</td><td>記載なし</td><td>記載なし</td><td>発行されない</td></tr>
-    <tr><td>書類の確認</td><td>受付の場で確認</td><td>到着後に確認</td><td>提出後に確認</td></tr>
-    <tr><td>登録までの目安</td><td>30日程度</td><td>手数料受領後、30〜40日程度</td><td>手数料受領後、30〜40日程度</td></tr>
-    <tr><td>東京都の推奨</td><td>急ぐ場合は窓口</td><td>—</td><td>—</td></tr>
+    <tr><td data-label="項目">手数料の払い方</td><td data-label="窓口（持参）">現金を持参（収入証紙は不可）</td><td data-label="郵送">書類が届いたあとの電話連絡で納付方法を案内</td><td data-label="電子申請（eMLIT）">書類に不備がないと確認されたあと、支払い用リンクが通知される</td></tr>
+    <tr><td data-label="項目">使える決済</td><td data-label="窓口（持参）">現金</td><td data-label="郵送">電話で案内（ページに記載なし）</td><td data-label="電子申請（eMLIT）">クレジットカード（VISA・Mastercard・JCB・American Express・Diners Club）、ペイジー、PayPay</td></tr>
+    <tr><td data-label="項目">領収書</td><td data-label="窓口（持参）">記載なし</td><td data-label="郵送">記載なし</td><td data-label="電子申請（eMLIT）">発行されない</td></tr>
+    <tr><td data-label="項目">書類の確認</td><td data-label="窓口（持参）">受付の場で確認</td><td data-label="郵送">到着後に確認</td><td data-label="電子申請（eMLIT）">提出後に確認</td></tr>
+    <tr><td data-label="項目">登録までの目安</td><td data-label="窓口（持参）">30日程度</td><td data-label="郵送">手数料受領後、30〜40日程度</td><td data-label="電子申請（eMLIT）">手数料受領後、30〜40日程度</td></tr>
+    <tr><td data-label="項目">東京都の推奨</td><td data-label="窓口（持参）">急ぐ場合は窓口</td><td data-label="郵送">—</td><td data-label="電子申請（eMLIT）">—</td></tr>
   </table>
   </div>
   <figcaption><p>表1：東京都の資格登録申請、3つの出し方の違い。「記載なし」は、東京都の該当ページに書かれていないという意味で、「ない」という意味ではありません（東京都の公表内容・2026年11月1日時点）。</p></figcaption>
@@ -179,9 +189,9 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">書類</th><th scope="col">発行元</th><th scope="col">条件（東京都の記載）</th></tr>
-    <tr><td>身分証明書</td><td>本籍地の市区町村</td><td>発行から3か月以内。コピー不可。全員提出</td></tr>
-    <tr><td>登記されていないことの証明書</td><td>法務局</td><td>発行から3か月以内。コピー不可。電子証明書は不可</td></tr>
-    <tr><td>住民票（本人分）</td><td>市区町村</td><td>発行から3か月以内。マイナンバーの記載がないもの。コピー不可</td></tr>
+    <tr><td data-label="書類">身分証明書</td><td data-label="発行元">本籍地の市区町村</td><td data-label="条件（東京都の記載）">発行から3か月以内。コピー不可。全員提出</td></tr>
+    <tr><td data-label="書類">登記されていないことの証明書</td><td data-label="発行元">法務局</td><td data-label="条件（東京都の記載）">発行から3か月以内。コピー不可。電子証明書は不可</td></tr>
+    <tr><td data-label="書類">住民票（本人分）</td><td data-label="発行元">市区町村</td><td data-label="条件（東京都の記載）">発行から3か月以内。マイナンバーの記載がないもの。コピー不可</td></tr>
   </table>
   </div>
   <figcaption><p>表2：期限つきの3書類。東京都の記載（2026年11月1日時点）。3か月は発行日から数えるので、早く取りすぎると期限切れになります。</p></figcaption>
@@ -204,10 +214,10 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">手続き</th><th scope="col">期限（東京都の記載）</th></tr>
-    <tr><td>資格登録の申請書類</td><td>令和8年10月1日（木）必着（すでに過ぎている）</td></tr>
-    <tr><td>宅建士証の交付申請（窓口）</td><td>令和8年11月26日（木）17時まで</td></tr>
-    <tr><td>宅建士証の交付申請（郵送・電子）</td><td>令和8年11月13日（金）必着（電子は17時）</td></tr>
-    <tr><td>交付手数料の納付（郵送・電子）</td><td>令和8年11月20日（金）必着（電子は17時）</td></tr>
+    <tr><td data-label="手続き">資格登録の申請書類</td><td data-label="期限（東京都の記載）">令和8年10月1日（木）必着（すでに過ぎている）</td></tr>
+    <tr><td data-label="手続き">宅建士証の交付申請（窓口）</td><td data-label="期限（東京都の記載）">令和8年11月26日（木）17時まで</td></tr>
+    <tr><td data-label="手続き">宅建士証の交付申請（郵送・電子）</td><td data-label="期限（東京都の記載）">令和8年11月13日（金）必着（電子は17時）</td></tr>
+    <tr><td data-label="手続き">交付手数料の納付（郵送・電子）</td><td data-label="期限（東京都の記載）">令和8年11月20日（金）必着（電子は17時）</td></tr>
   </table>
   </div>
   <figcaption><p>表3：令和7年度（2025年10月19日実施）の合格者に向けて、東京都が載せている期限（2026年11月1日時点の公表）。</p></figcaption>

@@ -37,6 +37,16 @@
  article p,article li,table.t td,table.t th{text-wrap:pretty;word-break:auto-phrase}
  .scroll::before{content:"表は横にスクロールできます →";display:block;font-size:13px;line-height:1.8;color:var(--muted)}
  @media(min-width:640px){.scroll::before{display:none}}
+ @media(max-width:639px){
+  .scroll::before{display:none}
+  table.t{min-width:0}
+  table.t,table.t tbody,table.t tr,table.t td,table.t th{display:block;width:auto}
+  table.t tr:first-child{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.t tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 0}
+  table.t td{border:0;padding:5px 12px;white-space:normal}
+  table.t td:first-child{font-weight:700;white-space:normal}
+  table.t td:not(:first-child)::before{content:attr(data-label);display:block;font-size:13px;line-height:1.7;color:var(--muted)}
+ }
  .src{font-size:14px;color:var(--muted);line-height:1.8}
  .src a{color:var(--brand2)}
  .warn{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0;font-size:14.5px;line-height:1.9}
@@ -116,11 +126,11 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">条文</th><th scope="col">定めていること</th></tr>
-    <tr><td>22条の2第3項</td><td>宅建士証の有効期間は<b>五年</b></td></tr>
-    <tr><td>22条の3第1項</td><td>宅建士証の有効期間は<b>申請により更新</b>する</td></tr>
-    <tr><td>22条の3第2項</td><td>講習のルール（22条の2第2項本文）と、更新後の有効期間（五年）を準用する</td></tr>
-    <tr><td>22条の2第2項</td><td>交付を受けようとする者は、知事が指定する講習で<b>交付の申請前六月以内</b>に行われるものを受講する。ただし合格から一年以内に交付を受ける者は除く</td></tr>
-    <tr><td>22条の2第6項</td><td>登録が消除されたとき、または宅建士証が<b>効力を失ったとき</b>は、速やかに知事に返納する</td></tr>
+    <tr><td data-label="条文">22条の2第3項</td><td data-label="定めていること">宅建士証の有効期間は<b>五年</b></td></tr>
+    <tr><td data-label="条文">22条の3第1項</td><td data-label="定めていること">宅建士証の有効期間は<b>申請により更新</b>する</td></tr>
+    <tr><td data-label="条文">22条の3第2項</td><td data-label="定めていること">講習のルール（22条の2第2項本文）と、更新後の有効期間（五年）を準用する</td></tr>
+    <tr><td data-label="条文">22条の2第2項</td><td data-label="定めていること">交付を受けようとする者は、知事が指定する講習で<b>交付の申請前六月以内</b>に行われるものを受講する。ただし合格から一年以内に交付を受ける者は除く</td></tr>
+    <tr><td data-label="条文">22条の2第6項</td><td data-label="定めていること">登録が消除されたとき、または宅建士証が<b>効力を失ったとき</b>は、速やかに知事に返納する</td></tr>
   </table>
   </div>
   <figcaption><p>表1：更新と期限切れに関わる条文。法律の言い回しはそのまま写さず、要点で書いています（出典：e-Gov法令検索・2026年11月1日時点）。</p></figcaption>
@@ -146,10 +156,10 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">宅建士証の満了日（例）</th><th scope="col">講習を受けられる最初の日の目安</th></tr>
-    <tr><td>2027年3月31日</td><td>2026年9月30日以降</td></tr>
-    <tr><td>2027年6月30日</td><td>2026年12月30日以降</td></tr>
-    <tr><td>2027年9月30日</td><td>2027年3月30日以降</td></tr>
-    <tr><td>2027年12月31日</td><td>2027年6月30日以降</td></tr>
+    <tr><td data-label="宅建士証の満了日（例）">2027年3月31日</td><td data-label="講習を受けられる最初の日の目安">2026年9月30日以降</td></tr>
+    <tr><td data-label="宅建士証の満了日（例）">2027年6月30日</td><td data-label="講習を受けられる最初の日の目安">2026年12月30日以降</td></tr>
+    <tr><td data-label="宅建士証の満了日（例）">2027年9月30日</td><td data-label="講習を受けられる最初の日の目安">2027年3月30日以降</td></tr>
+    <tr><td data-label="宅建士証の満了日（例）">2027年12月31日</td><td data-label="講習を受けられる最初の日の目安">2027年6月30日以降</td></tr>
   </table>
   </div>
   <figcaption><p>表2：満了日の6か月前を計算した例（2026年11月1日時点の私の計算。月末日の扱いは念のため団体に確認してください）。</p></figcaption>
@@ -161,10 +171,10 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">団体</th><th scope="col">受付窓口・所在地</th></tr>
-    <tr><td>東京都宅地建物取引業協会</td><td>宅建士法定講習センター（千代田区富士見2-2-4 東京都宅建会館1階）</td></tr>
-    <tr><td>全日本不動産協会</td><td>東京都本部 講習センター（千代田区平河町1-8-13）</td></tr>
-    <tr><td>不動産協会</td><td>宅建法定講習センター（千代田区霞が関3-2-5 霞が関ビル17階）</td></tr>
-    <tr><td>全国住宅産業協会</td><td>千代田区麹町5-3 麹町中田ビル8階（ページ上で受付終了と記載）</td></tr>
+    <tr><td data-label="団体">東京都宅地建物取引業協会</td><td data-label="受付窓口・所在地">宅建士法定講習センター（千代田区富士見2-2-4 東京都宅建会館1階）</td></tr>
+    <tr><td data-label="団体">全日本不動産協会</td><td data-label="受付窓口・所在地">東京都本部 講習センター（千代田区平河町1-8-13）</td></tr>
+    <tr><td data-label="団体">不動産協会</td><td data-label="受付窓口・所在地">宅建法定講習センター（千代田区霞が関3-2-5 霞が関ビル17階）</td></tr>
+    <tr><td data-label="団体">全国住宅産業協会</td><td data-label="受付窓口・所在地">千代田区麹町5-3 麹町中田ビル8階（ページ上で受付終了と記載）</td></tr>
   </table>
   </div>
   <figcaption><p>表3：東京都のページに載っている法定講習の実施団体（2026年11月1日時点の公表）。電話番号と受付時間は団体ごとに違うため、ここでは書かず、東京都のページに任せます。</p></figcaption>
@@ -207,9 +217,9 @@
   <div class="scroll">
   <table class="t">
     <tr><th scope="col">項目</th><th scope="col">金額</th><th scope="col">根拠</th></tr>
-    <tr><td>法定講習の受講料（東京都）</td><td>12,000円</td><td>東京都「法定講習について」</td></tr>
-    <tr><td>交付申請の手数料（更新を含む）</td><td>4,500円</td><td>手数料標準政令 別表61の4・61の5</td></tr>
-    <tr><td>合計（東京都）</td><td><b>16,500円</b></td><td>現金。収入証紙は不可</td></tr>
+    <tr><td data-label="項目">法定講習の受講料（東京都）</td><td data-label="金額">12,000円</td><td data-label="根拠">東京都「法定講習について」</td></tr>
+    <tr><td data-label="項目">交付申請の手数料（更新を含む）</td><td data-label="金額">4,500円</td><td data-label="根拠">手数料標準政令 別表61の4・61の5</td></tr>
+    <tr><td data-label="項目">合計（東京都）</td><td data-label="金額"><b>16,500円</b></td><td data-label="根拠">現金。収入証紙は不可</td></tr>
   </table>
   </div>
   <figcaption><p>表4：5年ごとにかかる費用の目安（東京都の公表・2026年11月1日時点）。受講料は都道府県・団体で違うことがあります。</p></figcaption>
