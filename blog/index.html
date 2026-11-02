@@ -37,6 +37,12 @@
  .pcard .pd{font-size:15px;color:var(--muted);line-height:1.85;margin-top:6px;display:block}
  .pcard .pm{font-size:14px;color:var(--muted);margin-top:8px;display:block}
  .chinkan-sec{background:var(--surface);border:1px solid var(--line);border-left:4px solid #e0692f;border-radius:12px;padding:14px 16px;margin:18px 0 6px;font-size:14px;line-height:1.9;color:var(--muted)}
+ .pcard.has-th{display:grid;grid-template-columns:1fr;gap:0;padding:0;overflow:hidden;border-radius:16px}
+ .pcard.has-th .pth{grid-row:1;width:100%;height:128px;object-fit:cover;display:block;background:var(--line)}
+ .pcard.has-th .pt,.pcard.has-th .pd,.pcard.has-th .pm{padding:0 16px}
+ .pcard.has-th .pt{padding-top:12px}
+ .pcard.has-th .pm{padding-bottom:14px}
+ @media(min-width:560px){.pcard.has-th{grid-template-columns:160px 1fr;column-gap:16px}.pcard.has-th .pth{grid-column:1;grid-row:1/span 3;width:160px;height:100%;min-height:90px}.pcard.has-th .pt,.pcard.has-th .pd,.pcard.has-th .pm{grid-column:2;padding-left:0}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -78,6 +84,7 @@
 </div></div>
 <main>
 <article>
+<figure class="eye"><img src="/blog/img/hero.webp" width="1200" height="675" alt="住宅街と開いた参考書のイラスト" decoding="async" fetchpriority="high"></figure>
   <p>宅建GYMで公開している記事の一覧です。<b>宅建（宅地建物取引士）</b>の記事を目的別の4カテゴリに、<b>賃貸不動産経営管理士（賃管士）</b>の記事を別セクションにまとめました。上から順に読む必要はないので、いま自分がいる段階に近いところから読んでください。</p>
 
   <div class="toc">
@@ -93,19 +100,23 @@
   <h2 id="c1">1. 学習の始め方・スケジュール</h2>
   <p class="catlead">これから始める人、勉強量と期間の見積もりを立てたい人向け。</p>
   <ul class="plist">
-    <li><a class="pcard" href="/blog/takken-dokugaku-benkyohou">
+    <li><a class="pcard has-th" href="/blog/takken-dokugaku-benkyohou">
+      <img class="pth" src="/blog/img/c1-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の独学・勉強法｜合格するための進め方と順番【初心者向け】</span>
       <span class="pd">独学で合格するための学習の順番、分野ごとの対策、過去問の使い方、スキマ時間の活用まで。まず1本目に読む記事です。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-benkyo-jikan">
+    <li><a class="pcard has-th" href="/blog/takken-benkyo-jikan">
+      <img class="pth" src="/blog/img/c1-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の勉強時間の目安｜300〜400時間の内訳とスケジュール</span>
       <span class="pd">合格に必要な勉強時間の目安は約300〜400時間。分野別の時間配分と、半年・3か月など期間別のスケジュール例をまとめました。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-chokuzenki-2kagetsu">
+    <li><a class="pcard has-th" href="/blog/takken-chokuzenki-2kagetsu">
+      <img class="pth" src="/blog/img/c1-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建 直前期2か月の勉強法｜10月の試験に向けた週別プラン（令和8年度の実例・来年の計画づくりにも）</span>
       <span class="pd">試験2か月前から間に合わせる週別スケジュール、直前期の優先順位、やってはいけない5つのこと、目標得点の作り方。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-reiwa9-nyuumon">
+    <li><a class="pcard has-th" href="/blog/takken-reiwa9-nyuumon">
+      <img class="pth" src="/blog/img/c1-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建 令和9年度（2027年）を受ける人へ｜試験日は未発表、勉強はいつから始める？</span>
       <span class="pd">来年の試験日・申込期間は未発表。決まっている受験資格・手数料・法令基準日を一次情報で整理し、1日の勉強時間から開始月を逆算。11〜12月にやる最初の2週間つき。</span>
       <span class="pm">更新 2026-10-31</span></a></li>
@@ -114,27 +125,33 @@
   <h2 id="c2">2. 分野別・得点を伸ばす</h2>
   <p class="catlead">過去問は回しているのに点が伸びない、という段階の人向け。条文の根拠つきで整理しています。</p>
   <ul class="plist">
-    <li><a class="pcard" href="/blog/takken-gyouhou-hikkake">
+    <li><a class="pcard has-th" href="/blog/takken-gyouhou-hikkake">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建業法の「引っかけ肢」総まとめ｜数字・主語・期限の入れ替え6パターンを条文で潰す</span>
       <span class="pd">宅建業法のひっかけは条文の1か所を入れ替えて作られます。6パターンに分解し、e-Gov法令検索で確認した条文とセットで一覧にしました。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-8shu-seigen">
+    <li><a class="pcard has-th" href="/blog/takken-8shu-seigen">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の8種制限とは｜自ら売主のときだけ効く8つの規制を条文で確認</span>
       <span class="pd">33条の2・37条の2〜43条を、e-Gov法令検索の条文本文つきで一覧に。適用場面（自ら売主・買主が業者でない）、クーリング・オフの8日、2割が2つ、保全の5％と1割と1000万円まで。</span>
       <span class="pm">更新 2026-09-04</span></a></li>
-    <li><a class="pcard" href="/blog/takken-houreiseigen-suuji">
+    <li><a class="pcard has-th" href="/blog/takken-houreiseigen-suuji">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建 法令上の制限「数字」総まとめ｜開発許可・建蔽率・農地法・国土法を条文根拠つきで一覧</span>
       <span class="pd">開発許可の面積、道路4m・接道2m、建蔽率の緩和、容積率の道路幅員制限、農地法の許可権者、国土法の事後届出まで。覚える数字は有限です。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-kosu-mondai">
+    <li><a class="pcard has-th" href="/blog/takken-kosu-mondai">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の個数問題が解けない人へ｜「いくつあるか」で失点しない解き方と境目チェック</span>
       <span class="pd">消去法が使えない個数問題であいまいな知識を潰す5ステップと、宅建業法の「◯と✕の境目」チェックリスト。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-kumiawase-mondai">
+    <li><a class="pcard has-th" href="/blog/takken-kumiawase-mondai">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の組合せ問題とは｜4肢すべてを判定しないで正解に着く手順</span>
       <span class="pd">選択肢の中で各肢が何回登場するかを数えるだけで、確定させる肢が2つに減ります。個数問題との違いと本番の5ステップ。</span>
       <span class="pm">更新 2026-09-07</span></a></li>
-    <li><a class="pcard" href="/blog/takken-mon46-50">
+    <li><a class="pcard has-th" href="/blog/takken-mon46-50">
+      <img class="pth" src="/blog/img/c2-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建 問46〜50（5問免除科目）の攻略｜免除なしの独学者が4点取る手順</span>
       <span class="pd">住宅金融支援機構・景表法・統計・土地・建物の5問を、条文と公式資料ベースで効率よく4点に変える手順。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
@@ -143,11 +160,13 @@
   <h2 id="c3">3. 最新情報：法改正・統計</h2>
   <p class="catlead">その年しか使えない、直前に詰め込む種類の情報。年度が変わったら読み直してください。</p>
   <ul class="plist">
-    <li><a class="pcard" href="/blog/takken-hokaisei-2026">
+    <li><a class="pcard has-th" href="/blog/takken-hokaisei-2026">
+      <img class="pth" src="/blog/img/c3-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の法改正2026【令和8年度】区分所有法・拘禁刑・相続登記の出題ポイント</span>
       <span class="pd">2026年4月1日施行の改正区分所有法、拘禁刑、相続登記の義務化、書面の電子交付まで。法務省・国土交通省・e-Gov法令検索の一次情報から出典つきで整理。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-toukei-2026">
+    <li><a class="pcard has-th" href="/blog/takken-toukei-2026">
+      <img class="pth" src="/blog/img/c3-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の統計問題2026【令和8年度】問48で1点取る数字まとめ</span>
       <span class="pd">建築着工統計・地価公示・土地白書・法人企業統計・宅建業者数の最新数値を、国土交通省・財務省の一次情報から出典つきで。直前2週間の暗記用。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
@@ -156,27 +175,33 @@
   <h2 id="c4">4. 試験当日・その後</h2>
   <p class="catlead">本試験の直前から、合格発表・不合格後の立て直し・合格後の手続きまで。</p>
   <ul class="plist">
-    <li><a class="pcard" href="/blog/takken-shiken-toujitsu">
+    <li><a class="pcard has-th" href="/blog/takken-shiken-toujitsu">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建試験当日の持ち物・腕時計・時間配分・解く順番【2026年10月18日】</span>
       <span class="pd">入室は12時30分まで、13時30分以降は入室不可。公式に指定された持ち物・持ち込み禁止物と、2時間の時間配分・解く順番。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-ochita-revenge">
+    <li><a class="pcard has-th" href="/blog/takken-ochita-revenge">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建に落ちた人へ｜再受講割引・学習経験者向けコースを6社で比較</span>
       <span class="pd">2回目以降の人だけが使える再受講割引（実測でLEC40％OFF・アガルート20％OFFなど）と学習経験者向けコース。各社公式の実測値だけで比較。</span>
       <span class="pm">更新 2026-08-30</span></a></li>
-    <li><a class="pcard" href="/blog/takken-saichousen">
+    <li><a class="pcard has-th" href="/blog/takken-saichousen">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建に落ちた後の再挑戦戦略｜あと何点足りなかったかで来年の勉強法を決める</span>
       <span class="pd">あと1〜3点／5〜10点／それ以上で打ち手はまったく違います。失点の分解、独学か講座かの判断基準、11月から始める年間スケジュール。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-goukakugo">
+    <li><a class="pcard has-th" href="/blog/takken-goukakugo">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建に合格した後の手続き｜合格発表→登録実務講習→資格登録→宅建士証の流れと費用</span>
       <span class="pd">登録実務講習（実務経験2年未満の人だけ）、資格登録（37,000円）、宅建士証の交付（4,500円・5年）までを条文で確認して時系列に。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/takken-touroku-tokyo">
+    <li><a class="pcard has-th" href="/blog/takken-touroku-tokyo">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建の資格登録【東京都】窓口・郵送・電子申請の違いと手数料37,000円の払い方</span>
       <span class="pd">登録手数料は収入証紙ではなく現金。窓口の受付時間と混む時期、郵送は電話のあとで納付、電子申請の決済手段、期限つき書類を東京都の公式ページで確認。</span>
       <span class="pm">更新 2026-11-01</span></a></li>
-    <li><a class="pcard" href="/blog/takken-shisho-koushin">
+    <li><a class="pcard has-th" href="/blog/takken-shisho-koushin">
+      <img class="pth" src="/blog/img/c4-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建士証の更新と法定講習｜5年ごとの手続き・期限切れ・カード化の違い</span>
       <span class="pd">有効期間5年・更新は交付申請前6か月以内の講習。東京都の費用16,500円、期限が切れたときの返納と紛失届、カード化の東京都と神奈川県の違いを条文と公式ページで整理。</span>
       <span class="pm">更新 2026-11-01</span></a></li>
@@ -185,27 +210,33 @@
   <h2 id="c5">5. 賃貸不動産経営管理士（賃管士）レーン</h2>
   <div class="chinkan-sec">ここから下は<b>別の国家資格「賃貸不動産経営管理士」</b>の記事です。宅建（10月18日）の4週間後、<b>11月15日</b>に実施されるため併願先として定番ですが、試験も出題範囲も宅建とは別物です。宅建の対策だけを探している人は、上の1〜4だけ読めば足ります。</div>
   <ul class="plist">
-    <li><a class="pcard" href="/chinkan/">
+    <li><a class="pcard has-th" href="/chinkan/">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">賃貸不動産経営管理士【2026年度】試験日・申込期間・宅建との併願ガイド</span>
       <span class="pd">令和8年度は11月15日（日）実施。WEB申込は9月30日で終了しました。受験手数料12,000円・出題範囲・合格発表日を公式発表で確認。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/chinkan/ichimon/">
+    <li><a class="pcard has-th" href="/chinkan/ichimon/">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">賃貸不動産経営管理士の一問一答｜○×30問を無料で演習（根拠条文つき）</span>
       <span class="pd">賃貸住宅管理業法・同施行規則・借地借家法・民法の条文をe-Govで確認して作った30問。1問ずつ解いて、その場で正誤と根拠条文が出ます。</span>
       <span class="pm">更新 2026-08-15</span></a></li>
-    <li><a class="pcard" href="/chinkan/takken-chofuku">
+    <li><a class="pcard has-th" href="/chinkan/takken-chofuku">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建と賃貸不動産経営管理士はどこまで範囲が重なるか｜条文単位で分解する</span>
       <span class="pd">重なるのは民法の賃貸借と借地借家法26条〜40条、建物・設備の維持保全。「◯割重複」という数字は使わず、どこが重なるかを分野ごとに示します。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/chinkan/shutsudai-taisaku">
+    <li><a class="pcard has-th" href="/chinkan/shutsudai-taisaku">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">賃貸不動産経営管理士の出題範囲と対策｜6分野の全体像と宅建にない3分野の潰し方</span>
       <span class="pd">出題範囲イ〜ヘの6分野を実施要領と賃貸住宅管理業法の条文で分解。ゼロから覚え直す管理受託契約・金銭管理・業法の潰し方まで。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/chinkan/takken-go-4shukan">
+    <li><a class="pcard has-th" href="/chinkan/takken-go-4shukan">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">宅建試験後の4週間で賃管士は間に合うか｜10月19日から11月15日までの設計</span>
       <span class="pd">4週間で何ができて何ができないか。申込締切が9月30日と宅建より前に来る点、週ごとの配分、やらないと決める範囲。</span>
       <span class="pm">更新 2026-08-13</span></a></li>
-    <li><a class="pcard" href="/blog/chinkan-fugoukaku-rainen">
+    <li><a class="pcard has-th" href="/blog/chinkan-fugoukaku-rainen">
+      <img class="pth" src="/blog/img/c5-s.webp" width="320" height="180" alt="" loading="lazy" decoding="async">
       <span class="pt">賃管士に落ちたら来年どうする｜5問免除は持ち越せる？ 令和9年度への逆算</span>
       <span class="pd">免除は修了年度とその翌年度だけ有効。令和7年度修了なら来年は切れ、令和8年度修了なら使える。免除あり・なし別の合格率と基準点、未発表の日程を仮置きで逆算。</span>
       <span class="pm">更新 2026-11-01</span></a></li>
