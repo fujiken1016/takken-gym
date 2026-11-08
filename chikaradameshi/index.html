@@ -135,7 +135,7 @@
  .vsT td.d0{text-align:right;white-space:nowrap;font-weight:700;color:var(--muted)}
  .vsT td.dplus{text-align:right;white-space:nowrap;font-weight:700;color:#d33b53}
  .vsT td.dminus{text-align:right;white-space:nowrap;font-weight:700;color:#2f9e6a}
- .vsHead{font-size:1.3125rem;line-height:1.35;margin:20px 0 4px}
+ .vsHead{font-size:1.3125rem;line-height:1.35;margin:20px 0 4px;font-weight:700}
  .vsLead{font-size:0.9375rem;color:var(--muted);line-height:1.9;margin:2px 0 0}
  .vsLead b{color:var(--ink)}
  /* 次の一手（弱点→論点別ページの名指し推薦。サイクル17・2026-08-31） */
@@ -327,7 +327,7 @@
       </table>
       <!-- 予定 vs 実際（サイクル22）＝どのブロックで時間を使いすぎたか -->
       <div id="hVs" hidden>
-        <h3 class="vsHead" id="hVsHead">予定と実際</h3>
+        <div class="vsHead" id="hVsHead" role="heading" aria-level="2">予定と実際</div>
         <p class="vsLead" id="hVsLead"></p>
         <div class="scroll">
           <table class="rtable vsT">
