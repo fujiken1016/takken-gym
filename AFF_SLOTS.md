@@ -51,9 +51,9 @@
 
 | スロット名 | 掲載箇所 | 商品 | 現在のリンク先 |
 |---|---|---|---|
-| RAKUTEN_TEXT1 | `/courses/` 書籍セクション | 2026年度版 みんなが欲しかった！宅建士の教科書 | `item.rakuten.co.jp/book/18387271/` |
-| RAKUTEN_TEXT2 | `/courses/` 書籍セクション | 同 論点別過去問題集 | `item.rakuten.co.jp/book/18387273/` |
-| RAKUTEN_TEXT3 | `/courses/` 書籍セクション | 同 一問一答式過去問題集 | `item.rakuten.co.jp/book/18387272/` |
+| RAKUTEN_TEXT1 | `/courses/` 書籍セクション | 2027年度版 みんなが欲しかった！宅建士の教科書（2026-11-15 J518で2026年度版18387271から差替） | `item.rakuten.co.jp/book/18793220/` |
+| RAKUTEN_TEXT2 | `/courses/` 書籍セクション | 同 論点別過去問題集（2027年度版） | `item.rakuten.co.jp/book/18793221/` |
+| RAKUTEN_TEXT3 | `/courses/` 書籍セクション | 同 一問一答式過去問題集（2027年度版） | `item.rakuten.co.jp/book/18793225/` |
 
 - 宅建GYMの楽天アフィリエイトID：`56850cef.fb24df26.56850cf0.369d6934`。**IDはサイト単位で発行されるので他サイトのものと統一しない**（成果の帰属がズレる）。
 - 形式：`https://hb.afl.rakuten.co.jp/hgc/{ID}/?pc={URLエンコードした商品URL}&m={同}`
@@ -174,3 +174,5 @@ https://hb.afl.rakuten.co.jp/ichiba/{アフィリID}/_RTLink143602?pc={URLエン
 
 - 2026-10-15｜実数 17grep=18枠／表 18｜差分なし（前週と同一）
 - 2026-10-28｜実数 17grep=18枠／表 18｜差分なし（前週と同一）
+- 2026-11-04｜実数 19grep=19枠（10/31 MOSHIMO_TAKKENJOB 新設1枠＝link+imp 2行・index動的2枠=1行）／表 18＋もしも節1＝19｜差分なし（新設分は本番にも4ヒットで実在）
+- 2026-11-11｜実数 19grep=19枠／表 18＋もしも節1＝19｜差分なし（前週と同一）
