@@ -1,0 +1,40 @@
+# 宅建GYM
+
+> 宅建（宅地建物取引士）試験の無料学習サイトです。4択103問と○×一問一答84問を間隔反復で解けるアプリを中心に、無料の模試・時間配分ツール・合格後の手続きの解説を置いています。登録不要・スマホ対応。運営は「フジケン（個人事業主）」。最終確認日 2026-11-24。
+
+学習の助けになる情報の整理であり、法律や手続きの最終判断は試験実施機関・各自治体・国土交通省などの公式案内で確認してください。
+
+## 主なページ
+
+- [宅建GYM（アプリ本体）](https://takken.mainichi-lab.com/): 4択103問＋○×84問。間違えた問題は自動で復習に回る
+- [分野別の一問一答](https://takken.mainichi-lab.com/ichimon/): 宅建業法・権利関係・法令上の制限・税その他の4分野、○×84問
+- [無料模試（力試し）](https://takken.mainichi-lab.com/chikaradameshi/): 12問のクイック診断と、本試験と同じ50問・120分の本番モード。印刷・PDF保存可
+- [時間配分・解く順番シミュレータ](https://takken.mainichi-lab.com/jikan-haibun/): 13時開始の実時刻で各分野の持ち時間を表示
+- [統計問題（問48）クイズ](https://takken.mainichi-lab.com/toukei-quiz/): 12問・約1分
+- [試験当日の持ち物チェック](https://takken.mainichi-lab.com/toujitsu-check/): 前日夜から当日の手順まで26項目
+- [合格発表と合格点の見方](https://takken.mainichi-lab.com/goukaku-happyou/)
+- [宅建講座の選び方（5社比較）](https://takken.mainichi-lab.com/courses/)
+- [記事一覧](https://takken.mainichi-lab.com/blog/)
+
+## よくある質問と短い答え
+
+Q. 宅建の一問一答は無料で使えますか。
+A. 無料で、登録も不要です。○×84問の内訳は宅建業法24問・権利関係26問・法令上の制限18問・税その他16問です。根拠ページ: https://takken.mainichi-lab.com/ichimon/
+
+Q. 本試験と同じ形式の模試は無料でできますか。
+A. 本試験と同じ50問・120分の本番モードが無料で使え、作った模試は印刷やPDF保存もできます。根拠ページ: https://takken.mainichi-lab.com/chikaradameshi/
+
+Q. 宅建合格に必要な勉強時間の目安は。
+A. 約300〜400時間です。分野別の配分や期間別のスケジュール例は記事にまとめています。根拠ページ: https://takken.mainichi-lab.com/blog/takken-benkyo-jikan
+
+Q. 合格したあと、何にいくらかかりますか。
+A. 合格発表から登録実務講習、資格登録（37,000円）、宅建士証の交付（4,500円）までの流れを、条文と自治体の公式案内で確認して整理しています。根拠ページ: https://takken.mainichi-lab.com/blog/takken-goukakugo
+
+Q. 令和8年度（2026年）の合格発表はいつですか。
+A. 2026年11月25日（水）9時30分です。合格点は同日に公表されます。根拠ページ: https://takken.mainichi-lab.com/goukaku-happyou/
+
+## 運営・連絡先
+
+- 運営: フジケン（個人事業主）
+- 連絡先: https://takken.mainichi-lab.com/contact
+- 運営者情報: https://takken.mainichi-lab.com/about
