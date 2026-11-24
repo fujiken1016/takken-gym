@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>宅建の個数問題とは｜「いくつあるか」の解き方と失点しない手順 | 宅建GYM</title>
-<meta name="description" content="宅建の個数問題とは「正しいものはいくつあるか」「組合せはどれか」を問う形式で、消去法が使えません。4肢すべてを◯✕で確定させる5ステップと、条文で確認した宅建業法の「◯と✕の境目」チェックリストをまとめました。">
+<meta name="description" content="宅建の個数問題とは「正しいものはいくつあるか」を答えさせる形式で、消去法が使えません。令和5〜7年度は3年で23問、うち20問が宅建業法でした。4肢すべてを◯✕で確定させる5ステップと、条文で確認した宅建業法の「◯と✕の境目」チェックリストをまとめました。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://takken.mainichi-lab.com/blog/takken-kosu-mondai">
 <link rel="stylesheet" href="/legal.css">
@@ -39,6 +39,12 @@
  .toc ol{margin:0;padding-left:20px}
  .toc li{font-size:14.5px;line-height:1.9;margin:2px 0}
  .toc a{display:flex;align-items:center;min-height:48px;font-size:1rem;font-weight:600;line-height:1.85;color:var(--brand2);text-decoration:none;padding:7px 0}
+ .ans{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:16px 18px;margin:18px 0}
+ .ans .q{font-size:17px;font-weight:700;line-height:1.7;margin:0 0 8px}
+ .ans p{font-size:15px;line-height:1.95;margin:0 0 8px}
+ .ans ul{margin:8px 0 0;padding-left:1.2em}
+ .ans li{font-size:14.5px;line-height:1.9;margin:4px 0}
+ .ans .ev{font-size:14px;color:var(--muted);line-height:1.9;margin:10px 0 0}
  figure.fig{margin:20px 0}
  figure.fig figcaption p{font-size:14px;line-height:1.9;color:var(--muted);margin:8px 0 0}
  .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
@@ -55,7 +61,7 @@
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289616283786904" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の個数問題とは｜「いくつあるか」の解き方と失点しない手順","description":"宅建の個数問題とは「正しいものはいくつあるか」「組合せはどれか」を問う形式で、消去法が使えません。4肢すべてを◯✕で確定させる5ステップと、条文で確認した宅建業法の「◯と✕の境目」チェックリストをまとめました。","inLanguage":"ja","datePublished":"2026-08-13T17:16:29+09:00","dateModified":"2026-11-14","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about","sameAs":["https://note.com/fujiken818","https://qiita.com/fujiken818","https://github.com/fujiken1016"]},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"},"url":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"宅建の個数問題とは｜「いくつあるか」の解き方と失点しない手順","description":"宅建の個数問題とは「正しいものはいくつあるか」を答えさせる形式で、消去法が使えません。令和5〜7年度は3年で23問、うち20問が宅建業法でした。4肢すべてを◯✕で確定させる5ステップと、条文で確認した宅建業法の「◯と✕の境目」チェックリストをまとめました。","inLanguage":"ja","datePublished":"2026-08-13T17:16:29+09:00","dateModified":"2026-11-24","author":{"@type":"Person","name":"フジケン","url":"https://takken.mainichi-lab.com/about","sameAs":["https://note.com/fujiken818","https://qiita.com/fujiken818","https://github.com/fujiken1016"]},"publisher":{"@type":"Organization","name":"宅建GYM","url":"https://takken.mainichi-lab.com/","logo":{"@type":"ImageObject","url":"https://takken.mainichi-lab.com/icon-512.png"}},"image":"https://takken.mainichi-lab.com/og.png","isAccessibleForFree":true,"mainEntityOfPage":{"@type":"WebPage","@id":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"},"url":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"宅建GYM","item":"https://takken.mainichi-lab.com/"},{"@type":"ListItem","position":2,"name":"宅建の個数問題の解き方","item":"https://takken.mainichi-lab.com/blog/takken-kosu-mondai"}]}
 </script>
@@ -70,7 +76,16 @@
 <article>
 <figure class="eye"><img src="/blog/img/c2.webp" width="1200" height="675" alt="積み重ねた法律書と虫眼鏡、チェックリストのイラスト" decoding="async" fetchpriority="high"></figure>
 
-  <p><b>宅建の個数問題とは、4つの肢（選択肢）のうち「正しいものはいくつあるか」「誤っているものはいくつあるか」を答えさせる出題形式です。</b>1つでも判定を誤ると正解になりません。消去法が使えないため、4肢すべてを◯✕で確定させる必要があります。</p>
+  <div class="ans" id="answer">
+    <p class="q">Q. 宅建の個数問題とは？</p>
+    <p><b>A. 4つの肢（ア〜エ）のうち「正しいものはいくつあるか」「誤っているものはいくつあるか」を答えさせる出題形式です。</b>選択肢が「一つ・二つ・三つ・四つ」と数で並んでいるのが目印です。1肢でも判定を誤ると正解になりません。消去法が使えないため、4肢すべてを◯✕で確定させる必要があります。</p>
+    <ul>
+      <li>見分け方：設問の最後が「〜はいくつあるか」で終わっている</li>
+      <li>「正しいものの組合せはどれか」（選択肢が「ア、イ」のような組合せ）は、別の形式の<a href="/blog/takken-kumiawase-mondai">組合せ問題</a>です</li>
+      <li>出る場所：令和5〜7年度の3年間で23問。うち20問が宅建業法（問26〜45）でした</li>
+    </ul>
+    <p class="ev">根拠：不動産適正取引推進機構が公開している令和5〜7年度の本試験問題（150問）を、運営者が数えた結果です。個数問題は令和5年度8問・令和6年度4問・令和7年度11問。令和6・7年度は2026年11月24日にも機構の問題PDFで「いくつあるか」の数を数え直し、4問・11問と一致しました。予備校によっては組合せ型を含めて数えるため、数字が違って見えることがあります。年度別・分野別の一覧は<a href="/blog/takken-kosu-mondai-nanmon">個数問題は年に何問？</a>にまとめています。</p>
+  </div>
   <p>模試で「宅建業法は得意なはずなのに点が伸びない」という人の失点は、かなりの割合が<b>個数問題</b>に集中します。「正しいものはいくつあるか」「誤っているものの組合せはどれか」という聞き方をされた瞬間に、いつもの解き方が通用しなくなるからです。</p>
   <p>この記事では、①なぜ個数問題だけ極端に難しくなるのか、②本番でどう手を動かすか、③そもそも何を覚えていれば個数問題で崩れないのか、を順番に整理します。③では、実際に条文（e-Gov 法令検索の宅地建物取引業法・同施行令）で確認した「◯と✕の境目」を表にしました。</p>
 
@@ -241,7 +256,7 @@
     <a href="/blog/takken-kosu-mondai-nanmon">▸ 宅建の個数問題は年に何問？本試験150問を数えると、宅建業法に集中していた</a>
   </div>
 
-  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-11-14">2026年11月14日</time></p>
+  <p class="page-updated" data-page-updated style="margin:16px 0 6px;font-size:15px;line-height:1.9;color:var(--muted,#53536b);text-align:center">公開：<time datetime="2026-08-13">2026年8月13日</time>　最終更新：<time datetime="2026-11-24">2026年11月24日</time></p>
   <div class="foot">
     <a href="/">トップ</a><a href="/about">運営者情報</a><a href="/privacy">プライバシーポリシー</a><a href="/disclaimer">免責事項</a><a href="/contact">お問い合わせ</a>
     <div style="margin-top:10px">© 2026 宅建GYM ・ 運営：<a href="https://mainichi-lab.com/?utm_source=takken&amp;utm_medium=article&amp;utm_campaign=takken_blog_kosu-mondai&amp;utm_content=footer_operator">フジケン（毎日ラボ）</a></div>
