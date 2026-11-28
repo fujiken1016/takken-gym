@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://takken.mainichi-lab.com/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://takken.mainichi-lab.com/blog/</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takken.mainichi-lab.com/blog/</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/courses/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/chikaradameshi/</loc><lastmod>2026-09-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/toukei-quiz/</loc><lastmod>2026-10-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -60,6 +60,10 @@
   <url><loc>https://takken.mainichi-lab.com/blog/takken-gokakusha-zokusei</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/blog/takken-goukakushousho-funshitsu</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/blog/takken-juken-shomei</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takken.mainichi-lab.com/blog/takken-shi-ninzu</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takken.mainichi-lab.com/blog/takken-shi-nenrei</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takken.mainichi-lab.com/blog/takken-shi-josei</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takken.mainichi-lab.com/blog/takken-gyousha-suu</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/blog/takken-hiyou-sougaku</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://takken.mainichi-lab.com/blog/takken-ato-chintai-kanrigyomu</loc><lastmod>2026-11-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://takken.mainichi-lab.com/blog/takken-jitsumu-koushu-hikaku</loc><lastmod>2026-11-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
